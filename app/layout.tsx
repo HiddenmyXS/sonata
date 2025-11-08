@@ -19,7 +19,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Home | Altera - Demo Site",
+  title: "Home | Sonata - Demo Site",
   description: "A Themes",
 };
 

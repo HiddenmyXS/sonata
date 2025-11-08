@@ -4,7 +4,6 @@ import { Gamepad, Home, List, Headset, Pyramid, Server, Code, Container, Gamepad
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Dropdown Component - Extracted for better organization
 const HostProductsDropdown: React.FC = () => {
     const [open, setOpen] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
@@ -156,14 +155,14 @@ export default function Header(): React.ReactElement {
                     <Link href="/home" className="flex items-center gap-3">
                         <Image
                             className="dark:white"
-                            src="/aset/pulcra.svg"
-                            alt="Northden Software Development"
+                            src="/aset/sonata.png"
+                            alt="Sonata"
                             width={40}
                             height={40}
                             priority
                         />
                         <h1 className="text-lg font-bold text-white whitespace-nowrap">
-                            Northden Software Development
+                            Sonata
                         </h1>
                     </Link>
                 </div>

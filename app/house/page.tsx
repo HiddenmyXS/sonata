@@ -5,11 +5,30 @@ import Header from "../component/Head";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import FastMarquee from "react-fast-marquee";
-import { BubblesIcon, ChartBarIcon, CloudLightning, Code, Container, Gamepad, Gamepad2, GamepadIcon, LightbulbOff, LucideCloudLightning, MessageCircle, Server } from "lucide-react";
+import { BubblesIcon, ChartBarIcon, CloudLightning, Code, Container, Gamepad, Gamepad2, GamepadIcon, LightbulbOff, LucideCloudLightning, MessageCircle, Server, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function HomeComponent() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const texts = [
+    "The Solution High Performance with Cheap Price",
+    "Maximum Speed Without Breaking Your Budget",
+    "Enterprise Quality at Startup Pricing",
+    "Premium Performance Everyone Can Afford",
+    "Fast, Reliable, and Incredibly Affordable"
+  ];
+
+  const slides = [
+    { src: '/aset/page-1.jpeg', alt: 'Northden PulcraOS - Page 1' },
+    { src: '/aset/pulcra.svg', alt: 'Northden PulcraOS - Page 2' },
+    { src: '/aset/page-3.jpeg', alt: 'Northden PulcraOS - Page 3' }
+  ];
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   useEffect(() => {
     const fadeInTimer = setTimeout(() => {
@@ -17,62 +36,189 @@ export default function HomeComponent() {
     }, 100);
 
     return () => clearTimeout(fadeInTimer);
-  }, []);
+  
+  },[]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
+  
 
   return (
     <main className={`flex flex-col items-center justify-center w-full transition-opacity duration-1000 ease-in-out ${
       isVisible ? 'opacity-100' : 'opacity-0'
     }`}>
-        <Header />
-        <div className="relative w-full h-screen overflow-hidden group">
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/60 to-transparent flex items-center">
-              <div className="p-28 max-w-full w-1/2 text-left">
-                <h1 className="text-6xl font-extrabold style-inter mb-2 text-transparent bg-clip-text 
-                 bg-gradient-to-r from-gray-300/80 to-white
-                 drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]
-                 drop-shadow-[0_0_60px_rgba(34,211,238,0.4)]">
-                  The Solution High Performance with Cheap Price
-                </h1>
-                <p className="text-lg text-white/90 mt-5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id arcu eu massa hendrerit egestas vitae at turpis. Nullam tempor, augue nec ullamcorper blandit, dolor eros semper neque, ut auctor est eros vitae risus. Maecenas pulvinar mattis lectus, sit amet porttitor neque venenatis eget. Vivamus tincidunt nisl eu ultrices tempor. Vestibulum at imperdiet ipsum. Vestibulum non facilisis enim. Nam pulvinar facilisis diam, sit amet faucibus metus pellentesque a.
-                </p>
-                <div className="flex items-center gap-4">
-                  <Link href="/list-game" className="mt-6 inline-flex gap-4 px-6 py-3 bg-slate-900 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-slate-700">
-                  <Gamepad2 className="w-5 h-5 inline-block mr-2" />
-                  List Server Games
-                </Link>
-                <Link href="/chat" className="mt-6 inline-flex gap-4 px-6 py-3 bg-slate-800 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-slate-700">
-                  <MessageCircle className="w-5 h-5 inline-block mr-2" />
-                  Chat Question
-                </Link>
+      <Header />
+      <div className="relative w-full h-fit min-h-screen bg-gradient-to-r from-slate-900/60 to-transparent overflow-hidden">
+      <div className="container mt-40 mx-auto px-4 py-8 lg:py-16">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          {/* Content Section - Left */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left z-10">
+            <h1 className={`text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 lg:mb-10 text-transparent bg-clip-text 
+                   bg-gradient-to-r from-gray-300/80 to-white
+                   drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]
+                   drop-shadow-[0_0_60px_rgba(34,211,238,0.4)]
+                   transition-all duration-500
+                   ${isAnimating 
+                     ? 'opacity-0 translate-y-8 blur-sm scale-95' 
+                     : 'opacity-100 translate-y-0 blur-0 scale-100'}`}>
+              {texts[currentIndex]}
+            </h1>
+            
+            <p className="text-base md:text-lg text-white/90 mb-6 lg:mb-8 max-w-xl mx-auto lg:mx-0">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id arcu eu massa hendrerit egestas vitae at turpis. Nullam tempor, augue nec ullamcorper blandit, dolor eros semper neque.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a href="#list-game" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-slate-700">
+                <Gamepad2 className="w-5 h-5" />
+                List Server Games
+              </a>
+              <a href="/chat" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-800 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-slate-700">
+                <MessageCircle className="w-5 h-5" />
+                Chat Question
+              </a>
+            </div>
+          </div>
+
+          {/* Slider Section - Right */}
+          <div className="w-full lg:w-1/2 flex items-center justify-center">
+            <div className="w-full max-w-2xl">
+              {/* 3D Effect wrapper */}
+              <div className="hidden lg:block" style={{
+                transform: 'perspective(1200px) rotateX(8deg) rotateY(-8deg)',
+                transformStyle: 'preserve-3d'
+              }}>
+                <div className="bg-slate-900/40 border border-slate-600 rounded-lg overflow-hidden shadow-2xl drop-shadow-[0_0_30px_rgba(34,211,238,0.6)]">
+                  <div className="bg-slate-700/50 px-4 py-3 border-b border-slate-600">
+                    <div className="flex items-center gap-2">
+                      <div className="flex gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                      </div>
+                      <div className="flex-1 ml-4">
+                        <div className="bg-slate-600/50 rounded-lg px-4 py-1.5 text-slate-300 text-xs md:text-sm">
+                          Powered by Chaos, Refined by Vision 🚀
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="relative bg-slate-800/50 h-[300px] md:h-[400px] overflow-hidden">
+                    <div className="flex transition-transform duration-500 ease-in-out h-full" 
+                         style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                      {slides.map((slide, index) => (
+                        <div key={index} className="min-w-full h-full flex items-center justify-center p-4 md:p-8">
+                          <img
+                            src={slide.src}
+                            alt={slide.alt}
+                            className="max-w-full max-h-full object-contain rounded-lg"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <button
+                      onClick={prevSlide}
+                      className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 text-white p-2 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110 z-10"
+                      aria-label="Previous slide">
+                      <ChevronLeft size={20} className="md:w-6 md:h-6"/>
+                    </button>
+                    
+                    <button
+                      onClick={nextSlide}
+                      className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 text-white p-2 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110 z-10"
+                      aria-label="Next slide">
+                      <ChevronRight size={20} className="md:w-6 md:h-6"/>
+                    </button>
+                    {/* Dots */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center gap-2 md:gap-3">
+                      {slides.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => goToSlide(index)}
+                          className={`transition-all duration-300 rounded-full ${
+                            currentSlide === index
+                              ? 'w-6 md:w-8 h-2 md:h-3 bg-cyan-400'
+                              : 'w-2 md:w-3 h-2 md:h-3 bg-slate-500 hover:bg-slate-400'
+                          }`}
+                          aria-label={`Go to slide ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Mobile/Tablet Responsive*/}
+              <div className="block lg:hidden">
+                <div className="bg-slate-900/40 border border-slate-600 rounded-lg overflow-hidden shadow-2xl">
+                  <div className="bg-slate-700/50 px-4 py-3 border-b border-slate-600">
+                    <div className="flex items-center gap-2">
+                      <div className="flex gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                      </div>
+                      <div className="flex-1 ml-4">
+                        <div className="bg-slate-600/50 rounded-lg px-4 py-1.5 text-slate-300 text-xs md:text-sm">
+                          Powered by Chaos 🚀
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative bg-slate-800/50 h-[300px] md:h-[400px] overflow-hidden">
+                    <div className="flex transition-transform duration-500 ease-in-out h-full" 
+                         style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                      {slides.map((slide, index) => (
+                        <div key={index} className="min-w-full h-full flex items-center justify-center p-4 md:p-8">
+                          <img
+                            src={slide.src}
+                            alt={slide.alt}
+                            className="max-w-full max-h-full object-contain rounded-lg"
+                          />
+                        </div>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={prevSlide}
+                      className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 text-white p-2 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110 z-10">
+                      <ChevronLeft size={20}/>
+                    </button>
+                    
+                    <button
+                      onClick={nextSlide}
+                      className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 text-white p-2 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110 z-10">
+                      <ChevronRight size={20}/>
+                    </button>
+
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center gap-2">
+                      {slides.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => goToSlide(index)}
+                          className={`transition-all duration-300 rounded-full ${
+                            currentSlide === index
+                              ? 'w-6 h-2 bg-cyan-400'
+                              : 'w-2 h-2 bg-slate-500 hover:bg-slate-400'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="perspective-1000">
-                <div className="transform-gpu rotate-x-[35deg] -rotate-y-[-20deg] -rotate-z-[25deg] drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]
-                 drop-shadow-[0_0_60px_rgba(34,211,238,0.4)]">
-                    <div className="mockup-browser bg-slate-800/10 border border-base-100 left-210 w-200 h-110 top-90 ">
-                       <div className="mockup-browser-toolbar">
-                          <div className="input rounded-2xl">https://northden.com</div>
-                      </div>
-                      <div className="grid place-content-center flex items-center h-80">
-                        <Image
-                          className="dark:white md:inline-flex hidden relative group items-center mt-10 rounded-lg"
-                          src="/aset/page-1.jpeg"
-                          alt="Northden PulcraOS"
-                          width={690}
-                          height={640}
-                          priority
-                        />
-                      </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-      <div className="w-full h-screen relative bg-gradient-to-r from-slate-900/60 to-transparent">
-        <h2 className="text-4xl -mt-20 font-extrabold style-inter text-center justify-center mb-2 text-transparent bg-clip-text 
-                 bg-gradient-to-r from-gray-300/80 to-white
-                 drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]">
+      </div>
+    </div>
+      <div className="w-full h-fit relative bg-gradient-to-r from-slate-900/60 to-transparent" id="list-game">
+        <h2 className="text-4xl mt-40 font-extrabold style-inter text-center justify-center mb-2 text-transparent bg-clip-text bg-gradient-to-r from-gray-300/80 to-white drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]">
           Tersedia berbagai Macam Server Games yang anda butuhkan!
         </h2>
         <p className="text-center text-white/90 mb-10">
@@ -125,16 +271,14 @@ export default function HomeComponent() {
                  bg-gradient-to-r from-gray-300/80 to-white
                  drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]">
           Stay Tune!
-        </h2>
-        <p className="text-center text-white/90 mb-10">
-          Segera hadir tambahan fiturnya :)
-        </p>
-
-      </div>
-
+          </h2>
+          <p className="text-center text-white/90 mb-10">
+            Segera hadir tambahan fiturnya :)
+          </p>
+        </div>
       <footer className="footer sm:footer-horizontal bg-gradient-to-r to-transparent from-slate-900/40 text-neutral-content p-10">
       <aside>
-        <img src="/aset/pulcra.svg" width={50} height={50}/>
+        <img src="/aset/sonata.png" width={50} height={50}/>
         <p>
           Northden Software Development.
           <br />

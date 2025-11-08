@@ -44,7 +44,7 @@ function LoadingPage(): React.ReactElement {
 
   return (
     <div
-      className={`fixed inset-0 bg-white flex flex-col items-center justify-center min-h-screen transition-opacity duration-500 ease-in-out ${
+      className={`fixed inset-0 from-slate-900/60 bg-gradient-to-r flex flex-col items-center justify-center min-h-screen transition-opacity duration-500 ease-in-out ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
       role="status"
@@ -53,8 +53,8 @@ function LoadingPage(): React.ReactElement {
     >
       {/* Logo */}
       <Image
-        src="/Genesis.png"
-        alt="Genesis Logo"
+        src="/aset/sonata.png"
+        alt="Sonata"
         width={120}
         height={120}
         priority
