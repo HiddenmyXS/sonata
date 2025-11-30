@@ -1,113 +1,182 @@
 "use client";
 
-import Image from "next/image";
 import Header from "../component/Head";
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { cn } from "@/lib/utils"
-import FastMarquee from "react-fast-marquee";
+import { cn } from "@/lib/utils";
 import { Particles } from "@/components/ui/particles";
-import  TextAnimation from "@/components/TextType";
 import { Safari } from "@/components/ui/safari";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
-import { BubblesIcon, ChartBarIcon, CloudLightning, Code, Container, MoveRight, Gamepad, Gamepad2, GamepadIcon, LightbulbOff, LucideCloudLightning, MessageCircle, Server, ChevronLeft, ChevronRight, Shield, User2Icon, User } from "lucide-react";
-import { Button } from "@radix-ui/themes";
+import { 
+  MoveRight, 
+  Gamepad2, 
+  MessageCircle, 
+  Zap, 
+  ShieldCheck, 
+  Globe, 
+  Cpu 
+} from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function HomeComponent() {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-const texts = [
-    "Maximum Speed Without Breaking Your Budget"
-];
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % texts.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const slides = [
-    { src: '/aset/page-1.jpeg', alt: 'Northden PulcraOS - Page 1' },
-    { src: '/aset/pulcra.svg', alt: 'Northden PulcraOS - Page 2' },
-    { src: '/aset/page-3.jpeg', alt: 'Northden PulcraOS - Page 3' }
-  ];
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  const rotateX = useTransform(scrollYProgress, [0, 0.3], [15, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [0.9, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
 
   useEffect(() => {
     const fadeInTimer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
-
     return () => clearTimeout(fadeInTimer);
-  
-  },[]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, [slides.length]);
-  
+  }, []);
 
   return (
-    <main className={`flex flex-col items-center justify-center w-full transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div id="sticky-header" className="top-0 left-0 overflow-x-hidden w-full z-50 transition-transform duration-300" style={{ transform: 'translateY(0)' }}>
+    <main
+      ref={containerRef}
+      className={`flex flex-col items-center w-full min-h-screen bg-zinc-950 transition-opacity duration-1000 ease-in-out ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <div className="relative w-full flex flex-col items-center pt-20 pb-40 overflow-hidden">
         <Header />
-        <div className="relative w-full h-full from-slate-900/50 to-transparent bg-gradient-to-r overflow-hidden">
-            <Particles/>
-            <div className="-mt-190 inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <div className={cn("group rounded-full border border-white/10 bg-slate-900/20 text-base transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/50 dark:bg-neutral-900 dark:hover:bg-neutral-800")}>
-                    <AnimatedShinyText className="inline-flex items-center justify-center text-lg px-4 py-1 transition ease-out text-neutral-300 hover:text-neutral-900 hover:duration-300 hover:dark:text-neutral-600">
-                    <span>✨ Introducing Sonata Themes!</span>
-                    <MoveRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-                    </AnimatedShinyText>
-                </div>
-                <div className="w-full h-fit justify-center items-center flex flex-col px-4 mt-15 m-20">
-                    <TextAnimation 
-                    text={texts}
-                    className="h-80 text-4xl justify-center text-center md:text-5xl lg:text-8xl font-extrabold mb-6 lg:mb-5 text-transparent max-w-4xl bg-clip-text
-                        bg-gradient-to-r from-gray-300/80 to-white
-                        drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]
-                        -shadow-[0_0_60px_rgba(34,211,238,0.4)]
-                        transition-all duration-500"
-                    typingSpeed={100}
-                    pauseDuration={1500}
-                    showCursor={true}
-                    cursorCharacter="|"
-                    /> 
-                    <span className="text-base md:text-lg text-center justify-center text-white/90 mb-6 lg:mb-8 max-w-xl mx-auto">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id arcu eu massa hendrerit egestas vitae at turpis.
-                    </span>
-                    <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                    <a href="#list-game" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-slate-700">
-                        <Gamepad2 className="w-5 h-5" />
-                        List Server Games
-                    </a>
-                    <a href="/chat" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-800 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-slate-700">
-                        <MessageCircle className="w-5 h-5" />
-                        Chat Question
-                    </a>
+        
+        <div className="mt-4 absolute inset-0 bg-linear-to-b from-zinc-900/50 via-zinc-900/80 to-zinc-950 z-0" />
+        <Particles className="absolute inset-0 z-0 animate-fade-in" quantity={100} ease={80} color="#ffffff" refresh />
+
+        <div className="relative z-10 flex flex-col items-center justify-center px-4 w-full max-w-7xl mt-10">
+          
+          <div
+            className={cn(
+              "group rounded-full border border-white/10 bg-zinc-900/40 backdrop-blur-md text-base transition-all ease-in hover:cursor-pointer hover:bg-zinc-800"
+            )}
+          >
+            <AnimatedShinyText className="inline-flex items-center justify-center text-sm md:text-base px-4 py-1 transition ease-out text-neutral-300 hover:text-white">
+              <span>✨ Introducing Sonata Themes!</span>
+              <MoveRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:tranzinc-x-0.5" />
+            </AnimatedShinyText>
+          </div>
+
+            <div className="w-full flex flex-col items-center mt-8 mb-8">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-center text-transparent bg-clip-text bg-linear-to-b from-white to-white/60 drop-shadow-2xl leading-tight tracking-tight max-w-5xl">
+              Maximum Speed Without Breaking Your Budget
+              </h1>
+
+              <p className="text-base md:text-lg text-center text-zinc-400 max-w-2xl mx-auto mt-4 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id
+              arcu eu massa hendrerit egestas vitae at turpis.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 pointer-events-auto">
+              <a
+                href="#list-game"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 bg-white text-zinc-950 font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+              >
+                <Gamepad2 className="w-5 h-5" />
+                List Server Games
+              </a>
+              <a
+                href="/chat"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/10 text-white font-medium rounded-full transition-all duration-300 hover:bg-white/20"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Chat Question
+              </a>
+              </div>
+            </div>
+
+          <div className="w-full mt-10 perspective-container" style={{ perspective: "1200px" }}>
+            <motion.div
+              style={{
+                rotateX: rotateX,
+                scale: scale,
+                opacity: opacity,
+                transformStyle: "preserve-3d",
+              }}
+              className="relative w-full max-w-5xl mx-auto shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] rounded-xl"
+            >
+              <Safari
+                url="sonata.theme"
+                className="w-full shadow-2xl border border-white/10 rounded-xl bg-zinc-900"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      <section className="relative w-full py-24 bg-zinc-950 z-20 px-4">
+        <div className="max-w-7xl mx-auto">
+            
+            <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Why Choose Sonata?</h2>
+                <p className="text-zinc-400 max-w-2xl mx-auto">
+                    Dibangun untuk performa maksimal dengan infrastruktur yang handal untuk kebutuhan gaming dan hosting Anda.
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div className="md:col-span-2 group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 p-8 hover:bg-zinc-900/80 transition-all duration-300">
+                    <div className="absolute inset-0 bg-linear-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative z-10 flex flex-col h-full justify-between">
+                        <div className="mb-4 p-3 bg-blue-500/20 w-fit rounded-xl">
+                            <Zap className="w-8 h-8 text-blue-400" />
+                        </div>
+                        <div>
+                            <h3 className="text-2xl font-bold text-white mb-2">Lightning Fast Performance</h3>
+                            <p className="text-zinc-400">Didukung oleh NVMe SSD dan prosesor terbaru untuk menjamin latency rendah dan loading time super cepat untuk server game Anda.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div className="items-center w-7xl" style={{transform: 'perspective(1200px) rotateX(10deg) rotateY(0deg)',transformStyle: 'preserve-3d'}}>
-                    <Safari
-                        url="mulyono.com"
-                    />
+                <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 p-8 hover:bg-zinc-900/80 transition-all duration-300">
+                    <div className="absolute inset-0 bg-linear-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative z-10">
+                         <div className="mb-4 p-3 bg-green-500/20 w-fit rounded-xl">
+                            <ShieldCheck className="w-8 h-8 text-green-400" />
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-2">DDoS Protection</h3>
+                        <p className="text-zinc-400 text-sm">Perlindungan 24/7 terhadap serangan jaringan berbahaya.</p>
+                    </div>
                 </div>
+
+                <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 p-8 hover:bg-zinc-900/80 transition-all duration-300">
+                     <div className="absolute inset-0 bg-linear-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative z-10">
+                        <div className="mb-4 p-3 bg-orange-500/20 w-fit rounded-xl">
+                            <Globe className="w-8 h-8 text-orange-400" />
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-2">Global Network</h3>
+                        <p className="text-zinc-400 text-sm">Server tersedia di berbagai lokasi strategis di seluruh dunia.</p>
+                    </div>
+                </div>
+
+                <div className="md:col-span-2 group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 p-8 hover:bg-zinc-900/80 transition-all duration-300">
+                    <div className="absolute inset-0 bg-linear-to-l from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative z-10 flex flex-col md:flex-row gap-6 items-center">
+                        <div className="flex-1">
+                            <div className="mb-4 p-3 bg-purple-500/20 w-fit rounded-xl">
+                                <Cpu className="w-8 h-8 text-purple-400" />
+                            </div>
+                            <h3 className="text-2xl font-bold text-white mb-2">Dedicated Hardware</h3>
+                            <p className="text-zinc-400">Resource yang terisolasi sepenuhnya. Tidak ada &quot;noisy neighbors&quot;. CPU dan RAM yang Anda beli adalah milik Anda sepenuhnya.</p>
+                        </div>
+                        <div className="w-full md:w-1/3 h-24 md:h-32 rounded-xl bg-linear-to-tr from-zinc-800 to-zinc-700 border border-white/5 flex items-center justify-center">
+                            <span className="text-white/20 font-mono text-xs">SYS_MONITOR_ACTIVE</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        
-        </div>
+      </section>
+
     </main>
   );
 }

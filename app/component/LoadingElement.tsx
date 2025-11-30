@@ -44,7 +44,7 @@ function LoadingPage(): React.ReactElement {
 
   return (
     <div
-      className={`fixed inset-0 from-slate-900/60 bg-gradient-to-r flex flex-col items-center justify-center min-h-screen transition-opacity duration-500 ease-in-out ${
+      className={`fixed inset-0 from-slate-900/60 bg-linear-to-r flex flex-col items-center justify-center min-h-screen transition-opacity duration-500 ease-in-out ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
       role="status"
