@@ -71,7 +71,7 @@ const HostProductsDropdown: React.FC = () => {
                         exit={{ opacity: 0, y: -8, scale: 0.98 }}
                         transition={{ duration: 0.16, ease: "easeOut" }}
                         role="menu"
-                        className="absolute left-1/2 -translate-x-1/2 top-12 w-96 bg-gray-900/95 backdrop-blur-sm shadow-xl border border-white/10 rounded-lg overflow-hidden z-50"
+                        className="absolute left-1/2 -translate-x-1/2 top-12 w-96 bg-slate-900/10 shadow-xl border border-white/10 rounded-lg overflow-hidden z-50"
                     >
                         <div className="flex flex-col py-2">
                             <Link
@@ -148,11 +148,11 @@ const HostProductsDropdown: React.FC = () => {
 // Main Header Component
 export default function Header(): React.ReactElement {
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-4 pt-3">
-            <div className="flex items-center justify-between w-full max-w-7xl gap-6 p-3 bg-gray-900/80 backdrop-blur-md shadow-lg border border-gray-200/10 rounded-2xl">
+        <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-4 pt-6 mr-40 ml-40">
+            <div className="flex items-center justify-between w-full max-w-7xl gap-6 p-3 bg-slate-900/10 backdrop-blur-md shadow-lg border border-gray-200/10 rounded-2xl">
                 {/* Logo Section */}
                 <div className="flex items-center gap-4">
-                    <Link href="/home" className="flex items-center gap-3">
+                    <Link href="/house" className="flex items-center gap-3">
                         <Image
                             className="dark:white"
                             src="/aset/sonata.png"

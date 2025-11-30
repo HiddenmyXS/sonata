@@ -2,10 +2,13 @@
 
 import Image from "next/image";
 import Header from "../component/Head";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import FastMarquee from "react-fast-marquee";
-import { BubblesIcon, ChartBarIcon, CloudLightning, Code, Container, Gamepad, Gamepad2, GamepadIcon, LightbulbOff, LucideCloudLightning, MessageCircle, Server, ChevronLeft, ChevronRight } from "lucide-react";
+import Ticker from "framer-motion-ticker";
+import { Renderer, Program, Triangle, Mesh } from 'ogl';
+import LightRays from "../../components/LightRays"
+import { BubblesIcon, ChartBarIcon, CloudLightning, Code, Container, Gamepad, Gamepad2, GamepadIcon, LightbulbOff, LucideCloudLightning, MessageCircle, Server, ChevronLeft, ChevronRight, Shield, User2Icon, User } from "lucide-react";
 
 export default function HomeComponent() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -53,7 +56,7 @@ export default function HomeComponent() {
       isVisible ? 'opacity-100' : 'opacity-0'
     }`}>
       <Header />
-      <div className="relative w-full h-fit min-h-screen bg-gradient-to-r from-slate-900/60 to-transparent overflow-hidden">
+      <div className="relative w-full h-fit bg-gradient-to-r from-slate-900/60 to-transparent overflow-hidden">
       <div className="container mt-40 mx-auto px-4 py-8 lg:py-16">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
           {/* Content Section - Left */}
@@ -83,11 +86,32 @@ export default function HomeComponent() {
                 Chat Question
               </a>
             </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start mt-10 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Feature 1 */}
+                <div className="flex items-center bg-transparent gap-6 drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]
+                    drop-shadow-[0_0_60px_rgba(34,211,238,0.4)]">
+                  <Server className="w-12 h-12 mb-4 text-slate-300/50"/>
+                  <p className="text-md font-semibold mb-2 text-slate-100">Performa Super Ngebutzz!</p>
+                </div>
+                <div className="flex items-center bg-transparent gap-6 drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]
+                    drop-shadow-[0_0_60px_rgba(34,211,238,0.4)]">
+                  <Shield className="w-12 h-12 mb-4 text-slate-300/50"/>
+                  <p className="text-md font-semibold mb-2 text-slate-100">Keamanan Berlapis Bung!</p>
+                </div>
+                <div className="flex items-center bg-transparent gap-6 drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]
+                    drop-shadow-[0_0_60px_rgba(34,211,238,0.4)]">
+                  <User className="w-12 h-12 mb-4 text-slate-300/50"/>
+                  <p className="text-md font-semibold mb-2 text-slate-100">Dipercaya Ratusan Orang!</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Slider Section - Right */}
           <div className="w-full lg:w-1/2 flex items-center justify-center">
-            <div className="w-full max-w-2xl">
+            <div className="w-full max-w-2xl -mt-10">
               {/* 3D Effect wrapper */}
               <div className="hidden lg:block" style={{
                 transform: 'perspective(1200px) rotateX(8deg) rotateY(-8deg)',
@@ -153,7 +177,7 @@ export default function HomeComponent() {
                 </div>
               </div>
               {/* Mobile/Tablet Responsive*/}
-              <div className="block lg:hidden">
+              <div className="block lg:hidden mt-15">
                 <div className="bg-slate-900/40 border border-slate-600 rounded-lg overflow-hidden shadow-2xl">
                   <div className="bg-slate-700/50 px-4 py-3 border-b border-slate-600">
                     <div className="flex items-center gap-2">
@@ -267,15 +291,64 @@ export default function HomeComponent() {
             </div>
           </div>
           </FastMarquee>
-          <h2 className="text-4xl mt-20 font-extrabold style-inter text-center justify-center mb-2 text-transparent bg-clip-text 
-                 bg-gradient-to-r from-gray-300/80 to-white
-                 drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]">
-          Stay Tune!
-          </h2>
-          <p className="text-center text-white/90 mb-10">
-            Segera hadir tambahan fiturnya :)
-          </p>
         </div>
+        {/*Third */}
+        <div className="w-full h-fit relative bg-gradient-to-r from-slate-900/60 to-transparent">
+          <h2 className="text-4xl mt-20 font-extrabold style-inter text-center justify-center mb-2 text-transparent bg-clip-text 
+                bg-gradient-to-r from-gray-300/80 to-white
+                drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]">
+            Mengapa Memilih Northden Software Development?
+          </h2>
+          <p className="text-center text-white/90 mb-10 m-4">
+            Kami berkomitmen untuk memberikan layanan terbaik dengan harga yang terjangkau tanpa mengorbankan kualitas.
+          </p>
+          <div className="container mx-auto px-4 py-8 lg:py-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Feature 1 */}
+              <div className="bg-slate-800/50 border border-gray-200/10 border p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]
+                   drop-shadow-[0_0_60px_rgba(34,211,238,0.4)]">
+                <CloudLightning className="w-12 h-12 mb-4 text-cyan-400 justify-center items-center"/>
+                <h3 className="text-xl font-semibold mb-2 text-white">Inovasi Teknologi</h3>
+                <p className="text-white/90">Kami selalu mengadopsi teknologi terbaru untuk memastikan performa optimal dan keamanan data Anda.</p>  
+              </div>
+              <div className="bg-slate-800/50 border border-gray-200/10 border p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]
+                   drop-shadow-[0_0_60px_rgba(34,211,238,0.4)]">
+                <CloudLightning className="w-12 h-12 mb-4 text-cyan-400"/>
+                <h3 className="text-xl font-semibold mb-2 text-white">Inovasi Teknologi</h3>
+                <p className="text-white/90">Kami selalu mengadopsi teknologi terbaru untuk memastikan performa optimal dan keamanan data Anda.</p>  
+              </div>
+              <div className="bg-slate-800/50 border border-gray-200/10 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]
+                   drop-shadow-[0_0_60px_rgba(34,211,238,0.4)]">
+                <CloudLightning className="w-12 h-12 mb-4 text-cyan-400"/>
+                <h3 className="text-xl font-semibold mb-2 text-white">Inovasi Teknologi</h3>
+                <p className="text-white/90">Kami selalu mengadopsi teknologi terbaru untuk memastikan performa optimal dan keamanan data Anda.</p>  
+              </div>
+            </div>
+          </div>
+        </div>
+      {/*Four */}
+      <div className="w-full h-fit relative bg-gradient-to-r from-slate-900/60 to-transparent">
+        <div className="container mx-auto px-4 py-16 text-center">
+          <h2 className="text-4xl font-extrabold mb-4 text-transparent bg-clip-text
+                bg-gradient-to-r from-gray-300/80 to-white
+                drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]">
+            Siap untuk Memulai Perjalanan Anda dengan Kami?
+          </h2>
+          <p className="text-white/90 mb-8">
+            Bergabunglah dengan ribuan pelanggan puas yang telah merasakan manfaat layanan kami. Hubungi kami hari ini dan rasakan perbedaannya!
+          </p>
+          <a href="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-cyan-500 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-cyan-400">
+            <BubblesIcon className="w-5 h-5"/>
+            Contact Us Now
+          </a>
+        </div>
+
+
+      </div>
+      {/*Four */}
+      <div className="w-full h-fit relative bg-gradient-to-r from-slate-900/60 to-transparent">
+                      
+      </div>
       <footer className="footer sm:footer-horizontal bg-gradient-to-r to-transparent from-slate-900/40 text-neutral-content p-10">
       <aside>
         <img src="/aset/sonata.png" width={50} height={50}/>
