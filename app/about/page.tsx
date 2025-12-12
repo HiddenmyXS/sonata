@@ -1,11 +1,11 @@
 "use client";
 
-import Header from "../component/Head"; // Pastikan path ini sesuai
+import Header from "../component/Head";
 import { motion } from "framer-motion";
 import { Particles } from "@/components/ui/particles";
-import { NumberTicker } from "@/components/ui/number-ticker"; // Asumsi komponen MagicUI
-import { TextAnimate } from "@/components/ui/text-animate"; // Asumsi komponen MagicUI
-import { OrbitingCircles } from "@/components/ui/orbiting-circles"; // Asumsi komponen MagicUI
+import { NumberTicker } from "@/components/ui/number-ticker"; 
+import { TextAnimate } from "@/components/ui/text-animate"; 
+import { OrbitingCircles } from "@/components/ui/orbiting-circles"; 
 import { 
   Server, 
   Globe2, 
@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-// Variabel animasi standar untuk konsistensi
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -42,7 +41,7 @@ export default function AboutPage() {
       </div>
 
       {/* --- Hero Section --- */}
-      <section className="relative z-10 w-full max-w-7xl px-4 pt-45 pb-16 text-center">
+      <section className="relative z-10 w-full max-w-7xl px-4 pt-20 pb-16 text-center">
         <motion.div
           initial="hidden"
           animate="visible"

@@ -68,12 +68,12 @@ const HostProductsDropdown: React.FC = () => {
             <AnimatePresence>
                 {open && (
                     <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.95, backdropFilter: "blur(10px)" }}
-                        animate={{ opacity: 1, y: 0, scale: 1, backdropFilter: "blur(20px)" }}
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
                         role="menu"
-                        className="absolute left-1/2 -translate-x-1/2 top-14 w-104
+                        className="absolute left-1/2 -translate-x-1/2 top-14 w-104 
                                    bg-zinc-900/80 backdrop-blur-2xl shadow-2xl shadow-black/50
                                    border border-white/10 rounded-xl overflow-hidden z-50 ring-1 ring-white/5"
                     >
