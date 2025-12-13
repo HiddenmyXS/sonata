@@ -22,13 +22,13 @@ export default function RootLayout({
   return (
     <div>
       <Header />
-      <html className="dark" lang="en">
-          <body
-            className={plusJakartaSans.className}
-          >
-            {children}
-          </body>
-      </html>
+        <html className="dark" lang="en">
+            <body
+              className={plusJakartaSans.className}
+            >
+              {children}
+            </body>
+        </html>
       <Footer />
     </div>
   );
