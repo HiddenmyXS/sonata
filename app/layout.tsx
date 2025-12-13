@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Header from "./component/Head";
+import Footer from "./component/Footer";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -18,12 +20,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="dark" lang="en">
-      <body
-        className={plusJakartaSans.className}
-      >
-        {children}
-      </body>
-    </html>
+    <div>
+      <Header />
+      <html className="dark" lang="en">
+          <body
+            className={plusJakartaSans.className}
+          >
+            {children}
+          </body>
+      </html>
+      <Footer />
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "../component/Head";
 import { motion } from "framer-motion";
 import { Particles } from "@/components/ui/particles";
 import { NumberTicker } from "@/components/ui/number-ticker"; 
@@ -25,7 +24,6 @@ const fadeInUp = {
 export default function AboutPage() {
   return (
     <main className="flex flex-col items-center w-full min-h-screen bg-zinc-950 text-white overflow-hidden">
-      {/* --- Background Elements --- */}
       <div className="absolute inset-0 bg-linear-to-b from-zinc-900/50 via-zinc-900/80 to-zinc-950 z-0" />
       <Particles 
         className="absolute inset-0 z-0 animate-fade-in" 
@@ -35,13 +33,7 @@ export default function AboutPage() {
         refresh 
       />
 
-      {/* --- Header --- */}
-      <div className="relative z-50 w-full flex justify-center pt-8">
-        <Header />
-      </div>
-
-      {/* --- Hero Section --- */}
-      <section className="relative z-10 w-full max-w-7xl px-4 pt-20 pb-16 text-center">
+      <section className="mt-8 relative z-10 w-full max-w-7xl px-4 pt-20 pb-16 text-center">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -65,7 +57,6 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      {/* --- Stats Section (MagicUI Number Ticker) --- */}
       <section className="relative z-10 w-full border-y border-white/5 bg-zinc-900/30 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -89,10 +80,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* --- Mission & Vision (Split Layout) --- */}
       <section className="relative z-10 w-full max-w-7xl px-4 py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Left: Text Content */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -126,7 +115,6 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* Right: Visual Tech Stack (Orbiting Circles) */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -138,7 +126,6 @@ export default function AboutPage() {
               Tech
             </span>
             
-            {/* Inner Circle */}
             <OrbitingCircles
               className="size-[30px] border-none bg-transparent"
               duration={20}
@@ -156,7 +143,6 @@ export default function AboutPage() {
               <Cpu className="text-purple-400" />
             </OrbitingCircles>
 
-            {/* Outer Circle */}
             <OrbitingCircles
               className="size-[50px] border-none bg-transparent"
               radius={190}
@@ -187,7 +173,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* --- Team/Culture Section --- */}
       <section className="relative z-10 w-full max-w-7xl px-4 py-24 border-t border-white/5">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Tim di Balik Layar</h2>
@@ -195,7 +180,6 @@ export default function AboutPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Team Card 1 */}
             <div className="group relative overflow-hidden rounded-2xl bg-zinc-900/50 border border-white/10 p-6 transition-all hover:bg-zinc-800">
                 <div className="flex items-center gap-4 mb-4">
                     <div className="w-16 h-16 rounded-full bg-linear-to-br from-blue-500 to-purple-600" />
@@ -209,7 +193,6 @@ export default function AboutPage() {
                 </p>
             </div>
 
-             {/* Team Card 2 */}
              <div className="group relative overflow-hidden rounded-2xl bg-zinc-900/50 border border-white/10 p-6 transition-all hover:bg-zinc-800">
                 <div className="flex items-center gap-4 mb-4">
                     <div className="w-16 h-16 rounded-full bg-linear-to-br from-green-500 to-teal-600" />
@@ -238,7 +221,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* --- Simple CTA --- */}
       <section className="w-full py-20 px-4 relative">
           <div className="max-w-4xl mx-auto text-center p-12 rounded-3xl bg-linear-to-r from-blue-900/20 to-purple-900/20 border border-white/10 backdrop-blur-md">
             <h2 className="text-3xl font-bold text-white mb-6">Siap bergabung dengan revolusi?</h2>
@@ -247,50 +229,6 @@ export default function AboutPage() {
             </button>
           </div>
       </section>
-
-      {/* Gunakan Footer yang sama dengan Home */}
-      <footer className="w-full py-12 px-4 border-t border-white/5 bg-zinc-950">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            <div className="col-span-2 md:col-span-1">
-                <h4 className="text-xl font-bold text-white mb-4">Sonata</h4>
-                <p className="text-zinc-500 text-sm">Premium hosting solutions for next-generation applications and games.</p>
-            </div>
-            <div>
-                <h4 className="font-semibold text-white mb-4">Product</h4>
-                <ul className="space-y-2 text-sm text-zinc-400">
-                    <li><Link href="#" className="hover:text-white transition-colors">Game Host</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">VPS</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">DDoS Protection</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">Pricing</Link></li>
-                </ul>
-            </div>
-            <div>
-                <h4 className="font-semibold text-white mb-4">Company</h4>
-                <ul className="space-y-2 text-sm text-zinc-400">
-                    <li><Link href="#" className="hover:text-white transition-colors">About</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">Blog</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">Careers</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">Contact</Link></li>
-                </ul>
-            </div>
-             <div>
-                <h4 className="font-semibold text-white mb-4">Legal</h4>
-                <ul className="space-y-2 text-sm text-zinc-400">
-                    <li><Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">Terms of Service</Link></li>
-                </ul>
-            </div>
-        </div>
-        <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-zinc-600 text-sm">
-            <p>&copy; 2024 Sonata Inc. All rights reserved.</p>
-            <div className="flex gap-4 mt-4 md:mt-0">
-                {/* Social icons placeholder */}
-                <span>Twitter</span>
-                <span>GitHub</span>
-                <span>Discord</span>
-            </div>
-        </div>
-      </footer>
     </main>
   );
 }

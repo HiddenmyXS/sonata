@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "../component/Head";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Particles } from "@/components/ui/particles";
@@ -29,7 +28,7 @@ import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 import { motion, useScroll, useTransform } from "framer-motion";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid"
 
-const SearchResultItem = ({ icon, title, desc, onClick }) => (
+const SearchResultItem: React.FC<{ icon: React.ReactNode; title: string; desc: string; onClick: () => void }> = ({ icon, title, desc, onClick }) => (
   <button
     onClick={onClick}
     className="w-full flex items-start gap-3 px-3 py-3 rounded-lg
@@ -195,15 +194,13 @@ export default function SupportComponent() {
       }`}
     >
       <div className="relative w-full flex flex-col items-center pt-30 pb-40 overflow-hidden">
-        <Header />
           <div className="absolute inset-0 bg-linear-to-b from-zinc-900/50 via-zinc-900/80 to-zinc-950 z-0" />
           <Particles className="absolute inset-0 z-0 animate-fade-in" quantity={100} ease={80} color="#ffffff" refresh />
           <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl mt-40">
             <div className="w-full flex flex-col items-center mt-8 mb-8">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-center text-transparent bg-clip-text bg-linear-to-b from-white to-white/60 drop-shadow-2xl leading-tight tracking-tight max-w-5xl">
-                How can I help you today?
+                How can we help you today?
               </h1>
-              {/* Input Field */}
               <div className="w-full max-w-4xl mt-15">
                 <div className="space-y-2">
                   <div className="relative">
@@ -229,11 +226,9 @@ export default function SupportComponent() {
                       </button>
                     )}
                   </div>
-                  {/* Search Results */}
                   {showResults && (
                     <div className="relative mt-4 w-full z-50">
                       <div className="bg-zinc-900/80 backdrop-blur-2xl shadow-2xl shadow-black/50 border border-white/10 rounded-xl overflow-hidden z-50 ring-1 ring-white/5 animate-in fade-in slide-in-from-top-2 duration-200">
-                        {/* Top highlight line */}
                         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                         <div className="flex flex-col p-2">
                           {filteredResults.length > 0 ? (
@@ -257,11 +252,10 @@ export default function SupportComponent() {
                             </>
                           ) : (
                             <div className="px-3 py-8 text-center text-zinc-500">
-                              No results found for "{query}"
+                              No results found for &quot;{query}&quot;.
                             </div>
                           )}
                         </div>
-                        {/* Bottom subtle gradient */}
                         <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
                       </div>
                     </div>
@@ -269,7 +263,6 @@ export default function SupportComponent() {
                 </div>
               </div>
             </div>
-              {/* Card Section */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-10 w-full max-w-8xl">
                 {filteredCardx.map((card, idx) => (
                   <motion.div
@@ -283,7 +276,6 @@ export default function SupportComponent() {
                   </motion.div>
                 ))}
               </div>
-              {/* Getting Start Section */}
               <div className="w-full max-w-8xl mt-8">
                 <div className="relative z-10 inline-flex items-center font-bold justify-center text-sm md:text-base transition ease-out text-neutral-300 hover:text-white">
                   <Sparkles className="mr-2 size-8 text-zinc-400" />
@@ -303,49 +295,6 @@ export default function SupportComponent() {
               </div>
             </div>
           </div>     
-      {/* Footer Section */}
-      <footer className="w-full py-12 px-4 border-t border-white/5 bg-zinc-950">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            <div className="col-span-2 md:col-span-1">
-                <h4 className="text-xl font-bold text-white mb-4">Sonata</h4>
-                <p className="text-zinc-500 text-sm">Premium hosting solutions for next-generation applications and games.</p>
-            </div>
-            <div>
-                <h4 className="font-semibold text-white mb-4">Product</h4>
-                <ul className="space-y-2 text-sm text-zinc-400">
-                    <li><Link href="#" className="hover:text-white transition-colors">Game Host</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">VPS</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">DDoS Protection</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">Pricing</Link></li>
-                </ul>
-            </div>
-            <div>
-                <h4 className="font-semibold text-white mb-4">Company</h4>
-                <ul className="space-y-2 text-sm text-zinc-400">
-                    <li><Link href="#" className="hover:text-white transition-colors">About</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">Blog</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">Careers</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">Contact</Link></li>
-                </ul>
-            </div>
-             <div>
-                <h4 className="font-semibold text-white mb-4">Legal</h4>
-                <ul className="space-y-2 text-sm text-zinc-400">
-                    <li><Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-                    <li><Link href="#" className="hover:text-white transition-colors">Terms of Service</Link></li>
-                </ul>
-            </div>
-        </div>
-        <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-zinc-600 text-sm">
-            <p>&copy; 2024 Sonata Inc. All rights reserved.</p>
-            <div className="flex gap-4 mt-4 md:mt-0">
-                {/* Social icons placeholder */}
-                <span>Twitter</span>
-                <span>GitHub</span>
-                <span>Discord</span>
-            </div>
-        </div>
-      </footer>
     </main>
   );
 }
