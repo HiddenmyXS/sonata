@@ -1,10 +1,5 @@
 "use client";
 
-<<<<<<< HEAD
-import Header from "../component/Head";
-import Footer from "../component/Footer";
-=======
->>>>>>> origin
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Particles } from "@/components/ui/particles";
@@ -300,11 +295,6 @@ export default function SupportComponent() {
               </div>
             </div>
           </div>     
-<<<<<<< HEAD
-      {/* Footer Section */}
-      <Footer />
-=======
->>>>>>> origin
     </main>
   );
 }

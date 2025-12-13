@@ -1,7 +1,5 @@
 "use client";
 
-import Header from "../component/Head";
-import Footer from "../component/Footer";
 import { motion } from "framer-motion";
 import { Particles } from "@/components/ui/particles";
 import { NumberTicker } from "@/components/ui/number-ticker"; 
@@ -229,7 +227,6 @@ export default function AboutPage() {
             </button>
           </div>
       </section>
-      <Footer />
     </main>
   );
 }

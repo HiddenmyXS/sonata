@@ -1,7 +1,5 @@
 "use client";
 
-import Header from "../component/Head";
-import Footer from "../component/Footer";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Particles } from "@/components/ui/particles";
@@ -20,7 +18,6 @@ import {
   Sparkles
 } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Link from "next/link";
 
 export default function HomeComponent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -222,7 +219,7 @@ export default function HomeComponent() {
                     <div 
                         key={index} 
                         className={cn(
-                            "relative flex flex-col p-8 rounded-3xl border transition-all duration-300",
+                            "relative flex flex-col p-8 rounded-3xl border transition-all duration-300 hover:scale-105 transition-transform",
                             plan.highlight 
                                 ? "bg-zinc-900/80 border-blue-500/50 shadow-2xl shadow-blue-500/10 scale-105 z-10" 
                                 : "bg-zinc-900/30 border-white/10 hover:border-white/20 hover:bg-zinc-900/50"
@@ -277,8 +274,6 @@ export default function HomeComponent() {
             </div>
         </div>
       </section>
-      {/* Footer Section */}
-      <Footer />
     </main>
   );
 }

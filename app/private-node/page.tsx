@@ -9,13 +9,13 @@ import {
   SortDescIcon,
   X,
   Package2,
-  Code
+  Server
 } from "lucide-react";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-export default function AppHostComponent() {
+export default function PrivateNodeHostComponent() {
   const [isVisible, setIsVisible] = useState(false);
   const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -51,9 +51,9 @@ export default function AppHostComponent() {
           <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl mt-40">
             <div className="w-full flex flex-col mb-8">
                 <div className="relative z-10 h-2 inline-flex items-center font-bold justify-left text-sm md:text-base transition ease-out text-neutral-300 hover:text-white">
-                  <Code className="mr-2 size-12 text-zinc-400" />
+                  <Server className="mr-2 size-12 text-zinc-400" />
                     <AnimatedGradientText className="text-4xl h-11" colorFrom="#ffffff" colorTo="#a1a1aa">
-                        App Hosting 
+                        Private Node Hosting 
                     </AnimatedGradientText>
                 </div>
                 <p className="mt-5">Choose your best package option for your hosting</p>
