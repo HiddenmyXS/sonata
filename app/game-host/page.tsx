@@ -23,33 +23,13 @@ import {
   Server,
   Container,
   X,
-  BellIcon
+  BellIcon,
+  Gamepad2Icon
 } from "lucide-react";
 import Link from "next/link";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 import { motion, useScroll, useTransform } from "framer-motion";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid"
-
-const SearchResultItem = ({ icon, title, desc, onClick }) => (
-  <button
-    onClick={onClick}
-    className="w-full flex items-start gap-3 px-3 py-3 rounded-lg
-               hover:bg-white/5 transition-all duration-200
-               group cursor-pointer text-left"
-  >
-    <div className="mt-0.5 text-zinc-400 group-hover:text-white transition-colors">
-      {icon}
-    </div>
-    <div className="flex-1 min-w-0">
-      <div className="text-white font-medium group-hover:text-white transition-colors">
-        {title}
-      </div>
-      <div className="text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors">
-        {desc}
-      </div>
-    </div>
-  </button>
-);
 
 export default function SupportComponent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -200,10 +180,14 @@ export default function SupportComponent() {
           <div className="absolute inset-0 bg-linear-to-b from-zinc-900/50 via-zinc-900/80 to-zinc-950 z-0" />
           <Particles className="absolute inset-0 z-0 animate-fade-in" quantity={100} ease={80} color="#ffffff" refresh />
           <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl mt-40">
-            <div className="w-full flex flex-col items-center mt-8 mb-8">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-center text-transparent bg-clip-text bg-linear-to-b from-white to-white/60 drop-shadow-2xl leading-tight tracking-tight max-w-5xl">
-                How can I help you today?
-              </h1>
+            <div className="w-full flex flex-col mt-8 mb-8">
+                <div className="relative z-10 h-3 inline-flex items-center font-bold justify-left text-sm md:text-base transition ease-out text-neutral-300 hover:text-white">
+                  <Gamepad2Icon className="mr-2 size-12 text-zinc-400" />
+                    <AnimatedGradientText className="text-4xl m-2" colorFrom="#ffffff" colorTo="#a1a1aa">
+                      Game Hosting 
+                    </AnimatedGradientText>
+                </div>
+                <p className="mt-5">Choose your best package option for your hosting</p>
               {/* Input Field */}
               <div className="w-full max-w-4xl mt-15">
                 <div className="space-y-2">
