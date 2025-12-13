@@ -26,7 +26,6 @@ const fadeInUp = {
 export default function AboutPage() {
   return (
     <main className="flex flex-col items-center w-full min-h-screen bg-zinc-950 text-white overflow-hidden">
-      {/* --- Background Elements --- */}
       <div className="absolute inset-0 bg-linear-to-b from-zinc-900/50 via-zinc-900/80 to-zinc-950 z-0" />
       <Particles 
         className="absolute inset-0 z-0 animate-fade-in" 
@@ -36,13 +35,7 @@ export default function AboutPage() {
         refresh 
       />
 
-      {/* --- Header --- */}
-      <div className="relative z-50 w-full flex justify-center pt-8">
-        <Header />
-      </div>
-
-      {/* --- Hero Section --- */}
-      <section className="relative z-10 w-full max-w-7xl px-4 pt-20 pb-16 text-center">
+      <section className="mt-8 relative z-10 w-full max-w-7xl px-4 pt-20 pb-16 text-center">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -66,7 +59,6 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      {/* --- Stats Section (MagicUI Number Ticker) --- */}
       <section className="relative z-10 w-full border-y border-white/5 bg-zinc-900/30 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -90,10 +82,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* --- Mission & Vision (Split Layout) --- */}
       <section className="relative z-10 w-full max-w-7xl px-4 py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Left: Text Content */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -127,7 +117,6 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* Right: Visual Tech Stack (Orbiting Circles) */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -139,7 +128,6 @@ export default function AboutPage() {
               Tech
             </span>
             
-            {/* Inner Circle */}
             <OrbitingCircles
               className="size-[30px] border-none bg-transparent"
               duration={20}
@@ -187,7 +175,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* --- Team/Culture Section --- */}
       <section className="relative z-10 w-full max-w-7xl px-4 py-24 border-t border-white/5">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Tim di Balik Layar</h2>

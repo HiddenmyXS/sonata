@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useEffect, useState, useRef, memo } from "react";
 import { useRouter } from "next/navigation";
 
-const DOT_COUNT = 4;
-const DOT_INTERVAL_MS = 200;
+const DOT_COUNT = 6; // Increased number of dots
+const DOT_INTERVAL_MS = 150; // Faster dot animation
 const FADE_OUT_MS = 2500;
 const REDIRECT_MS = 2900;
 
@@ -19,22 +19,18 @@ function LoadingPage(): React.ReactElement {
   const redirectRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // Dot animation interval
     dotIntervalRef.current = setInterval(() => {
       setDots((prev) => (prev + 1) % (DOT_COUNT + 1));
     }, DOT_INTERVAL_MS);
 
-    // Fade out timer
     fadeOutRef.current = setTimeout(() => {
       setIsVisible(false);
     }, FADE_OUT_MS);
 
-    // Redirect timer
     redirectRef.current = setTimeout(() => {
       router.push("/home");
     }, REDIRECT_MS);
 
-    // Cleanup function
     return () => {
       if (dotIntervalRef.current) clearInterval(dotIntervalRef.current);
       if (fadeOutRef.current) clearTimeout(fadeOutRef.current);
@@ -51,7 +47,6 @@ function LoadingPage(): React.ReactElement {
       aria-live="polite"
       aria-label="Loading"
     >
-      {/* Logo */}
       <Image
         src="/aset/sonata.png"
         alt="Sonata"
@@ -63,7 +58,6 @@ function LoadingPage(): React.ReactElement {
         }`}
       />
 
-      {/* Loading dots */}
       <div
         className={`flex gap-2 items-center mt-8 transition-transform duration-500 ${
           isVisible ? "scale-100" : "scale-95"
@@ -72,7 +66,7 @@ function LoadingPage(): React.ReactElement {
         {Array.from({ length: DOT_COUNT }).map((_, index) => (
           <div
             key={index}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-4 h-4 rounded-full transition-all duration-300 ${
               index <= dots ? "bg-gray-200 scale-100" : "bg-gray-100 scale-75"
             }`}
             aria-hidden="true"

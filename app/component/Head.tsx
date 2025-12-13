@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Gamepad, Home, List, Headset, Pyramid, Server, Code, Container, Gamepad2 } from "lucide-react";

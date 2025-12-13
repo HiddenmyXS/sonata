@@ -74,7 +74,6 @@ export default function HomeComponent() {
       }`}
     >
       <div className="relative w-full flex flex-col items-center pt-20 pb-40 overflow-hidden">
-        <Header />        
           <div className="absolute inset-0 bg-linear-to-b from-zinc-900/50 via-zinc-900/80 to-zinc-950 z-0" />
           <Particles className="absolute inset-0 z-0 animate-fade-in" quantity={100} ease={80} color="#ffffff" refresh />
           <div className="relative z-10 flex flex-col items-center justify-center px-4 w-full max-w-7xl mt-10"> 
