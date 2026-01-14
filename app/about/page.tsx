@@ -14,7 +14,6 @@ import {
   Rocket,
   HeartHandshake
 } from "lucide-react";
-import Link from "next/link";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -41,7 +40,7 @@ export default function AboutPage() {
           className="flex flex-col items-center gap-6"
         >
           <div className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm text-blue-400 backdrop-blur-md">
-            <span>Tentang Sonata Inc.</span>
+            <span>Tentang ZeroCloud Indonesia</span>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-center text-transparent bg-clip-text bg-linear-to-b from-white to-zinc-400 drop-shadow-2xl leading-tight tracking-tight max-w-5xl">
             <TextAnimate animation="slideUp" by="word">Kami Membawa</TextAnimate>
@@ -49,7 +48,7 @@ export default function AboutPage() {
           </h1>
           <p className="max-w-2xl text-zinc-400">
             <TextAnimate animation="fadeIn" delay={0.3}>
-              Di Sonata, kami percaya bahwa pengalaman gaming terbaik dimulai dari infrastruktur yang andal dan inovatif. 
+              Di ZeroCloud, kami percaya bahwa pengalaman gaming terbaik dimulai dari infrastruktur yang andal dan inovatif. 
               Pelajari bagaimana misi kami untuk menghilangkan lag dan downtime mengubah cara gamers di seluruh dunia bermain.
             </TextAnimate>
           </p>
@@ -214,7 +213,7 @@ export default function AboutPage() {
                     </div>
                 </div>
                 <p className="text-zinc-400 text-sm leading-relaxed">
-                    &ldquo;Panel kontrol Sonata dibuat agar semudah mungkin digunakan, namun tetap powerful untuk power users.&rdquo;
+                    &ldquo;Panel kontrol ZeroCloud dibuat agar semudah mungkin digunakan, namun tetap powerful untuk power users.&rdquo;
                 </p>
             </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "../component/Head";
+import Header from "../../components/Head";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Particles } from "@/components/ui/particles";
@@ -96,7 +96,7 @@ export default function HomeComponent() {
               <div className="relative z-10 inline-flex items-center font-bold justify-center text-sm md:text-base px-4 py-1 transition ease-out text-neutral-300 hover:text-white">
                 <Sparkles className="mr-2 size-4 text-blue-400" />
                 <AnimatedGradientText colorFrom="#3b82f6" colorTo="#60a5fa">
-                  Introducing Sonata Themes!
+                  Introducing ZeroCloud Themes!
                 </AnimatedGradientText>
                 <MoveRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
               </div>
@@ -139,7 +139,7 @@ export default function HomeComponent() {
                 className="relative w-full max-w-5xl mx-auto shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] rounded-xl"
               >
                 <Safari
-                  url="dashboard.sonata.com"
+                  url="ctrl.zerocloud.id"
                   className="w-full shadow-2xl border border-white/10 rounded-xl bg-zinc-950 text-white"
                   imageSrc="https://builtbybit.com/attachments/frame-1-png.1113659/?preset=fullr1"
                 />
@@ -147,11 +147,11 @@ export default function HomeComponent() {
             </div>
           </div>
         </div>
-      {/* --- Why Choose Sonata Section --- */}
+      {/* --- Why Choose ZeroCloud Section --- */}
       <section className="relative w-full py-24 bg-zinc-950 z-20 px-4">
         <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Why Choose Sonata?</h2>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Why Choose ZeroCloud?</h2>
                 <p className="text-zinc-400 max-w-2xl mx-auto">
                     Dibangun untuk performa maksimal dengan infrastruktur yang handal untuk kebutuhan gaming dan hosting Anda.
                 </p>
@@ -265,7 +265,7 @@ export default function HomeComponent() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to deploy your server?</h2>
             <p className="text-lg text-zinc-400 mb-10 max-w-2xl mx-auto">
-                Bergabunglah dengan ribuan developer dan gamer yang mempercayakan infrastrukturnya pada Sonata.
+                Bergabunglah dengan ribuan developer dan gamer yang mempercayakan infrastrukturnya pada ZeroCloud.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button className="px-8 py-4 rounded-full bg-white text-zinc-950 font-bold text-lg hover:scale-105 transition-transform flex items-center gap-2">
@@ -281,7 +281,7 @@ export default function HomeComponent() {
       <footer className="w-full py-12 px-4 border-t border-white/5 bg-zinc-950">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-2 md:col-span-1">
-                <h4 className="text-xl font-bold text-white mb-4">Sonata</h4>
+                <h4 className="text-xl font-bold text-white mb-4">ZeroCloud</h4>
                 <p className="text-zinc-500 text-sm">Premium hosting solutions for next-generation applications and games.</p>
             </div>
             <div>
@@ -311,7 +311,7 @@ export default function HomeComponent() {
             </div>
         </div>
         <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-zinc-600 text-sm">
-            <p>&copy; 2024 Sonata Inc. All rights reserved.</p>
+            <p>&copy; 2025 ZeroCloud All rights reserved.</p>
             <div className="flex gap-4 mt-4 md:mt-0">
                 {/* Social icons placeholder */}
                 <span>Twitter</span>

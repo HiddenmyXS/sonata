@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import Header from "./component/Head";
-import Footer from "./component/Footer";
+import Header from "@/components/Head";
+import Footer from "@/components/Footer";
 import "./globals.css";
+  
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -10,7 +11,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Home | Sonata - Demo Site",
+  title: "Home | ZeroCloud - Demo Site",
   description: "A Themes",
 };
 
