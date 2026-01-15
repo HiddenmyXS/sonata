@@ -2,11 +2,17 @@
 @import "tw-animate-css";
 @plugin "daisyui";
 
+@config "../tailwind.config.js";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+@theme {
+  --color-border: hsl(var(--border));
 }
 
 @theme inline {
@@ -38,6 +44,36 @@
   100% {
     transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
     }
+  }
+  --animate-shine: shine var(--duration) infinite linear;
+  @keyframes shine {
+  0% {
+    background-position: 0% 0%;
+    }
+  50% {
+    background-position: 100% 100%;
+    }
+  to {
+    background-position: 0% 0%;
+    }
+  }
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
   }}
 
 @media (prefers-color-scheme: dark) {
@@ -61,5 +97,26 @@ body {
   body {
     background-color: var(--background);
     color: var(--foreground);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
   }
 }

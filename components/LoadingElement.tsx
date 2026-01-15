@@ -48,8 +48,8 @@ function LoadingPage(): React.ReactElement {
       aria-label="Loading"
     >
       <Image
-        src="/aset/sonata.png"
-        alt="Sonata"
+        src="/aset/logo/logo.png"
+        alt="ZeroCloud Logo"
         width={120}
         height={120}
         priority

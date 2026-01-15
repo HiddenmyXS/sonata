@@ -1,4 +1,4 @@
-import Loading from "./component/LoadingElement";
+import Loading from "@/components/LoadingElement";
 
 export default function Home() {
   return (
