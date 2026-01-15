@@ -181,7 +181,7 @@ export default function Header(): React.ReactElement {
                                     priority
                                 />
                             </div>
-                            <h1 className="text-base font-bold text-white tracking-wide group-hover:text-sky-200 transition-colors">
+                            <h1 className="text-base font-extrabold text-white tracking-wide group-hover:text-sky-200 transition-colors">
                                 ZeroCloud.id
                             </h1>
                         </Link>

@@ -6,6 +6,9 @@ import WhyChooseSection from "./WhySection";
 import PricingSection from "./PricingSection";
 import CTASection from "./CtaSection";
 import PanelSection from "./PanelSection";
+import TestimonialsSection from "./TestimonialSection";
+import LocationSection from "./LocationSection";
+import FaqSection from "./FaqSection";
 
 export default function HomeComponent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,8 +28,11 @@ export default function HomeComponent() {
     >
       <HeroSection />
       <WhyChooseSection />
+      <LocationSection />
+      <TestimonialsSection />
       <PanelSection />
       <PricingSection />
+      <FaqSection />
       <CTASection />
     </main>
   );

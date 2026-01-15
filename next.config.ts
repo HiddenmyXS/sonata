@@ -23,7 +23,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'zerocloud.id',
       },
-
+      {
+        protocol: 'https',
+        hostname: 'avatar.vercel.sh',
+      },
     ],
   },
 };

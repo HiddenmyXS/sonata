@@ -26,7 +26,7 @@ const Footer = () => {
                <div>
                   <Image src="/aset/logo/logo.png" alt="ZeroCloud Logo" width={33} height={33} />
                </div>
-               <h4 className="text-2xl font-extrabold text-white tracking-tight">ZeroCloud</h4>
+               <h4 className="text-2xl font-extrabold text-white tracking-tight">ZeroCloud.id</h4>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Premium hosting solutions for next-generation applications and games. Built for speed, security, and stability.

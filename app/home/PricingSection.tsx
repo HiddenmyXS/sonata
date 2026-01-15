@@ -15,9 +15,9 @@ const pricingPlans = [
     recommendation: "Best for Web & Bots",
     icon: <Server className="w-6 h-6 text-green-400" />,
     features: [
-      "2 vCPU Cores",
-      "4GB RAM",
-      "50GB NVMe SSD",
+      "from 2 vCPU Cores",
+      "from 4GB RAM",
+      "from 50GB NVMe SSD",
       "1Gbps Network",
       "Standard DDoS Protection",
       "24/7 Support"
@@ -34,9 +34,9 @@ const pricingPlans = [
     recommendation: "Best for Game Server",
     icon: <Zap className="w-6 h-6 text-sky-400" />,
     features: [
-      "4 vCPU High-Freq (Ryzen 9)",
-      "8GB DDR4 RAM",
-      "120GB NVMe Gen 4",
+      "from 4 vCPU High-Freq (Ryzen 9)",
+      "from 8GB DDR4 RAM",
+      "from 120GB NVMe Gen 4",
       "10Gbps Network",
       "Advanced Game DDoS",
       "Priority Support"
@@ -53,9 +53,9 @@ const pricingPlans = [
     recommendation: "Best for Enterprise",
     icon: <Shield className="w-6 h-6 text-purple-400" />,
     features: [
-      "8 vCPU Dedicated",
-      "32GB DDR5 RAM",
-      "500GB NVMe Enterprise",
+      "from 8 vCPU Dedicated",
+      "up to 32GB DDR5 RAM",
+      "from 500GB NVMe Enterprise",
       "Unmetered Bandwidth",
       "L7 Custom Mitigation",
       "Dedicated Account Manager"
@@ -148,7 +148,7 @@ export default function PricingSection() {
             <motion.div 
               key={index}
               variants={cardVariants}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }} // Lift up effect
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
               className={cn(
                 "relative flex flex-col p-8 rounded-4xl border transition-colors duration-300 group",
                 plan.highlight 

@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
 import { LightRays } from "@/components/ui/light-rays";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { WordRotate } from "@/components/ui/word-rotate";
 
 export default function HeroSection() {
@@ -72,9 +71,9 @@ export default function HeroSection() {
         
         <motion.div variants={itemVariants} className="mb-8">
           <div className="group rounded-full border border-gray-800 bg-gray-900/50 backdrop-blur-md transition-all hover:border-sky-500/50 hover:bg-gray-900/80 cursor-pointer">
-            <AnimatedShinyText className="inline-flex items-center justify-center px-5 py-2 transition ease-out text-gray-400 hover:text-sky-300">
+            <AnimatedShinyText className="inline-flex items-center justify-center px-5 py-2 transition ease-out text-white hover:text-sky-300">
               <span className="flex h-2 w-2 rounded-full bg-sky-500 animate-pulse mr-3 shadow-[0_0_10px_rgba(14,165,233,0.6)]"></span>
-              <span className="text-xs md:text-sm font-medium tracking-wide">New: App Hosting US Location 🇺🇸</span>
+              <span className="text-xs md:text-sm font-medium tracking-wide text-sky-500">New! App Hosting US Location | 🇺🇸</span>
               <ArrowRightIcon className="ml-2 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
             </AnimatedShinyText>
           </div>
@@ -85,7 +84,7 @@ export default function HeroSection() {
           className="text-5xl md:text-7xl font-black tracking-tight text-white leading-[1.1] mb-6 drop-shadow-2xl"
         >
           <span className="block text-transparent bg-clip-text bg-linear-to-b from-white to-white/40">
-            Next-Gen Hosting
+            Next-Gen Host
           </span>
           <div className="drop-shadow-[0_0_40px_rgba(14,165,233,0.3)]">
             <WordRotate 

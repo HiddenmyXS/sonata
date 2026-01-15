@@ -24,7 +24,12 @@ const tiers = {
     icon: <Zap className="w-4 h-4" />,
     color: "from-green-400 to-emerald-600",
     games: [
-      { id: "n1", title: "Minecraft Paper", price: "Rp 15.000", ram: "2GB", cpu: "Standard", slots: "Unlimited", image: "/aset/minecraft.jpg" },
+      { id: "c1", title: "Core-1", price: "Rp 15.000", ram: "2GB", cpu: "Standard", slots: "Unlimited", image: "/aset/packages/Core-Icon.png" },
+      { id: "c2", title: "Core-2", price: "Rp 25.000", ram: "3GB", cpu: "Standard", slots: "Unlimited", image: "/aset/packages/Core-Icon.png" },
+      { id: "c3", title: "Core-3", price: "Rp 35.000", ram: "4GB", cpu: "Standard", slots: "Unlimited", image: "/aset/packages/Core-Icon.png" },
+      { id: "c4", title: "Core-4", price: "Rp 45.000", ram: "6GB", cpu: "Standard", slots: "Unlimited", image: "/aset/packages/Core-Icon.png" },
+      { id: "c5", title: "Core-5", price: "Rp 55.000", ram: "8GB", cpu: "Standard", slots: "Unlimited", image: "/aset/packages/Core-Icon.png" },
+      { id: "c6", title: "Core-6", price: "Rp 65.000", ram: "12GB", cpu: "Standard", slots: "Unlimited", image: "/aset/packages/Core-Icon.png" },
     ]
   },
   flux: {
@@ -33,7 +38,12 @@ const tiers = {
     icon: <Trophy className="w-4 h-4" />,
     color: "from-sky-400 to-blue-600",
     games: [
-      { id: "p1", title: "Minecraft Java", price: "Rp 45.000", ram: "4GB", cpu: "Ryzen 5", slots: "Unlimited", image: "/aset/minecraft.jpg" },
+      { id: "f1", title: "Flux-1", price: "Rp 45.000", ram: "4GB", cpu: "Ryzen 5", slots: "Unlimited", image: "/aset/packages/Flux-Icon.png" },
+      { id: "f2", title: "Flux-2", price: "Rp 75.000", ram: "8GB", cpu: "Ryzen 7", slots: "Unlimited", image: "/aset/packages/Flux-Icon.png" },
+      { id: "f3", title: "Flux-3", price: "Rp 105.000", ram: "12GB", cpu: "Ryzen 7", slots: "Unlimited", image: "/aset/packages/Flux-Icon.png" },
+      { id: "f4", title: "Flux-4", price: "Rp 135.000", ram: "16GB", cpu: "Ryzen 9", slots: "Unlimited", image: "/aset/packages/Flux-Icon.png" },
+      { id: "f5", title: "Flux-5", price: "Rp 165.000", ram: "20GB", cpu: "Ryzen 9", slots: "Unlimited", image: "/aset/packages/Flux-Icon.png" },
+      { id: "f6", title: "Flux-6", price: "Rp 195.000", ram: "24GB", cpu: "Ryzen 9", slots: "Unlimited", image: "/aset/packages/Flux-Icon.png" },
     ]
   },
   atlas: {
@@ -42,7 +52,7 @@ const tiers = {
     icon: <Rocket className="w-4 h-4" />,
     color: "from-purple-400 to-indigo-600",
     games: [
-      { id: "v1", title: "GTA V (FiveM)", price: "Rp 120.000", ram: "8GB", cpu: "i9 13900K", slots: "64+ Slots", image: "/aset/GTAV.png" },
+      { id: "v1", title: "GTA V (FiveM)", price: "Rp 120.000", ram: "8GB", cpu: "i9 13900K", slots: "64+ Slots", image: "/aset/packages/Atlas-Icon.png" },
     ]
   }
 };
