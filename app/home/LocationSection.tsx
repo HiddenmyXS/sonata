@@ -15,9 +15,7 @@ import { DottedMap } from "@/components/ui/dotted-map";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { cn } from "@/lib/utils";
 
-// --- DATA LOCATION & IP CONFIG ---
-// PENTING: URL harus diawali http:// atau https://
-// Tips: Gunakan URL file kecil di server tersebut atau halaman login panel.
+// harus diawali http:// atau https:// yh
 const locations = [
   { 
     id: "id", 
@@ -33,7 +31,7 @@ const locations = [
     lat: 1.3521, 
     lng: 103.8198, 
     region: "Southeast Asia",
-    url: "https://lucentui.zaqua.studio" 
+    url: "https://www.google.com.sg" 
   },
   { 
     id: "my", 
@@ -41,15 +39,15 @@ const locations = [
     lat: 3.1390, 
     lng: 101.6869, 
     region: "Southeast Asia",
-    url: "https://www.google.com.my" 
+    url: "https://ctrl.zerocloud.id" 
   },
   { 
     id: "us", 
-    name: "New York, USA", 
-    lat: 40.7128, 
-    lng: -74.006, 
+    name: "Los Angeles, USA", 
+    lat: 34.0522, 
+    lng: -118.2437, 
     region: "North America",
-    url: "https://www.google.com" 
+    url: "https://lucentui.zaqua.studio" 
   },
 ];
 
