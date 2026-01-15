@@ -82,7 +82,6 @@ export default function LocationSection() {
     for (const loc of locations) {
       
       await new Promise(r => setTimeout(r, 200));
-
       const latency = await measureLatency(loc.url);
       
       setPings(prev => ({ ...prev, [loc.id]: latency }));
