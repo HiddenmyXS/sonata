@@ -11,6 +11,10 @@
   --foreground: #171717;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --color-border: hsl(var(--border));
 }

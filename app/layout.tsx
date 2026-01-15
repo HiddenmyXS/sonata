@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/components/Head";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop"; // <--- Import ini
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -83,6 +84,9 @@ export default function RootLayout({
         </main>
         
         <Footer />
+        
+        {/* Pasang ScrollToTop di sini (paling bawah body) */}
+        <ScrollToTop />
       </body>
     </html>
   );
