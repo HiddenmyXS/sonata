@@ -46,8 +46,7 @@ export default function VPSHostComponent() {
     >
       <div className="relative w-full flex flex-col items-center pt-10 pb-40 overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-b from-zinc-900/50 via-zinc-900/80 to-zinc-950 z-0" />
-          <Particles className="absolute inset-0 z-0 animate-fade-in" quantity={100} ease={80} color="#ffffff" refresh />
-          
+          <Particles className="absolute inset-0 z-0 animate-fade-in" quantity={100} ease={80} color="#ffffff" refresh />       
           <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl mt-40">
             <div className="w-full flex flex-col mb-8">
                 <div className="relative z-10 h-2 inline-flex items-center font-bold justify-left text-sm md:text-base transition ease-out text-neutral-300 hover:text-white">

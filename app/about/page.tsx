@@ -22,6 +22,8 @@ const fadeInUp = {
 };
 
 export default function AboutPage() {
+
+  
   return (
     <main className="flex flex-col items-center w-full min-h-screen bg-zinc-950 text-white overflow-hidden">
       <div className="absolute inset-0 bg-linear-to-b from-zinc-900/50 via-zinc-900/80 to-zinc-950 z-0" />
