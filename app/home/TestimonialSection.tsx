@@ -6,58 +6,59 @@ import { AvatarCircles } from "@/components/ui/avatar-circles";
 import { motion } from "framer-motion";
 import { Star, MessageCircle, Heart, ShieldCheck } from "lucide-react";
 import Image from "next/image";
-import { StripedPattern } from "@/components/magicui/striped-pattern"
+import { StripedPattern } from "@/components/magicui/striped-pattern";
 
 const reviews = [
   {
-    name: "Rian Gaming",
-    username: "@rian_id",
-    body: "Ping stabil banget buat main Valorant. Gapernah ngerasain packet loss lagi sejak pindah ke ZeroCloud.",
-    img: "https://avatar.vercel.sh/rian",
+    name: "DipaAC",
+    username: "@dipaac",
+    body: "Server sangatt mantap, rendering pun cepat dan juga pembuatan serta startup juga cepatt. Recomended bangetttt.",
+    img: "https://yt3.googleusercontent.com/Da_VxCpnuEIi60oIGtA59wrter6g1dJyy7Y1gPAuNsECF1nrFAhYtMHy4hErPIjsFyM9clLM=s160-c-k-c0x00ffffff-no-rj",
     platform: "discord",
   },
   {
-    name: "Sarah Vlog",
-    username: "@sarah.daily",
+    name: "BAGAS CRAFT",
+    username: "@BagasCraftAsli",
     body: "Setup server Minecraft cuma 2 menit. Panelnya gampang banget dipake bahkan buat pemula kayak aku.",
-    img: "https://avatar.vercel.sh/sarah",
-    platform: "tiktok",
-  },
-  {
-    name: "TechnoLogic",
-    username: "@techno_log",
-    body: "Supportnya juara! Tiket dibales kurang dari 5 menit jam 2 pagi. Best value for money.",
-    img: "https://avatar.vercel.sh/techno",
-    platform: "trustpilot",
-  },
-  {
-    name: "IndoFiveM",
-    username: "@indofivem",
-    body: "Server FiveM kami nampung 200+ player lancar jaya pake paket Nova. Rekomen keras!",
-    img: "https://avatar.vercel.sh/indo",
+    img: "https://yt3.googleusercontent.com/aJI697gDxGo2JMhg60ACE6u5MWWvyhwgVhRQxPzLLb0FHJADeD4XNKZIf_ahlvS73aIhp2EfEA=s160-c-k-c0x00ffffff-no-rj",
     platform: "discord",
   },
   {
-    name: "Budi Santoso",
-    username: "@budisan",
-    body: "Udah coba banyak provider lokal, cuma ZeroCloud yang berani kasih garansi uptime beneran.",
-    img: "https://avatar.vercel.sh/budi",
-    platform: "trustpilot",
+    name: "ITZTheDimzz",
+    username: "@itzthedimzz",
+    body: "bagus admin nya ramah fast respon, dan gak tau lagi pokoknya begitulah",
+    img: "https://cdn.discordapp.com/avatars/806438151052591104/ff1cfaaf62cafa4bc1ecff5098e08f2c.webp",
+    platform: "discord",
   },
   {
-    name: "Gamer Ganteng",
-    username: "@gamerganteng",
-    body: "Anti DDoS-nya bukan gimmick. Server tetep on meski ada yang iseng nyerang.",
-    img: "https://avatar.vercel.sh/gamer",
-    platform: "tiktok",
+    name: "Zasleman",
+    username: "@zasleman",
+    body: "pasti ganteng yang punya",
+    img: "https://cdn.discordapp.com/avatars/1045684823081107506/c3d2b938294dd3b25fd2451521305b48.webp",
+    platform: "discord",
+  },
+  {
+    name: "Hikqri.mp3",
+    username: "@hikqri",
+    body: "Pelayanan bagus, pesanan sesuai, dan juga prosesnya cepat.",
+    img: "https://cdn.discordapp.com/avatars/664413671488880642/a698f51d5b1ef3395db2a7ef1c7e315d.webp",
+    platform: "trustpilot",
   },
 ];
 
-const avatarUrls = [
-  "https://avatars.githubusercontent.com/u/16860528",
-  "https://avatars.githubusercontent.com/u/20110627",
-  "https://avatars.githubusercontent.com/u/106103625",
-  "https://avatars.githubusercontent.com/u/59228569",
+const avatarObjects = [
+  {
+    imageUrl: "https://yt3.googleusercontent.com/Da_VxCpnuEIi60oIGtA59wrter6g1dJyy7Y1gPAuNsECF1nrFAhYtMHy4hErPIjsFyM9clLM=s160-c-k-c0x00ffffff-no-rj",
+    profileUrl: "#",
+  },
+  {
+    imageUrl: "https://yt3.googleusercontent.com/aJI697gDxGo2JMhg60ACE6u5MWWvyhwgVhRQxPzLLb0FHJADeD4XNKZIf_ahlvS73aIhp2EfEA=s160-c-k-c0x00ffffff-no-rj",
+    profileUrl: "#",
+  },
+  {
+    imageUrl: "https://cdn.discordapp.com/avatars/806438151052591104/ff1cfaaf62cafa4bc1ecff5098e08f2c.webp",
+    profileUrl: "#",
+  },
 ];
 
 const PlatformIcon = ({ platform }: { platform: string }) => {
@@ -103,7 +104,8 @@ const ReviewCard = ({
             width={40} 
             height={40} 
             alt={name} 
-            src={img} 
+            src={img}
+            unoptimized
         />
         <div className="flex flex-col flex-1">
           <figcaption className="text-sm font-bold text-white flex items-center gap-1">
@@ -126,6 +128,7 @@ const ReviewCard = ({
 export default function TestimonialsSection() {
   return (
     <section className="relative w-full py-24 bg-gray-950 overflow-hidden border-t border-gray-900">
+      
       <StripedPattern 
         className="absolute inset-0 opacity-10 pointer-events-none"
       />
@@ -149,7 +152,7 @@ export default function TestimonialsSection() {
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
                 <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-gray-800">
                     <Star className="w-4 h-4 text-green-500 fill-green-500" />
-                    <span className="text-white font-bold">4.4/5</span> on Trustpilot
+                    <span className="text-white font-bold">4.9/5</span> on Trustpilot
                 </div>
                 <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-gray-800">
                     <MessageCircle className="w-4 h-4 text-indigo-400 fill-indigo-400" />
@@ -171,8 +174,8 @@ export default function TestimonialsSection() {
                 ))}
             </Marquee>
 
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-gray-950 dark:from-background"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-gray-950 dark:from-background"></div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r from-gray-950 dark:from-background"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l from-gray-950 dark:from-background"></div>
         </div>
 
         <motion.div 
@@ -190,7 +193,8 @@ export default function TestimonialsSection() {
             <div className="h-8 w-px bg-gray-800 hidden md:block" />
 
             <div className="flex items-center gap-4">
-                <AvatarCircles numPeople={1200} avatarUrls={avatarUrls} />
+                <AvatarCircles numPeople={99} avatarUrls={avatarObjects} />
+                
                 <a 
                     href="https://discord.gg/zerocloud" 
                     target="_blank"

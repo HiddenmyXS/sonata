@@ -27,6 +27,23 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'avatar.vercel.sh',
       },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'discord.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'discordapp.com',
+      },
+
     ],
   },
 };

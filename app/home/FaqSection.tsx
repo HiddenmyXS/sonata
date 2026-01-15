@@ -13,7 +13,13 @@ import {
 import { cn } from "@/lib/utils";
 
 // --- DATA FAQ ---
-const faqData = [
+interface FAQ {
+  question: string;
+  answer: string;
+  category: string;
+}
+
+const faqData: FAQ[] = [
   {
     question: "Berapa lama proses setup server setelah pembayaran?",
     answer: "Instan! Sistem kami otomatis mendeteksi pembayaran. Server Anda akan aktif dan siap digunakan dalam waktu kurang dari 60 detik setelah invoice terbayar (kecuali Dedicated Server yang butuh waktu setup manual 1-24 jam).",
@@ -148,7 +154,7 @@ export default function FaqSection() {
   );
 }
 
-function FAQItem({ faq, isOpen, onClick, index }: { faq: any, isOpen: boolean, onClick: () => void, index: number }) {
+function FAQItem({ faq, isOpen, onClick, index }: { faq: FAQ, isOpen: boolean, onClick: () => void, index: number }) {
     return (
         <motion.div 
             initial={{ opacity: 0, y: 10 }}

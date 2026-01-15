@@ -5,13 +5,15 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { DollarSign } from "lucide-react";
 
+// --- DATA DENGAN CLASS TAILWIND EKSPLISIT ---
+// Kita mendefinisikan style di sini agar Tailwind tidak menghapusnya (Purging issue fix)
 const pricingPlans = [
   {
     name: "CORE",
     tagline: "Stabil & Ekonomis",
     price: "Rp 50rb",
     period: "/bulan",
-    description: "Ideal untuk website, bot discord, database ringan, dan UMKM.",
+    description: "Ideal untuk website, bot discord, dan database ringan.",
     recommendation: "Best for Web & Bots",
     icon: <Server className="w-6 h-6 text-green-400" />,
     features: [
@@ -23,14 +25,23 @@ const pricingPlans = [
       "24/7 Support"
     ],
     highlight: false,
-    color: "green"
+    styles: {
+        iconBg: "bg-green-500/10",
+        iconBorder: "border-green-500/20",
+        tagBg: "bg-green-500/10",
+        tagText: "text-green-400",
+        tagBorder: "border-green-500/20",
+        taglineColor: "text-green-400",
+        checkColor: "group-hover:text-green-400",
+        buttonHover: "hover:border-green-500/30"
+    }
   },
   {
     name: "FLUX",
     tagline: "High Performance Gaming",
     price: "Rp 150rb",
     period: "/bulan",
-    description: "Performa tinggi dengan clock speed kencang untuk game server berat.",
+    description: "Performa tinggi dengan clock speed kencang untuk game servermu.",
     recommendation: "Best for Game Server",
     icon: <Zap className="w-6 h-6 text-sky-400" />,
     features: [
@@ -42,15 +53,24 @@ const pricingPlans = [
       "Priority Support"
     ],
     highlight: true,
-    color: "sky"
+    styles: {
+        iconBg: "bg-sky-500/10",
+        iconBorder: "border-sky-500/20",
+        tagBg: "bg-sky-500/10",
+        tagText: "text-sky-400",
+        tagBorder: "border-sky-500/20",
+        taglineColor: "text-sky-400",
+        checkColor: "group-hover:text-sky-400",
+        buttonHover: "hover:border-sky-500/30"
+    }
   },
   {
     name: "ATLAS",
     tagline: "Extreme Compute",
     price: "Rp 500rb",
     period: "/bulan",
-    description: "Kekuatan penuh untuk enterprise, cluster database, dan heavy workload.",
-    recommendation: "Best for Enterprise",
+    description: "Kekuatan penuh untuk enterprise, , mega SMP, dan heavy workload.",
+    recommendation: "Best for Enterprise/Big SMP",
     icon: <Shield className="w-6 h-6 text-purple-400" />,
     features: [
       "from 8 vCPU Dedicated",
@@ -61,7 +81,16 @@ const pricingPlans = [
       "Dedicated Account Manager"
     ],
     highlight: false,
-    color: "purple"
+    styles: {
+        iconBg: "bg-purple-500/10",
+        iconBorder: "border-purple-500/20",
+        tagBg: "bg-purple-500/10",
+        tagText: "text-purple-400",
+        tagBorder: "border-purple-500/20",
+        taglineColor: "text-purple-400",
+        checkColor: "group-hover:text-purple-400",
+        buttonHover: "hover:border-purple-500/30"
+    }
   },
 ];
 
@@ -83,7 +112,7 @@ const cardVariants = {
     y: 0, 
     scale: 1,
     transition: { 
-      type: "spring" as const, 
+      type: "spring" as const,
       stiffness: 100, 
       damping: 15 
     } 
@@ -92,19 +121,19 @@ const cardVariants = {
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="relative w-full py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
+    <section id="pricing" className="relative w-full py-16 md:py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
       
       <motion.div 
         animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute inset-0 overflow-hidden pointer-events-none"
       >
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-sky-900/10 blur-[120px] rounded-full" />
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[1000px] h-[600px] bg-sky-900/10 blur-[120px] rounded-full" />
       </motion.div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         
-        <div className="text-center mb-24">
+        <div className="text-center mb-16 md:mb-24">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -131,9 +160,9 @@ export default function PricingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-gray-400 max-w-2xl mx-auto text-base md:text-lg"
+            className="text-gray-400 max-w-2xl mx-auto text-base md:text-lg px-2"
           >
-            Infrastruktur fleksibel untuk setiap kebutuhan. Dari hosting bot sederhana hingga cluster game raksasa. Pilih paket yang sesuai dan mulai petualanganmu bersama ZeroCloud!
+            Infrastruktur fleksibel untuk setiap kebutuhan. Dari hosting bot sederhana hingga cluster game raksasa.
           </motion.p>
         </div>
         
@@ -141,8 +170,8 @@ export default function PricingSection() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start"
         >
           {pricingPlans.map((plan, index) => (
             <motion.div 
@@ -150,9 +179,9 @@ export default function PricingSection() {
               variants={cardVariants}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
               className={cn(
-                "relative flex flex-col p-8 rounded-4xl border transition-colors duration-300 group",
+                "relative flex flex-col p-6 md:p-8 rounded-[2rem] border transition-colors duration-300 group h-full",
                 plan.highlight 
-                  ? "bg-gray-900/80 border-sky-500/30 shadow-2xl shadow-sky-500/10 scale-105 z-10" 
+                  ? "bg-gray-900/80 border-sky-500/30 shadow-2xl shadow-sky-500/10 scale-100 md:scale-105 z-10" 
                   : "bg-gray-900/30 border-gray-800 hover:border-gray-700 hover:bg-gray-900/60"
               )}
             >
@@ -161,11 +190,11 @@ export default function PricingSection() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="absolute -top-5 left-1/2 -translate-x-1/2"
+                  className="absolute -top-5 left-1/2 -translate-x-1/2 w-full text-center"
                 >
-                  <div className="relative">
+                  <div className="relative inline-block">
                     <span className="absolute inset-0 rounded-full bg-sky-500 blur opacity-50 animate-pulse"></span>
-                    <div className="relative bg-linear-to-r from-sky-600 to-blue-600 text-white px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg border border-sky-400/20 whitespace-nowrap">
+                    <div className="relative bg-gradient-to-r from-sky-600 to-blue-600 text-white px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg border border-sky-400/20 whitespace-nowrap">
                       Most Popular
                     </div>
                   </div>
@@ -174,17 +203,31 @@ export default function PricingSection() {
 
               <div className="mb-6">
                  <div className="flex justify-between items-start mb-4">
-                    <div className={`p-3 rounded-2xl bg-${plan.color}-500/10 border border-${plan.color}-500/20 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={cn(
+                        "p-3 rounded-2xl transition-transform duration-300 group-hover:scale-110",
+                        plan.styles.iconBg, 
+                        plan.styles.iconBorder,
+                        "border"
+                    )}>
                        {plan.icon}
                     </div>
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-${plan.color}-500/10 text-${plan.color}-400 border border-${plan.color}-500/20`}>
+                    <span className={cn(
+                        "text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border",
+                        plan.styles.tagBg,
+                        plan.styles.tagText,
+                        plan.styles.tagBorder
+                    )}>
                        {plan.recommendation}
                     </span>
                  </div>
                  
                  <h3 className="text-2xl font-black text-white tracking-tight">{plan.name}</h3>
-                 <p className={`text-sm font-medium text-${plan.color}-400 mb-4`}>{plan.tagline}</p>
-                 <p className="text-sm text-gray-400 leading-relaxed min-h-10">{plan.description}</p>
+                 <p className={cn("text-sm font-medium mb-4", plan.styles.taglineColor)}>
+                    {plan.tagline}
+                 </p>
+                 <p className="text-sm text-gray-400 leading-relaxed min-h-[60px] md:min-h-[80px]">
+                    {plan.description}
+                 </p>
               </div>
 
               <div className="flex items-baseline gap-1 mb-8">
@@ -192,7 +235,7 @@ export default function PricingSection() {
                 <span className="text-gray-500 font-medium">{plan.period}</span>
               </div>
               
-              <div className="w-full h-px bg-linear-to-r from-transparent via-gray-700 to-transparent mb-8"></div>
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-8"></div>
 
               <ul className="space-y-4 flex-1 mb-8">
                 {plan.features.map((feature, idx) => (
@@ -203,7 +246,13 @@ export default function PricingSection() {
                     transition={{ delay: 0.3 + (idx * 0.1) }}
                     className="flex items-center gap-3 text-sm text-gray-300"
                   >
-                    <div className={`p-0.5 rounded-full ${plan.highlight ? 'bg-sky-500/20 text-sky-400' : 'bg-gray-800 text-gray-400'} group-hover:text-${plan.color}-400 transition-colors`}>
+                    <div className={cn(
+                        "p-0.5 rounded-full transition-colors",
+                        plan.highlight 
+                            ? "bg-sky-500/20 text-sky-400" 
+                            : "bg-gray-800 text-gray-400",
+                        plan.styles.checkColor
+                    )}>
                       <Check className="w-3.5 h-3.5" />
                     </div>
                     <span className="group-hover:text-white transition-colors">{feature}</span>
@@ -215,10 +264,10 @@ export default function PricingSection() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className={cn(
-                  "w-full py-4 px-6 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg",
+                  "w-full py-4 px-6 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg mt-auto",
                   plan.highlight 
-                    ? "bg-linear-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white shadow-sky-500/25 hover:shadow-sky-500/40" 
-                    : `bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-${plan.color}-500/30`
+                    ? "bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white shadow-sky-500/25 hover:shadow-sky-500/40" 
+                    : `bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 ${plan.styles.buttonHover}`
                 )}
               >
                 Deploy {plan.name}
