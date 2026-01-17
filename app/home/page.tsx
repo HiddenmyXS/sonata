@@ -6,12 +6,15 @@ import WhyChooseSection from "./WhySection";
 import PricingSection from "./PricingSection";
 import CTASection from "./CtaSection";
 import PanelSection from "./PanelSection";
+import ClientWrapping from "@/components/ClientWrapping";
 import TestimonialsSection from "./TestimonialSection";
 import LocationSection from "./LocationSection";
 import FaqSection from "./FaqSection";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function HomeComponent() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,10 +25,9 @@ export default function HomeComponent() {
 
   return (
     <main
-      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-1000 ease-in-out font-sans selection:bg-sky-500/30 ${
-        isVisible ? "opacity-100" : "opacity-0"
-      }`}
-    >
+      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-1000 ease-in-out font-sans selection:bg-sky-500/30`}
+      >
+      <ClientWrapping/>
       <HeroSection />
       <WhyChooseSection />
       <LocationSection />
