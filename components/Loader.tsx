@@ -41,14 +41,14 @@ const Loader = () => {
         if (progressBar === 100) {
             const delay = setTimeout(() => {
                 setIsVisible(false);
-            }, 500);
+            }, 50);
             return () => clearTimeout(delay);
         }
     }, [progressBar]);
 
     return (
         <motion.div 
-            className="fixed inset-0 flex items-center justify-center bg-gray-950/80 z-50"
+            className="fixed inset-0 flex items-center justify-center bg-gray-950 z-50"
             initial={{ opacity: 1 }}
             animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ duration: 0.5 }}
@@ -62,7 +62,7 @@ const Loader = () => {
                     width={120}
                     height={120}
                     priority
-                    className={`transition-transform rounded-4xl duration-1000 animate-pulse ${
+                    className={`transition-transform rounded-4xl duration-400 animate-pulse ${
                     isVisible ? "scale-100" : "scale-95"
                     }`}
                 />
@@ -73,7 +73,7 @@ const Loader = () => {
                 initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
                 animate={{ clipPath: "inset(0% 0% 0% 0%)" }} 
                 transition={{ 
-                    duration: 2, 
+                    duration: 1, 
                     ease: "linear",
                     repeat: 0,
                 }}
@@ -84,7 +84,7 @@ const Loader = () => {
                 width={120}
                 height={120}
                 priority
-                className={`transition-transform rounded-4xl duration-1000 animate-pulse ${
+                className={`transition-transform rounded-4xl duration-400 animate-pulse ${
                 isVisible ? "scale-100" : "scale-95"
                 }`}
             />
