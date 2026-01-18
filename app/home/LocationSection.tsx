@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 
 import { DottedMap } from "@/components/ui/dotted-map"; 
-import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { cn } from "@/lib/utils";
 
 // harus diawali http:// atau https:// yh
@@ -23,7 +22,7 @@ const locations = [
     lat: -6.2088, 
     lng: 106.8456, 
     region: "Southeast Asia",
-    url: "https://www.google.co.id" 
+    url: "https://panel.lokanode.com" 
   },
   { 
     id: "sg", 
@@ -31,7 +30,7 @@ const locations = [
     lat: 1.3521, 
     lng: 103.8198, 
     region: "Southeast Asia",
-    url: "https://www.google.com.sg" 
+    url: "https://bill.zerocloud.id" 
   },
   { 
     id: "my", 
@@ -185,7 +184,7 @@ export default function LocationSection() {
                                         <p className="text-sm font-bold text-white">{loc.name}</p>
                                         <div className="flex items-center gap-1.5">
                                           <Server className="w-3 h-3 opacity-50" />
-                                          <p className="text-[10px] opacity-70 uppercase tracking-wide">{loc.id.toUpperCase()}-NODE-01</p>
+                                          <p className="text-[10px] opacity-70 uppercase tracking-wide">{loc.id.toUpperCase()}-NODE</p>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +207,7 @@ export default function LocationSection() {
 
                                 {isPinging && !ping && (
                                     <motion.div 
-                                        className="absolute bottom-0 left-0 h-[2px] bg-sky-500"
+                                        className="absolute bottom-0 left-0 h-0.5 bg-sky-500"
                                         initial={{ width: "0%" }}
                                         animate={{ width: "100%" }}
                                         transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -232,7 +231,7 @@ export default function LocationSection() {
                             </div>
                             <div>
                                 <p className="text-sm font-bold text-gray-200">
-                                  Terdekat: <span className="text-green-400">{locations.find(l => l.id === bestLocation)?.name}</span>
+                                  Terbaik: <span className="text-green-400">{locations.find(l => l.id === bestLocation)?.name}</span>
                                 </p>
                                 <p className="text-xs text-gray-500 mt-1">
                                     Latency terendah terdeteksi. Disarankan memilih lokasi ini untuk pengalaman bermain terbaik.
@@ -243,27 +242,25 @@ export default function LocationSection() {
                 </AnimatePresence>
 
                 <div className="mt-6">
-                    <ShimmerButton 
-                        className="w-full shadow-lg"
-                        shimmerColor="#ffffff" 
-                        background={isPinging ? "#374151" : "#0ea5e9"}
-                        disabled={isPinging}
-                        onClick={handlePingTest}
+                    <button 
+                      className="w-full px-6 py-3.5 bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 text-white font-bold uppercase tracking-wide rounded-full transition-colors duration-200 shadow-lg"
+                      disabled={isPinging}
+                      onClick={handlePingTest}
                     >
-                        <div className="flex items-center justify-center gap-2 py-3.5 px-6 text-sm font-bold text-white uppercase tracking-wide">
-                            {isPinging ? (
-                                <>
-                                    <RefreshCw className="w-4 h-4 animate-spin" />
-                                    Scanning Network...
-                                </>
-                            ) : (
-                                <>
-                                    <Wifi className="w-4 h-4" />
-                                    Test Koneksi Saya
-                                </>
-                            )}
-                        </div>
-                    </ShimmerButton>
+                      <div className="flex items-center justify-center gap-2">
+                        {isPinging ? (
+                          <>
+                            <RefreshCw className="w-4 h-4 animate-spin" />
+                            Pinging...
+                          </>
+                        ) : (
+                          <>
+                            <Wifi className="w-4 h-4" />
+                            Test Koneksi Saya
+                          </>
+                        )}
+                      </div>
+                    </button>
                 </div>
 
             </div>

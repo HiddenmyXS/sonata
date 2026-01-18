@@ -211,7 +211,7 @@ export default function Header(): React.ReactElement {
                         </Link>
 
                         <Link
-                            href="https://bill.zerocloud.id"
+                            href="https://my.zerocloud.id"
                             target="_blank"
                             className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-white bg-sky-600 hover:bg-sky-500 border border-sky-500/50 shadow-lg shadow-sky-900/20 transition-all"
                         >
@@ -325,7 +325,7 @@ export default function Header(): React.ReactElement {
                                     Panel
                                 </Link>
                                 <Link
-                                    href="https://bill.zerocloud.id"
+                                    href="https://my.zerocloud.id"
                                     target="_blank"
                                     className="flex items-center justify-center gap-2 p-3 rounded-xl font-bold text-white bg-sky-600 active:bg-sky-500 border border-sky-500/50"
                                 >

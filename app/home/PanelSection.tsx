@@ -117,45 +117,33 @@ export default function FeaturePanelSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          <motion.div 
+            <motion.div 
             style={{ y, opacity }}
             className="relative group order-2 lg:order-1"
-          >
+            >
             <div className="absolute inset-0 bg-linear-to-r from-sky-600 to-purple-600 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 rounded-3xl" />
             
             <div className="relative rounded-2xl border border-gray-800 bg-gray-900/50 backdrop-blur-sm p-2 shadow-2xl shadow-black/50 transform transition-transform duration-500 hover:scale-[1.02]">
                <div className="h-8 bg-gray-800/50 rounded-t-xl flex items-center px-4 gap-2 border-b border-gray-700/50">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                  <div className="ml-4 h-4 w-40 bg-gray-700/30 rounded-full" />
+                <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                <div className="ml-4 h-4 w-40 bg-gray-700/30 rounded-full" />
                </div>
 
-               <div className="relative aspect-video w-full overflow-hidden rounded-b-xl bg-gray-950">
-                  <Image 
-                    src="https://placehold.co/800x500/1a1a1a/FFF?text=ZeroCloud+Panel+Preview" // Ganti path ini nanti
-                    alt="Control Panel Preview"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  
-                  <div className="absolute inset-0 bg-linear-to-t from-gray-900/50 to-transparent" />
+               <div className="relative w-full bg-gray-950 rounded-b-xl overflow-hidden" style={{ aspectRatio: "1920 / 1042" }}>
+                <Image 
+                src="/aset/images/panel/panel.png"
+                alt="Control Panel Preview"
+                fill
+                className="object-cover"
+                unoptimized
+                />
+                
+                <div className="absolute inset-0 bg-linear-to-t from-gray-900/50 to-transparent" />
                </div>
             </div>
-
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-6 -right-6 bg-gray-800 border border-gray-700 p-4 rounded-xl shadow-xl flex items-center gap-3 z-20"
-            >
-               <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse" />
-               <div>
-                  <p className="text-xs text-gray-400">Server Status</p>
-                  <p className="text-sm font-bold text-white">Online (100%)</p>
-               </div>
             </motion.div>
-          </motion.div>
 
           <motion.div 
             variants={containerVariants}

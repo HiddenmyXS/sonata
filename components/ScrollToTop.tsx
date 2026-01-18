@@ -69,7 +69,7 @@ export default function ScrollToTop() {
               side="left" 
               className="bg-gray-900/90 backdrop-blur border-gray-700 text-sky-400 font-bold text-xs px-3 py-1.5 rounded-lg shadow-xl"
             >
-              <p>Kembali ke Atas 🚀</p>
+              <p>Kembali ke Atas ↑</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>

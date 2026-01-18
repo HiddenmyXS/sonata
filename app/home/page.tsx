@@ -9,6 +9,8 @@ import PanelSection from "./PanelSection";
 import TestimonialsSection from "./TestimonialSection";
 import LocationSection from "./LocationSection";
 import FaqSection from "./FaqSection";
+import TechSection from "./TechSection";
+import CalculatorSection from "./CalculatorSection";
 
 export default function HomeComponent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,6 +33,8 @@ export default function HomeComponent() {
       <LocationSection />
       <TestimonialsSection />
       <PanelSection />
+      <TechSection />
+      <CalculatorSection />
       <PricingSection />
       <FaqSection />
       <CTASection />
