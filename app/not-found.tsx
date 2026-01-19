@@ -10,15 +10,12 @@ import {
   ServerCrash 
 } from "lucide-react";
 
-// Components
 import { Button } from "@/components/ui/button";
-import { RetroGrid } from "@/components/ui/retro-grid"; // Pastikan path benar
-import { ShimmerButton } from "@/components/ui/shimmer-button"; // Pastikan path benar
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 export default function NotFound() {
   const [excuse, setExcuse] = useState("Mencari kambing hitam...");
 
-  // Random excuse generator (Fitur fun)
   const generateExcuse = () => {
     const excuses = [
       "Creeper meledakkan halaman ini... Sshhh!",
@@ -129,7 +126,7 @@ export default function NotFound() {
           <Link href="/">
              <ShimmerButton 
                 shimmerColor="#ffffff" 
-                background="#0ea5e9" // Sky-500
+                background="#0ea5e9"
                 className="shadow-2xl shadow-sky-500/20"
              >
                 <div className="flex items-center gap-2 px-6 py-1 font-bold text-white">

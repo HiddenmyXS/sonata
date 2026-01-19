@@ -60,7 +60,6 @@ export default function ScrollToTop() {
               >
                 <ArrowUp className="w-6 h-6 stroke-[3px]" />
                 
-                {/* Glow effect behind */}
                 <div className="absolute inset-0 rounded-full bg-sky-500/20 blur-md -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
               </motion.button>
             </TooltipTrigger>
