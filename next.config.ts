@@ -41,8 +41,13 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'discordapp.com',
+        hostname: 'cdn.discordapp.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.simpleicons.org',
+      },
+
 
     ],
   },

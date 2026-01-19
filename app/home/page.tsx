@@ -10,7 +10,8 @@ import ClientWrapping from "@/components/ClientWrapping";
 import TestimonialsSection from "./TestimonialSection";
 import LocationSection from "./LocationSection";
 import FaqSection from "./FaqSection";
-import { motion, AnimatePresence } from "framer-motion";
+import TechSection from "./TechSection";
+import CalculatorSection from "./CalculatorSection";
 
 export default function HomeComponent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,6 +34,8 @@ export default function HomeComponent() {
       <LocationSection />
       <TestimonialsSection />
       <PanelSection />
+      <TechSection />
+      <CalculatorSection />
       <PricingSection />
       <FaqSection />
       <CTASection />

@@ -81,14 +81,14 @@ export default function HeroSection() {
 
         <motion.h1 
           variants={itemVariants} 
-          className="text-5xl md:text-7xl font-black tracking-tight text-white leading-[1.1] mb-6 drop-shadow-2xl"
+          className="text-5xl md:text-7xl font-black tracking-tight text-white leading-tight mb-6 drop-shadow-2xl"
         >
           <span className="block text-transparent bg-clip-text bg-linear-to-b from-white to-white/40">
             Next-Gen Host
           </span>
           <div className="drop-shadow-[0_0_40px_rgba(14,165,233,0.3)]">
             <WordRotate 
-              className="text-sky-500" 
+              className="bg-clip-text text-transparent bg-linear-to-r from-sky-400 to-blue-500 leading-tight" 
               words={rotatingWords} 
               duration={2500} 
             />

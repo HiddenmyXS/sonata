@@ -193,15 +193,16 @@ export default function TestimonialsSection() {
             <div className="h-8 w-px bg-gray-800 hidden md:block" />
 
             <div className="flex items-center gap-4">
-                <AvatarCircles numPeople={99} avatarUrls={avatarObjects} />
-                
-                <a 
-                    href="https://discord.gg/zerocloud" 
-                    target="_blank"
-                    className="px-5 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold transition-colors shadow-lg shadow-indigo-500/20"
-                >
-                    Join Discord
-                </a>
+              <AvatarCircles numPeople={99} avatarUrls={avatarObjects} />
+              
+              <a 
+                href="https://discord.gg/zerocloud" 
+                target="_blank"
+                className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition-colors shadow-lg shadow-indigo-500/20 flex items-center gap-2"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Join Discord
+              </a>
             </div>
         </motion.div>
 
