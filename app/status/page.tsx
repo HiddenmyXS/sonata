@@ -82,7 +82,7 @@ export default function StatusPage() {
         </div>
 
         {/* Overall Status Section */}
-        <div className={`mb-12 p-8 rounded-2xl border border-gray-700 bg-gray-900/50 backdrop-blur flex flex-col items-center justify-center text-center`}>
+        <div className={`mb-12 p-8 flex flex-col items-center justify-center text-center`}>
           <div className={`p-5 rounded-2xl mb-4 ${colorMap[overallStatus.color as keyof typeof colorMap]}`}>
             <StatusIcon size={48} className="drop-shadow-lg" />
           </div>
