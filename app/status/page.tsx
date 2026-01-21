@@ -127,12 +127,16 @@ export default function StatusPage() {
             ))
           ) : (
             monitors.map((m) => {
-              const uptime = m.Uptime_Stats?.Total_Uptime ?? "100";
+              const monitorName = m.name || m.Name || "Unknown Name";
+              const monitorID = m.id || m.ID;
+              const monitorType = m.type || m.Type || "Endpoint";
+
+              const uptime = m.uptime_stats?.total_uptime ?? "100";
               const { color, label } = getUptimeStatus(uptime);
 
               return (
                 <div
-                  key={m.ID}
+                  key={m.id}
                   className="group p-6 bg-gray-900/40 border border-gray-800 rounded-2xl flex justify-between items-center hover:border-sky-500/30 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
@@ -141,10 +145,10 @@ export default function StatusPage() {
                       : color === "orange" ? "bg-orange-500/10 text-orange-400"
                       : "bg-red-500/10 text-red-400"
                     }`}>
-                      {m.Type === 'service' ? <Activity size={24} /> : <Server size={24} />}
+                      {m.type === 'service' ? <Activity size={24} /> : <Server size={24} />}
                     </div>
                     <div>
-                      <span className="font-bold text-lg block">{m.Name}</span>
+                      <span className="font-bold text-lg block">{monitorName}</span>
                       <span className="text-xs text-gray-500 uppercase tracking-widest">{m.Type || "Endpoint"}</span>
                     </div>
                   </div>

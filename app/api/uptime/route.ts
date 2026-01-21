@@ -18,7 +18,9 @@ export async function GET() {
 
     const data = await response.json();
 
-    const monitorArray = Array.isArray(data) ? data : (data.monitors || []);
+    const monitorArray = Array.isArray(data) 
+      ? data 
+      : Object.values(data).filter((item: any) => item && typeof item === 'object' && item.id);
 
     return NextResponse.json(monitorArray);
   } catch (error: any) {
