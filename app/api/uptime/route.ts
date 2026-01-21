@@ -1,41 +1,31 @@
+// app/api/uptime/route.ts
 import { NextResponse } from "next/server";
 
 export async function GET() {
   const apiKey = process.env.HETRIX_API_KEY;
 
   if (!apiKey) {
-    return NextResponse.json({ 
-      error: "API Key tidak ditemukan di .env.local",
-      tip: "Pastikan file .env.local ada di root folder dan isinya HETRIX_API_KEY=xxx"
-    }, { status: 500 });
+    return NextResponse.json({ error: "API Key missing" }, { status: 500 });
   }
 
-  const ENDPOINT = `https://api.hetrixtools.com/v1/${apiKey}/uptime/monitors/0/20/`;
+  // Gunakan endpoint v2 jika memungkinkan, atau pastikan v1 mengembalikan list
+  const ENDPOINT = `https://api.hetrixtools.com/v1/${apiKey}/uptime/monitors/0/50/`;
 
   try {
     const response = await fetch(ENDPOINT, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
       cache: 'no-store'
     });
 
     const data = await response.json();
 
-    if (data.status === "error") {
-      return NextResponse.json({ 
-        error: "HetrixTools Error", 
-        message: data.message,
-        debug_url_sent: `https://api.hetrixtools.com/v2/HIDDEN_KEY/uptime-monitors/0/20/`
-      }, { status: 400 });
-    }
+    // HetrixTools API v2 mengembalikan data langsung dalam bentuk Array monitor
+    // Jika v1, biasanya data monitor ada di dalam properti tertentu.
+    // Kita pastikan yang dikirim ke frontend adalah array.
+    const monitorArray = Array.isArray(data) ? data : (data.monitors || []);
 
-    return NextResponse.json(data);
+    return NextResponse.json(monitorArray);
   } catch (error: any) {
-    return NextResponse.json({ 
-      error: "Connection Failed", 
-      message: error.message 
-    }, { status: 500 });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
