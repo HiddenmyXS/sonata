@@ -8,8 +8,7 @@ export async function GET() {
     return NextResponse.json({ error: "API Key missing" }, { status: 500 });
   }
 
-  // Gunakan endpoint v2 jika memungkinkan, atau pastikan v1 mengembalikan list
-  const ENDPOINT = `https://api.hetrixtools.com/v1/${apiKey}/uptime/monitors/0/50/`;
+  const ENDPOINT = `https://api.hetrixtools.com/v1/${apiKey}/uptime/monitors/0/100/`;
 
   try {
     const response = await fetch(ENDPOINT, {
@@ -19,9 +18,6 @@ export async function GET() {
 
     const data = await response.json();
 
-    // HetrixTools API v2 mengembalikan data langsung dalam bentuk Array monitor
-    // Jika v1, biasanya data monitor ada di dalam properti tertentu.
-    // Kita pastikan yang dikirim ke frontend adalah array.
     const monitorArray = Array.isArray(data) ? data : (data.monitors || []);
 
     return NextResponse.json(monitorArray);

@@ -12,15 +12,11 @@ export default function StatusPage() {
     try {
       const response = await fetch("/api/uptime");
       const data = await response.json();
-      
-      // LOGIKA PERBAIKAN: 
-      // API HetrixTools terkadang membungkus array dalam property 'monitors' 
-      // atau mengembalikan langsung sebagai array.
+
       const monitorData = Array.isArray(data) ? data : (data.monitors || []);
-      
+
       if (monitorData.length > 0) {
-        // Kita set semua data yang masuk (atau batasi sesuai keinginan, misal 10)
-        setMonitors(monitorData); 
+        setMonitors(monitorData);
         setLastUpdated(new Date().toLocaleTimeString());
       }
     } catch (error) {
@@ -36,21 +32,36 @@ export default function StatusPage() {
     return () => clearInterval(interval);
   }, [getStatus]);
 
+  // Helper to get color and label based on uptime
+  const getUptimeStatus = (uptime: number | string) => {
+    const up = typeof uptime === "string" ? parseFloat(uptime) : uptime;
+    if (up === 100) {
+      return { color: "emerald", label: "Operational" };
+    } else if (up < 50) {
+      return { color: "red", label: "Critical Issue" };
+    } else if (up < 90) {
+      return { color: "orange", label: "Warning" };
+    } else {
+      return { color: "emerald", label: "Operational" };
+    }
+  };
+
   const getOverallStatus = () => {
     if (loading && monitors.length === 0) return { status: "checking", label: "Checking...", color: "gray", icon: Clock };
     if (monitors.length === 0) return { status: "no_data", label: "No Services Found", color: "gray", icon: AlertCircle };
-    
-    // Mencari apakah ada yang 'down' atau 'failure'
-    const hasCritical = monitors.some(m => 
-      m.Status?.toLowerCase() === 'failure' || 
-      m.Status?.toLowerCase() === 'down' ||
-      m.Status === '2' // Kode Hetrix untuk down biasanya angka atau string
-    );
-    
-    const hasMaintenance = monitors.some(m => m.Status?.toLowerCase() === 'maintenance');
-    
-    if (hasCritical) return { status: "critical", label: "System Down", color: "red", icon: AlertTriangle };
-    if (hasMaintenance) return { status: "maintenance", label: "Under Maintenance", color: "orange", icon: AlertCircle };
+
+    let hasCritical = false;
+    let hasWarning = false;
+
+    for (const m of monitors) {
+      const uptime = m.Uptime_Stats?.Total_Uptime ?? "100";
+      const up = typeof uptime === "string" ? parseFloat(uptime) : uptime;
+      if (up < 50) hasCritical = true;
+      else if (up < 90) hasWarning = true;
+    }
+
+    if (hasCritical) return { status: "critical", label: "Critical Issue", color: "red", icon: AlertTriangle };
+    if (hasWarning) return { status: "warning", label: "Warning", color: "orange", icon: AlertCircle };
     return { status: "operational", label: "All Operational", color: "emerald", icon: CheckCircle };
   };
 
@@ -65,14 +76,13 @@ export default function StatusPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 text-white p-8 font-sans">
+    <main className="min-h-screen bg-linear-to-b from-gray-950 via-gray-900 to-gray-950 text-white p-8 font-sans">
       <div className="max-w-5xl mx-auto pt-16">
-        
-        {/* Header */}
+
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-4">
           <div>
             <h1 className="text-5xl font-black flex items-center gap-3 mb-3">
-              <ShieldCheck className="text-sky-400 w-12 h-12" /> 
+              <ShieldCheck className="text-sky-400 w-12 h-12" />
               System Status
             </h1>
             <p className="text-gray-400 flex items-center gap-2 text-sm">
@@ -80,7 +90,7 @@ export default function StatusPage() {
             </p>
           </div>
 
-          <button 
+          <button
             type="button"
             onClick={() => {
               setLoading(true);
@@ -117,21 +127,19 @@ export default function StatusPage() {
             ))
           ) : (
             monitors.map((m) => {
-              // Menormalisasi status agar tidak sensitif huruf besar/kecil
-              const s = m.Status?.toLowerCase();
-              const isUp = s === 'success' || s === 'operational' || s === '1' || m.Status === 'success';
-              const isMaint = s === 'maintenance';
+              const uptime = m.Uptime_Stats?.Total_Uptime ?? "100";
+              const { color, label } = getUptimeStatus(uptime);
 
               return (
-                <div 
-                  key={m.ID} 
+                <div
+                  key={m.ID}
                   className="group p-6 bg-gray-900/40 border border-gray-800 rounded-2xl flex justify-between items-center hover:border-sky-500/30 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
                     <div className={`p-3 rounded-xl ${
-                      isUp ? 'bg-emerald-500/10 text-emerald-400' 
-                      : isMaint ? 'bg-orange-500/10 text-orange-400'
-                      : 'bg-red-500/10 text-red-400'
+                      color === "emerald" ? "bg-emerald-500/10 text-emerald-400"
+                      : color === "orange" ? "bg-orange-500/10 text-orange-400"
+                      : "bg-red-500/10 text-red-400"
                     }`}>
                       {m.Type === 'service' ? <Activity size={24} /> : <Server size={24} />}
                     </div>
@@ -140,17 +148,17 @@ export default function StatusPage() {
                       <span className="text-xs text-gray-500 uppercase tracking-widest">{m.Type || "Endpoint"}</span>
                     </div>
                   </div>
-                  
+
                   <div className="flex flex-col items-end gap-2">
                     <div className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${
-                      isUp ? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400' 
-                      : isMaint ? 'border-orange-500/20 bg-orange-500/10 text-orange-400'
-                      : 'border-red-500/20 bg-red-500/10 text-red-400'
+                      color === "emerald" ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-400"
+                      : color === "orange" ? "border-orange-500/20 bg-orange-500/10 text-orange-400"
+                      : "border-red-500/20 bg-red-500/10 text-red-400"
                     }`}>
-                      {isUp ? 'Operational' : isMaint ? 'Maintenance' : 'Down'}
+                      {label}
                     </div>
                     <span className="text-[10px] font-mono text-gray-500">
-                      Uptime: {m.Uptime_Stats?.Total_Uptime || "100"}%
+                      Uptime: {uptime}%
                     </span>
                   </div>
                 </div>
