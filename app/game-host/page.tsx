@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Search, ShieldCheck, X, RefreshCw, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useServerStock } from "@/hooks/useServerStock";
-import { tiers, type TierData } from "@/lib/data/tiers";
+import { tiers, type TierData } from "@/lib/data/gametiers";
 import { ProductCard } from "./ProductCard";
 
 type TierKey = keyof typeof tiers;

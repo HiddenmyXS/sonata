@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { MemoryStick, Cpu, Database, HardDrive } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StockBadge } from "./StockBadge";
-import type { GameProduct } from "@/lib/data/tiers";
+import type { GameProduct } from "@/lib/data/gametiers";
 
 interface ProductCardProps {
   game: GameProduct;
