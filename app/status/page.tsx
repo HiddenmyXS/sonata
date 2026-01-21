@@ -53,10 +53,9 @@ export default function StatusPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 text-white p-8 font-sans">
+    <main className="min-h-screen bg-linear-to-b from-gray-950 via-gray-900 to-gray-950 text-white p-8 font-sans">
       <div className="max-w-5xl mx-auto pt-16">
         
-        {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-4">
           <div>
             <h1 className="text-5xl font-black flex items-center gap-3 mb-3">
