@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MemoryStick, Cpu, Database, HardDrive } from "lucide-react";
+import { MemoryStick, Cpu, Database } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StockBadge } from "./StockBadge";
 import type { GameProduct } from "@/lib/data/gametiers";
@@ -27,10 +27,8 @@ export function ProductCard({ game, tierColor, stockStatus, isLoadingStock, inde
         isSoldOut ? "opacity-80" : "hover:border-gray-700 hover:shadow-2xl hover:-translate-y-1 hover:bg-gray-900/60"
       )}
     >
-      {/* Top Gradient Line */}
       <div className={`absolute top-0 inset-x-0 h-1 bg-linear-to-r ${tierColor} opacity-70 group-hover:opacity-100 transition-opacity duration-500`} />
 
-      {/* Stock Badge (Floating) */}
       <StockBadge 
         isLoading={isLoadingStock} 
         isSoldOut={isSoldOut} 
@@ -40,7 +38,6 @@ export function ProductCard({ game, tierColor, stockStatus, isLoadingStock, inde
 
       <div className="flex-1 flex flex-col p-6 pt-8">
         
-        {/* Header Title & Price */}
         <div className="mb-6">
           <h3 className={cn(
             "text-xl font-bold mb-1 transition-colors",
@@ -54,7 +51,6 @@ export function ProductCard({ game, tierColor, stockStatus, isLoadingStock, inde
           </div>
         </div>
 
-        {/* Recommended Tag */}
         <div className="mb-6 pb-4 border-b border-gray-800">
            <p className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Best For:</p>
            <p className="text-sm text-gray-300 line-clamp-2 min-h-10 leading-relaxed">
@@ -62,14 +58,12 @@ export function ProductCard({ game, tierColor, stockStatus, isLoadingStock, inde
            </p>
         </div>
 
-        {/* Specs Grid (Lebih Rapi) */}
         <div className="space-y-3 mb-8">
            <SpecRow icon={MemoryStick} label="RAM" value={game.ram} />
            <SpecRow icon={Cpu} label="CPU" value={game.cpu} />
            <SpecRow icon={Database} label="Storage" value={game.storage} />
         </div>
 
-        {/* Action Button */}
         <div className="mt-auto">
           <a
             href={isSoldOut ? "#" : game.billingUrl}
@@ -90,7 +84,6 @@ export function ProductCard({ game, tierColor, stockStatus, isLoadingStock, inde
   );
 }
 
-// Helper kecil untuk baris spesifikasi
 function SpecRow({ icon: Icon, label, value }: { icon: any, label: string, value: string }) {
   return (
     <div className="flex justify-between items-center text-sm group/row">

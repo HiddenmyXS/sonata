@@ -88,7 +88,7 @@ export default function ComparisonSection() {
             <span>Market Comparison</span>
           </motion.div>
           <h2 className="text-3xl md:text-5xl font-black text-white">
-            Mengapa <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-400 to-indigo-500">ZeroCloud?</span>
+            Mengapa <span className="text-transparent bg-clip-text bg-sky-500">ZeroCloud?</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Transparansi adalah kunci. Lihat bagaimana spesifikasi dan harga kami bersaing dengan provider lain.

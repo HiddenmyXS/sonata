@@ -107,7 +107,7 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row items-center gap-5 w-full justify-center"
         >
           <a href="/game-host" className="group flex items-center justify-center gap-3 px-8 py-4 rounded-full text-sm font-bold text-white border border-sky-500 hover:border-gray800 bg-sky-500 hover:bg-sky-600 hover:text-white hover:border-gray-600 transition-all backdrop-blur-sm">
-            <Zap className="w-5 h-5 text-white fill-white/50 animate-pulse" />
+            <Zap className="w-5 h-5 text-white fill-white/50" />
             <span>Game Hosting</span>
           </a>
 

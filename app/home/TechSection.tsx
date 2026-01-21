@@ -175,7 +175,7 @@ export default function TechSection() {
                 <span>Powered by Giants</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-                Infrastruktur <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-400 to-blue-500">Kelas Dunia</span>
+                Infrastruktur <span className="text-transparent bg-clip-text bg-sky-500">Kelas Dunia</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
                 Kami tidak main-main dengan hardware. Kami menggunakan teknologi terbaik untuk memastikan server Anda berjalan tanpa kompromi.

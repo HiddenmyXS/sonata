@@ -1,30 +1,30 @@
 "use client";
 
-import { Check, Zap, Server, Shield } from "lucide-react";
+import { Check, Zap, Server, Shield, DollarSign } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { DollarSign } from "lucide-react";
+import Link from "next/link"; // Import Link
 
-// --- DATA DENGAN CLASS TAILWIND EKSPLISIT ---
-// Kita mendefinisikan style di sini agar Tailwind tidak menghapusnya (Purging issue fix)
+// --- DATA ---
 const pricingPlans = [
   {
     name: "CORE",
     tagline: "Stabil & Ekonomis",
-    price: "Rp 50rb",
+    price: "Rp 15rb",
     period: "/bulan",
     description: "Ideal untuk website, bot discord, dan database ringan.",
     recommendation: "Best for Web & Bots",
     icon: <Server className="w-6 h-6 text-green-400" />,
     features: [
-      "from 2 vCPU Cores",
-      "from 4GB RAM",
-      "from 50GB NVMe SSD",
+      "from 1 vCPU Cores",
+      "from 1GB RAM",
+      "from 5GB NVMe SSD",
       "1Gbps Network",
       "Standard DDoS Protection",
       "24/7 Support"
     ],
     highlight: false,
+    linkId: "core", // Untuk query param nanti (optional)
     styles: {
         iconBg: "bg-green-500/10",
         iconBorder: "border-green-500/20",
@@ -39,20 +39,21 @@ const pricingPlans = [
   {
     name: "FLUX",
     tagline: "High Performance Gaming",
-    price: "Rp 150rb",
+    price: "Rp 20rb",
     period: "/bulan",
     description: "Performa tinggi dengan clock speed kencang untuk game servermu.",
     recommendation: "Best for Game Server",
     icon: <Zap className="w-6 h-6 text-sky-400" />,
     features: [
-      "from 4 vCPU High-Freq (Ryzen 9)",
-      "from 8GB DDR4 RAM",
-      "from 120GB NVMe Gen 4",
+      "from 2 vCPU High-Freq (Ryzen 5 Renoir)",
+      "from 2GB DDR4 RAM",
+      "from 512GB NVMe Gen 4",
       "10Gbps Network",
       "Advanced Game DDoS",
       "Priority Support"
     ],
     highlight: true,
+    linkId: "flux",
     styles: {
         iconBg: "bg-sky-500/10",
         iconBorder: "border-sky-500/20",
@@ -67,20 +68,20 @@ const pricingPlans = [
   {
     name: "ATLAS",
     tagline: "Extreme Compute",
-    price: "Rp 500rb",
+    price: "Rp 30rb",
     period: "/bulan",
-    description: "Kekuatan penuh untuk enterprise, , mega SMP, dan heavy workload.",
+    description: "Kekuatan penuh untuk enterprise, MEGASMP, dan heavy workload.",
     recommendation: "Best for Enterprise/Big SMP",
     icon: <Shield className="w-6 h-6 text-purple-400" />,
     features: [
-      "from 8 vCPU Dedicated",
+      "from 2 CPU Dedicated (AMD EPYC 4004 Raphael)",
       "up to 32GB DDR5 RAM",
-      "from 500GB NVMe Enterprise",
-      "Unmetered Bandwidth",
+      "up to 2TB Enterprise NVMe", 
       "L7 Custom Mitigation",
       "Dedicated Account Manager"
     ],
     highlight: false,
+    linkId: "atlas",
     styles: {
         iconBg: "bg-purple-500/10",
         iconBorder: "border-purple-500/20",
@@ -111,11 +112,7 @@ const cardVariants = {
     opacity: 1, 
     y: 0, 
     scale: 1,
-    transition: { 
-      type: "spring" as const,
-      stiffness: 100, 
-      damping: 15 
-    } 
+    transition: { type: "spring" as const, stiffness: 100, damping: 15 } 
   }
 };
 
@@ -138,7 +135,6 @@ export default function PricingSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <DollarSign className="w-3 h-3" />
@@ -149,7 +145,7 @@ export default function PricingSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold text-white mb-5"
           >
             Pilih <span className="text-sky-500">Kekuatanmu!</span>
@@ -159,7 +155,7 @@ export default function PricingSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
             className="text-gray-400 max-w-2xl mx-auto text-base md:text-lg px-2"
           >
             Infrastruktur fleksibel untuk setiap kebutuhan. Dari hosting bot sederhana hingga cluster game raksasa.
@@ -179,7 +175,7 @@ export default function PricingSection() {
               variants={cardVariants}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
               className={cn(
-                "relative flex flex-col p-6 md:p-8 rounded-[2rem] border transition-colors duration-300 group h-full",
+                "relative flex flex-col p-6 md:p-8 rounded-4xl border transition-colors duration-300 group h-full",
                 plan.highlight 
                   ? "bg-gray-900/80 border-sky-500/30 shadow-2xl shadow-sky-500/10 scale-100 md:scale-105 z-10" 
                   : "bg-gray-900/30 border-gray-800 hover:border-gray-700 hover:bg-gray-900/60"
@@ -194,22 +190,22 @@ export default function PricingSection() {
                 >
                   <div className="relative inline-block">
                     <span className="absolute inset-0 rounded-full bg-sky-500 blur opacity-50 animate-pulse"></span>
-                    <div className="relative bg-gradient-to-r from-sky-600 to-blue-600 text-white px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg border border-sky-400/20 whitespace-nowrap">
+                    <div className="relative bg-linear-to-r from-sky-600 to-blue-600 text-white px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg border border-sky-400/20 whitespace-nowrap">
                       Most Popular
                     </div>
                   </div>
                 </motion.div>
               )}
 
-              <div className="mb-6">
-                 <div className="flex justify-between items-start mb-4">
+              <div className="mb-3">
+                  <div className="flex justify-between items-start mb-4">
                     <div className={cn(
                         "p-3 rounded-2xl transition-transform duration-300 group-hover:scale-110",
                         plan.styles.iconBg, 
                         plan.styles.iconBorder,
                         "border"
                     )}>
-                       {plan.icon}
+                        {plan.icon}
                     </div>
                     <span className={cn(
                         "text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border",
@@ -217,25 +213,30 @@ export default function PricingSection() {
                         plan.styles.tagText,
                         plan.styles.tagBorder
                     )}>
-                       {plan.recommendation}
+                        {plan.recommendation}
                     </span>
-                 </div>
-                 
-                 <h3 className="text-2xl font-black text-white tracking-tight">{plan.name}</h3>
-                 <p className={cn("text-sm font-medium mb-4", plan.styles.taglineColor)}>
+                  </div>
+                  
+                  <h3 className="text-2xl font-black text-white tracking-tight">{plan.name}</h3>
+                  <p className={cn("text-sm font-medium mb-4", plan.styles.taglineColor)}>
                     {plan.tagline}
-                 </p>
-                 <p className="text-sm text-gray-400 leading-relaxed min-h-[60px] md:min-h-[80px]">
+                  </p>
+                  <p className="text-sm text-gray-400 leading-relaxed min-h-[60px] md:min-h-20">
                     {plan.description}
-                 </p>
+                  </p>
               </div>
 
               <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-4xl font-extrabold text-white">{plan.price}</span>
-                <span className="text-gray-500 font-medium">{plan.period}</span>
+                  <div className="flex flex-col gap-2">
+                  <span className="text-xs text-gray-400 font-medium">start from</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-4xl font-extrabold text-white">{plan.price}</span>
+                      <span className="text-gray-500 font-medium">{plan.period}</span>
+                    </div>
+                  </div>
               </div>
               
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-8"></div>
+              <div className="w-full h-px bg-linear-to-r from-transparent via-gray-700 to-transparent mb-8"></div>
 
               <ul className="space-y-4 flex-1 mb-8">
                 {plan.features.map((feature, idx) => (
@@ -260,18 +261,21 @@ export default function PricingSection() {
                 ))}
               </ul>
 
-              <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={cn(
-                  "w-full py-4 px-6 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg mt-auto",
-                  plan.highlight 
-                    ? "bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white shadow-sky-500/25 hover:shadow-sky-500/40" 
-                    : `bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 ${plan.styles.buttonHover}`
-                )}
-              >
-                Deploy {plan.name}
-              </motion.button>
+              <Link href="/game-host" className="w-full mt-auto block">
+                  <motion.button 
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={cn(
+                      "w-full py-4 px-6 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg cursor-pointer",
+                      plan.highlight 
+                        ? "bg-linear-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white shadow-sky-500/25 hover:shadow-sky-500/40" 
+                        : `bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 ${plan.styles.buttonHover}`
+                    )}
+                  >
+                    Deploy {plan.name}
+                  </motion.button>
+              </Link>
+
             </motion.div>
           ))}
         </motion.div>

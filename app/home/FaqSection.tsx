@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   Plus, 
   Minus, 
-  Search, 
   HelpCircle, 
   MessageSquareText,
   ChevronRight
@@ -56,7 +55,6 @@ export default function FaqSection() {
   const [searchQuery, setSearchQuery] = useState("");
   const [openIndex, setOpenIndex] = useState<number | null>(0); // Default buka no 1
 
-  // Filter Logic
   const filteredFAQs = faqData.filter(item => 
     item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
     item.answer.toLowerCase().includes(searchQuery.toLowerCase())
@@ -69,7 +67,6 @@ export default function FaqSection() {
   return (
     <section className="relative w-full py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
       
-      <div className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-sky-900/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-4xl mx-auto relative z-10">
         
         <div className="text-center mb-12">

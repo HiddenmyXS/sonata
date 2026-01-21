@@ -142,7 +142,7 @@ export default function NotFound() {
             onClick={() => window.history.back()}
           >
              <MoveLeft className="w-4 h-4 mr-2" />
-             Balik Kanan (Back)
+             Kembali
           </Button>
         </motion.div>
 
