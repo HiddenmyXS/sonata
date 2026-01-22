@@ -14,6 +14,7 @@ import TechSection from "./TechSection";
 import CalculatorSection from "./CalculatorSection";
 import CompareSection from "./CompareSection";
 import SentinelSection from "./SentinelSection";
+import DiscordSection from "./DiscordSection";
 
 export default function HomeComponent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,6 +36,7 @@ export default function HomeComponent() {
       <WhyChooseSection />
       <LocationSection />
       <TestimonialsSection />
+      <DiscordSection />
       {/* <CompareSection /> */}
       <TechSection />
       <PanelSection />

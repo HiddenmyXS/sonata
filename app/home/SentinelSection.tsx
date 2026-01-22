@@ -3,7 +3,6 @@
 import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { 
-  ShieldCheck, 
   Crown,
   Terminal as TerminalIcon,
   Activity,
@@ -171,7 +170,7 @@ export default function SentinelSection() {
 
                <div className="h-2 md:h-4" />
 
-               <TerminalLine delay={2.0} className="text-amber-400 font-bold bg-amber-400/5 p-1 -mx-1 border-l-2 border-amber-400">
+               <TerminalLine delay={2.0} className="text-amber-300 font-bold bg-amber-300/5 p-1 -mx-1 border-l-2 border-amber-300">
                  [WARN] Anomaly detected: Container #8f2a
                </TerminalLine>
 

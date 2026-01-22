@@ -1,6 +1,26 @@
 import type { NextConfig } from "next";
 
 const nextConfig = {
+  async redirects() {
+    return [
+      // Basic redirect
+      {
+        source: '/discord',
+        destination: 'https://discord.gg/2ACACacQ2J',
+        permanent: true,
+      },
+      {
+        source: '/billing',
+        destination: 'https://my.zerocloud.id',
+        permanent: true,
+      },
+      {
+        source: '/panel',
+        destination: 'https://ctrl.zerocloud.id',
+        permanent: true,
+      }
+    ]
+  },
   images: {
     remotePatterns: [
       {

@@ -33,28 +33,28 @@ const teamMembers = [
     name: "Darren Suharko",
     role: "Founder & CEO",
     bio: "Visioner dan pemimpin yang mengarahkan visi ZeroCloud menuju masa depan infrastruktur digital.",
-    image: "https://avatar.vercel.sh/darren",
+    image: "/aset/images/profile/darren.png",
     gradient: "from-blue-500 to-sky-500"
   },
   {
     name: "Azka Attariq",
     role: "Head of Infrastructure",
     bio: "Arsitek di balik sistem Infrastruktur ZeroCloud yang scalable dan andal.",
-    image: "https://avatar.vercel.sh/azka",
+    image: "/aset/images/profile/tariq.jpeg",
     gradient: "from-blue-500 to-sky-500"
   },
   {
     name: "Dhiya Altamis",
     role: "Lead Developer",
-    bio: "Full-stack wizard yang membangun panel kontrol ZeroCloud agar intuitif namun powerful.",
-    image: "https://avatar.vercel.sh/dhiya",
-    gradient: "from-orange-500 to-red-500"
+    bio: "All-stack wizard yang membangun panel kontrol ZeroCloud agar intuitif namun powerful.",
+    image: "/aset/images/profile/dhiya.png",
+    gradient: "from-red-500 to-red-700"
   },
   {
     name: "Derion",
     role: "Developer",
     bio: "Bot developer andal yang memastikan ekosistem ZeroCloud selalu terotomatisasi dan efisien.",
-    image: "https://avatar.vercel.sh/derion",
+    image: "/aset/images/profile/derion.jpeg",
     gradient: "from-orange-500 to-red-500"
   }
 ];
