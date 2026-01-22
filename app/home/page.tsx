@@ -13,6 +13,7 @@ import FaqSection from "./FaqSection";
 import TechSection from "./TechSection";
 import CalculatorSection from "./CalculatorSection";
 import CompareSection from "./CompareSection";
+import SentinelSection from "./SentinelSection";
 
 export default function HomeComponent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,8 +36,9 @@ export default function HomeComponent() {
       <LocationSection />
       <TestimonialsSection />
       {/* <CompareSection /> */}
-      <PanelSection />
       <TechSection />
+      <PanelSection />
+      <SentinelSection />
       <CalculatorSection />
       <PricingSection />
       <FaqSection />

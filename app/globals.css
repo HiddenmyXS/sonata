@@ -4,17 +4,22 @@
 
 @config "../tailwind.config.js";
 
-@custom-variant dark (&:is(.dark *));
-
+/* --- VARIABEL WARNA --- */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --border: 240 5.9% 90%; /* Default border light */
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --border: 240 3.7% 15.9%; /* Default border dark */
+  }
 }
 
+/* --- THEME CONFIGURATION --- */
 @theme {
   --color-border: hsl(var(--border));
 }
@@ -24,103 +29,86 @@ html {
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Animations */
   --animate-shiny-text: shiny-text 8s infinite;
-  @keyframes shiny-text {
-  0%, 90%, 100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;
-    }
-  30%, 60% {
-    background-position: calc(100% + var(--shiny-width)) 0;
-    }
-  }
-  --animate-gradient: gradient 8s linear infinite
-;
-  @keyframes gradient {
-  to {
-    background-position: var(--bg-size, 300%) 0;
-    }
-  }
+  --animate-gradient: gradient 8s linear infinite;
   --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
-  @keyframes orbit {
-  0% {
-    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
-    }
-  100% {
-    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
-    }
-  }
   --animate-shine: shine var(--duration) infinite linear;
-  @keyframes shine {
-  0% {
-    background-position: 0% 0%;
-    }
-  50% {
-    background-position: 100% 100%;
-    }
-  to {
-    background-position: 0% 0%;
-    }
-  }
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+  @keyframes shiny-text {
+    0%, 90%, 100% { background-position: calc(-100% - var(--shiny-width)) 0; }
+    30%, 60% { background-position: calc(100% + var(--shiny-width)) 0; }
+  }
+  @keyframes gradient {
+    to { background-position: var(--bg-size, 300%) 0; }
+  }
+  @keyframes orbit {
+    0% { transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg)); }
+    100% { transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg)); }
+  }
+  @keyframes shine {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    to { background-position: 0% 0%; }
+  }
   @keyframes marquee {
-  from {
-    transform: translateX(0);
-    }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
-    }
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
   }
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
-    }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
-    }
-  }}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    from { transform: translateY(0); }
+    to { transform: translateY(calc(-100% - var(--gap))); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
+/* --- BASE STYLES --- */
 @layer base {
-  * {
-    border-color: var(--border);
-    outline: 1px solid var(--ring);
+  /* Smooth Scrolling Global */
+  html {
+    scroll-behavior: smooth;
   }
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-  }
-}
 
-@layer base {
   body {
     @apply bg-background text-foreground;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
 }
 
-@layer base {
-  body {
-    @apply bg-background text-foreground;
+/* --- CUSTOM SCROLLBAR (Sky-500) --- */
+@layer utilities {
+  /* Untuk Chrome, Edge, Safari */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background); /* Warna track menyesuaikan tema */
+    border-left: 1px solid var(--border);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #0ea5e9; /* Ini kode hex untuk Sky-500 */
+    border-radius: 9999px;
+    border: 2px solid var(--background); /* Memberi jarak (padding) visual */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0284c7; /* Sky-600 saat di-hover (sedikit lebih gelap) */
+  }
+
+  /* Untuk Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #0ea5e9 var(--background);
   }
 }
