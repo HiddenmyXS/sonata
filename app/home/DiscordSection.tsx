@@ -94,7 +94,7 @@ export default function DiscordSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="flex-shrink-0 w-full max-w-[360px]"
+          className="shrink-0 w-full max-w-[360px]"
         >
             <div className="bg-[#232428] rounded-2xl p-5 shadow-2xl shadow-black/20 overflow-hidden border border-black/10">
                 
@@ -123,7 +123,7 @@ export default function DiscordSection() {
                                         <Image src={member.avatar_url} alt={member.username} fill className="object-cover transition-opacity rounded-full group-hover:opacity-80" unoptimized />
                                     </div>
                                     <div className={cn(
-                                        "absolute -bottom-0.5 -right-0.5 w-3 h-3 border-[2px] border-[#232428] rounded-full",
+                                        "absolute -bottom-0.5 -right-0.5 w-3 h-3 border-2 border-[#232428] rounded-full",
                                         member.status === "online" ? "bg-[#23a559]" : member.status === "idle" ? "bg-[#f0b232]" : "bg-[#f23f43]"
                                     )} />
                                     <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-black text-white text-[9px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-20 font-bold">
