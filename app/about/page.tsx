@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { 
   Server, 
   Globe2, 
@@ -19,9 +19,13 @@ import { NumberTicker } from "@/components/ui/number-ticker";
 import { OrbitingCircles } from "@/components/ui/orbiting-circles"; 
 import { LightRays } from "@/components/ui/light-rays";
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: "easeOut" } 
+  }
 };
 
 const teamMembers = [
