@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Head";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop"; // <--- Import ini
@@ -10,6 +10,12 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {

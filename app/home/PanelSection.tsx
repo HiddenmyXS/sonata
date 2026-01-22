@@ -120,7 +120,8 @@ export default function PanelSection() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold text-white mb-5"
           >
-            Meet our custom <span className="text-sky-500">ZeroCloud Control Panel</span>
+            Meet our custom<br />
+            <span className="text-sky-500 md:text-6xl">Control Panel</span>
           </motion.h2>
           
           <motion.p 
@@ -134,7 +135,6 @@ export default function PanelSection() {
           </motion.p>
         </div>
 
-        {/* --- HERO IMAGE (SAFARI MOCKUP) --- */}
         <motion.div 
           style={{ rotateX, scale, opacity, y }}
           className="w-full max-w-5xl mb-12 md:mb-20 relative z-20"
@@ -151,7 +151,6 @@ export default function PanelSection() {
           </motion.div>
         </motion.div>
 
-        {/* --- FEATURES GRID --- */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
