@@ -87,7 +87,7 @@ const BentoCard = ({
       </Button>
     </div>
 
-    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-sky-500/[0.03]" />
+    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-sky-500/3" />
   </div>
 );
 
