@@ -51,9 +51,34 @@ const faqData: FAQ[] = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.98 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { 
+      type: "spring" as const, 
+      stiffness: 100, 
+      damping: 15 
+    } 
+  }
+};
+
 export default function FaqSection() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // Default buka no 1
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const filteredFAQs = faqData.filter(item => 
     item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -65,30 +90,59 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="relative w-full py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
+    <section className="relative w-full py-16 md:py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
+      
+      {/* Background Glow */}
+      <motion.div 
+        animate={{ opacity: [0.3, 0.5, 0.3], scale: [1, 1.1, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+      >
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[900px] h-[600px] bg-sky-900/10 blur-[120px] rounded-full" />
+      </motion.div>
       
       <div className="max-w-4xl mx-auto relative z-10">
         
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 md:mb-16">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ 
+              duration: 0.6, 
+              ease: [0.16, 1, 0.3, 1],
+              type: "spring",
+              stiffness: 100
+            }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <HelpCircle className="w-3 h-3" />
             <span>Pusat Bantuan</span>
           </motion.div>
           
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ 
+              duration: 0.7, 
+              delay: 0.1, 
+              ease: [0.16, 1, 0.3, 1] 
+            }}
+            className="text-3xl md:text-5xl font-bold text-white mb-6 md:mb-8"
+          >
             Frequently Asked <span className="text-sky-500">Questions</span>
-          </h2>
+          </motion.h2>
           
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ 
+              delay: 0.2,
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1]
+            }}
             className="relative max-w-md mx-auto group"
           >
             <input 
@@ -101,7 +155,13 @@ export default function FaqSection() {
           </motion.div>
         </div>
 
-        <div className="space-y-4">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="space-y-4"
+        >
             <AnimatePresence mode="wait">
                 {filteredFAQs.length > 0 ? (
                     filteredFAQs.map((faq, index) => (
@@ -115,8 +175,9 @@ export default function FaqSection() {
                     ))
                 ) : (
                     <motion.div 
-                        initial={{ opacity: 0 }} 
-                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0, scale: 0.95 }} 
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3 }}
                         className="text-center py-10"
                     >
                         <p className="text-gray-500">Pertanyaan tidak ditemukan. Coba kata kunci lain.</p>
@@ -129,21 +190,30 @@ export default function FaqSection() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </motion.div>
 
         <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="mt-16 text-center"
+            transition={{ 
+              delay: 0.3,
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1]
+            }}
+            className="mt-12 md:mt-16 text-center"
         >
             <p className="text-gray-400 mb-4">Masih bingung? Tim kami siap ngobrol.</p>
-            <a href="/chat" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 border border-gray-800 text-white font-medium hover:bg-gray-800 hover:border-gray-700 transition-all group">
+            <motion.a 
+              href="/chat" 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 border border-gray-800 text-white font-medium hover:bg-gray-800 hover:border-gray-700 transition-all group"
+            >
                 <MessageSquareText className="w-4 h-4 text-sky-500 group-hover:rotate-12 transition-transform" />
                 Chat dengan Support
                 <ChevronRight className="w-4 h-4 opacity-50 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </motion.a>
         </motion.div>
 
       </div>
@@ -151,13 +221,11 @@ export default function FaqSection() {
   );
 }
 
-function FAQItem({ faq, isOpen, onClick, index }: { faq: FAQ, isOpen: boolean, onClick: () => void, index: number }) {
+function FAQItem({ faq, isOpen, onClick }: { faq: FAQ, isOpen: boolean, onClick: () => void, index: number }) {
     return (
         <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: index * 0.05 }}
+            variants={itemVariants}
+            whileHover={{ y: -6, transition: { duration: 0.3 } }}
             className={cn(
                 "border rounded-2xl overflow-hidden transition-all duration-300",
                 isOpen 
@@ -167,18 +235,20 @@ function FAQItem({ faq, isOpen, onClick, index }: { faq: FAQ, isOpen: boolean, o
         >
             <button 
                 onClick={onClick}
-                className="w-full flex items-center justify-between p-6 text-left"
+                className="w-full flex items-center justify-between p-5 md:p-6 text-left"
             >
                 <div className="flex flex-col gap-1">
                     <span className={cn(
-                        "text-lg font-bold transition-colors",
+                        "text-base md:text-lg font-bold transition-colors",
                         isOpen ? "text-sky-100" : "text-gray-300 group-hover:text-white"
                     )}>
                         {faq.question}
                     </span>
                     {isOpen && (
                         <motion.span 
-                            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                            initial={{ opacity: 0, y: -5 }} 
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
                             className="text-[10px] text-sky-500 uppercase tracking-wider font-bold"
                         >
                             {faq.category}
@@ -186,14 +256,18 @@ function FAQItem({ faq, isOpen, onClick, index }: { faq: FAQ, isOpen: boolean, o
                     )}
                 </div>
                 
-                <div className={cn(
-                    "p-2 rounded-full border transition-all duration-300 shrink-0 ml-4",
-                    isOpen 
-                        ? "bg-sky-500 text-white border-sky-500 rotate-90" 
-                        : "bg-gray-950 border-gray-800 text-gray-500"
-                )}>
+                <motion.div 
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className={cn(
+                        "p-2 rounded-full border transition-all duration-300 shrink-0 ml-4",
+                        isOpen 
+                            ? "bg-sky-500 text-white border-sky-500" 
+                            : "bg-gray-950 border-gray-800 text-gray-500"
+                    )}
+                >
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                </div>
+                </motion.div>
             </button>
 
             <AnimatePresence>
@@ -202,14 +276,19 @@ function FAQItem({ faq, isOpen, onClick, index }: { faq: FAQ, isOpen: boolean, o
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <div className="px-6 pb-6 pt-0">
-                            <div className="h-px w-full bg-gray-800/50 mb-4" /> {/* Divider halus */}
+                        <motion.div 
+                          className="px-5 md:px-6 pb-5 md:pb-6 pt-0"
+                          initial={{ y: -10 }}
+                          animate={{ y: 0 }}
+                          transition={{ delay: 0.1 }}
+                        >
+                            <div className="h-px w-full bg-gray-800/50 mb-4" />
                             <p className="text-gray-400 leading-relaxed text-sm md:text-base">
                                 {faq.answer}
                             </p>
-                        </div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>

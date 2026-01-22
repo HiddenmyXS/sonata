@@ -150,10 +150,10 @@ export default function TestimonialsSection() {
             </h2>
             
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-                <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-gray-800">
+                {/* <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-gray-800">
                     <Star className="w-4 h-4 text-green-500 fill-green-500" />
                     <span className="text-white font-bold">4.9/5</span> on Trustpilot
-                </div>
+                </div> */}
                 <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-gray-800">
                     <MessageCircle className="w-4 h-4 text-indigo-400 fill-indigo-400" />
                     <span className="text-white font-bold">10k+</span> di Discord
