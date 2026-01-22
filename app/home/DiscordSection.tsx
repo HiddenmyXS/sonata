@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Loader2, ExternalLink, Headset } from "lucide-react";
+import { ArrowRight, Loader2, Headset } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const DiscordLogo = ({ className }: { className?: string }) => (
