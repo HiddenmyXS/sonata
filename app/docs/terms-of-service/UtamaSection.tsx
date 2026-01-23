@@ -1,178 +1,217 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   ShieldAlert, 
   Scale, 
   FileText, 
   UserX, 
   Clock, 
-  DownloadIcon,
+  Download,
   AlertTriangle,
   Lock,
   FileWarning,
-  ArrowRightIcon
+  CheckCircle2,
+  ChevronRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const tosData = [
   {
     id: "penggunaan",
-    title: "Acceptance of Terms and Conditions",
+    title: "Acceptance of Terms",
     icon: <Scale className="w-5 h-5" />,
     content: "By using the hosting services provided by ZeroCloud Indonesia, you agree to be bound by all terms and conditions outlined in this document. Using our services constitutes your acceptance of these terms.",
-    points: ["Dilarang Mining Crypto", "Dilarang Bruteforce/DDoS", "Dilarang konten Dewasa/Ilegal"]
+    points: ["Dilarang Mining Crypto", "Dilarang Bruteforce/DDoS", "Dilarang konten Dewasa/Ilegal", "Dilarang Spam", "Dilarang Hosting Malware/Virus"]
   },
   {
-    id: "pembayaran",
+    id: "kelayakan",
     title: "User Eligibility",
     icon: <FileText className="w-5 h-5" />,
-    content: "All information provided during registration must be accurate and complete",
-    points: ["Our services are available to all users without age restrictions."]
+    content: "All information provided during registration must be accurate and complete. You must be at least 13 years old to use our services.",
+    points: ["Account information must be valid.", "One person per account policy.", "Identity verification may be required."]
+  },
+  {
+    id: "layanan",
+    title: "Service Availability",
+    icon: <Lock className="w-5 h-5" />,
+    content: "ZeroCloud Indonesia will strive to ensure optimal service availability through our SLA guarantee, however:",
+    points: ["Maximum efforts to keep services running 99.9%.", "The right to conduct scheduled maintenance.", "Force majeure events are excluded."]
   },
   {
     id: "keamanan",
-    title: "Service Availability",
-    icon: <Lock className="w-5 h-5" />,
-    content: "ZeroCloud Indonesia will strive to ensure optimal service availability through:",
-    points: ["Maximum efforts to keep services running smoothly.", "The right to conduct maintenance or temporarily suspend services.", "No guarantee of 100% service availability at all times"]
-  },
-  {
-    id: "suspensi",
     title: "Information Security",
     icon: <UserX className="w-5 h-5" />,
-    content: "Our security measures include:",
-    points: ["Safeguarding your data against unauthorized access.", "Implementing security measures to prevent unauthorized use or alterations."]
+    content: "We take your data security seriously. Our security measures include comprehensive firewalling and encryption:",
+    points: ["Safeguarding your data against unauthorized access.", "Implementing security measures to prevent unauthorized use.", "Daily off-site backups availability."]
   },
   {
-    id: "usage",
-    title: "Probility Usage",
+    id: "larangan",
+    title: "Prohibited Usage",
     icon: <FileWarning className="w-5 h-5" />,
-    content: "Users are strictly prohibited from:",
-    points: ["Using services for illegal purposes.", "Distributing copyright-infringing content.", "Engaging in hacking activities.", "Sending spam.", "Conducting other illegal activities."]
+    content: "Users are strictly prohibited from utilizing ZeroCloud resources for malicious intent, including but not limited to:",
+    points: ["Using services for illegal purposes (Phishing/Scam).", "Distributing copyright-infringing content.", "Engaging in hacking/network scanning.", "Sending unsolicited spam emails."]
   }
 ];
-
 
 export default function ToSSection() {
   const [activeTab, setActiveTab] = useState(tosData[0].id);
 
   return (
-    <section className="w-full py-24 bg-[#030303] text-zinc-300">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="relative w-full py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden font-sans">
+      
+      <div className="absolute top-0 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-sky-900/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 translate-y-1/2 w-[600px] h-[600px] bg-blue-900/10 blur-[150px] rounded-full pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         
-       {/* Header */}
-        <div className="mb-16 flex items-center justify-between">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-amber-500/10 border border-amber-500/20 rounded-lg">
-                <ShieldAlert className="w-6 h-6 text-amber-500" />
-              </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-                Terms of<span className="text-sky-500"> Services</span>
-              </h1>
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16">
+          <div className="space-y-4">
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-bold uppercase tracking-wider"
+            >
+                <ShieldAlert className="w-3 h-3" />
+                <span>Legal & Compliance</span>
+            </motion.div>
+            
+            <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+              Terms of <span className="text-transparent bg-clip-text bg-sky-500">Service</span>
+            </h1>
+            
+            <div className="flex items-center gap-2 text-sm text-gray-500 font-mono">
+              <Clock className="w-4 h-4" />
+              Last updated: January 22, 2026
             </div>
-            <p className="text-zinc-500 max-w-2xl flex items-center gap-2">
-              <Clock className="w-4 h-4" /> Terakhir diperbarui: 22 Januari 2026
-            </p>
           </div>
 
-          {/* Tombol di kanan */}
-          <div
-            className="px-6 py-2.5 rounded-lg border border-white/10 text-sm font-medium hover:bg-white/5 transition-colors"
-          >
-          <DownloadIcon className="w-6 h-6 text-white"> Download PDF </DownloadIcon>
-          </div>
+          <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gray-900 border border-gray-800 text-gray-300 text-sm font-bold hover:text-white hover:border-gray-700 transition-all group">
+            <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+            Download PDF
+          </button>
         </div>
 
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           
-          {/* Sidebar Navigation */}
-          <aside className="lg:col-span-4 space-y-2">
-            <div className="sticky top-24">
-              <p className="text-xs font-bold text-zinc-600 uppercase tracking-widest mb-4 px-4">Table of Content</p>
+          <aside className="lg:col-span-4">
+            <div className="sticky top-24 space-y-2">
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 px-2">Table of Content</p>
               {tosData.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
                   className={cn(
-                    "w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-200 group text-left",
+                    "w-full flex items-center gap-3 px-4 py-4 rounded-xl transition-all duration-300 text-left border relative overflow-hidden group",
                     activeTab === item.id 
-                      ? "bg-white/5 text-white border border-white/10 shadow-xl" 
-                      : "text-zinc-500 hover:text-zinc-300"
+                      ? "bg-sky-500/10 border-sky-500/20 text-white shadow-lg shadow-sky-500/5" 
+                      : "bg-gray-900/30 border-gray-800 text-gray-400 hover:bg-gray-900 hover:border-gray-700 hover:text-gray-200"
                   )}
                 >
                   <span className={cn(
-                    "transition-colors",
-                    activeTab === item.id ? "text-sky-500" : "text-zinc-600 group-hover:text-zinc-400"
+                    "relative z-10 transition-colors duration-300",
+                    activeTab === item.id ? "text-sky-400" : "text-gray-500 group-hover:text-gray-400"
                   )}>
                     {item.icon}
                   </span>
-                  <span className="font-medium">{item.title}</span>
+                  <span className="font-semibold text-sm relative z-10">{item.title}</span>
+                  
+                  {activeTab === item.id && (
+                    <motion.div 
+                        layoutId="activeTabIndicator"
+                        className="absolute inset-0 bg-linear-to-r from-sky-500/10 to-transparent opacity-50" 
+                    />
+                  )}
+                  {activeTab === item.id && (
+                      <ChevronRight className="w-4 h-4 text-sky-500 absolute right-4 opacity-50" />
+                  )}
                 </button>
               ))}
             </div>
           </aside>
 
-          {/* Main Content Area */}
-          <main className="lg:col-span-8 bg-white/[0.02] border border-white/5 rounded-[2rem] p-8 md:p-12">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              {tosData.map((item) => item.id === activeTab && (
-                <div key={item.id} className="space-y-8">
-                  <div className="space-y-4">
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-                      <span className="w-8 h-[2px] bg-sky-500 rounded-full" />
-                      {item.title}
-                    </h2>
-                    <p className="text-lg leading-relaxed text-zinc-400">
-                      {item.content}
-                    </p>
-                  </div>
-
-                  <div className="grid gap-3">
-                    <h4 className="text-sm font-semibold text-white/50 uppercase tracking-tighter">Poin Penting:</h4>
-                    {item.points.map((point, idx) => (
-                      <div key={idx} className="flex items-center gap-3 bg-white/5 border border-white/5 p-4 rounded-xl">
-                        <ArrowRightIcon className="w-5 h-5 text-white shrink-0" />
-                        <span className="text-sm text-zinc-300 font-medium">{point}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="p-4 rounded-xl bg-amber-500/5 border border-amber-500/10 flex gap-4">
-                    <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0" />
-                    <p className="text-xs text-amber-200/60 leading-relaxed">
-                      Violation of usage terms may result in service termination.
-                    </p>
-                  </div>
+          <main className="lg:col-span-8">
+            <div className="bg-gray-900/40 border border-gray-800 rounded-3xl p-8 md:p-10 backdrop-blur-sm min-h-[500px] relative overflow-hidden">
+                
+                <div className="absolute -top-5 -right-5 p-10 opacity-5 pointer-events-none blur-sm">
+                  <ShieldAlert className="w-64 h-64 text-white" />
                 </div>
-              ))}
-            </motion.div>
+
+                <AnimatePresence mode="wait">
+                    {tosData.map((item) => item.id === activeTab && (
+                        <motion.div
+                            key={item.id}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.3 }}
+                            className="relative z-10 space-y-8"
+                        >
+                            <div className="space-y-4 border-b border-gray-800 pb-8">
+                                <div className="inline-flex items-center gap-2 text-sky-500 font-bold text-sm tracking-wide uppercase">
+                                    <div className="w-2 h-2 rounded-full bg-sky-500" />
+                                    Section {item.id}
+                                </div>
+                                <h2 className="text-3xl font-bold text-white">
+                                    {item.title}
+                                </h2>
+                                <p className="text-lg leading-relaxed text-gray-400">
+                                    {item.content}
+                                </p>
+                            </div>
+
+                            <div className="space-y-4">
+                                <h4 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                                    <CheckCircle2 className="w-4 h-4 text-sky-500" /> Key Points
+                                </h4>
+                                <div className="grid gap-3">
+                                    {item.points.map((point, idx) => (
+                                    <motion.div 
+                                        key={idx} 
+                                        initial={{ opacity: 0, x: -10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: idx * 0.1 }}
+                                        className="flex items-start gap-4 p-4 rounded-xl bg-gray-950/50 border border-gray-800 hover:border-gray-700 transition-colors"
+                                    >
+                                        <div className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 shrink-0" />
+                                        <span className="text-sm text-gray-300 leading-relaxed font-medium">{point}</span>
+                                    </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {item.id === "larangan" && (
+                                <div className="p-5 rounded-xl bg-red-500/5 border border-red-500/20 flex gap-4 mt-6">
+                                    <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                                    <div className="space-y-1">
+                                        <h5 className="text-sm font-bold text-red-400">Peringatan Keras</h5>
+                                        <p className="text-xs text-red-400/70 leading-relaxed">
+                                            Pelanggaran terhadap poin penggunaan terlarang akan mengakibatkan terminasi layanan sepihak tanpa pengembalian dana (Refund).
+                                        </p>
+                                    </div>
+                                </div>
+                            )}
+                        </motion.div>
+                    ))}
+                </AnimatePresence>
+            </div>
           </main>
 
         </div>
 
-        {/* Action Footer */}
-        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-8 border-t border-white/5">
-          <p className="text-sm text-zinc-500">
-            Dengan melanjutkan penggunaan layanan, Anda dianggap setuju dengan semua poin di atas.
+        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-gray-900/30 border border-gray-800">
+          <p className="text-sm text-gray-500 text-center md:text-left">
+            Dengan mendaftar dan menggunakan layanan ZeroCloud, Anda dianggap telah membaca dan menyetujui seluruh ketentuan di atas.
           </p>
           <div className="flex gap-4">
-            <button className="px-6 py-2.5 rounded-lg border border-white/10 text-sm font-medium hover:bg-white/5 transition-colors">
-              Download PDF
-            </button>
-            <button className="px-6 py-2.5 rounded-lg bg-white text-black text-sm font-bold hover:bg-zinc-200 transition-colors">
-              Saya Mengerti
+            <button className="px-6 py-3 rounded-xl bg-white text-gray-950 text-sm font-bold hover:bg-gray-200 transition-colors shadow-lg shadow-white/5">
+              Saya Mengerti & Setuju
             </button>
           </div>
         </div>
+
       </div>
     </section>
   );
