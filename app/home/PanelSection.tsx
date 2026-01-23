@@ -144,7 +144,7 @@ export default function PanelSection() {
             whileHover={{ y: -10, transition: { duration: 0.3 } }}
           >
             <Safari 
-              url="panel.zerocloud.id" 
+              url="ctrl.zerocloud.id" 
               className="size-full shadow-2xl shadow-sky-500/10"
               imageSrc="/aset/images/panel/panel.png" 
             />

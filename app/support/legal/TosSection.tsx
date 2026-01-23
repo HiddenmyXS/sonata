@@ -180,7 +180,7 @@ export default function TosSection() {
             </motion.div>
             
             <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-              Terms of <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-400 to-blue-500">Service</span>
+              Terms of <span className="text-transparent bg-clip-text bg-sky-500">Service</span>
             </h1>
             
             <div className="flex items-center gap-2 text-sm text-gray-500 font-mono">
