@@ -80,7 +80,7 @@ export default function DiscordSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            href={data?.instant_invite || "https://discord.gg/zerocloud"} 
+            href={data?.instant_invite || "/discord"} 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-[#5865F2] font-bold text-sm shadow-xl hover:shadow-2xl hover:scale-105 hover:bg-gray-50 transition-all duration-200"

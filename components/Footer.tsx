@@ -10,29 +10,42 @@ import {
   Instagram
 } from "lucide-react";
 
-// --- buat config linknya ---
+// --- CONFIG LINKS ---
 const productLinks = [
-  { name: "Game Hosting", href: "game-host" },
-  { name: "App Hosting", href: "app-host" },
-  { name: "VPS Hosting", href: "vps" },
-  { name: "Private Node", href: "private-node" },
-  { name: "Pricing Calculator", href: "pricing" },
+  { name: "Game Hosting", href: "/game-host" },
+  { name: "App Hosting", href: "/app-host" },
+  { name: "VPS Hosting", href: "/vps" },
+  { name: "Private Node", href: "/private-node" },
+  { name: "Pricing Calculator", href: "/pricing" },
 ];
 
 const companyLinks = [
-  { name: "About Us", href: "about" },
-  { name: "Our Team", href: "about#team" },
-  { name: "Status Page", href: "status" },
-  { name: "Blog / News", href: "blog" },
-  { name: "Careers", href: "careers" },
-  { name: "Contact Support", href: "support" },
+  { name: "About Us", href: "/about" },
+  { name: "Our Team", href: "/about#team" },
+  { name: "Status Page", href: "/status" },
+  { name: "Blog / News", href: "/blog" },
+  { name: "Careers", href: "/careers" },
+  { name: "Contact Support", href: "/support" },
 ];
 
 const legalLinks = [
-  { name: "Privacy Policy", href: "legal/privacy" },
-  { name: "Terms of Service", href: "legal/terms" },
-  { name: "Cookie Policy", href: "legal/cookies" },
-  { name: "Service Level Agreement (SLA)", href: "legal/sla" },
+  { name: "Privacy Policy", href: "/legal/privacy" },
+  { name: "Terms of Service", href: "/legal/terms" },
+  { name: "Cookie Policy", href: "/legal/cookies" },
+  { name: "Service Level Agreement (SLA)", href: "/legal/sla" },
+];
+
+const paymentMethods = [
+    { name: "QRIS", src: "/aset/images/icons/methods/qris.svg" },
+    { name: "Visa", src: "/aset/images/icons/methods/visa.svg" },
+    { name: "Mastercard", src: "/aset/images/icons/methods/mastercard.svg" },
+    { name: "Dana", src: "/aset/images/icons/methods/dana.svg" },
+    { name: "OVO", src: "/aset/images/icons/methods/ovo.svg" },
+    { name: "BCA", src: "/aset/images/icons/methods/bca.svg" },
+    { name: "GoPay", src: "/aset/images/icons/methods/gopay.svg" },
+    { name: "ShopeePay", src: "/aset/images/icons/methods/spay.svg" },
+    { name: "Indomaret", src: "/aset/images/icons/methods/indomaret.svg" },
+    { name: "Alfamart", src: "/aset/images/icons/methods/alfamart.svg" },
 ];
 
 const Footer = () => {
@@ -43,11 +56,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16">
         
           <div className="lg:col-span-4 space-y-6">
-            <Link href="/" className="flex items-center gap-2 w-fit">
-               <div className="relative w-8 h-8">
+            <Link href="/" className="flex items-center gap-2 w-fit group">
+               <div className="relative w-8 h-8 transition-transform group-hover:scale-110">
                   <Image src="/aset/logo/logo.png" alt="ZeroCloud Logo" fill className="object-contain" />
                </div>
-               <h4 className="text-2xl font-extrabold text-white tracking-tight">ZeroCloud.id</h4>
+               <h4 className="text-2xl font-extrabold text-white tracking-tight group-hover:text-sky-400 transition-colors">ZeroCloud.id</h4>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
               Premium hosting solutions for next-generation applications and games. Built for speed, security, and stability in Indonesia.
@@ -104,16 +117,36 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gray-900/50 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} ZeroCloud Indonesia. All rights reserved.</p>
-          
-          <div className="flex gap-4">
-            <SocialLink href="https://github.com/zerocloud" icon={<Github className="w-4 h-4" />} label="Github" />
-            <SocialLink href="https://youtube.com/@zerocloud" icon={<Youtube className="w-4 h-4" />} label="Youtube" />
-            <SocialLink href="https://linkedin.com/company/zerocloud" icon={<Linkedin className="w-4 h-4" />} label="Linkedin" />
-            <SocialLink href="https://instagram.com/zerocloud" icon={<Instagram className="w-4 h-4" />} label="Instagram" />
-          </div>
+        <div className="pt-8 border-t border-gray-900/50 flex flex-col gap-8">
+            
+            <div className="flex flex-wrap items-center justify-center lg:justify-between gap-6 pb-8 border-b border-gray-900/50">
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest hidden lg:block">Accepted Payments</span>
+                <div className="flex flex-wrap justify-center gap-4 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                    {paymentMethods.map((method) => (
+                        <div key={method.name} className="relative h-6 w-10 md:h-8 md:w-14" title={method.name}>
+                            <Image 
+                                src={method.src} 
+                                alt={method.name} 
+                                fill 
+                                className="object-contain" 
+                            />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
+                <p>&copy; {new Date().getFullYear()} ZeroCloud Indonesia. All rights reserved.</p>
+                
+                <div className="flex gap-4">
+                    <SocialLink href="https://github.com/zerocloud" icon={<Github className="w-4 h-4" />} label="Github" />
+                    <SocialLink href="https://youtube.com/@zerocloud" icon={<Youtube className="w-4 h-4" />} label="Youtube" />
+                    <SocialLink href="https://linkedin.com/company/zerocloud" icon={<Linkedin className="w-4 h-4" />} label="Linkedin" />
+                    <SocialLink href="https://instagram.com/zerocloud" icon={<Instagram className="w-4 h-4" />} label="Instagram" />
+                </div>
+            </div>
         </div>
+
       </div>
     </footer>
   );

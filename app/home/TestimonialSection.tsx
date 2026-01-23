@@ -196,7 +196,7 @@ export default function TestimonialsSection() {
               <AvatarCircles numPeople={99} avatarUrls={avatarObjects} />
               
               <a 
-                href="https://discord.gg/zerocloud" 
+                href="/discord" 
                 target="_blank"
                 className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition-colors shadow-lg shadow-indigo-500/20 flex items-center gap-2"
               >
