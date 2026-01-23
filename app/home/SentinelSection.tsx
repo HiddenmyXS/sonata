@@ -127,8 +127,7 @@ export default function SentinelSection() {
           </h2>
           
           <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed px-4">
-            Sistem keamanan otonom yang berjalan di background. <br className="hidden md:block"/>
-            Mendeteksi anomali resource, memblokir miner, dan menghentikan serangan sebelum server down.
+            Sistem keamanan otonom yang berjalan di background. Mendeteksi anomali resource, memblokir miner, dan menghentikan serangan sebelum server down.
           </p>
         </div>
 

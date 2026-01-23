@@ -192,7 +192,7 @@ export default function TechStack() {
                 <span>Modern Technology Stack</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-                Built for <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-500">Speed & Scale</span>
+                Built for <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 to-orange-500">Speed & Scale</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
                 Kami menggunakan ekosistem teknologi terkini untuk memastikan website Anda memiliki performa maksimal, keamanan tinggi, dan mudah dikembangkan.
