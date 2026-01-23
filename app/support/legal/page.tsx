@@ -51,6 +51,7 @@ export default function LegalPage() {
   const headerY = useTransform(scrollYProgress, [0, 0.15], [0, -40]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsVisible(true);
   }, []);
 
