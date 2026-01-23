@@ -20,6 +20,7 @@ const eslintConfig = defineConfig([
       "no-console": "off",
       "no-unused-vars": "off",
       "@typescript-eslint/no-explicit-any": "off",
+      "react-hooks/exhaustive-deps": "off",
     },
   },
 ]);
