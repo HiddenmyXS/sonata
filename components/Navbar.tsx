@@ -26,7 +26,6 @@ import {
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// --- REUSABLE DROPDOWN COMPONENT (Tetap sama) ---
 type DropdownProps = {
     label: string;
     icon: React.ReactNode;
@@ -92,7 +91,7 @@ const DropdownMenu: React.FC<DropdownProps> = ({ label, icon, children, footer }
                                    bg-gray-950/90 backdrop-blur-xl shadow-2xl shadow-black/50
                                    border border-gray-800 rounded-2xl overflow-hidden z-50 p-1.5"
                     >
-                        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                        <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
                         <div className="flex flex-col gap-1">
                             {children}
                         </div>
@@ -108,7 +107,6 @@ const DropdownMenu: React.FC<DropdownProps> = ({ label, icon, children, footer }
     );
 };
 
-// --- DROPDOWN ITEM (Tetap sama) ---
 type DropdownItemProps = {
     href: string;
     icon: React.ReactNode;
@@ -192,7 +190,7 @@ export default function Header() {
                                     <div className="flex items-center justify-center gap-1.5 px-2 py-1">
                                         <span className="text-[10px] text-gray-500 font-medium">Powered by</span>
                                         <div className="flex items-center gap-1 text-[10px] font-bold text-amber-400">
-                                            zaqua.studio
+                                            ZAQUA STUDIO
                                         </div>
                                     </div>
                                 }
@@ -203,32 +201,28 @@ export default function Header() {
 
                             <DropdownMenu label="Resources" icon={<Library className="w-4 h-4" />}>
                                 <DropdownItem 
-                                    href="/docs/legal" 
+                                    href="/support/legal" 
                                     icon={<Scale className="w-5 h-5" />} 
                                     title="Legal Center" 
                                     desc="ToS, Privacy, SLA & Policies." 
-                                    colorClass="text-sky-500 group-hover:bg-sky-500/10 border-gray-800 group-hover:border-sky-500/20"
                                 />
                                 <DropdownItem 
                                     href="/docs" 
                                     icon={<Book className="w-5 h-5" />} 
                                     title="Documentation" 
                                     desc="Guides & Tutorials." 
-                                    colorClass="text-sky-500 group-hover:bg-sky-500/10 border-gray-800 group-hover:border-sky-500/20"
                                 />
                                 <DropdownItem 
                                     href="/status" 
                                     icon={<Activity className="w-5 h-5" />} 
                                     title="Status Page" 
                                     desc="Real-time uptime monitor." 
-                                    colorClass="text-sky-500 group-hover:bg-sky-500/10 border-gray-800 group-hover:border-sky-500/20"
                                 />
                                 <DropdownItem 
                                     href="/blog" 
                                     icon={<Newspaper className="w-5 h-5" />} 
                                     title="Blog" 
                                     desc="Latest news & updates." 
-                                    colorClass="text-sky-500 group-hover:bg-sky-500/10 border-gray-800 group-hover:border-sky-500/20"
                                 />
                             </DropdownMenu>
 
@@ -290,8 +284,10 @@ export default function Header() {
                                     {mobileProductsOpen && (
                                         <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden bg-gray-950/30 border-t border-gray-800">
                                             <div className="flex flex-col p-2 gap-1">
-                                                <DropdownItem href="/game-host" icon={<Gamepad2 className="w-5 h-5" />} title="Game Host" desc="Game Servers" onClick={() => setMobileMenuOpen(false)} />
-                                                <DropdownItem href="/app-host" icon={<Code className="w-5 h-5" />} title="App Host" desc="Web Hosting" onClick={() => setMobileMenuOpen(false)} />
+                                                <DropdownItem href="/game-host" icon={<Gamepad2 className="w-5 h-5" />} title="Game Host" desc="High performance game servers." onClick={() => setMobileMenuOpen(false)} />
+                                                <DropdownItem href="/app-host" icon={<Code className="w-5 h-5" />} title="App Host" desc="Deploy apps in seconds." onClick={() => setMobileMenuOpen(false)} />
+                                                <DropdownItem href="/private-node" icon={<Server className="w-5 h-5" />} title="Private Node" desc="Full dedicated control." onClick={() => setMobileMenuOpen(false)} />
+                                                <DropdownItem href="/vps" icon={<Container className="w-5 h-5" />} title="VPS" desc="Scalable virtual servers." onClick={() => setMobileMenuOpen(false)} />
                                             </div>
                                         </motion.div>
                                     )}
@@ -307,8 +303,9 @@ export default function Header() {
                                     {mobileServicesOpen && (
                                         <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden bg-gray-950/30 border-t border-gray-800">
                                             <div className="flex flex-col p-2 gap-1">
-                                                <DropdownItem href="/services/web-dev" icon={<Code className="w-5 h-5" />} title="Web Dev" desc="Custom Sites" colorClass="text-amber-400 border-gray-800" onClick={() => setMobileMenuOpen(false)} />
-                                                <div className="px-4 py-2 text-[10px] text-gray-500 font-medium text-center">Powered by zaqua.studio</div>
+                                                <DropdownItem href="/services/web-dev" icon={<Code className="w-5 h-5" />} title="Web Development" desc="Custom websites & web apps." colorClass="text-amber-400 border-gray-800" onClick={() => setMobileMenuOpen(false)} />
+                                                <DropdownItem href="/services/web-design" icon={<Palette className="w-5 h-5" />} title="Web Design" desc="UI/UX & Graphic Design." colorClass="text-amber-400 border-gray-800" onClick={() => setMobileMenuOpen(false)} />
+                                                <div className="px-4 py-2 text-[10px] text-gray-500 font-medium text-center">Powered by ZAQUA STUDIO</div>
                                             </div>
                                         </motion.div>
                                     )}
@@ -317,20 +314,26 @@ export default function Header() {
 
                             <div className="flex flex-col bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden">
                                 <button onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)} className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-200 active:bg-gray-800">
-                                    <div className="flex items-center gap-3"><Library className="w-5 h-5 text-emerald-400" /> Resources</div>
+                                    <div className="flex items-center gap-3"><Library className="w-5 h-5 text-sky-500" /> Resources</div>
                                     <ChevronDown className={`w-5 h-5 transition-transform ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
                                 </button>
                                 <AnimatePresence>
                                     {mobileResourcesOpen && (
                                         <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden bg-gray-950/30 border-t border-gray-800">
                                             <div className="flex flex-col p-2 gap-1">
-                                                <DropdownItem href="/legal" icon={<Scale className="w-5 h-5" />} title="Legal Center" desc="ToS, Privacy, SLA" colorClass="text-emerald-400 border-gray-800" onClick={() => setMobileMenuOpen(false)} />
-                                                <DropdownItem href="/status" icon={<Activity className="w-5 h-5" />} title="Status Page" desc="System Uptime" colorClass="text-emerald-400 border-gray-800" onClick={() => setMobileMenuOpen(false)} />
+                                                <DropdownItem href="/support/legal" icon={<Scale className="w-5 h-5" />} title="Legal Center" desc="ToS, Privacy, SLA & Policies." onClick={() => setMobileMenuOpen(false)} />
+                                                <DropdownItem href="/docs" icon={<Book className="w-5 h-5" />} title="Documentation" desc="Guides & Tutorials." onClick={() => setMobileMenuOpen(false)} />
+                                                <DropdownItem href="/status" icon={<Activity className="w-5 h-5" />} title="Status Page" desc="Real-time uptime monitor." onClick={() => setMobileMenuOpen(false)} />
+                                                <DropdownItem href="/blog" icon={<Newspaper className="w-5 h-5" />} title="Blog" desc="Latest news & updates." onClick={() => setMobileMenuOpen(false)} />
                                             </div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
                             </div>
+
+                            <Link href="/support" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 p-4 text-lg font-medium text-gray-200 bg-gray-900/50 border border-gray-800 rounded-2xl active:bg-gray-800">
+                                <Headset className="w-5 h-5 text-sky-500" /> Support
+                            </Link>
 
                             <div className="w-full h-px bg-gray-800 my-4" />
                             <div className="grid grid-cols-2 gap-3">

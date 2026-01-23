@@ -15,24 +15,21 @@ const productLinks = [
   { name: "Game Hosting", href: "/game-host" },
   { name: "App Hosting", href: "/app-host" },
   { name: "VPS Hosting", href: "/vps" },
-  { name: "Private Node", href: "/private-node" },
-  { name: "Pricing Calculator", href: "/pricing" },
+  { name: "Private Node", href: "/private-node" }
 ];
 
 const companyLinks = [
   { name: "About Us", href: "/about" },
-  { name: "Our Team", href: "/about#team" },
   { name: "Status Page", href: "/status" },
-  { name: "Blog / News", href: "/blog" },
   { name: "Careers", href: "/careers" },
   { name: "Contact Support", href: "/support" },
 ];
 
 const legalLinks = [
-  { name: "Privacy Policy", href: "/legal/privacy" },
-  { name: "Terms of Service", href: "/legal/terms" },
-  { name: "Cookie Policy", href: "/legal/cookies" },
-  { name: "Service Level Agreement (SLA)", href: "/legal/sla" },
+  { name: "Privacy Policy", href: "/support/legal" },
+  { name: "Terms of Service", href: "/support/legal" },
+  { name: "Cookie Policy", href: "/support/legal" },
+  { name: "Service Level Agreement (SLA)", href: "/support/legal" },
 ];
 
 const paymentMethods = [
