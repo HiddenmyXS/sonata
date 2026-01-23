@@ -35,7 +35,7 @@ export default function DiscordSection() {
   const displayMembers = activeMembers.slice(0, 14); 
 
   return (
-    <section ref={containerRef} className="relative w-full py-16 px-4 bg-[#5865F2] overflow-hidden">
+    <section ref={containerRef} className="relative w-full py-16 px-8 bg-[#5865F2] overflow-hidden">
       
       <motion.div style={{ y }} className="absolute inset-0 opacity-10 pointer-events-none">
          <DiscordLogo className="absolute top-10 left-10 w-32 h-32 -rotate-12" />

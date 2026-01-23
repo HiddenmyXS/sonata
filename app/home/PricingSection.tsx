@@ -118,7 +118,7 @@ const cardVariants = {
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="relative w-full py-16 md:py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
+    <section id="pricing" className="relative w-full py-16 md:py-24 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
       
       <motion.div 
         animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.1, 1] }}

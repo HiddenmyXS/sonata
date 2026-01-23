@@ -98,7 +98,7 @@ export default function PanelSection() {
   const y = useTransform(springScroll, [0, 0.3, 1], [50, 0, -20]);
 
   return (
-    <section ref={containerRef} className="relative w-full py-16 md:py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
+    <section ref={containerRef} className="relative w-full py-16 md:py-24 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
 
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
         

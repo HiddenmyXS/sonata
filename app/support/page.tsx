@@ -99,21 +99,25 @@ export default function SupportComponent() {
       title: "Documentation",
       icon: <FileText className="w-6 h-6" />,
       desc: "Panduan lengkap penggunaan.",
+      href: "/docs"
     },
     {
       title: "QnA Center",
       icon: <HelpCircle className="w-6 h-6" />,
       desc: "Jawaban cepat untuk pertanyaan.",
+      href: "/support/qna"
     },
     {
       title: "Billing & Payment",
       icon: <CreditCard className="w-6 h-6" />,
       desc: "Info tagihan dan metode transaksi.",
+      href: "/support/billing"
     },
     {
-      title: "Terms of Service",
+      title: "Legal & Policies",
       icon: <ScrollText className="w-6 h-6" />,
       desc: "Ketentuan layanan dan kebijakan.",
+      href: "/support/legal"
     },
   ];
 
@@ -239,7 +243,13 @@ export default function SupportComponent() {
       title: "VPS",
       desc: "Virtual server fleksibel & scalable.",
       keywords: ["vps", "virtual", "server", "cloud"]
-    }
+    },
+    {      
+      icon: <FileText className="w-5 h-5" />,
+      title: "Legal & Policies",
+      desc: "Ketentuan layanan dan kebijakan.",
+      keywords: ["legal", "policies", "terms", "service", "privacy", "tos", "pp", "sla"]
+    },
   ];
 
   const filteredResults = searchData.filter(item => {
@@ -377,7 +387,7 @@ export default function SupportComponent() {
             >
               {quickAccessCards.map((card, idx) => (
                 <motion.div key={idx} variants={cardVariants}>
-                  <Link href="#" className="group relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900/40 p-6 hover:bg-gray-900/80 transition-all duration-300 hover:border-sky-500/40 hover:-translate-y-2 hover:shadow-lg hover:shadow-sky-500/10 block">
+                  <Link href={card.href} className="group relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900/40 p-6 hover:bg-gray-900/80 transition-all duration-300 hover:border-sky-500/40 hover:-translate-y-2 hover:shadow-lg hover:shadow-sky-500/10 block">
                      <div className="absolute inset-0 bg-linear-to-br from-sky-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                      
                      <div className="relative z-10 flex flex-col items-center text-center">

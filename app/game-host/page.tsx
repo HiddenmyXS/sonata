@@ -49,7 +49,7 @@ export default function GameHostPage() {
 
   return (
     <main ref={containerRef} className={cn(
-        "flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-700 font-sans selection:bg-sky-500/30 overflow-x-hidden",
+        "flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-700 font-sans selection:bg-sky-500/30 overflow-x-hidden px-8",
         isVisible ? "opacity-100" : "opacity-0"
     )}>
       

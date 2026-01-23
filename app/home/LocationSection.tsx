@@ -108,7 +108,7 @@ export default function LocationSection() {
   };
 
   return (
-    <section className="relative w-full py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
+    <section className="relative w-full py-24 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
       
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">

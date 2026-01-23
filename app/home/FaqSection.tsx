@@ -67,7 +67,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="relative w-full py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
+    <section className="relative w-full py-24 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
       
       <div className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-sky-900/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-4xl mx-auto relative z-10">

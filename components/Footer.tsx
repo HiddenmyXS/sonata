@@ -50,7 +50,7 @@ const paymentMethods = [
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-950 pt-20 pb-10 relative overflow-hidden border-t border-gray-900 font-sans">
+    <footer className="w-full bg-gray-950 pt-20 pb-10 px-8 relative overflow-hidden border-t border-gray-900 font-sans">
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16">

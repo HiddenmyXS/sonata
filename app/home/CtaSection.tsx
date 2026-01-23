@@ -5,7 +5,7 @@ import { Zap, MessageCircle } from "lucide-react";
 
 export default function CtaSection() {
   return (
-    <section className="w-full py-32 px-4 relative overflow-hidden border-t border-gray-900 bg-gray-950">
+    <section className="w-full py-32 px-8 relative overflow-hidden border-t border-gray-900 bg-gray-950">
       
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.15),transparent_50%)] pointer-events-none"></div>
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-sky-500/10 blur-[120px] rounded-full pointer-events-none" />     
@@ -29,7 +29,7 @@ export default function CtaSection() {
           </Link>
           
           <Link 
-            href="/contact" // Atau ganti ke https://wa.me/62xxxxx
+            href="/contact"
             className="px-8 py-4 rounded-full bg-gray-900 border border-gray-800 text-gray-300 font-medium text-lg hover:bg-gray-800 hover:text-white hover:border-gray-700 transition-all duration-200 flex items-center gap-2"
           >
             <MessageCircle className="w-5 h-5" />

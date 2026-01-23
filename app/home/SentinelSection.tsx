@@ -90,7 +90,7 @@ export default function SentinelSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={containerRef} className="relative w-full py-16 md:py-24 border-t border-gray-900 overflow-hidden bg-gray-950">
+    <section ref={containerRef} className="relative w-full py-16 md:py-24 px-8 border-t border-gray-900 overflow-hidden bg-gray-950">
 
       <AnimatedGridPattern
         numSquares={30}

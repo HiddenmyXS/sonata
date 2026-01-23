@@ -34,7 +34,7 @@ export default function NotFound() {
   }, []);
 
   return (
-    <main className="relative min-h-screen w-full flex flex-col items-center justify-center bg-gray-950 overflow-hidden selection:bg-sky-500/30">
+    <main className="px-8 relative min-h-screen w-full flex flex-col items-center justify-center bg-gray-950 overflow-hidden selection:bg-sky-500/30">
       
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 blur-[150px] rounded-full pointer-events-none" />

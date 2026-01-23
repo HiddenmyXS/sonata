@@ -74,7 +74,7 @@ const providers = [
 
 export default function ComparisonSection() {
   return (
-    <section className="relative w-full py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
+    <section className="relative w-full py-24 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         
         <div className="text-center mb-16 space-y-4">

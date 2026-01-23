@@ -85,7 +85,7 @@ const itemVariants = {
 
 export default function WhyChooseSection() {
   return (
-    <section className="relative w-full py-20 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
+    <section className="relative w-full py-20 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
       
       <motion.div 
         animate={{ opacity: [0.4, 0.6, 0.4], scale: [1, 1.05, 1] }}

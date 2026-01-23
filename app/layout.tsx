@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
-import Header from "@/components/Head";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ScrollToTop from "@/components/ScrollToTop"; // <--- Import ini
+import ScrollToTop from "@/components/ScrollToTop";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -83,7 +83,7 @@ export default function RootLayout({
           "bg-gray-950 text-white antialiased min-h-screen flex flex-col selection:bg-sky-500/30 selection:text-sky-200"
         )}
       >
-        <Header />
+        <Navbar />
         
         <main className="grow relative overflow-x-hidden">
           {children}

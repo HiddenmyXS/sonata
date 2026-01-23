@@ -70,7 +70,7 @@ export default function AboutPage() {
   const opacityHero = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <main ref={containerRef} className="flex flex-col items-center w-full min-h-screen bg-gray-950 text-white overflow-hidden selection:bg-sky-500/30">
+    <main ref={containerRef} className="px-8 flex flex-col items-center w-full min-h-screen bg-gray-950 text-white overflow-hidden selection:bg-sky-500/30">
       
       <div className="fixed inset-0 z-0 pointer-events-none">
          <LightRays className="opacity-40 text-sky-500" />

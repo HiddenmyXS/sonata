@@ -13,11 +13,9 @@ export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const rotatingWords = [
-    "Next Level Parah!",
-    "Anti Lag Club!",
-    "Tidur Nyenyak Bos!",
-    "Langsung Mabar!",
-    "Selalu Ada Buatmu!",
+    "Next Level!",
+    "Fast & Reliable!",
+    "Selalu Ada!",
   ];
 
   const containerVariants = {
@@ -44,7 +42,7 @@ export default function HeroSection() {
   return (
     <section 
       ref={containerRef} 
-      className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gray-950 px-4"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gray-950 px-8"
     >
       <div className="absolute inset-0 z-0">
         <LightRays />

@@ -159,7 +159,7 @@ const TechCard = ({ item }: { item: typeof hardwareStack[0] }) => {
 
 export default function TechSection() {
   return (
-    <section className="relative w-full py-24 bg-gray-950 px-4 border-t border-gray-900 overflow-hidden">
+    <section className="relative w-full py-24 bg-gray-950 border-t border-gray-900 overflow-hidden">
       
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
       <div className="relative z-10 flex flex-col items-center">

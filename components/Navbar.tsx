@@ -16,12 +16,17 @@ import {
   Menu,
   X,
   Palette,
-  Briefcase
+  Briefcase,
+  Book,
+  Activity,
+  Scale,
+  Newspaper,
+  Library
 } from "lucide-react";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// --- REUSABLE DROPDOWN COMPONENT ---
+// --- REUSABLE DROPDOWN COMPONENT (Tetap sama) ---
 type DropdownProps = {
     label: string;
     icon: React.ReactNode;
@@ -87,7 +92,7 @@ const DropdownMenu: React.FC<DropdownProps> = ({ label, icon, children, footer }
                                    bg-gray-950/90 backdrop-blur-xl shadow-2xl shadow-black/50
                                    border border-gray-800 rounded-2xl overflow-hidden z-50 p-1.5"
                     >
-                        <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
+                        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                         <div className="flex flex-col gap-1">
                             {children}
                         </div>
@@ -103,13 +108,13 @@ const DropdownMenu: React.FC<DropdownProps> = ({ label, icon, children, footer }
     );
 };
 
-// --- DROPDOWN ITEM ---
+// --- DROPDOWN ITEM (Tetap sama) ---
 type DropdownItemProps = {
     href: string;
     icon: React.ReactNode;
     title: string;
     desc: string;
-    colorClass?: string; // e.g. "text-amber-300 group-hover:bg-amber-500/10"
+    colorClass?: string;
     onClick?: () => void;
 };
 
@@ -133,11 +138,11 @@ const DropdownItem: React.FC<DropdownItemProps> = ({ href, icon, title, desc, co
     </Link>
 );
 
-// --- MAIN HEADER ---
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
     const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+    const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
 
     useEffect(() => {
         document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
@@ -167,75 +172,64 @@ export default function Header() {
 
                         <div className="hidden md:block w-px h-5 bg-white/10" />
                         
-                        {/* --- DESKTOP NAV --- */}
                         <nav className="hidden md:flex items-center gap-1">
                             <Link href="/home" className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 rounded-full transition-all">
                                 <Home className="w-4 h-4" />
                                 <span>Home</span>
                             </Link>
                             
-                            {/* Products Dropdown (Blue Theme) */}
                             <DropdownMenu label="Products" icon={<List className="w-4 h-4" />}>
-                                <DropdownItem 
-                                    href="/game-host" 
-                                    icon={<Gamepad2 className="w-5 h-5" />} 
-                                    title="Game Host" 
-                                    desc="High performance game servers." 
-                                />
-                                <DropdownItem 
-                                    href="/app-host" 
-                                    icon={<Code className="w-5 h-5" />} 
-                                    title="App Host" 
-                                    desc="Deploy apps in seconds." 
-                                />
-                                <DropdownItem 
-                                    href="/private-node" 
-                                    icon={<Server className="w-5 h-5" />} 
-                                    title="Private Node" 
-                                    desc="Full dedicated control." 
-                                />
-                                <DropdownItem 
-                                    href="/vps" 
-                                    icon={<Container className="w-5 h-5" />} 
-                                    title="VPS" 
-                                    desc="Scalable virtual servers." 
-                                />
+                                <DropdownItem href="/game-host" icon={<Gamepad2 className="w-5 h-5" />} title="Game Host" desc="High performance game servers." />
+                                <DropdownItem href="/app-host" icon={<Code className="w-5 h-5" />} title="App Host" desc="Deploy apps in seconds." />
+                                <DropdownItem href="/private-node" icon={<Server className="w-5 h-5" />} title="Private Node" desc="Full dedicated control." />
+                                <DropdownItem href="/vps" icon={<Container className="w-5 h-5" />} title="VPS" desc="Scalable virtual servers." />
                             </DropdownMenu>
 
-                            {/* Services Dropdown (Amber/Zaqua Theme) */}
                             <DropdownMenu 
                                 label="Services" 
                                 icon={<Briefcase className="w-4 h-4" />}
                                 footer={
                                     <div className="flex items-center justify-center gap-1.5 px-2 py-1">
                                         <span className="text-[10px] text-gray-500 font-medium">Powered by</span>
-                                        <div className="flex items-center gap-1 text-[10px] font-bold text-amber-300">
+                                        <div className="flex items-center gap-1 text-[10px] font-bold text-amber-400">
                                             zaqua.studio
                                         </div>
                                     </div>
                                 }
                             >
+                                <DropdownItem href="/services/web-dev" icon={<Code className="w-5 h-5" />} title="Web Development" desc="Custom websites & web apps." colorClass="text-amber-400 group-hover:bg-amber-500/10 border-gray-800 group-hover:border-amber-500/20"/>
+                                <DropdownItem href="/services/web-design" icon={<Palette className="w-5 h-5" />} title="Web Design" desc="UI/UX & Graphic Design." colorClass="text-amber-400 group-hover:bg-amber-500/10 border-gray-800 group-hover:border-amber-500/20"/>
+                            </DropdownMenu>
+
+                            <DropdownMenu label="Resources" icon={<Library className="w-4 h-4" />}>
                                 <DropdownItem 
-                                    href="/services/web-dev" 
-                                    icon={<Code className="w-5 h-5" />} 
-                                    title="Web Development" 
-                                    desc="Custom websites & web apps." 
-                                    colorClass="text-amber-300 group-hover:bg-amber-500/10 border-gray-800 group-hover:border-amber-500/20"
+                                    href="/docs/legal" 
+                                    icon={<Scale className="w-5 h-5" />} 
+                                    title="Legal Center" 
+                                    desc="ToS, Privacy, SLA & Policies." 
+                                    colorClass="text-sky-500 group-hover:bg-sky-500/10 border-gray-800 group-hover:border-sky-500/20"
                                 />
                                 <DropdownItem 
-                                    href="/services/web-design" 
-                                    icon={<Palette className="w-5 h-5" />} 
-                                    title="Web Design" 
-                                    desc="UI/UX & Graphic Design." 
-                                    colorClass="text-amber-300 group-hover:bg-amber-500/10 border-gray-800 group-hover:border-amber-500/20"
+                                    href="/docs" 
+                                    icon={<Book className="w-5 h-5" />} 
+                                    title="Documentation" 
+                                    desc="Guides & Tutorials." 
+                                    colorClass="text-sky-500 group-hover:bg-sky-500/10 border-gray-800 group-hover:border-sky-500/20"
                                 />
                                 <DropdownItem 
-                                    href="/services/source-code" 
-                                    icon={<Code className="w-5 h-5" />} 
-                                    title="Source Code" 
-                                    desc="Premium source code assets." 
-                                    colorClass="text-amber-300 group-hover:bg-amber-500/10 border-gray-800 group-hover:border-amber-500/20"
-                                /> 
+                                    href="/status" 
+                                    icon={<Activity className="w-5 h-5" />} 
+                                    title="Status Page" 
+                                    desc="Real-time uptime monitor." 
+                                    colorClass="text-sky-500 group-hover:bg-sky-500/10 border-gray-800 group-hover:border-sky-500/20"
+                                />
+                                <DropdownItem 
+                                    href="/blog" 
+                                    icon={<Newspaper className="w-5 h-5" />} 
+                                    title="Blog" 
+                                    desc="Latest news & updates." 
+                                    colorClass="text-sky-500 group-hover:bg-sky-500/10 border-gray-800 group-hover:border-sky-500/20"
+                                />
                             </DropdownMenu>
 
                             <Link href="/support" className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 rounded-full transition-all">
@@ -274,7 +268,6 @@ export default function Header() {
                 </div>
             </header>
 
-            {/* --- MOBILE MENU --- */}
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
@@ -284,15 +277,10 @@ export default function Header() {
                         className="fixed inset-0 z-40 bg-gray-950/95 backdrop-blur-xl pt-24 px-6 md:hidden overflow-y-auto"
                     >
                         <nav className="flex flex-col gap-2">
-                            <Link 
-                                href="/home" 
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="flex items-center gap-3 p-4 text-lg font-medium text-gray-200 bg-gray-900/50 border border-gray-800 rounded-2xl active:bg-gray-800"
-                            >
+                            <Link href="/home" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 p-4 text-lg font-medium text-gray-200 bg-gray-900/50 border border-gray-800 rounded-2xl active:bg-gray-800">
                                 <Home className="w-5 h-5 text-sky-500" /> Home
                             </Link>
 
-                            {/* Mobile Products */}
                             <div className="flex flex-col bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden">
                                 <button onClick={() => setMobileProductsOpen(!mobileProductsOpen)} className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-200 active:bg-gray-800">
                                     <div className="flex items-center gap-3"><List className="w-5 h-5 text-sky-500" /> Products</div>
@@ -310,29 +298,40 @@ export default function Header() {
                                 </AnimatePresence>
                             </div>
 
-                            {/* Mobile Services (Amber) */}
                             <div className="flex flex-col bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden">
                                 <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-200 active:bg-gray-800">
-                                    <div className="flex items-center gap-3"><Briefcase className="w-5 h-5 text-amber-300" /> Services</div>
+                                    <div className="flex items-center gap-3"><Briefcase className="w-5 h-5 text-amber-400" /> Services</div>
                                     <ChevronDown className={`w-5 h-5 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
                                 </button>
                                 <AnimatePresence>
                                     {mobileServicesOpen && (
                                         <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden bg-gray-950/30 border-t border-gray-800">
                                             <div className="flex flex-col p-2 gap-1">
-                                                <DropdownItem 
-                                                    href="/services/web-dev" icon={<Code className="w-5 h-5" />} title="Web Dev" desc="Custom Sites" 
-                                                    colorClass="text-amber-300 border-gray-800" 
-                                                    onClick={() => setMobileMenuOpen(false)} 
-                                                />
-                                                <div className="px-4 py-2 text-[10px] text-gray-500 font-medium text-center">Powered by ZAQUA STUDIO</div>
+                                                <DropdownItem href="/services/web-dev" icon={<Code className="w-5 h-5" />} title="Web Dev" desc="Custom Sites" colorClass="text-amber-400 border-gray-800" onClick={() => setMobileMenuOpen(false)} />
+                                                <div className="px-4 py-2 text-[10px] text-gray-500 font-medium text-center">Powered by zaqua.studio</div>
                                             </div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
                             </div>
 
-                            {/* Mobile Buttons */}
+                            <div className="flex flex-col bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden">
+                                <button onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)} className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-200 active:bg-gray-800">
+                                    <div className="flex items-center gap-3"><Library className="w-5 h-5 text-emerald-400" /> Resources</div>
+                                    <ChevronDown className={`w-5 h-5 transition-transform ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
+                                </button>
+                                <AnimatePresence>
+                                    {mobileResourcesOpen && (
+                                        <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden bg-gray-950/30 border-t border-gray-800">
+                                            <div className="flex flex-col p-2 gap-1">
+                                                <DropdownItem href="/legal" icon={<Scale className="w-5 h-5" />} title="Legal Center" desc="ToS, Privacy, SLA" colorClass="text-emerald-400 border-gray-800" onClick={() => setMobileMenuOpen(false)} />
+                                                <DropdownItem href="/status" icon={<Activity className="w-5 h-5" />} title="Status Page" desc="System Uptime" colorClass="text-emerald-400 border-gray-800" onClick={() => setMobileMenuOpen(false)} />
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+
                             <div className="w-full h-px bg-gray-800 my-4" />
                             <div className="grid grid-cols-2 gap-3">
                                 <Link href="https://ctrl.zerocloud.id" className="flex items-center justify-center gap-2 p-3 rounded-xl font-semibold text-gray-300 bg-gray-900 border border-gray-800">Panel</Link>
