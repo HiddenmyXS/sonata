@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { Search, ShieldCheck, X, RefreshCw, Loader2 } from "lucide-react";
+import { Search, ShieldCheck, X, RefreshCw, Loader2, Cpu, Gauge } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useServerStock } from "@/hooks/useServerStock";
 import { tiers, type TierData } from "@/lib/data/gametiers";
@@ -11,7 +11,7 @@ import { ProductCard } from "./ProductCard";
 type TierKey = keyof typeof tiers;
 
 export default function GameHostPage() {
-  const [activeTier, setActiveTier] = useState<TierKey>("flux");
+  const [activeTier, setActiveTier] = useState<TierKey>("core");
   const [query, setQuery] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [isTierSwitching, setIsTierSwitching] = useState(false);
@@ -49,7 +49,7 @@ export default function GameHostPage() {
 
   return (
     <main ref={containerRef} className={cn(
-        "flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-700 font-sans selection:bg-sky-500/30 overflow-x-hidden px-8",
+        "flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-700 font-sans selection:bg-sky-500/30 overflow-x-hidden",
         isVisible ? "opacity-100" : "opacity-0"
     )}>
       
@@ -79,8 +79,8 @@ export default function GameHostPage() {
            </p>
         </motion.div>
 
-        <div className="sticky top-24 z-40 w-full mb-12 flex flex-col items-center gap-6">
-           <div className="flex justify-center bg-gray-900/90 backdrop-blur-xl border border-gray-800 rounded-2xl shadow-2xl p-1.5 gap-2">
+        <div className="sticky top-24 z-40 w-full mb-8 flex flex-col items-center gap-6">
+           <div className="flex justify-center bg-gray-900/90 backdrop-blur-xl border border-gray-800 rounded-2xl shadow-2xl p-1.5 gap-2 overflow-x-auto max-w-full">
                 {(Object.keys(tiers) as TierKey[]).map((tierKey) => {
                    const isActive = activeTier === tierKey;
                    const tier = tiers[tierKey];
@@ -91,7 +91,7 @@ export default function GameHostPage() {
                          key={tierKey}
                          onClick={() => handleTierChange(tierKey)}
                          className={cn(
-                             "relative flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300",
+                             "relative flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 min-w-max",
                              isActive ? "text-white shadow-lg" : "text-gray-400 hover:text-white hover:bg-white/5"
                          )}
                       >
@@ -101,25 +101,51 @@ export default function GameHostPage() {
                          <span className="relative z-10 flex items-center gap-2">
                             <Icon className="w-4 h-4" /> 
                             <span className="capitalize">{tier.label}</span>
+                            {tier.badge && (
+                                <span className="px-1.5 py-0.5 rounded-md bg-white/20 text-[10px] uppercase font-black tracking-wide">{tier.badge}</span>
+                            )}
                          </span>
                       </button>
                    )
                 })}
            </div>
 
-           <div className="flex items-center gap-4 bg-gray-900/60 px-5 py-2.5 rounded-full border border-gray-800 backdrop-blur-md shadow-sm">
-                <span className="text-sm font-medium text-gray-400 border-r border-gray-700 pr-4">
+           <motion.div 
+             key={activeTier}
+             initial={{ opacity: 0, y: -10 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.3 }}
+             className="flex flex-col md:flex-row items-center gap-4 md:gap-8 bg-gray-900/80 px-6 py-3 rounded-2xl border border-gray-800 backdrop-blur-md shadow-lg"
+           >
+                <span className="text-sm font-medium text-gray-400 border-b md:border-b-0 md:border-r border-gray-700 pb-2 md:pb-0 md:pr-6">
                     {tiers[activeTier].desc}
                 </span>
+
+                <div className="flex items-center gap-3">
+                    <div className={cn("p-1.5 rounded-lg bg-gray-800/50", `text-${activeTier === 'core' ? 'emerald' : activeTier === 'flux' ? 'sky' : 'purple'}-400`)}>
+                        <Cpu className="w-4 h-4" />
+                    </div>
+                    <div className="flex flex-col text-left">
+                        <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Powered By</span>
+                        <span className="text-sm font-bold text-white tracking-tight flex items-center gap-2">
+                            {tiers[activeTier].cpuDetail}
+                            <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-gray-800 text-[10px] text-gray-400 font-mono">
+                                <Gauge className="w-3 h-3" /> {tiers[activeTier].ghz}
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div className="hidden md:block w-px h-8 bg-gray-800" />
                 <button 
                     onClick={handleRefreshClick}
                     disabled={isRefreshing || isStockLoading}
                     className="flex items-center gap-2 text-xs font-bold text-sky-500 hover:text-sky-400 transition-colors disabled:opacity-50"
                 >
                     <RefreshCw className={cn("w-3.5 h-3.5", (isRefreshing || isStockLoading) && "animate-spin")} />
-                    {isRefreshing || isStockLoading ? "Checking..." : "Refresh Stock"}
+                    {isRefreshing || isStockLoading ? "Checking..." : "Refresh"}
                 </button>
-           </div>
+           </motion.div>
         </div>
 
         <div className="relative max-w-md mx-auto mb-12 group">
