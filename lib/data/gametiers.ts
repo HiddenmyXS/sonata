@@ -1,4 +1,4 @@
-import { Zap, Trophy, Rocket } from "lucide-react";
+import { Zap, Trophy, Rocket, Cpu } from "lucide-react";
 
 export type GameProduct = {
   id: string;
@@ -17,6 +17,9 @@ export type TierData = {
   desc: string;
   icon: any;
   color: string;
+  cpuDetail: string;
+  ghz: string;
+  badge?: string;
   games: GameProduct[];
 };
 
@@ -26,6 +29,8 @@ export const tiers: Record<string, TierData> = {
     desc: "Ekonomis & Stabil (Start Rp 15rb/GB)",
     icon: Zap,
     color: "from-emerald-400 to-green-600",
+    cpuDetail: "Intel® Xeon® E-2136",
+    ghz: "3.30 GHz / 4.50 GHz Turbo",
     games: [
       { id: "c1", title: "Core Entry", price: "Rp 15.000", ram: "1GB", cpu: "1 vCPU", storage: "5GB NVMe", slots: "Unltd", recommended: "Proxy / Bungeecord", billingUrl: "https://my.zerocloud.id/products/core/core-1" },
       { id: "c2", title: "Core Basic", price: "Rp 30.000", ram: "2GB", cpu: "2 vCPU", storage: "10GB NVMe", slots: "Unltd", recommended: "Vanilla Survival (2-5 Org)", billingUrl: "https://my.zerocloud.id/products/core/core-2" },
@@ -40,6 +45,9 @@ export const tiers: Record<string, TierData> = {
     desc: "High Performance (Start Rp 20rb/GB)",
     icon: Trophy,
     color: "from-sky-400 to-blue-600",
+    cpuDetail: "AMD Ryzen™ 5 4500",
+    ghz: "3.60 GHz / 4.10 GHz Turbo",
+    badge: "SOON",
     games: [
       { id: "f1", title: "Flux Entry", price: "Rp 40.000", ram: "2GB", cpu: "2 vCPU High-Freq", storage: "15GB NVMe", slots: "Unltd", recommended: "Proxy / Bungeecord", billingUrl: "https://my.zerocloud.id/products/flux/flux-1" },
       { id: "f2", title: "Flux Basic", price: "Rp 80.000", ram: "4GB", cpu: "3 vCPU High-Freq", storage: "25GB NVMe", slots: "Unltd", recommended: "Vanilla Survival", billingUrl: "https://my.zerocloud.id/products/flux/flux-2" },
@@ -54,6 +62,9 @@ export const tiers: Record<string, TierData> = {
     desc: "Extreme Dedicated (Start Rp 30rb/GB)",
     icon: Rocket,
     color: "from-purple-500 to-pink-600",
+    cpuDetail: "Intel® Core™ i7-13700F",
+    ghz: "Up to 5.20 GHz Turbo",
+    badge: "SOON",
     games: [
       { id: "a1", title: "Atlas Entry", price: "Rp 120.000", ram: "4GB", cpu: "2 Core Dedicated", storage: "40GB NVMe", slots: "Unltd", recommended: "Vanilla Survival", billingUrl: "https://my.zerocloud.id/products/atlas/atlas-1" },
       { id: "a2", title: "Atlas Basic", price: "Rp 180.000", ram: "6GB", cpu: "3 Core Dedicated", storage: "60GB NVMe", slots: "Unltd", recommended: "Modpack + Shaders", billingUrl: "https://my.zerocloud.id/products/atlas/atlas-2" },
