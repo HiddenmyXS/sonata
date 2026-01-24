@@ -148,7 +148,7 @@ export default function Header() {
 
     return (
         <>
-            <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
+            <header className="fixed top-0 left-0 right-0 z-40 flex justify-center px-4 pt-4">
                 <div className="flex items-center justify-between w-full max-w-6xl h-14 px-4 
                               bg-gray-950/60 backdrop-blur-md shadow-lg shadow-black/20 
                               border border-white/10 rounded-full transition-all duration-300 relative z-50">

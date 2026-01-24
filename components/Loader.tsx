@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const FADE_OUT_MS = 2000;
+const FADE_OUT_MS = 2990;
 const PROGRESS_INTERVAL = 30;
 const ANIMATION_DURATION = 0.5;
 
@@ -56,7 +56,7 @@ const Loader = () => {
 
     return (
         <motion.div
-            className={`fixed inset-0 flex items-center justify-center bg-gray-950 z-50 overflow-hidden ${
+            className={`fixed inset-0 flex items-center justify-center bg-gray-950 z-95 overflow-hidden ${
                 isVisible ? "pointer-events-auto" : "pointer-events-none"
             }`}
             initial={{ opacity: 1 }}

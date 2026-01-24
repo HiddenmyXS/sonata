@@ -76,8 +76,8 @@ export default function StatusPage() {
   };
 
   return (
-    <main className="min-h-screen bg-linear-to-b from-gray-950 via-gray-900 to-gray-950 text-white p-8 font-sans">
-      <div className="max-w-5xl mx-auto pt-16">
+    <main className="min-h-screen bg-linear-to-b bg-gray-950 overflow-hidden selection:bg-sky-500/30 text-white p-8 font-sans">
+      <div className="max-w-5xl mx-auto pt-20">
 
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-4">
           <div>
@@ -104,7 +104,7 @@ export default function StatusPage() {
         </div>
 
         {/* Overall Status Banner */}
-        <div className="mb-12 p-8 flex flex-col items-center justify-center text-center border border-gray-800 rounded-3xl bg-gray-900/20">
+        <div className="mb-12 p-8 flex flex-col items-center justify-center text-center ">
           <div className={`p-5 rounded-2xl mb-4 ${colorMap[overallStatus.color as keyof typeof colorMap]}`}>
             <StatusIcon size={48} className="drop-shadow-lg" />
           </div>
