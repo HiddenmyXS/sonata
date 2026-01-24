@@ -48,11 +48,11 @@ const reviews = [
 
 const avatarObjects = [
   {
-    imageUrl: "https://yt3.googleusercontent.com/Da_VxCpnuEIi60oIGtA59wrter6g1dJyy7Y1gPAuNsECF1nrFAhYtMHy4hErPIjsFyM9clLM=s160-c-k-c0x00ffffff-no-rj",
+    imageUrl: "https://lh3.googleusercontent.com/a/ACg8ocL-",
     profileUrl: "#",
   },
   {
-    imageUrl: "https://yt3.googleusercontent.com/aJI697gDxGo2JMhg60ACE6u5MWWvyhwgVhRQxPzLLb0FHJADeD4XNKZIf_ahlvS73aIhp2EfEA=s160-c-k-c0x00ffffff-no-rj",
+    imageUrl: "https://lh3.googleusercontent.com/a/ACg8ocL-",
     profileUrl: "#",
   },
   {
@@ -100,7 +100,7 @@ const ReviewCard = ({
     >
       <div className="flex flex-row items-center gap-3">
         <Image 
-            className="rounded-full border border-gray-700" 
+            className="rounded-full border border-gray-700 object-cover" 
             width={40} 
             height={40} 
             alt={name} 
@@ -119,7 +119,7 @@ const ReviewCard = ({
         </div>
       </div>
       <blockquote className="mt-4 text-sm text-gray-300 leading-relaxed font-light">
-        &ldquo;{body}&rdquo;
+        “{body}”
       </blockquote>
     </figure>
   );
@@ -150,10 +150,6 @@ export default function TestimonialsSection() {
             </h2>
             
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-                {/* <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-gray-800">
-                    <Star className="w-4 h-4 text-green-500 fill-green-500" />
-                    <span className="text-white font-bold">4.9/5</span> on Trustpilot
-                </div> */}
                 <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-gray-800">
                     <MessageCircle className="w-4 h-4 text-indigo-400 fill-indigo-400" />
                     <span className="text-white font-bold">10k+</span> di Discord
@@ -163,19 +159,19 @@ export default function TestimonialsSection() {
 
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
             <Marquee pauseOnHover className="[--duration:40s]">
-                {reviews.map((review) => (
-                <ReviewCard key={review.username} {...review} />
+                {reviews.map((review, i) => (
+                <ReviewCard key={`${review.username}-${i}`} {...review} />
                 ))}
             </Marquee>
             
             <Marquee reverse pauseOnHover className="[--duration:35s] mt-6">
-                {reviews.map((review) => (
-                <ReviewCard key={review.username} {...review} />
+                {reviews.map((review, i) => (
+                <ReviewCard key={`${review.username}-rev-${i}`} {...review} />
                 ))}
             </Marquee>
 
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r from-gray-950 dark:from-background"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l from-gray-950 dark:from-background"></div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-950 to-transparent z-20"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-950 to-transparent z-20"></div>
         </div>
 
         <motion.div 

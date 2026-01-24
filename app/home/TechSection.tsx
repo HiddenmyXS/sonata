@@ -141,7 +141,7 @@ const TechCard = ({ item }: { item: typeof hardwareStack[0] }) => {
       </div>
 
       <div className="flex flex-col">
-        <span className={cn("text-xs font-bold uppercase tracking-wider mb-0.5 transition-colors", item.textColor)}>
+        <span className={cn("text-[10px] font-bold uppercase tracking-wider mb-0.5 transition-colors", item.textColor)}>
           {item.type}
         </span>
         <span className="text-sm font-bold text-white leading-tight">
@@ -157,7 +157,7 @@ const TechCard = ({ item }: { item: typeof hardwareStack[0] }) => {
   );
 };
 
-export default function TechSection() {
+export default function TechStack() {
   return (
     <section className="relative w-full py-24 bg-gray-950 border-t border-gray-900 overflow-hidden">
       
@@ -183,6 +183,7 @@ export default function TechSection() {
         </motion.div>
 
         <div className="relative flex w-full flex-col items-center justify-center gap-4 overflow-hidden">
+            
             <Marquee pauseOnHover className="[--duration:40s]">
                 {hardwareStack.map((item) => (
                     <TechCard key={item.name} item={item} />
@@ -195,8 +196,8 @@ export default function TechSection() {
                 ))}
             </Marquee>
 
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r from-gray-950 dark:from-background"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l from-gray-950 dark:from-background"></div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-950 to-transparent z-20"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-950 to-transparent z-20"></div>
         </div>
 
       </div>
