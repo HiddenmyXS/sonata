@@ -160,7 +160,7 @@ export default function SentinelSection() {
                </TerminalLine>
 
                <TerminalLine delay={0.5} className="text-emerald-500">
-                 [OK] Sentinel Watchdog v2.5 loaded.
+                 [OK] ZeroCloud Sentinel Watchdog v1 loaded.
                </TerminalLine>
 
                <TerminalLine delay={1.0} className="text-gray-500">

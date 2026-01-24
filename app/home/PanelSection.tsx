@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Safari } from "@/components/ui/safari"; 
 import { cn } from "@/lib/utils";
+import { Particles } from "@/components/ui/particles";
 
 const panelFeatures = [
   {
@@ -99,7 +100,13 @@ export default function PanelSection() {
 
   return (
     <section ref={containerRef} className="relative w-full py-16 md:py-24 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
-
+              <Particles
+        className="absolute inset-0 z-0"
+        quantity={100}
+        ease={80}
+        color={"#49A0E6"}
+        refresh
+      />
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
         
         <div className="text-center mb-16 md:mb-24 max-w-3xl px-4">

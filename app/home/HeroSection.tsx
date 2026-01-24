@@ -72,7 +72,6 @@ export default function HeroSection() {
             <AnimatedShinyText className="inline-flex items-center justify-center px-5 py-2 transition ease-out text-white hover:text-sky-300">
               <span className="flex h-2 w-2 rounded-full bg-sky-500 animate-pulse mr-3 shadow-[0_0_10px_rgba(14,165,233,0.6)]"></span>
               <span className="text-xs md:text-sm font-medium tracking-wide text-sky-500">New! App Hosting US Location | 🇺🇸</span>
-              <ArrowRightIcon className="ml-2 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
             </AnimatedShinyText>
           </div>
         </motion.div>

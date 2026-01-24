@@ -97,7 +97,7 @@ export default function LegalPage() {
         </motion.div>
       </div>
 
-      <div className="sticky top-6 z-50 w-full flex justify-center px-4 pointer-events-none mb-12">
+      <div className="sticky top-6 w-full flex justify-center px-4 pointer-events-none mb-12">
         <div className="bg-gray-950/80 backdrop-blur-xl border border-white/10 p-1.5 rounded-xl shadow-2xl pointer-events-auto flex items-center gap-1 ring-1 ring-white/5">
           {legalTabs.map((tab) => {
             const isActive = activeTab === tab.id;

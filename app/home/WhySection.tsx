@@ -10,7 +10,8 @@ import {
   Clock 
 } from "lucide-react";
 import { NumberTicker } from "@/components/ui/number-ticker";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const features = [
   {
@@ -22,8 +23,8 @@ const features = [
     border: "group-hover:border-yellow-500/30"
   },
   {
-    title: "Proteksi DDoS Canggih",
-    desc: "Sistem mitigasi serangan Layer 4 & 7 aktif 24/7. Server tetap aman, main tenang.",
+    title: "ZeroShield Sentinel",
+    desc: "Malware & DDoS Protection bawaan untuk keamanan maksimal server Anda.",
     icon: <ShieldCheck className="w-6 h-6 text-green-400" />,
     detail: "Mitigasi hingga 10Tbps",
     color: "from-green-500/20 to-emerald-500/5",
@@ -84,16 +85,30 @@ const itemVariants = {
 };
 
 export default function WhyChooseSection() {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
+
   return (
-    <section className="relative w-full py-20 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full py-20 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
       
       <motion.div 
+        style={{ y }}
         animate={{ opacity: [0.4, 0.6, 0.4], scale: [1, 1.05, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-sky-900/10 blur-[100px] rounded-full pointer-events-none" 
       />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <motion.div 
+        style={{ opacity, scale }}
+        className="max-w-6xl mx-auto relative z-10"
+      >
         
         <div className="text-center mb-16">
           <motion.div 
@@ -198,7 +213,7 @@ export default function WhyChooseSection() {
            </div>
         </motion.div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }
