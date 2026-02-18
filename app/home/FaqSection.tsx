@@ -19,36 +19,36 @@ interface FAQ {
 }
 
 const faqData: FAQ[] = [
-  {
-    question: "Berapa lama proses setup server setelah pembayaran?",
-    answer: "Instan! Sistem kami otomatis mendeteksi pembayaran. Server Anda akan aktif dan siap digunakan dalam waktu kurang dari 60 detik setelah invoice terbayar (kecuali Dedicated Server yang butuh waktu setup manual 1-24 jam).",
-    category: "General"
-  },
-  {
-    question: "Apakah bisa upgrade paket di tengah jalan?",
-    answer: "Tentu saja. Anda bisa melakukan upgrade resource (RAM/CPU) kapan saja melalui Client Area. Sistem akan menghitung selisih harga secara prorata (hanya bayar sisanya), dan tidak ada data yang hilang.",
-    category: "Billing"
-  },
-  {
-    question: "Server lokasi mana yang paling bagus buat saya?",
-    answer: "Gunakan fitur 'Ping Tester' di halaman utama kami. Secara umum: Pilih Jakarta untuk player mayoritas Indonesia, Singapore untuk Asia Tenggara, dan US untuk komunitas global.",
-    category: "Technical"
-  },
-  {
-    question: "Apakah ada perlindungan Anti-DDoS?",
-    answer: "Ya, semua paket (bahkan yang termurah) sudah termasuk proteksi DDoS Layer 4 & 7 standar. Untuk paket Flux dan Atlas, kami menggunakan mitigasi khusus game (Game Firewall) yang lebih agresif menyaring serangan.",
-    category: "Security"
-  },
-  {
-    question: "Metode pembayaran apa saja yang tersedia?",
-    answer: "Kami menerima hampir semua metode pembayaran lokal: QRIS (GoPay, OVO, Dana), Virtual Account Bank (BCA, Mandiri, BRI, BNI), dan Alfamart/Indomaret.",
-    category: "Billing"
-  },
-  {
-    question: "Bolehkah saya menginstall mod atau plugin sendiri?",
-    answer: "Sangat boleh! Anda memiliki akses penuh ke File Manager (SFTP). Anda bebas mengupload jar file, modpack, atau plugin apapun selama tidak melanggar ToS (seperti mining crypto atau script berbahaya).",
-    category: "Technical"
-  },
+    {
+        question: "How long is the server setup process after payment?",
+        answer: "Instant! Our system automatically detects payment. Your server will be active and ready to use within less than 60 seconds after the invoice is paid (except Dedicated Server which requires 1-24 hours manual setup).",
+        category: "General"
+    },
+    {
+        question: "Can I upgrade my package mid-way?",
+        answer: "Absolutely. You can upgrade resources (RAM/CPU) anytime through the Client Area. The system will calculate the price difference prorata (you only pay the difference), and no data will be lost.",
+        category: "Billing, Upgrade"
+    },
+    {
+        question: "Which server location is best for me?",
+        answer: "Use the 'Ping Tester' feature on our homepage. Generally: Choose Jakarta for majority Indonesia players, Singapore for Southeast Asia, and US for global communities.",
+        category: "Technical"
+    },
+    {
+        question: "Is there Anti-DDoS protection?",
+        answer: "Yes, all packages (even the cheapest) include standard Layer 4 & 7 DDoS protection. For Flux and Atlas packages, we use specialized game mitigation (Game Firewall) that more aggressively filters attacks.",
+        category: "Security"
+    },
+    {
+        question: "What payment methods are available?",
+        answer: "We accept almost all local payment methods: QRIS (GoPay, OVO, Dana), Bank Virtual Accounts (BCA, Mandiri, BRI, BNI), and Alfamart/Indomaret.",
+        category: "Billing"
+    },
+    {
+        question: "Can I install mods or plugins myself?",
+        answer: "Absolutely! You have full access to the File Manager (SFTP). You are free to upload any jar file, modpack, or plugin as long as it doesn't violate ToS (such as crypto mining or malicious scripts).",
+        category: "Technical"
+    },
 ];
 
 export default function FaqSection() {
@@ -78,7 +78,7 @@ export default function FaqSection() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <HelpCircle className="w-3 h-3" />
-            <span>Pusat Bantuan</span>
+            <span>Helpcenter</span>
           </motion.div>
           
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8">
@@ -94,7 +94,7 @@ export default function FaqSection() {
           >
             <input 
                 type="text" 
-                placeholder="Cari pertanyaan (misal: ddos, upgrade)..."
+                placeholder="Search Questions... Try 'upgrade', 'payment', or 'mods'..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-gray-900/50 border border-gray-800 rounded-2xl py-4 pl-4 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all backdrop-blur-sm shadow-xl"
@@ -120,12 +120,12 @@ export default function FaqSection() {
                         animate={{ opacity: 1 }}
                         className="text-center py-10"
                     >
-                        <p className="text-gray-500">Pertanyaan tidak ditemukan. Coba kata kunci lain.</p>
+                        <p className="text-gray-500">No matching Answers found.</p>
                         <button 
                             onClick={() => setSearchQuery("")}
                             className="mt-2 text-purple-500 hover:underline text-sm"
                         >
-                            Reset pencarian
+                            Reset Search
                         </button>
                     </motion.div>
                 )}
@@ -139,10 +139,10 @@ export default function FaqSection() {
             transition={{ delay: 0.3 }}
             className="mt-16 text-center"
         >
-            <p className="text-gray-400 mb-4">Masih bingung? Tim kami siap ngobrol.</p>
+            <p className="text-gray-400 mb-4">Still have questions? Our support team is here to help.</p>
             <a href="/chat" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 border border-gray-800 text-white font-medium hover:bg-gray-800 hover:border-gray-700 transition-all group">
                 <MessageSquareText className="w-4 h-4 text-purple-500 group-hover:rotate-12 transition-transform" />
-                Chat dengan Support
+                Chat Support
                 <ChevronRight className="w-4 h-4 opacity-50 group-hover:translate-x-1 transition-transform" />
             </a>
         </motion.div>
@@ -206,7 +206,7 @@ function FAQItem({ faq, isOpen, onClick, index }: { faq: FAQ, isOpen: boolean, o
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
                         <div className="px-6 pb-6 pt-0">
-                            <div className="h-px w-full bg-gray-800/50 mb-4" /> {/* Divider halus */}
+                            <div className="h-px w-full bg-gray-800/50 mb-4" />
                             <p className="text-gray-400 leading-relaxed text-sm md:text-base">
                                 {faq.answer}
                             </p>

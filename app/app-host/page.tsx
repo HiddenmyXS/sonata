@@ -17,7 +17,6 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import { LightRays } from "@/components/ui/light-rays";
 
 const tiers = {
   nodejs: {
@@ -103,7 +102,6 @@ export default function AppHostPage() {
           }}
           className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] blur-[100px] transition-colors duration-1000"
         />
-        <LightRays />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl px-4 md:px-6 pt-32 pb-20">

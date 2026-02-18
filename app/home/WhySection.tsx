@@ -15,50 +15,50 @@ import { useRef } from "react";
 
 const features = [
   {
-    title: "Performa Kilat",
-    desc: "Server ditenagai NVMe SSD & prosesor high-clock terbaru untuk gaming tanpa lag.",
+    title: "Lightning Fast Performance",
+    desc: "Server powered by NVMe SSD & latest high-clock processors for lag-free gaming.",
     icon: <Zap className="w-6 h-6 text-yellow-400" />,
     detail: "NVMe Gen 4 & Ryzen 9",
     color: "from-yellow-500/20 to-orange-500/5",
     border: "group-hover:border-yellow-500/30"
   },
   {
-    title: "ZeroShield Sentinel",
-    desc: "Malware & DDoS Protection bawaan untuk keamanan maksimal server Anda.",
+    title: "Sentinel Protection",
+    desc: "Built-in Malware & DDoS Protection for maximum server security.",
     icon: <ShieldCheck className="w-6 h-6 text-green-400" />,
-    detail: "Mitigasi hingga 10Tbps",
+    detail: "Mitigation up to 10Tbps",
     color: "from-green-500/20 to-emerald-500/5",
     border: "group-hover:border-green-500/30"
   },
   {
-    title: "Jaringan Global Low Latency",
-    desc: "Lokasi server strategis di Jakarta, Singapore, & US untuk ping terendah.",
+    title: "Global Low Latency Network",
+    desc: "Strategic server locations in Jakarta, Singapore, & US for lowest ping.",
     icon: <Globe className="w-6 h-6 text-purple-400" />,
-    detail: "3 Region Premium",
+    detail: "3 Premium Regions",
     color: "from-purple-500/20 to-indigo-500/5",
     border: "group-hover:border-purple-500/30"
   },
   {
-    title: "Hardware Terdedikasi",
-    desc: "Resource CPU & RAM terisolasi 100%. Tidak ada 'noisy neighbors' yang mengganggu performa.",
+    title: "Dedicated Hardware",
+    desc: "CPU & RAM resources 100% isolated. No 'noisy neighbors' affecting performance.",
     icon: <Cpu className="w-6 h-6 text-purple-400" />,
     detail: "Guaranteed Resources",
     color: "from-purple-500/20 to-pink-500/5",
     border: "group-hover:border-purple-500/30"
   },
   {
-    title: "Support Responsif 24/7",
-    desc: "Tim teknis kami selalu siap membantu masalah server Anda kapan saja, pagi atau malam.",
+    title: "Responsive 24/7 Support",
+    desc: "Our technical team is always ready to help with your server issues anytime, day or night.",
     icon: <Headset className="w-6 h-6 text-red-400" />,
-    detail: "< 15 Menit Respon",
+    detail: "< 15 Min Response",
     color: "from-red-500/20 to-rose-500/5",
     border: "group-hover:border-red-500/30"
   },
   {
-    title: "Setup Instan Otomatis",
-    desc: "Server langsung aktif dalam hitungan detik setelah pembayaran terkonfirmasi.",
+    title: "Instant Automatic Setup",
+    desc: "Server goes live within seconds after payment confirmation.",
     icon: <Clock className="w-6 h-6 text-teal-400" />,
-    detail: "Deploy < 60 Detik",
+    detail: "Deploy < 60 Seconds",
     color: "from-teal-500/20 to-cyan-500/5",
     border: "group-hover:border-teal-500/30"
   }
@@ -112,34 +112,34 @@ export default function WhyChooseSection() {
         
         <div className="text-center mb-16">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4"
           >
-            <Activity className="w-3 h-3" />
-            <span>Kualitas Tanpa Kompromi</span>
+        <Activity className="w-3 h-3" />
+        <span>Quality Without Compromise</span>
           </motion.div>
           
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-5xl font-extrabold text-white mb-5"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-3xl md:text-5xl font-extrabold text-white mb-5"
           >
-            Why Choose <span className="text-purple-500">Sonata?</span>
+        Why Choose <span className="text-purple-500">Sonata?</span>
           </motion.h2>
           
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-gray-400 max-w-2xl mx-auto text-base md:text-lg"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-gray-400 max-w-2xl mx-auto text-base md:text-lg"
           >
-            Kami menggabungkan hardware kelas enterprise dengan software manajemen modern untuk memberikan pengalaman hosting terbaik bagi komunitas Anda.
+        We combine enterprise-grade hardware with modern management software to deliver the best hosting experience for your community.
           </motion.p>
         </div>
 

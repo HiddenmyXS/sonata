@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
-import { LightRays } from "@/components/ui/light-rays";
 
 const SearchResultItem: React.FC<{ icon: React.ReactNode; title: string; desc: string; onClick: () => void }> = ({ icon, title, desc, onClick }) => (
   <button
@@ -273,7 +272,6 @@ export default function SupportComponent() {
     >
       
       <div className="fixed inset-0 z-0 pointer-events-none">
-         <LightRays />
          <div className="absolute inset-0 bg-linear-to-b from-gray-950/0 via-gray-950/80 to-gray-950" />
          
          <motion.div 

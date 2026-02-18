@@ -17,7 +17,6 @@ import { cn } from "@/lib/utils";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { NumberTicker } from "@/components/ui/number-ticker"; 
 import { OrbitingCircles } from "@/components/ui/orbiting-circles"; 
-import { LightRays } from "@/components/ui/light-rays";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -72,9 +71,7 @@ export default function AboutPage() {
   return (
     <main ref={containerRef} className="px-8 flex flex-col items-center w-full min-h-screen bg-gray-950 text-white overflow-hidden selection:bg-purple-500/30">
       
-      <div className="fixed inset-0 z-0 pointer-events-none">
-         <LightRays className="opacity-40 text-purple-500" />
-         
+      <div className="fixed inset-0 z-0 pointer-events-none">         
          <AnimatedGridPattern
             numSquares={30}
             maxOpacity={0.1}
