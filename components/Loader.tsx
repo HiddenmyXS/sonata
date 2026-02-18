@@ -1,86 +1,65 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-
-const FADE_OUT_MS = 2990;
-const PROGRESS_INTERVAL = 30;
-const ANIMATION_DURATION = 0.5;
+import { motion, AnimatePresence } from "framer-motion";
 
 const Loader = () => {
-    const [progressBar, setProgressBar] = useState(0);
-    const [isVisible, setIsVisible] = useState(true);
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
 
-    useEffect(() => {
-        timeoutRef.current = setTimeout(() => {
-            setIsVisible(false);
-        }, FADE_OUT_MS);
+  useEffect(() => {
+    // Memberi waktu user melihat animasi (misal 2.5 detik)
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 3500);
 
-        return () => {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        };
-    }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
-    useEffect(() => {
-        intervalRef.current = setInterval(() => {
-            setProgressBar((prev) => {
-                if (prev >= 100) {
-                    clearInterval(intervalRef.current!);
-                    return 100;
-                }
-                const increase = 1 + Math.floor((100 - prev) / 10);
-                return Math.min(prev + increase, 100);
-            });
-        }, PROGRESS_INTERVAL);
-
-        return () => {
-            if (intervalRef.current) clearInterval(intervalRef.current);
-        };
-    }, []);
-
-    const logoImage = (
-        <Image
-            src="/aset/logo/logo.png"
-            alt="ZeroCloud Logo"
-            width={120}
-            height={120}
-            priority
-            className={`rounded-4xl transition-transform duration-400 ${
-                isVisible ? "scale-100" : "scale-95"
-            } ${progressBar === 100 ? "animate-pulse" : ""}`}
-        />
-    );
-
-    return (
+  return (
+    <AnimatePresence>
+      {isVisible && (
         <motion.div
-            className={`fixed inset-0 flex items-center justify-center bg-gray-950 z-95 overflow-hidden ${
-                isVisible ? "pointer-events-auto" : "pointer-events-none"
-            }`}
-            initial={{ opacity: 1 }}
-            animate={{ opacity: isVisible ? 1 : 0 }}
-            transition={{ duration: ANIMATION_DURATION }}
+          style={{ willChange: "opacity" }}
+          className="fixed inset-0 flex items-center justify-center bg-gray-950 z-[9999] overflow-hidden touch-none"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-            <div className="relative w-24 h-24 md:w-32 md:h-32">
-                <div className="absolute inset-0 opacity-20 grayscale">
-                    {logoImage}
-                </div>
-                <motion.div
-                    className="absolute inset-0 overflow-hidden"
-                    initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
-                    animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
-                    transition={{
-                        duration: 1,
-                        ease: "easeOut",
-                    }}
-                >
-                    {logoImage}
-                </motion.div>
+          <div className="relative w-24 h-24 md:w-32 md:h-32">
+            <div className="absolute inset-0 opacity-20 grayscale">
+              <Image
+                src="/aset/logo/logo.png"
+                alt="Logo BG"
+                fill
+                priority
+                sizes="(max-width: 768px) 96px, 128px"
+                className="object-contain"
+              />
             </div>
+            <motion.div
+              className="absolute inset-0 overflow-hidden"
+              initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
+              animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+              transition={{
+                duration: 2,
+                ease: "easeInOut",
+              }}
+            >
+              <Image
+                src="/aset/logo/logo.png"
+                alt="ZeroCloud Logo"
+                fill
+                priority
+                sizes="(max-width: 768px) 96px, 128px"
+                className="object-contain"
+              />
+            </motion.div>
+          </div>
         </motion.div>
-    );
+      )}
+    </AnimatePresence>
+  );
 };
 
 export default Loader;
