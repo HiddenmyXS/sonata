@@ -160,7 +160,7 @@ export default function SentinelSection() {
                </TerminalLine>
 
                <TerminalLine delay={0.5} className="text-emerald-500">
-                 [OK] ZeroCloud Sentinel Watchdog v1 loaded.
+                 [OK] Sonata Sentinel Watchdog v1 loaded.
                </TerminalLine>
 
                <TerminalLine delay={1.0} className="text-gray-500">
@@ -211,7 +211,7 @@ export default function SentinelSection() {
               <BoxBadge icon={Cpu} label="Anti-Miner" color="border-amber-500/20 text-amber-500" />
               <BoxBadge icon={Crown} label="Whitelist" color="border-orange-500/20 text-orange-500" />
               <BoxBadge icon={TerminalIcon} label="Auto-Throttle" color="border-yellow-500/20 text-yellow-500" />
-              <BoxBadge icon={Shield} label="Real-Time Monitoring" color="border-sky-500/20 text-sky-500" />
+              <BoxBadge icon={Shield} label="Real-Time Monitoring" color="border-purple-500/20 text-purple-500" />
             </div>
 
             <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
@@ -223,7 +223,7 @@ export default function SentinelSection() {
                 Server lag padahal player sepi? Itu biasanya karena ada user lain di node yang sama lagi <span className="text-gray-200 font-semibold">mining crypto</span> atau kena serangan.
               </p>
               <p>
-                Di ZeroCloud, Sentinel bekerja 24 jam menjaga resource kamu. Sistem ini memisahkan traffic jahat dari traffic player asli.
+                Di Sonata, Sentinel bekerja 24 jam menjaga resource kamu. Sistem ini memisahkan traffic jahat dari traffic player asli.
               </p>
             </div>
 

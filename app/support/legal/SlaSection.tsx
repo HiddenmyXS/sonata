@@ -24,7 +24,7 @@ const slaData = [
     content: "Untuk kejelasan dokumen ini, istilah berikut didefinisikan sebagai:",
     points: [
       "Layanan: Produk hosting, VPS, atau Dedicated Server yang disewa.",
-      "Downtime: Periode di mana layanan tidak dapat diakses melalui jaringan publik (Public Network) akibat kegagalan infrastruktur ZeroCloud.",
+      "Downtime: Periode di mana layanan tidak dapat diakses melalui jaringan publik (Public Network) akibat kegagalan infrastruktur Sonata.",
       "Uptime Bulanan: Persentase waktu layanan tersedia dalam satu bulan kalender.",
       "Maintenance Terjadwal: Pemeliharaan yang diberitahukan minimal 24 jam sebelumnya."
     ]
@@ -33,7 +33,7 @@ const slaData = [
     id: "guarantee",
     title: "2. Uptime Guarantee",
     icon: <Activity className="w-5 h-5" />,
-    content: "ZeroCloud menjamin tingkat ketersediaan (Uptime) jaringan dan daya infrastruktur sebesar 99.9% setiap bulan kalender.",
+    content: "Sonata menjamin tingkat ketersediaan (Uptime) jaringan dan daya infrastruktur sebesar 99.9% setiap bulan kalender.",
     points: [
       "Target Uptime: 99.9% per bulan.",
       "Maksimal Downtime yang ditoleransi: ~43 menit per bulan.",
@@ -100,8 +100,8 @@ export default function SlaSection() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1500));
       const link = document.createElement('a');
-      link.href = '/documents/ZeroCloud_SLA.pdf'; 
-      link.download = `ZeroCloud_SLA_${new Date().getFullYear()}.pdf`;
+      link.href = '/documents/Sonata_SLA.pdf'; 
+      link.download = `Sonata_SLA_${new Date().getFullYear()}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -270,7 +270,7 @@ export default function SlaSection() {
 
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-gray-900/30 border border-gray-800">
           <p className="text-sm text-gray-500 text-center md:text-left">
-            ZeroCloud berkomitmen menjaga standar kualitas layanan tertinggi. Dokumen SLA ini adalah jaminan tertulis kami untuk Anda.
+            Sonata berkomitmen menjaga standar kualitas layanan tertinggi. Dokumen SLA ini adalah jaminan tertulis kami untuk Anda.
           </p>
           <div className="flex gap-4 shrink-0">
             <button className="px-8 py-3 rounded-xl bg-white text-gray-950 text-sm font-bold hover:bg-gray-200 transition-colors shadow-lg shadow-white/5 transform active:scale-95 duration-150">

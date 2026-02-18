@@ -1,11 +1,10 @@
 "use client";
 
 import { useRef } from "react";
-import { ArrowRightIcon, MessageCircle, Zap } from "lucide-react";
+import { MessageCircle, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
-import { LightRays } from "@/components/ui/light-rays";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { WordRotate } from "@/components/ui/word-rotate";
 
@@ -15,7 +14,7 @@ export default function HeroSection() {
   const rotatingWords = [
     "Next Level!",
     "Fast & Reliable!",
-    "Selalu Ada!",
+    "Always Here!",
   ];
 
   const containerVariants = {
@@ -45,7 +44,6 @@ export default function HeroSection() {
       className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gray-950 px-8"
     >
       <div className="absolute inset-0 z-0">
-        <LightRays />
         <InteractiveGridPattern
           className={cn(
             "mask-[radial-gradient(800px_circle_at_center,white,transparent)]",
@@ -54,7 +52,7 @@ export default function HeroSection() {
           width={40}
           height={40}
           squares={[80, 80]}
-          squaresClassName="hover:fill-sky-500"
+          squaresClassName="hover:fill-purple-500"
         />
       </div>
       
@@ -68,10 +66,10 @@ export default function HeroSection() {
       >
         
         <motion.div variants={itemVariants} className="mb-8">
-          <div className="group rounded-full border border-gray-800 bg-gray-900/50 backdrop-blur-md transition-all hover:border-sky-500/50 hover:bg-gray-900/80 cursor-pointer">
-            <AnimatedShinyText className="inline-flex items-center justify-center px-5 py-2 transition ease-out text-white hover:text-sky-300">
-              <span className="flex h-2 w-2 rounded-full bg-sky-500 animate-pulse mr-3 shadow-[0_0_10px_rgba(14,165,233,0.6)]"></span>
-              <span className="text-xs md:text-sm font-medium tracking-wide text-sky-500">New! App Hosting US Location | 🇺🇸</span>
+          <div className="group rounded-full border border-gray-800 bg-gray-900/50 backdrop-blur-md transition-all hover:border-purple-500/50 hover:bg-gray-900/80 cursor-pointer">
+            <AnimatedShinyText className="inline-flex items-center justify-center px-5 py-2 transition ease-out text-white hover:text-purple-300">
+              <span className="flex h-2 w-2 rounded-full bg-purple-500 animate-pulse mr-3 shadow-[0_0_10px_rgba(14,165,233,0.6)]"></span>
+              <span className="text-xs md:text-sm font-medium tracking-wide text-purple-500">New! App Hosting US Location | 🇺🇸</span>
             </AnimatedShinyText>
           </div>
         </motion.div>
@@ -85,7 +83,7 @@ export default function HeroSection() {
           </span>
           <div className="drop-shadow-[0_0_40px_rgba(14,165,233,0.3)]">
             <WordRotate 
-              className="bg-clip-text text-transparent bg-linear-to-r from-sky-400 to-blue-500 leading-tight" 
+              className="bg-clip-text text-transparent bg-linear-to-r from-purple-400 to-indigo-500 leading-tight" 
               words={rotatingWords} 
               duration={2500} 
             />
@@ -96,21 +94,21 @@ export default function HeroSection() {
           variants={itemVariants} 
           className="text-base md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light"
         >
-          Rasain performa server <span className="text-sky-400 font-semibold">level turnamen</span> dengan keamanan tingkat tinggi dan support yang bikin hati adem. Ayo bergabung dan bawa komunitas gaming-mu to the Top!
+          Experience <span className="text-purple-400 font-semibold">next-gen hosting</span> server performance with enterprise-grade security and support that puts you at ease. Join us and take your gaming community to the Top!
         </motion.p>
         
         <motion.div 
           variants={itemVariants} 
           className="flex flex-col sm:flex-row items-center gap-5 w-full justify-center"
         >
-          <a href="/game-host" className="group flex items-center justify-center gap-3 px-8 py-4 rounded-full text-sm font-bold text-white border border-sky-500 hover:border-gray800 bg-sky-500 hover:bg-sky-600 hover:text-white hover:border-gray-600 transition-all backdrop-blur-sm">
+          <a href="/game-host" className="group flex items-center justify-center gap-3 px-8 py-4 rounded-full text-sm font-bold text-white border border-purple-500 hover:border-gray800 bg-purple-500 hover:bg-purple-600 hover:text-white hover:border-gray-600 transition-all backdrop-blur-sm">
             <Zap className="w-5 h-5 text-white fill-white/50" />
             <span>Game Hosting</span>
           </a>
 
           <a href="/discord" className="group flex items-center justify-center gap-3 px-8 py-4 rounded-full text-sm font-bold text-gray-300 border border-gray-800 bg-gray-950/50 hover:bg-gray-900 hover:text-white hover:border-gray-600 transition-all backdrop-blur-sm">
             <MessageCircle className="w-5 h-5 group-hover:-rotate-12 transition-transform" />
-            <span>Tanya Dulu Aja</span>
+            <span>Ask Questions</span>
           </a>
         </motion.div>
 

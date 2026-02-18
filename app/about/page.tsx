@@ -32,28 +32,28 @@ const teamMembers = [
   {
     name: "Darren Suharko",
     role: "Founder & CEO",
-    bio: "Visioner dan pemimpin yang mengarahkan visi ZeroCloud menuju masa depan infrastruktur digital.",
+    bio: "Visioner dan pemimpin yang mengarahkan visi Sonata menuju masa depan infrastruktur digital.",
     image: "/aset/images/profile/darren.png",
-    gradient: "from-blue-500 to-sky-500"
+    gradient: "from-indigo-500 to-purple-500"
   },
   {
     name: "Azka Attariq",
     role: "Head of Infrastructure",
-    bio: "Arsitek di balik sistem Infrastruktur ZeroCloud yang scalable dan andal.",
+    bio: "Arsitek di balik sistem Infrastruktur Sonata yang scalable dan andal.",
     image: "/aset/images/profile/tariq.jpeg",
-    gradient: "from-blue-500 to-sky-500"
+    gradient: "from-indigo-500 to-purple-500"
   },
   {
     name: "Dhiya Altamis",
     role: "Lead Developer",
-    bio: "All-stack wizard yang membangun panel kontrol ZeroCloud agar intuitif namun powerful.",
+    bio: "All-stack wizard yang membangun panel kontrol Sonata agar intuitif namun powerful.",
     image: "/aset/images/profile/dhiya.png",
     gradient: "from-red-500 to-red-700"
   },
   {
     name: "Derion",
     role: "Developer",
-    bio: "Bot developer andal yang memastikan ekosistem ZeroCloud selalu terotomatisasi dan efisien.",
+    bio: "Bot developer andal yang memastikan ekosistem Sonata selalu terotomatisasi dan efisien.",
     image: "/aset/images/profile/derion.jpeg",
     gradient: "from-orange-500 to-red-500"
   }
@@ -70,10 +70,10 @@ export default function AboutPage() {
   const opacityHero = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <main ref={containerRef} className="px-8 flex flex-col items-center w-full min-h-screen bg-gray-950 text-white overflow-hidden selection:bg-sky-500/30">
+    <main ref={containerRef} className="px-8 flex flex-col items-center w-full min-h-screen bg-gray-950 text-white overflow-hidden selection:bg-purple-500/30">
       
       <div className="fixed inset-0 z-0 pointer-events-none">
-         <LightRays className="opacity-40 text-sky-500" />
+         <LightRays className="opacity-40 text-purple-500" />
          
          <AnimatedGridPattern
             numSquares={30}
@@ -97,13 +97,13 @@ export default function AboutPage() {
           variants={fadeInUp}
           className="flex flex-col items-center gap-6"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-500/10 px-4 py-1.5 text-sm font-medium text-sky-400 backdrop-blur-md shadow-[0_0_20px_rgba(14,165,233,0.2)]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-1.5 text-sm font-medium text-purple-400 backdrop-blur-md shadow-[0_0_20px_rgba(14,165,233,0.2)]">
             <Trophy className="w-4 h-4" />
             <span>Market Leader in Performance</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-center text-transparent bg-clip-text bg-linear-to-b from-white via-gray-100 to-gray-500 drop-shadow-2xl leading-[1.1] tracking-tight max-w-5xl">
-            We Are <span className="text-sky-500">ZeroCloud</span>
+            We Are <span className="text-purple-500">Sonata</span>
           </h1>
           
           <p className="max-w-2xl text-lg md:text-xl text-gray-400 leading-relaxed font-light">
@@ -125,7 +125,7 @@ export default function AboutPage() {
               <div key={idx} className="flex flex-col items-center justify-center gap-1">
                 <span className="text-4xl md:text-5xl font-bold text-white flex items-baseline">
                   <NumberTicker value={stat.value} className="text-white tracking-tighter" />
-                  <span className="text-sky-500 ml-1 text-2xl">{stat.suffix}</span>
+                  <span className="text-purple-500 ml-1 text-2xl">{stat.suffix}</span>
                 </span>
                 <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mt-2">
                   {stat.label}
@@ -148,23 +148,23 @@ export default function AboutPage() {
           >
             <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
               Obsesi Kami Pada <br/>
-              <span className="text-sky-500">Performa Absolut.</span>
+              <span className="text-purple-500">Performa Absolut.</span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed">
-                Di ZeroCloud, &quot;cukup bagus&ldquo; tidak pernah cukup. Kami menggabungkan hardware enterprise terbaru dengan software optimasi custom untuk memangkas setiap milidetik latensi.
+                Di Sonata, &quot;cukup bagus&ldquo; tidak pernah cukup. Kami menggabungkan hardware enterprise terbaru dengan software optimasi custom untuk memangkas setiap milidetik latensi.
             </p>
 
             <div className="grid grid-cols-1 gap-4">
-               <div className="flex gap-4 p-4 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-sky-500/30 transition-colors">
-                  <div className="p-3 bg-sky-500/10 rounded-xl h-fit">
-                     <Target className="w-6 h-6 text-sky-400" />
+               <div className="flex gap-4 p-4 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-purple-500/30 transition-colors">
+                  <div className="p-3 bg-purple-500/10 rounded-xl h-fit">
+                     <Target className="w-6 h-6 text-purple-400" />
                   </div>
                   <div>
                      <h3 className="font-bold text-white mb-1">Precision Engineering</h3>
                      <p className="text-sm text-gray-400">Setiap node server dituning manual untuk beban kerja gaming spesifik.</p>
                   </div>
                </div>
-               <div className="flex gap-4 p-4 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-sky-500/30 transition-colors">
+               <div className="flex gap-4 p-4 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-purple-500/30 transition-colors">
                   <div className="p-3 bg-purple-500/10 rounded-xl h-fit">
                      <Shield className="w-6 h-6 text-purple-400" />
                   </div>
@@ -190,11 +190,11 @@ export default function AboutPage() {
             <div className="absolute size-[420px] rounded-full border border-white/5 pointer-events-none" />
 
             <div className="relative z-10 flex flex-col items-center justify-center pointer-events-none">
-               <div className="size-24 rounded-full bg-gray-900 border border-sky-500/30 flex items-center justify-center shadow-[0_0_50px_-10px_rgba(14,165,233,0.4)]">
+               <div className="size-24 rounded-full bg-gray-900 border border-purple-500/30 flex items-center justify-center shadow-[0_0_50px_-10px_rgba(14,165,233,0.4)]">
                   <span className="text-3xl font-black text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500">
                     <Image
                       src="/aset/logo/logo.png"
-                      alt="ZeroCloud Logo"
+                      alt="Sonata Logo"
                       width={80}
                       height={80}
                       priority
@@ -211,8 +211,8 @@ export default function AboutPage() {
                 delay={0} 
                 radius={80}
             >
-                <div className="p-2 bg-gray-900/90 border border-sky-500/30 rounded-lg shadow-lg">
-                    <Server className="text-sky-400 w-5 h-5" />
+                <div className="p-2 bg-gray-900/90 border border-purple-500/30 rounded-lg shadow-lg">
+                    <Server className="text-purple-400 w-5 h-5" />
                 </div>
             </OrbitingCircles>
             <OrbitingCircles 
@@ -221,8 +221,8 @@ export default function AboutPage() {
                 delay={10} 
                 radius={80}
             >
-                <div className="p-2 bg-gray-900/90 border border-sky-500/30 rounded-lg shadow-lg">
-                    <Cpu className="text-blue-400 w-5 h-5" />
+                <div className="p-2 bg-gray-900/90 border border-purple-500/30 rounded-lg shadow-lg">
+                    <Cpu className="text-indigo-400 w-5 h-5" />
                 </div>
             </OrbitingCircles>
 
@@ -286,7 +286,7 @@ export default function AboutPage() {
 
       <section className="relative z-10 w-full max-w-7xl px-4 py-24">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-500/10 px-4 py-1.5 text-sm font-medium text-sky-400 backdrop-blur-md shadow-[0_0_20px_rgba(14,165,233,0.2)] mb-2">
+          <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-1.5 text-sm font-medium text-purple-400 backdrop-blur-md shadow-[0_0_20px_rgba(14,165,233,0.2)] mb-2">
              <Users className="w-3 h-3" />
              <span>The Squad</span>
           </div>
@@ -304,7 +304,7 @@ export default function AboutPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.2 }}
-                    className="group relative rounded-3xl bg-gray-900/40 border border-gray-800 p-1 overflow-hidden transition-all hover:bg-gray-900/80 hover:shadow-2xl hover:shadow-sky-500/10 hover:-translate-y-2"
+                    className="group relative rounded-3xl bg-gray-900/40 border border-gray-800 p-1 overflow-hidden transition-all hover:bg-gray-900/80 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2"
                 >
                     <div className="relative bg-gray-950/50 rounded-[1.3rem] p-6 h-full flex flex-col items-center text-center backdrop-blur-sm overflow-hidden">
                         

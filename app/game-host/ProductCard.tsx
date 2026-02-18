@@ -41,7 +41,7 @@ export function ProductCard({ game, tierColor, stockStatus, isLoadingStock, inde
         <div className="mb-6">
           <h3 className={cn(
             "text-xl font-bold mb-1 transition-colors",
-            isSoldOut ? "text-gray-400" : "text-white group-hover:text-sky-400"
+            isSoldOut ? "text-gray-400" : "text-white group-hover:text-purple-400"
           )}>
             {game.title}
           </h3>
@@ -72,7 +72,7 @@ export function ProductCard({ game, tierColor, stockStatus, isLoadingStock, inde
               "w-full block text-center py-3 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 border border-transparent",
               isSoldOut 
                 ? "bg-slate-900/50 border-slate-800 text-slate-500 cursor-not-allowed" 
-                : `bg-linear-to-r ${tierColor} text-white shadow-lg opacity-90 hover:opacity-100 hover:scale-[1.02] hover:shadow-sky-500/20`
+                : `bg-linear-to-r ${tierColor} text-white shadow-lg opacity-90 hover:opacity-100 hover:scale-[1.02] hover:shadow-purple-500/20`
             )}
             onClick={(e) => isSoldOut && e.preventDefault()}
           >

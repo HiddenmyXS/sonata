@@ -33,10 +33,10 @@ const features = [
   {
     title: "Jaringan Global Low Latency",
     desc: "Lokasi server strategis di Jakarta, Singapore, & US untuk ping terendah.",
-    icon: <Globe className="w-6 h-6 text-sky-400" />,
+    icon: <Globe className="w-6 h-6 text-purple-400" />,
     detail: "3 Region Premium",
-    color: "from-sky-500/20 to-blue-500/5",
-    border: "group-hover:border-sky-500/30"
+    color: "from-purple-500/20 to-indigo-500/5",
+    border: "group-hover:border-purple-500/30"
   },
   {
     title: "Hardware Terdedikasi",
@@ -102,7 +102,7 @@ export default function WhyChooseSection() {
         style={{ y }}
         animate={{ opacity: [0.4, 0.6, 0.4], scale: [1, 1.05, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-sky-900/10 blur-[100px] rounded-full pointer-events-none" 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-900/10 blur-[100px] rounded-full pointer-events-none" 
       />
 
       <motion.div 
@@ -116,7 +116,7 @@ export default function WhyChooseSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <Activity className="w-3 h-3" />
             <span>Kualitas Tanpa Kompromi</span>
@@ -129,7 +129,7 @@ export default function WhyChooseSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl md:text-5xl font-extrabold text-white mb-5"
           >
-            Mengapa Memilih <span className="text-sky-500">ZeroCloud?</span>
+            Why Choose <span className="text-purple-500">Sonata?</span>
           </motion.h2>
           
           <motion.p 
@@ -169,7 +169,7 @@ export default function WhyChooseSection() {
                    </span>
                 </div>
                 
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-sky-100 transition-colors">
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-100 transition-colors">
                   {feature.title}
                 </h3>
                 <p className="text-sm text-gray-400 leading-relaxed">

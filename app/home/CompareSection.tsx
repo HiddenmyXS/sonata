@@ -66,7 +66,7 @@ const pricingRow = {
 };
 
 const providers = [
-  { id: "zerocloud", name: "ZeroCloud", color: "text-sky-400" },
+  { id: "zerocloud", name: "Sonata", color: "text-purple-400" },
   { id: "zlpe", name: "Ze*****re", color: "text-gray-500" },
   { id: "arra", name: "Ar****ra", color: "text-gray-500" },
   { id: "nscd", name: "N*******d", color: "text-gray-500" },
@@ -82,13 +82,13 @@ export default function ComparisonSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-bold uppercase tracking-wider"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-wider"
           >
             <Zap className="w-3 h-3" />
             <span>Market Comparison</span>
           </motion.div>
           <h2 className="text-3xl md:text-5xl font-black text-white">
-            Mengapa <span className="text-transparent bg-clip-text bg-sky-500">ZeroCloud?</span>
+            Mengapa <span className="text-transparent bg-clip-text bg-purple-500">Sonata?</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Transparansi adalah kunci. Lihat bagaimana spesifikasi dan harga kami bersaing dengan provider lain.
@@ -108,7 +108,7 @@ export default function ComparisonSection() {
                                 {prov.name}
                             </h4>
                             {prov.id === 'zerocloud' && (
-                                <span className="text-[10px] font-bold bg-sky-500/20 text-sky-400 px-2 py-0.5 rounded-full border border-sky-500/30">
+                                <span className="text-[10px] font-bold bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded-full border border-purple-500/30">
                                     RECOMMENDED
                                 </span>
                             )}
@@ -128,16 +128,16 @@ export default function ComparisonSection() {
                         >
                             <div className="col-span-1 flex flex-col justify-center">
                                 <div className="flex items-center gap-2 text-gray-300 font-bold text-sm">
-                                    <row.icon className="w-4 h-4 text-sky-500" />
+                                    <row.icon className="w-4 h-4 text-purple-500" />
                                     {row.feature}
                                 </div>
                             </div>
 
                             <div className="col-span-1 relative">
-                                <div className="absolute inset-0 bg-sky-500/10 blur-xl rounded-full opacity-50" />
-                                <div className="relative bg-gray-800/80 border border-sky-500/50 rounded-xl p-3 text-center shadow-lg shadow-sky-500/10">
+                                <div className="absolute inset-0 bg-purple-500/10 blur-xl rounded-full opacity-50" />
+                                <div className="relative bg-gray-800/80 border border-purple-500/50 rounded-xl p-3 text-center shadow-lg shadow-purple-500/10">
                                     <p className="text-sm font-bold text-white leading-tight">{row.zerocloud.text}</p>
-                                    <p className="text-[10px] text-sky-300 mt-1 font-medium">{row.zerocloud.sub}</p>
+                                    <p className="text-[10px] text-purple-300 mt-1 font-medium">{row.zerocloud.sub}</p>
                                 </div>
                             </div>
 
@@ -155,9 +155,9 @@ export default function ComparisonSection() {
                         <p className="text-xs text-gray-500 font-normal mt-1">*Monthly Estimate</p>
                     </div>
                     
-                    {/* ZeroCloud Price */}
+                    {/* Sonata Price */}
                     <div className="col-span-1 text-center">
-                        <div className="text-2xl font-black text-sky-400">{pricingRow.zerocloud}</div>
+                        <div className="text-2xl font-black text-purple-400">{pricingRow.zerocloud}</div>
                         <p className="text-xs text-gray-400">Core Advanced</p>
                     </div>
 

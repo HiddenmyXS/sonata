@@ -14,8 +14,8 @@ const legalTabs = [
     label: "Terms of Service",
     shortLabel: "Terms",
     icon: Scale,
-    color: "from-sky-500 to-blue-600",
-    bg: "bg-sky-500/10",
+    color: "from-purple-500 to-indigo-600",
+    bg: "bg-purple-500/10",
     component: <TosSection />
   },
   {
@@ -61,7 +61,7 @@ export default function LegalPage() {
     <main 
       ref={containerRef}
       className={cn(
-        "px-8 flex flex-col items-center w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-sky-500/30 overflow-x-hidden transition-opacity duration-700",
+        "px-8 flex flex-col items-center w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-purple-500/30 overflow-x-hidden transition-opacity duration-700",
         isVisible ? "opacity-100" : "opacity-0"
       )}
     >
@@ -83,7 +83,7 @@ export default function LegalPage() {
             className="flex flex-col items-center text-center space-y-6"
         >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md shadow-lg">
-                <ShieldCheck className="w-4 h-4 text-sky-400" />
+                <ShieldCheck className="w-4 h-4 text-purple-400" />
                 <span className="text-xs font-bold text-gray-300 uppercase tracking-widest">Transparency & Trust</span>
             </div>
             
@@ -92,7 +92,7 @@ export default function LegalPage() {
             </h1>
             
             <p className="text-gray-400 text-lg max-w-2xl leading-relaxed">
-                Kami berkomitmen untuk transparansi penuh. Pelajari bagaimana kami melindungi hak Anda, menjaga privasi data, dan menjamin kualitas layanan ZeroCloud.
+                Kami berkomitmen untuk transparansi penuh. Pelajari bagaimana kami melindungi hak Anda, menjaga privasi data, dan menjamin kualitas layanan Sonata.
             </p>
         </motion.div>
       </div>
@@ -108,7 +108,7 @@ export default function LegalPage() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  "relative flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-sky-500",
+                  "relative flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-purple-500",
                   isActive ? "text-white" : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
                 )}
               >

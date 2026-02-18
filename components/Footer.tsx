@@ -55,9 +55,9 @@ const Footer = () => {
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="flex items-center gap-2 w-fit group">
                <div className="relative w-8 h-8 transition-transform group-hover:scale-110">
-                  <Image src="/aset/logo/logo.png" alt="ZeroCloud Logo" fill className="object-contain" />
+                  <Image src="/aset/logo/logo.png" alt="Sonata Logo" fill className="object-contain" />
                </div>
-               <h4 className="text-2xl font-extrabold text-white tracking-tight group-hover:text-sky-400 transition-colors">ZeroCloud.id</h4>
+               <h4 className="text-2xl font-extrabold text-white tracking-tight group-hover:text-purple-400 transition-colors">Sonata</h4>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
               Premium hosting solutions for next-generation applications and games. Built for speed, security, and stability in Indonesia.
@@ -77,8 +77,8 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-gray-400">
               {productLinks.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="group flex items-center gap-2 hover:text-sky-400 transition-all duration-200 w-fit">
-                    <ArrowRight className="w-3 h-3 opacity-0 -ml-3 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-sky-500" />
+                  <Link href={item.href} className="group flex items-center gap-2 hover:text-purple-400 transition-all duration-200 w-fit">
+                    <ArrowRight className="w-3 h-3 opacity-0 -ml-3 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-purple-500" />
                     {item.name}
                   </Link>
                 </li>
@@ -91,8 +91,8 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-gray-400">
               {companyLinks.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="group flex items-center gap-2 hover:text-sky-400 transition-all duration-200 w-fit">
-                    <ArrowRight className="w-3 h-3 opacity-0 -ml-3 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-sky-500" />
+                  <Link href={item.href} className="group flex items-center gap-2 hover:text-purple-400 transition-all duration-200 w-fit">
+                    <ArrowRight className="w-3 h-3 opacity-0 -ml-3 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-purple-500" />
                     {item.name}
                   </Link>
                 </li>
@@ -133,7 +133,7 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
-                <p>&copy; {new Date().getFullYear()} ZeroCloud Indonesia. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Sonata Indonesia. All rights reserved.</p>
                 
                 <div className="flex gap-4">
                     <SocialLink href="https://github.com/zerocloud" icon={<Github className="w-4 h-4" />} label="Github" />

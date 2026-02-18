@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   Plus, 
   Minus, 
-  Search, 
   HelpCircle, 
   MessageSquareText,
   ChevronRight
@@ -69,7 +68,6 @@ export default function FaqSection() {
   return (
     <section className="relative w-full py-24 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
       
-      <div className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-sky-900/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-4xl mx-auto relative z-10">
         
         <div className="text-center mb-12">
@@ -77,14 +75,14 @@ export default function FaqSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <HelpCircle className="w-3 h-3" />
             <span>Pusat Bantuan</span>
           </motion.div>
           
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8">
-            Frequently Asked <span className="text-sky-500">Questions</span>
+            Frequently Asked <span className="text-purple-500">Questions</span>
           </h2>
           
           <motion.div 
@@ -99,7 +97,7 @@ export default function FaqSection() {
                 placeholder="Cari pertanyaan (misal: ddos, upgrade)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-gray-900/50 border border-gray-800 rounded-2xl py-4 pl-4 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 transition-all backdrop-blur-sm shadow-xl"
+                className="w-full bg-gray-900/50 border border-gray-800 rounded-2xl py-4 pl-4 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all backdrop-blur-sm shadow-xl"
             />
           </motion.div>
         </div>
@@ -125,7 +123,7 @@ export default function FaqSection() {
                         <p className="text-gray-500">Pertanyaan tidak ditemukan. Coba kata kunci lain.</p>
                         <button 
                             onClick={() => setSearchQuery("")}
-                            className="mt-2 text-sky-500 hover:underline text-sm"
+                            className="mt-2 text-purple-500 hover:underline text-sm"
                         >
                             Reset pencarian
                         </button>
@@ -143,7 +141,7 @@ export default function FaqSection() {
         >
             <p className="text-gray-400 mb-4">Masih bingung? Tim kami siap ngobrol.</p>
             <a href="/chat" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 border border-gray-800 text-white font-medium hover:bg-gray-800 hover:border-gray-700 transition-all group">
-                <MessageSquareText className="w-4 h-4 text-sky-500 group-hover:rotate-12 transition-transform" />
+                <MessageSquareText className="w-4 h-4 text-purple-500 group-hover:rotate-12 transition-transform" />
                 Chat dengan Support
                 <ChevronRight className="w-4 h-4 opacity-50 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -164,7 +162,7 @@ function FAQItem({ faq, isOpen, onClick, index }: { faq: FAQ, isOpen: boolean, o
             className={cn(
                 "border rounded-2xl overflow-hidden transition-all duration-300",
                 isOpen 
-                    ? "bg-gray-900/40 border-sky-500/30 shadow-[0_0_30px_-10px_rgba(14,165,233,0.1)]" 
+                    ? "bg-gray-900/40 border-purple-500/30 shadow-[0_0_30px_-10px_rgba(14,165,233,0.1)]" 
                     : "bg-gray-900/20 border-gray-800 hover:border-gray-700"
             )}
         >
@@ -175,14 +173,14 @@ function FAQItem({ faq, isOpen, onClick, index }: { faq: FAQ, isOpen: boolean, o
                 <div className="flex flex-col gap-1">
                     <span className={cn(
                         "text-lg font-bold transition-colors",
-                        isOpen ? "text-sky-100" : "text-gray-300 group-hover:text-white"
+                        isOpen ? "text-purple-100" : "text-gray-300 group-hover:text-white"
                     )}>
                         {faq.question}
                     </span>
                     {isOpen && (
                         <motion.span 
                             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                            className="text-[10px] text-sky-500 uppercase tracking-wider font-bold"
+                            className="text-[10px] text-purple-500 uppercase tracking-wider font-bold"
                         >
                             {faq.category}
                         </motion.span>
@@ -192,7 +190,7 @@ function FAQItem({ faq, isOpen, onClick, index }: { faq: FAQ, isOpen: boolean, o
                 <div className={cn(
                     "p-2 rounded-full border transition-all duration-300 shrink-0 ml-4",
                     isOpen 
-                        ? "bg-sky-500 text-white border-sky-500 rotate-90" 
+                        ? "bg-purple-500 text-white border-purple-500 rotate-90" 
                         : "bg-gray-950 border-gray-800 text-gray-500"
                 )}>
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}

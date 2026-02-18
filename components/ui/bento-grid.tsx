@@ -49,8 +49,8 @@ const BentoCard = ({
       "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl",
       "bg-gray-900/40 border border-gray-800 backdrop-blur-sm",
       "transition-all duration-500",
-      "hover:bg-gray-900/80 hover:border-sky-500/30",
-      "hover:shadow-2xl hover:shadow-sky-500/10",
+      "hover:bg-gray-900/80 hover:border-purple-500/30",
+      "hover:shadow-2xl hover:shadow-purple-500/10",
       className
     )}
     {...props}
@@ -58,7 +58,7 @@ const BentoCard = ({
     <div>{background}</div>
     
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-      <Icon className="h-12 w-12 origin-left transform-gpu text-sky-500 transition-all duration-300 ease-in-out group-hover:scale-75 group-hover:text-sky-400" />
+      <Icon className="h-12 w-12 origin-left transform-gpu text-purple-500 transition-all duration-300 ease-in-out group-hover:scale-75 group-hover:text-purple-400" />
       
       <h3 className="text-xl font-bold text-gray-100 transition-colors group-hover:text-white">
         {name}
@@ -78,7 +78,7 @@ const BentoCard = ({
         variant="ghost"
         asChild
         size="sm"
-        className="pointer-events-auto hover:bg-sky-500/10 hover:text-sky-400 text-sky-500 font-bold transition-all"
+        className="pointer-events-auto hover:bg-purple-500/10 hover:text-purple-400 text-purple-500 font-bold transition-all"
       >
         <a href={href}>
           {cta}
@@ -87,7 +87,7 @@ const BentoCard = ({
       </Button>
     </div>
 
-    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-sky-500/3" />
+    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-purple-500/3" />
   </div>
 );
 

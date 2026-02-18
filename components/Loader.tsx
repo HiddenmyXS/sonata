@@ -44,7 +44,7 @@ const Loader = () => {
     const logoImage = (
         <Image
             src="/aset/logo/logo.png"
-            alt="ZeroCloud Logo"
+            alt="Sonata Logo"
             width={120}
             height={120}
             priority

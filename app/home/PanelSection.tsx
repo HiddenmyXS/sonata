@@ -20,41 +20,41 @@ const panelFeatures = [
     title: "Clean UI",
     desc: "Antarmuka modern & intuitif tanpa gangguan.",
     icon: LayoutTemplate,
-    color: "text-sky-400",
-    bg: "bg-sky-400/10",
-    border: "border-sky-400/20"
+    color: "text-purple-400",
+    bg: "bg-purple-400/10",
+    border: "border-purple-400/20"
   },
   {
     title: "1-Click Mod & Plugin",
     desc: "Install ribuan plugins & modpacks instan.",
     icon: PackageOpen,
-    color: "text-sky-400",
-    bg: "bg-sky-400/10",
-    border: "border-sky-400/20"
+    color: "text-purple-400",
+    bg: "bg-purple-400/10",
+    border: "border-purple-400/20"
   },
   {
     title: "Startup Editor",
     desc: "Ubah versi Java & parameter startup sesuka hati.",
     icon: Settings2,
-    color: "text-sky-400",
-    bg: "bg-sky-400/10",
-    border: "border-sky-400/20"
+    color: "text-purple-400",
+    bg: "bg-purple-400/10",
+    border: "border-purple-400/20"
   },
   {
     title: "Subdomains",
     desc: "Kelola subdomain langsung dari panel, gunakan gratis.",
     icon: Globe,
-    color: "text-sky-400",
-    bg: "bg-sky-400/10",
-    border: "border-sky-400/20"
+    color: "text-purple-400",
+    bg: "bg-purple-400/10",
+    border: "border-purple-400/20"
   },
   {
     title: "File Manager",
     desc: "Edit config server langsung di browser.",
     icon: FolderOpen,
-    color: "text-sky-400",
-    bg: "bg-sky-400/10",
-    border: "border-sky-400/20"
+    color: "text-purple-400",
+    bg: "bg-purple-400/10",
+    border: "border-purple-400/20"
   },
 ];
 
@@ -114,7 +114,7 @@ export default function PanelSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <Gamepad2 className="w-3 h-3" />
             <span>Next-Gen Management</span>
@@ -128,7 +128,7 @@ export default function PanelSection() {
             className="text-3xl md:text-5xl font-bold text-white mb-5"
           >
             Meet our custom<br />
-            <span className="text-sky-500 md:text-6xl">Control Panel</span>
+            <span className="text-purple-500 md:text-6xl">Control Panel</span>
           </motion.h2>
           
           <motion.p 
@@ -152,7 +152,7 @@ export default function PanelSection() {
           >
             <Safari 
               url="ctrl.zerocloud.id" 
-              className="size-full shadow-2xl shadow-sky-500/10"
+              className="size-full shadow-2xl shadow-purple-500/10"
               imageSrc="/aset/images/panel/panel.png" 
             />
           </motion.div>
@@ -180,7 +180,7 @@ export default function PanelSection() {
                 <feature.icon className={cn("w-5 h-5", feature.color)} />
               </div>
               
-              <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-1 group-hover:text-sky-400 transition-colors duration-300">
+              <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-1 group-hover:text-purple-400 transition-colors duration-300">
                 {feature.title}
                 <ChevronRight className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
               </h3>

@@ -36,7 +36,7 @@ const privacyData = [
     id: "usage",
     title: "2. How We Use Data",
     icon: <FileText className="w-5 h-5" />,
-    content: "Data Anda adalah aset vital untuk operasional kami. Kami tidak menggunakan data Anda untuk tujuan di luar penyediaan layanan ZeroCloud.",
+    content: "Data Anda adalah aset vital untuk operasional kami. Kami tidak menggunakan data Anda untuk tujuan di luar penyediaan layanan Sonata.",
     points: [
       "Menyediakan, memelihara, dan meningkatkan layanan hosting.",
       "Komunikasi terkait pembaruan akun, sistem, dan promosi.",
@@ -60,7 +60,7 @@ const privacyData = [
     id: "sharing",
     title: "4. Sharing & Disclosure",
     icon: <Share2 className="w-5 h-5" />,
-    content: "ZeroCloud berprinsip untuk TIDAK menjual, menyewakan, atau memperdagangkan data pribadi Anda kepada pihak manapun.",
+    content: "Sonata berprinsip untuk TIDAK menjual, menyewakan, atau memperdagangkan data pribadi Anda kepada pihak manapun.",
     points: [
       "Pihak Ketiga Tepercaya: Payment Gateway (Midtrans/Xendit) & Layanan Email.",
       "Kewajiban Hukum: Jika diminta oleh penegak hukum (Sesuai UU ITE/PDP).",
@@ -124,8 +124,8 @@ export default function PrivacySection() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1500));
       const link = document.createElement('a');
-      link.href = '/documents/ZeroCloud_Privacy_Policy.pdf'; 
-      link.download = `ZeroCloud_Privacy_Policy_${new Date().getFullYear()}.pdf`;
+      link.href = '/documents/Sonata_Privacy_Policy.pdf'; 
+      link.download = `Sonata_Privacy_Policy_${new Date().getFullYear()}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -153,7 +153,7 @@ export default function PrivacySection() {
             </motion.div>
             
             <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-              Privacy <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-sky-500">Policy</span>
+              Privacy <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-purple-500">Policy</span>
             </h1>
             
             <div className="flex items-center gap-2 text-sm text-gray-500 font-mono">
@@ -279,7 +279,7 @@ export default function PrivacySection() {
 
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-gray-900/30 border border-gray-800">
           <p className="text-sm text-gray-500 text-center md:text-left">
-            Kebijakan ini berlaku untuk semua pengguna layanan ZeroCloud. Pertanyaan lebih lanjut dapat diajukan melalui tim privasi kami.
+            Kebijakan ini berlaku untuk semua pengguna layanan Sonata. Pertanyaan lebih lanjut dapat diajukan melalui tim privasi kami.
           </p>
           <div className="flex gap-4 shrink-0">
             <button className="px-8 py-3 rounded-xl bg-white text-gray-950 text-sm font-bold hover:bg-gray-200 transition-colors shadow-lg shadow-white/5 transform active:scale-95 duration-150">

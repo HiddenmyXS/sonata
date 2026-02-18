@@ -34,9 +34,9 @@ export default function NotFound() {
   }, []);
 
   return (
-    <main className="px-8 relative min-h-screen w-full flex flex-col items-center justify-center bg-gray-950 overflow-hidden selection:bg-sky-500/30">
+    <main className="px-8 relative min-h-screen w-full flex flex-col items-center justify-center bg-gray-950 overflow-hidden selection:bg-purple-500/30">
       
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/20 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 blur-[150px] rounded-full pointer-events-none" />
       <div className="relative z-10 flex flex-col items-center text-center px-4">
         
@@ -62,7 +62,7 @@ export default function NotFound() {
                repeatType: "mirror", 
                repeatDelay: 3 
              }}
-             className="absolute inset-0 text-[150px] md:text-[200px] font-black leading-none tracking-tighter text-sky-500/30 blur-[2px] select-none"
+             className="absolute inset-0 text-[150px] md:text-[200px] font-black leading-none tracking-tighter text-purple-500/30 blur-[2px] select-none"
              aria-hidden="true"
            >
              404
@@ -102,10 +102,10 @@ export default function NotFound() {
            animate={{ opacity: 1, scale: 1 }}
            transition={{ delay: 0.5 }}
            onClick={generateExcuse}
-           className="group cursor-pointer relative overflow-hidden bg-gray-900/50 backdrop-blur-md border border-gray-800 rounded-xl p-4 mb-10 max-w-md w-full hover:border-sky-500/30 transition-colors"
+           className="group cursor-pointer relative overflow-hidden bg-gray-900/50 backdrop-blur-md border border-gray-800 rounded-xl p-4 mb-10 max-w-md w-full hover:border-purple-500/30 transition-colors"
         >
            <div className="flex items-start gap-3">
-              <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-sky-500/20 group-hover:text-sky-400 transition-colors">
+              <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-purple-500/20 group-hover:text-purple-400 transition-colors">
                  <Terminal className="w-5 h-5 text-gray-400" />
               </div>
               <div className="text-left">
@@ -127,7 +127,7 @@ export default function NotFound() {
              <ShimmerButton 
                 shimmerColor="#ffffff" 
                 background="#0ea5e9"
-                className="shadow-2xl shadow-sky-500/20"
+                className="shadow-2xl shadow-purple-500/20"
              >
                 <div className="flex items-center gap-2 px-6 py-1 font-bold text-white">
                    <Home className="w-4 h-4" />
@@ -149,7 +149,7 @@ export default function NotFound() {
       </div>
 
       <div className="absolute bottom-8 text-gray-600 text-xs font-mono">
-         Error Code: 404 • ZeroCloud System
+         Error Code: 404 • Sonata System
       </div>
 
     </main>

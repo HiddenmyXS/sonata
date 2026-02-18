@@ -30,16 +30,16 @@ const SearchResultItem: React.FC<{ icon: React.ReactNode; title: string; desc: s
   <button
     onClick={onClick}
     className="w-full flex items-start gap-4 px-4 py-3.5 rounded-xl
-               hover:bg-sky-500/10 transition-all duration-200
-               group cursor-pointer text-left border border-transparent hover:border-sky-500/20"
+               hover:bg-purple-500/10 transition-all duration-200
+               group cursor-pointer text-left border border-transparent hover:border-purple-500/20"
   >
-    <div className="mt-0.5 p-2 rounded-lg bg-gray-900 text-sky-500 border border-gray-800 group-hover:bg-sky-500/20 group-hover:text-sky-300 transition-all">
+    <div className="mt-0.5 p-2 rounded-lg bg-gray-900 text-purple-500 border border-gray-800 group-hover:bg-purple-500/20 group-hover:text-purple-300 transition-all">
       {icon}
     </div>
     <div className="flex-1 min-w-0">
-      <div className="text-gray-200 font-medium group-hover:text-sky-100 transition-colors flex items-center justify-between">
+      <div className="text-gray-200 font-medium group-hover:text-purple-100 transition-colors flex items-center justify-between">
         {title}
-        <ChevronRight className="w-4 h-4 text-gray-600 group-hover:text-sky-400 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+        <ChevronRight className="w-4 h-4 text-gray-600 group-hover:text-purple-400 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
       </div>
       <div className="text-sm text-gray-500 group-hover:text-gray-400 transition-colors line-clamp-1 mt-0.5">
         {desc}
@@ -267,7 +267,7 @@ export default function SupportComponent() {
   return (
     <main
       ref={containerRef}
-      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-1000 ease-in-out font-sans selection:bg-sky-500/30 overflow-hidden ${
+      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-1000 ease-in-out font-sans selection:bg-purple-500/30 overflow-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -279,7 +279,7 @@ export default function SupportComponent() {
          <motion.div 
            animate={{ opacity: [0.3, 0.5, 0.3], scale: [1, 1.1, 1] }}
            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-           className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-sky-600/10 blur-[150px] rounded-full"
+           className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-purple-600/10 blur-[150px] rounded-full"
          />
       </div>
 
@@ -295,7 +295,7 @@ export default function SupportComponent() {
           >
              <h1 className="text-4xl md:text-6xl font-black text-center tracking-tight max-w-4xl z-10 mb-6 drop-shadow-2xl">
                How can we <br />
-               <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-400 to-blue-500">
+               <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-indigo-500">
                  help you today?
                </span>
              </h1>
@@ -308,11 +308,11 @@ export default function SupportComponent() {
             className="w-full max-w-2xl mt-8 relative z-50"
           >
             <div className={`relative group transition-all duration-300 ${isFocused ? 'scale-[1.01]' : ''}`}>
-              <div className={`absolute -inset-0.5 bg-linear-to-r from-sky-500 to-blue-600 rounded-2xl opacity-30 blur transition duration-500 ${isFocused ? 'opacity-70' : 'group-hover:opacity-60'}`} />
+              <div className={`absolute -inset-0.5 bg-linear-to-r from-purple-500 to-indigo-600 rounded-2xl opacity-30 blur transition duration-500 ${isFocused ? 'opacity-70' : 'group-hover:opacity-60'}`} />
               
               <div className="relative flex items-center bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl">
                 <div className="pl-6 flex items-center pointer-events-none">
-                  <Search className={`w-5 h-5 transition-colors ${isFocused ? 'text-sky-400' : 'text-gray-500'}`} />
+                  <Search className={`w-5 h-5 transition-colors ${isFocused ? 'text-purple-400' : 'text-gray-500'}`} />
                   <div className="w-px h-5 bg-gray-800 ml-4" />
                 </div>
                 
@@ -341,11 +341,11 @@ export default function SupportComponent() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 right-0 mt-3 p-2 bg-gray-900/95 backdrop-blur-xl border border-gray-800 rounded-2xl shadow-2xl shadow-sky-900/20 overflow-hidden z-50"
+                  className="absolute top-full left-0 right-0 mt-3 p-2 bg-gray-900/95 backdrop-blur-xl border border-gray-800 rounded-2xl shadow-2xl shadow-purple-900/20 overflow-hidden z-50"
                 >
-                   <div className="px-4 py-2 text-[10px] font-bold text-sky-500 uppercase tracking-widest flex justify-between items-center">
+                   <div className="px-4 py-2 text-[10px] font-bold text-purple-500 uppercase tracking-widest flex justify-between items-center">
                       <span>Suggestions</span>
-                      <span className="bg-sky-900/30 px-2 py-0.5 rounded text-sky-400">{filteredResults.length} found</span>
+                      <span className="bg-purple-900/30 px-2 py-0.5 rounded text-purple-400">{filteredResults.length} found</span>
                    </div>
                    <div className="flex flex-col gap-1 mt-1">
                       {filteredResults.length > 0 ? (
@@ -387,14 +387,14 @@ export default function SupportComponent() {
             >
               {quickAccessCards.map((card, idx) => (
                 <motion.div key={idx} variants={cardVariants}>
-                  <Link href={card.href} className="group relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900/40 p-6 hover:bg-gray-900/80 transition-all duration-300 hover:border-sky-500/40 hover:-translate-y-2 hover:shadow-lg hover:shadow-sky-500/10 block">
-                     <div className="absolute inset-0 bg-linear-to-br from-sky-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <Link href={card.href} className="group relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900/40 p-6 hover:bg-gray-900/80 transition-all duration-300 hover:border-purple-500/40 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500/10 block">
+                     <div className="absolute inset-0 bg-linear-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                      
                      <div className="relative z-10 flex flex-col items-center text-center">
-                        <div className="mb-4 p-3 bg-gray-950 rounded-xl text-gray-400 border border-gray-800 group-hover:text-sky-400 group-hover:border-sky-500/30 transition-all duration-300 group-hover:scale-110">
+                        <div className="mb-4 p-3 bg-gray-950 rounded-xl text-gray-400 border border-gray-800 group-hover:text-purple-400 group-hover:border-purple-500/30 transition-all duration-300 group-hover:scale-110">
                           {card.icon}
                         </div>
-                        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-sky-200 transition-colors">{card.title}</h3>
+                        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors">{card.title}</h3>
                         <p className="text-sm text-gray-400 leading-relaxed">{card.desc}</p>
                      </div>
                   </Link>
@@ -412,7 +412,7 @@ export default function SupportComponent() {
              className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10"
            >
               <div className="space-y-3">
-                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-bold uppercase tracking-wider">
+                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-wider">
                     <Sparkles className="w-3 h-3" />
                     <span>Knowledge Base</span>
                  </div>
@@ -422,7 +422,7 @@ export default function SupportComponent() {
                  </p>
               </div>
               
-              <Link href="/docs" className="group inline-flex items-center gap-2 text-sm font-bold text-sky-400 hover:text-sky-300 transition-colors">
+              <Link href="/docs" className="group inline-flex items-center gap-2 text-sm font-bold text-purple-400 hover:text-purple-300 transition-colors">
                  <span>Lihat Semua Panduan</span>
                  <MoveRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>

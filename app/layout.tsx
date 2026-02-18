@@ -22,35 +22,35 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://zerocloud.id"), 
   
   title: {
-    default: "ZeroCloud — #1 High Performance Game Hosting",
-    template: "%s | ZeroCloud Indonesia",
+    default: "Sonata — #1 High Performance Game Hosting",
+    template: "%s | Sonata Indonesia",
   },
   description: "Hosting server game anti-lag, murah, dan stabil. Deploy Minecraft, FiveM, dan Node.js dalam hitungan detik. Garansi uptime 99.9% dengan proteksi DDoS bawaan.",
   
-  keywords: ["Game Hosting", "Minecraft Server", "VPS Murah", "Hosting Indonesia", "FiveM Hosting", "ZeroCloud"],
+  keywords: ["Game Hosting", "Minecraft Server", "VPS Murah", "Hosting Indonesia", "FiveM Hosting", "Sonata"],
   
-  authors: [{ name: "ZeroCloud Team", url: "https://zerocloud.id" }],
+  authors: [{ name: "Sonata Team", url: "https://zerocloud.id" }],
   
   openGraph: {
     type: "website",
     locale: "id_ID",
     url: "https://zerocloud.id",
-    title: "ZeroCloud — Level Up Your Game Server",
+    title: "Sonata — Level Up Your Game Server",
     description: "Ping rendah, performa monster, harga pelajar. Gak percaya? Cek sendiri!",
-    siteName: "ZeroCloud Indonesia",
+    siteName: "Sonata Indonesia",
     images: [
       {
         url: "/aset/metadata/banner.gif", 
         width: 1200,
         height: 630,
-        alt: "ZeroCloud Banner",
+        alt: "Sonata Banner",
       },
     ],
   },
   
   twitter: {
     card: "summary_large_image",
-    title: "ZeroCloud — Game Hosting Terbaik",
+    title: "Sonata — Game Hosting Terbaik",
     description: "Hosting server game anti-lag, murah, dan stabil.",
     images: ["/aset/metadata/banner.gif"],
     creator: "@zerocloud_id",
@@ -80,7 +80,7 @@ export default function RootLayout({
       <body
         className={cn(
           plusJakartaSans.className,
-          "bg-gray-950 text-white antialiased min-h-screen flex flex-col selection:bg-sky-500/30 selection:text-sky-200"
+          "bg-gray-950 text-white antialiased min-h-screen flex flex-col selection:bg-purple-500/30 selection:text-purple-200"
         )}
       >
         <Navbar />
