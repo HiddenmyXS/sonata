@@ -8,6 +8,7 @@ import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern
 import { LightRays } from "@/components/ui/light-rays";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { WordRotate } from "@/components/ui/word-rotate";
+import FlagIcon from "react-flagkit";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -71,7 +72,7 @@ export default function HeroSection() {
           <div className="group rounded-full border border-gray-800 bg-gray-900/50 backdrop-blur-md transition-all hover:border-sky-500/50 hover:bg-gray-900/80 cursor-pointer">
             <AnimatedShinyText className="inline-flex items-center justify-center px-5 py-2 transition ease-out text-white hover:text-sky-300">
               <span className="flex h-2 w-2 rounded-full bg-sky-500 animate-pulse mr-3 shadow-[0_0_10px_rgba(14,165,233,0.6)]"></span>
-              <span className="text-xs md:text-sm font-medium tracking-wide text-sky-500">New! App Hosting US Location | 🇺🇸</span>
+              <span className="text-xs md:text-sm font-medium tracking-wide text-sky-500 inline-flex">New! App Hosting US Location | <FlagIcon code="US" size={16}></FlagIcon></span>
             </AnimatedShinyText>
           </div>
         </motion.div>

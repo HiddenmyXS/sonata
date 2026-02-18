@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import FlagIcon from "react-flagkit";
 import { 
   Gamepad, 
   Home, 
@@ -157,14 +158,14 @@ export default function Header() {
                         <Link href="/home" className="flex items-center gap-2.5 group" onClick={() => setMobileMenuOpen(false)}>
                             <Image
                                 className="object-contain"
-                                src="/aset/logo/logo.png"
-                                alt="ZeroCloud"
+                                src="/aset/sonata.png"
+                                alt="Sonata"
                                 width={32}
                                 height={32}
                                 priority
                             />
                             <h1 className="text-base font-extrabold text-white tracking-wide group-hover:text-sky-200 transition-colors">
-                                ZeroCloud.id
+                                Sonata
                             </h1>
                         </Link>
 
@@ -230,10 +231,20 @@ export default function Header() {
                                 <Headset className="w-4 h-4" />
                                 <span>Support</span>
                             </Link>
+
                         </nav>
                     </div>
 
                     <div className="flex items-center gap-3">
+                        <DropdownMenu label="US" icon={<FlagIcon code="US" className="w-4 h-4" />}>
+                                <DropdownItem 
+                                    href="/support/legal" 
+                                    icon={<Scale className="w-5 h-5" />} 
+                                    title="Legal Center" 
+                                    desc="ToS, Privacy, SLA & Policies." 
+                                />
+                        </DropdownMenu>
+
                         <Link
                             href="https://ctrl.zerocloud.id"
                             target="_blank"

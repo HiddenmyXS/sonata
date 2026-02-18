@@ -32,6 +32,7 @@
     "react-dom": "19.2.3",
     "react-error-boundary": "^6.1.0",
     "react-fast-marquee": "^1.6.5",
+    "react-flagkit": "^2.0.4",
     "react-spring": "^10.0.3",
     "svg-dotted-map": "^2.0.1",
     "swr": "^2.3.8",
