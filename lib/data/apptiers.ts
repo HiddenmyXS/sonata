@@ -39,7 +39,7 @@ export const tiers: Record<string, TierData> = {
     label: "Flux",
     desc: "High Performance (Start Rp 20rb/GB)",
     icon: Trophy,
-    color: "from-sky-400 to-blue-600",
+    color: "from-purple-400 to-indigo-600",
     apps: [
       { id: "f1", title: "Flux Entry", price: "Rp 40.000", ram: "2GB", cpu: "2 vCPU High-Freq", storage: "15GB NVMe", slots: "Unltd", recommended: "Proxy / Bungeecord", billingUrl: "https://my.zerocloud.id/products/flux/flux-1" },
       { id: "f2", title: "Flux Basic", price: "Rp 80.000", ram: "4GB", cpu: "3 vCPU High-Freq", storage: "25GB NVMe", slots: "Unltd", recommended: "Vanilla Survival", billingUrl: "https://my.zerocloud.id/products/flux/flux-2" },

@@ -14,7 +14,7 @@ import {
 import { DottedMap } from "@/components/ui/dotted-map"; 
 import { cn } from "@/lib/utils";
 
-// harus diawali http:// atau https:// yh
+// jng lupa harus diawali http:// atau https:// yh
 const locations = [
   { 
     id: "id", 
@@ -116,13 +116,13 @@ export default function LocationSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <Globe2 className="w-3 h-3" />
             <span>Global Infrastructure</span>
           </motion.div>
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-            Jaringan <span className="text-sky-500">Low Latency</span>
+            Jaringan <span className="text-purple-500">Low Latency</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Cek koneksi Anda ke data center kami secara realtime.
@@ -149,7 +149,7 @@ export default function LocationSection() {
                 
                 <div className="flex justify-between items-center mb-6">
                     <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                        <Wifi className="w-5 h-5 text-sky-500" /> Realtime Ping
+                        <Wifi className="w-5 h-5 text-purple-500" /> Realtime Ping
                     </h3>
                     {bestLocation && (
                         <motion.span 
@@ -207,7 +207,7 @@ export default function LocationSection() {
 
                                 {isPinging && !ping && (
                                     <motion.div 
-                                        className="absolute bottom-0 left-0 h-0.5 bg-sky-500"
+                                        className="absolute bottom-0 left-0 h-0.5 bg-purple-500"
                                         initial={{ width: "0%" }}
                                         animate={{ width: "100%" }}
                                         transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -243,7 +243,7 @@ export default function LocationSection() {
 
                 <div className="mt-6">
                     <button 
-                      className="w-full px-6 py-3.5 bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 text-white font-bold uppercase tracking-wide rounded-full transition-colors duration-200 shadow-lg"
+                      className="w-full px-6 py-3.5 bg-purple-500 hover:bg-purple-600 disabled:bg-gray-600 text-white font-bold uppercase tracking-wide rounded-full transition-colors duration-200 shadow-lg"
                       disabled={isPinging}
                       onClick={handlePingTest}
                     >

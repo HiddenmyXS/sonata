@@ -44,7 +44,7 @@ export const tiers: Record<string, TierData> = {
     label: "Flux",
     desc: "High Performance (Start Rp 20rb/GB)",
     icon: Trophy,
-    color: "from-sky-400 to-blue-600",
+    color: "from-purple-400 to-indigo-600",
     cpuDetail: "AMD Ryzen™ 5 4500",
     ghz: "3.60 GHz / 4.10 GHz Turbo",
     badge: "SOON",

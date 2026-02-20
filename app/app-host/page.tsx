@@ -17,7 +17,6 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import { LightRays } from "@/components/ui/light-rays";
 
 const tiers = {
   nodejs: {
@@ -33,7 +32,7 @@ const tiers = {
     label: "Python",
     desc: "Powerful & Versatile",
     icon: <Terminal className="w-4 h-4" />,
-    color: "from-blue-500 to-yellow-500",
+    color: "from-indigo-500 to-yellow-500",
     apps: [
       { id: "py1", title: "Python Basic", price: "Rp 30.000", ram: "1GB", cpu: "1 vCPU", storage: "15GB NVMe", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" },
     ]
@@ -51,7 +50,7 @@ const tiers = {
     label: "MySQL",
     desc: "Relational Database",
     icon: <Database className="w-4 h-4" />,
-    color: "from-sky-500 to-blue-700",
+    color: "from-purple-500 to-indigo-700",
     apps: [
       { id: "sql1", title: "DB Starter", price: "Rp 20.000", ram: "1GB", cpu: "Shared", storage: "5GB SSD", image: "https://cdn-icons-png.flaticon.com/512/5968/5968313.png" },
     ]
@@ -86,7 +85,7 @@ export default function AppHostPage() {
   return (
     <main
       ref={containerRef}
-      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-700 font-sans selection:bg-sky-500/30 overflow-x-hidden ${
+      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-700 font-sans selection:bg-purple-500/30 overflow-x-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -103,14 +102,13 @@ export default function AppHostPage() {
           }}
           className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] blur-[100px] transition-colors duration-1000"
         />
-        <LightRays />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl px-4 md:px-6 pt-32 pb-20">
         
         <motion.div style={{ opacity, y }} className="flex flex-col items-center text-center mb-16 space-y-4">
            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-800 bg-gray-900/50 backdrop-blur-md shadow-lg">
-              <Server className="w-4 h-4 text-sky-400" />
+              <Server className="w-4 h-4 text-purple-400" />
               <span className="text-xs font-bold text-gray-300 uppercase tracking-widest">Cloud App Hosting</span>
            </div>
            
@@ -173,7 +171,7 @@ export default function AppHostPage() {
                placeholder={`Cari paket ${tiers[activeTier].label}...`}
                value={query}
                onChange={(e) => setQuery(e.target.value)}
-               className="w-full bg-gray-900/50 border border-gray-800 rounded-xl py-3 pl-4 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 transition-all backdrop-blur-sm"
+               className="w-full bg-gray-900/50 border border-gray-800 rounded-xl py-3 pl-4 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all backdrop-blur-sm"
             />
             {query && (
                <button onClick={() => setQuery('')} className="absolute inset-y-0 right-3 flex items-center">
@@ -216,7 +214,7 @@ export default function AppHostPage() {
                       </div>
 
                       <div className="flex-1 flex flex-col p-5 pt-2">
-                         <h3 className="text-lg font-bold text-white mb-4 group-hover:text-sky-400 transition-colors">
+                         <h3 className="text-lg font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
                            {app.title}
                          </h3>
                          

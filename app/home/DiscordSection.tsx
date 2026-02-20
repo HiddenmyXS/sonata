@@ -82,7 +82,7 @@ export default function DiscordSection() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-3xl md:text-4xl font-black mb-3 leading-tight"
           >
-            Join the ZeroCloud Squad.
+            Join the Sonata Squad.
           </motion.h2>
           
           <motion.p 
@@ -129,11 +129,11 @@ export default function DiscordSection() {
             >
               <div className="flex items-center gap-3 mb-5 pb-4 border-b border-[#323338]">
                 <div className="relative w-10 h-10 shrink-0">
-                  <Image src="/aset/logo/logo_bg_white.png" alt="ZeroCloud Logo" fill className="object-contain rounded-xl" />
+                  <Image src="/aset/logo/logo_bg_white.png" alt="Sonata Logo" fill className="object-contain rounded-xl" />
                   <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-[#23a559] border-[3px] border-[#232428] rounded-full" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-white font-bold text-sm truncate">ZeroCloud.id | Your Server, Your Way!</h3>
+                  <h3 className="text-white font-bold text-sm truncate">Sonata | Your Server, Your Way!</h3>
                   <div className="text-[10px] text-gray-400 font-medium">
                     <span className="text-[#23a559] font-bold">{loading ? "..." : data?.presence_count}</span> Online Now
                   </div>

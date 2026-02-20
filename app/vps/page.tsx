@@ -31,7 +31,7 @@ const tiers = {
     label: "Primus",
     desc: "Best Seller & Balanced",
     icon: <Trophy className="w-4 h-4" />,
-    color: "from-sky-400 to-blue-600",
+    color: "from-purple-400 to-indigo-600",
     games: [
       { id: "p1", title: "Minecraft Java", price: "Rp 45.000", ram: "4GB", cpu: "Ryzen 5", slots: "Unlimited", image: "/aset/minecraft.jpg" },
     ]
@@ -75,7 +75,7 @@ export default function VpsPage() {
   return (
     <main
       ref={containerRef}
-      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-700 font-sans selection:bg-sky-500/30 overflow-x-hidden ${
+      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-700 font-sans selection:bg-purple-500/30 overflow-x-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -96,7 +96,7 @@ export default function VpsPage() {
         
         <motion.div style={{ opacity, y }} className="flex flex-col items-center text-center mb-16 space-y-4">
            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-800 bg-gray-900/50 backdrop-blur-md shadow-lg">
-              <ShieldCheck className="w-4 h-4 text-sky-400" />
+              <ShieldCheck className="w-4 h-4 text-purple-400" />
               <span className="text-xs font-bold text-gray-300 uppercase tracking-widest">Premium Game Hosting</span>
            </div>
            
@@ -159,7 +159,7 @@ export default function VpsPage() {
                placeholder={`Cari paket ${tiers[activeTier].label}...`}
                value={query}
                onChange={(e) => setQuery(e.target.value)}
-               className="w-full bg-gray-900/50 border border-gray-800 rounded-xl py-3 pl-4 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 transition-all backdrop-blur-sm"
+               className="w-full bg-gray-900/50 border border-gray-800 rounded-xl py-3 pl-4 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all backdrop-blur-sm"
             />
             {query && (
                <button onClick={() => setQuery('')} className="absolute inset-y-0 right-3 flex items-center">
@@ -202,7 +202,7 @@ export default function VpsPage() {
                       </div>
 
                       <div className="flex-1 flex flex-col p-5 pt-2">
-                         <h3 className="text-lg font-bold text-white mb-4 group-hover:text-sky-400 transition-colors">
+                         <h3 className="text-lg font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
                            {game.title}
                          </h3>
                          

@@ -117,7 +117,7 @@ export default function CalculatorSection() {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute inset-0 overflow-hidden pointer-events-none"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[900px] h-[600px] bg-sky-900/10 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[900px] h-[600px] bg-purple-900/10 blur-[120px] rounded-full" />
       </motion.div>
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -133,7 +133,7 @@ export default function CalculatorSection() {
               type: "spring",
               stiffness: 100
             }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-bold uppercase tracking-wider"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-wider"
           >
             <Calculator className="w-3 h-3" />
             <span>Smart Estimator</span>
@@ -150,7 +150,7 @@ export default function CalculatorSection() {
             }}
             className="text-3xl md:text-5xl font-bold text-white"
           >
-            Bingung Pilih <span className="text-sky-500">Paket?</span>
+            Bingung Pilih <span className="text-purple-500">Paket?</span>
           </motion.h2>
 
           <motion.p 
@@ -193,7 +193,7 @@ export default function CalculatorSection() {
                   variants={itemVariants}
                   className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-2"
                 >
-                    <Package className="w-4 h-4 text-sky-500" /> Platform Server
+                    <Package className="w-4 h-4 text-purple-500" /> Platform Server
                 </motion.label>
                 <motion.div 
                   variants={containerVariants}
@@ -213,7 +213,7 @@ export default function CalculatorSection() {
                             className={cn(
                                 "group flex flex-col items-center justify-center gap-3 p-3 rounded-2xl border transition-all duration-300 relative overflow-hidden",
                                 selectedSoft.id === soft.id 
-                                    ? "bg-sky-500/10 border-sky-500 ring-1 ring-sky-500/50 scale-[1.02]" 
+                                    ? "bg-purple-500/10 border-purple-500 ring-1 ring-purple-500/50 scale-[1.02]" 
                                     : "bg-gray-950 border-gray-800 hover:border-gray-700 hover:bg-gray-900"
                             )}
                         >
@@ -222,7 +222,7 @@ export default function CalculatorSection() {
                             </div>
                             <span className={cn(
                                 "text-[10px] font-bold uppercase tracking-wide z-10 transition-colors",
-                                selectedSoft.id === soft.id ? "text-sky-400" : "text-gray-500 group-hover:text-gray-300"
+                                selectedSoft.id === soft.id ? "text-purple-400" : "text-gray-500 group-hover:text-gray-300"
                             )}>{soft.name}</span>
                         </motion.button>
                     ))}
@@ -244,14 +244,14 @@ export default function CalculatorSection() {
                 >
                     <div className="flex justify-between mb-6">
                         <label className="text-sm font-bold text-gray-300 flex items-center gap-2">
-                            <Users className="w-4 h-4 text-sky-500" /> Player Online
+                            <Users className="w-4 h-4 text-purple-500" /> Player Online
                         </label>
                         <motion.span 
                           key={players[0]}
                           initial={{ scale: 1.2, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                          className="bg-sky-500/10 text-sky-400 px-3 py-1 rounded-lg font-mono font-bold text-sm border border-sky-500/20 shadow-[0_0_10px_rgba(14,165,233,0.1)]"
+                          className="bg-purple-500/10 text-purple-400 px-3 py-1 rounded-lg font-mono font-bold text-sm border border-purple-500/20 shadow-[0_0_10px_rgba(14,165,233,0.1)]"
                         >
                             {players[0]} Orang
                         </motion.span>
@@ -371,7 +371,7 @@ export default function CalculatorSection() {
                       className={cn(
                         "absolute inset-0 blur-2xl transition-colors duration-700",
                         recommendation.tier === "CORE" ? "bg-linear-to-tr from-emerald-500/20 to-green-900/0" : 
-                        recommendation.tier === "FLUX" ? "bg-linear-to-tr from-sky-500/20 to-blue-900/0" : 
+                        recommendation.tier === "FLUX" ? "bg-linear-to-tr from-purple-500/20 to-indigo-900/0" : 
                         "bg-linear-to-tr from-purple-500/20 to-pink-900/0"
                       )} 
                     />
@@ -387,7 +387,7 @@ export default function CalculatorSection() {
                             <div className={cn(
                                 "px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest border shadow-lg flex items-center gap-2",
                                 recommendation.tier === "CORE" ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" : 
-                                recommendation.tier === "FLUX" ? "bg-sky-500/10 text-sky-400 border-sky-500/20" : 
+                                recommendation.tier === "FLUX" ? "bg-purple-500/10 text-purple-400 border-purple-500/20" : 
                                 "bg-purple-500/10 text-purple-400 border-purple-500/20"
                             )}>
                                 <Sparkles className="w-3 h-3" />
@@ -415,7 +415,7 @@ export default function CalculatorSection() {
                                 <span className={cn(
                                     "text-4xl font-extrabold tracking-tight tabular-nums",
                                     recommendation.tier === "CORE" ? "text-emerald-400" : 
-                                    recommendation.tier === "FLUX" ? "text-sky-400" : "text-purple-400"
+                                    recommendation.tier === "FLUX" ? "text-purple-400" : "text-purple-400"
                                 )}>
                                     Rp {recommendation.price.toLocaleString('id-ID')}
                                 </span>
@@ -452,7 +452,7 @@ export default function CalculatorSection() {
                             <CheckCircle2 className={cn(
                                 "w-5 h-5 shrink-0 mt-0.5",
                                 recommendation.tier === "CORE" ? "text-emerald-500" : 
-                                recommendation.tier === "FLUX" ? "text-sky-500" : "text-purple-500"
+                                recommendation.tier === "FLUX" ? "text-purple-500" : "text-purple-500"
                             )} />
                             <div>
                                 <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-1">Why this plan?</p>
@@ -475,7 +475,7 @@ export default function CalculatorSection() {
                             className={cn(
                                 "group flex items-center justify-center w-full py-4 rounded-xl font-bold text-base shadow-lg transition-all hover:ring-2 ring-offset-2 ring-offset-gray-950",
                                 recommendation.tier === "CORE" ? "bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-500/20 ring-emerald-500" : 
-                                recommendation.tier === "FLUX" ? "bg-sky-600 hover:bg-sky-500 text-white shadow-sky-500/20 ring-sky-500" : 
+                                recommendation.tier === "FLUX" ? "bg-purple-600 hover:bg-purple-500 text-white shadow-purple-500/20 ring-purple-500" : 
                                 "bg-purple-600 hover:bg-purple-500 text-white shadow-purple-500/20 ring-purple-500"
                             )}
                         >

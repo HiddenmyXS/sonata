@@ -51,8 +51,8 @@ export default function ScrollToTop() {
                   "fixed bottom-8 right-8 z-50",
                   "p-3 rounded-full",
                   "bg-gray-900/80 backdrop-blur-md border border-gray-800",
-                  "text-sky-500 shadow-lg shadow-sky-500/20",
-                  "hover:bg-sky-500 hover:text-white hover:border-sky-400 hover:shadow-sky-500/50",
+                  "text-purple-500 shadow-lg shadow-purple-500/20",
+                  "hover:bg-purple-500 hover:text-white hover:border-purple-400 hover:shadow-purple-500/50",
                   "transition-colors duration-300",
                   "group flex items-center justify-center"
                 )}
@@ -60,13 +60,13 @@ export default function ScrollToTop() {
               >
                 <ArrowUp className="w-6 h-6 stroke-[3px]" />
                 
-                <div className="absolute inset-0 rounded-full bg-sky-500/20 blur-md -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-md -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
               </motion.button>
             </TooltipTrigger>
             
             <TooltipContent 
               side="left" 
-              className="bg-gray-900/90 backdrop-blur border-gray-700 text-sky-400 font-bold text-xs px-3 py-1.5 rounded-lg shadow-xl"
+              className="bg-gray-900/90 backdrop-blur border-gray-700 text-purple-400 font-bold text-xs px-3 py-1.5 rounded-lg shadow-xl"
             >
               <p>Kembali ke Atas ↑</p>
             </TooltipContent>

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import FlagIcon from "react-flagkit";
 import { 
   Gamepad, 
   Home, 
@@ -26,6 +25,9 @@ import {
 } from "lucide-react";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from 'react-i18next';
+import FlagIcon from 'react-flagkit';
+import { Globe, Check } from 'lucide-react';
 
 type DropdownProps = {
     label: string;
@@ -33,6 +35,18 @@ type DropdownProps = {
     children: React.ReactNode;
     footer?: React.ReactNode;
 };
+
+const languages = [
+  { code: 'en', name: 'English', flag: 'US' },
+  { code: 'id', name: 'Bahasa Indonesia', flag: 'ID' },
+];
+
+const { i18n } = useTranslation();
+
+    const handleLanguageChange = (lng: string) => {
+        i18n.changeLanguage(lng);
+    };
+
 
 const DropdownMenu: React.FC<DropdownProps> = ({ label, icon, children, footer }) => {
     const [open, setOpen] = useState(false);
@@ -117,7 +131,7 @@ type DropdownItemProps = {
     onClick?: () => void;
 };
 
-const DropdownItem: React.FC<DropdownItemProps> = ({ href, icon, title, desc, colorClass = "text-sky-500 group-hover:bg-sky-500/10 border-gray-800 group-hover:border-sky-500/20", onClick }) => (
+const DropdownItem: React.FC<DropdownItemProps> = ({ href, icon, title, desc, colorClass = "text-purple-500 group-hover:bg-purple-500/10 border-gray-800 group-hover:border-purple-500/20", onClick }) => (
     <Link
         href={href}
         onClick={onClick}
@@ -164,7 +178,7 @@ export default function Header() {
                                 height={32}
                                 priority
                             />
-                            <h1 className="text-base font-extrabold text-white tracking-wide group-hover:text-sky-200 transition-colors">
+                            <h1 className="text-base font-extrabold text-white tracking-wide group-hover:text-purple-200 transition-colors">
                                 Sonata
                             </h1>
                         </Link>
@@ -236,13 +250,16 @@ export default function Header() {
                     </div>
 
                     <div className="flex items-center gap-3">
-                        <DropdownMenu label="US" icon={<FlagIcon code="US" className="w-4 h-4" />}>
-                                <DropdownItem 
-                                    href="/support/legal" 
-                                    icon={<Scale className="w-5 h-5" />} 
-                                    title="Legal Center" 
-                                    desc="ToS, Privacy, SLA & Policies." 
+                        <DropdownMenu label="Language" icon={<Globe className="w-4 h-4" />}>
+                            {languages.map((lang) => (
+                                <DropdownItem
+                                key={lang.code}
+                                icon={i18n.language === lang.code ? <Check className="w-4 h-4" /> : <FlagIcon code={lang.flag} size={18} />}
+                                title={lang.name}
+                                desc={`Switch to ${lang.name}`}
+                                onClick={() => handleLanguageChange(lang.code)}
                                 />
+                            ))}
                         </DropdownMenu>
 
                         <Link
@@ -257,7 +274,7 @@ export default function Header() {
                         <Link
                             href="https://my.zerocloud.id"
                             target="_blank"
-                            className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-white bg-sky-600 hover:bg-sky-500 border border-sky-500/50 shadow-lg shadow-sky-900/20 transition-all"
+                            className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-white bg-purple-600 hover:bg-purple-500 border border-purple-500/50 shadow-lg shadow-purple-900/20 transition-all"
                         >
                             <Pyramid className="w-3.5 h-3.5" />
                             <span>Client Area</span>
@@ -283,12 +300,12 @@ export default function Header() {
                     >
                         <nav className="flex flex-col gap-2">
                             <Link href="/home" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 p-4 text-lg font-medium text-gray-200 bg-gray-900/50 border border-gray-800 rounded-2xl active:bg-gray-800">
-                                <Home className="w-5 h-5 text-sky-500" /> Home
+                                <Home className="w-5 h-5 text-purple-500" /> Home
                             </Link>
 
                             <div className="flex flex-col bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden">
                                 <button onClick={() => setMobileProductsOpen(!mobileProductsOpen)} className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-200 active:bg-gray-800">
-                                    <div className="flex items-center gap-3"><List className="w-5 h-5 text-sky-500" /> Products</div>
+                                    <div className="flex items-center gap-3"><List className="w-5 h-5 text-purple-500" /> Products</div>
                                     <ChevronDown className={`w-5 h-5 transition-transform ${mobileProductsOpen ? 'rotate-180' : ''}`} />
                                 </button>
                                 <AnimatePresence>
@@ -325,7 +342,7 @@ export default function Header() {
 
                             <div className="flex flex-col bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden">
                                 <button onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)} className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-200 active:bg-gray-800">
-                                    <div className="flex items-center gap-3"><Library className="w-5 h-5 text-sky-500" /> Resources</div>
+                                    <div className="flex items-center gap-3"><Library className="w-5 h-5 text-purple-500" /> Resources</div>
                                     <ChevronDown className={`w-5 h-5 transition-transform ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
                                 </button>
                                 <AnimatePresence>
@@ -343,13 +360,13 @@ export default function Header() {
                             </div>
 
                             <Link href="/support" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 p-4 text-lg font-medium text-gray-200 bg-gray-900/50 border border-gray-800 rounded-2xl active:bg-gray-800">
-                                <Headset className="w-5 h-5 text-sky-500" /> Support
+                                <Headset className="w-5 h-5 text-purple-500" /> Support
                             </Link>
 
                             <div className="w-full h-px bg-gray-800 my-4" />
                             <div className="grid grid-cols-2 gap-3">
                                 <Link href="https://ctrl.zerocloud.id" className="flex items-center justify-center gap-2 p-3 rounded-xl font-semibold text-gray-300 bg-gray-900 border border-gray-800">Panel</Link>
-                                <Link href="https://my.zerocloud.id" className="flex items-center justify-center gap-2 p-3 rounded-xl font-bold text-white bg-sky-600 border border-sky-500/50">Client Area</Link>
+                                <Link href="https://my.zerocloud.id" className="flex items-center justify-center gap-2 p-3 rounded-xl font-bold text-white bg-purple-600 border border-purple-500/50">Client Area</Link>
                             </div>
                         </nav>
                     </motion.div>

@@ -29,7 +29,7 @@ export default function HomeComponent() {
 
   return (
     <main
-      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-1000 ease-in-out font-sans selection:bg-sky-500/30`}
+      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-1000 ease-in-out font-sans selection:bg-purple-500/30`}
       >
       <ClientWrapping>
       <HeroSection />

@@ -43,7 +43,7 @@ const pricingPlans = [
     period: "/bulan",
     description: "Performa tinggi dengan clock speed kencang untuk game servermu.",
     recommendation: "Best for Game Server",
-    icon: <Zap className="w-6 h-6 text-sky-400" />,
+    icon: <Zap className="w-6 h-6 text-purple-400" />,
     features: [
       "from 2 vCPU High-Freq (Ryzen 5 Renoir)",
       "from 2GB DDR4 RAM",
@@ -55,14 +55,14 @@ const pricingPlans = [
     highlight: true,
     linkId: "flux",
     styles: {
-        iconBg: "bg-sky-500/10",
-        iconBorder: "border-sky-500/20",
-        tagBg: "bg-sky-500/10",
-        tagText: "text-sky-400",
-        tagBorder: "border-sky-500/20",
-        taglineColor: "text-sky-400",
-        checkColor: "group-hover:text-sky-400",
-        buttonHover: "hover:border-sky-500/30"
+        iconBg: "bg-purple-500/10",
+        iconBorder: "border-purple-500/20",
+        tagBg: "bg-purple-500/10",
+        tagText: "text-purple-400",
+        tagBorder: "border-purple-500/20",
+        taglineColor: "text-purple-400",
+        checkColor: "group-hover:text-purple-400",
+        buttonHover: "hover:border-purple-500/30"
     }
   },
   {
@@ -125,7 +125,7 @@ export default function PricingSection() {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute inset-0 overflow-hidden pointer-events-none"
       >
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[1000px] h-[600px] bg-sky-900/10 blur-[120px] rounded-full" />
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[1000px] h-[600px] bg-purple-900/10 blur-[120px] rounded-full" />
       </motion.div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -135,7 +135,7 @@ export default function PricingSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <DollarSign className="w-3 h-3" />
             <span>Biaya? Gampang!</span>
@@ -148,7 +148,7 @@ export default function PricingSection() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold text-white mb-5"
           >
-            Pilih <span className="text-sky-500">Kekuatanmu!</span>
+            Pilih <span className="text-purple-500">Kekuatanmu!</span>
           </motion.h2>
           
           <motion.p 
@@ -177,7 +177,7 @@ export default function PricingSection() {
               className={cn(
                 "relative flex flex-col p-6 md:p-8 rounded-4xl border transition-colors duration-300 group h-full",
                 plan.highlight 
-                  ? "bg-gray-900/80 border-sky-500/30 shadow-2xl shadow-sky-500/10 scale-100 md:scale-105 z-10" 
+                  ? "bg-gray-900/80 border-purple-500/30 shadow-2xl shadow-purple-500/10 scale-100 md:scale-105 z-10" 
                   : "bg-gray-900/30 border-gray-800 hover:border-gray-700 hover:bg-gray-900/60"
               )}
             >
@@ -189,8 +189,8 @@ export default function PricingSection() {
                   className="absolute -top-5 left-1/2 -translate-x-1/2 w-full text-center"
                 >
                   <div className="relative inline-block">
-                    <span className="absolute inset-0 rounded-full bg-sky-500 blur opacity-50 animate-pulse"></span>
-                    <div className="relative bg-linear-to-r from-sky-600 to-blue-600 text-white px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg border border-sky-400/20 whitespace-nowrap">
+                    <span className="absolute inset-0 rounded-full bg-purple-500 blur opacity-50 animate-pulse"></span>
+                    <div className="relative bg-linear-to-r from-purple-600 to-indigo-600 text-white px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg border border-purple-400/20 whitespace-nowrap">
                       Most Popular
                     </div>
                   </div>
@@ -250,7 +250,7 @@ export default function PricingSection() {
                     <div className={cn(
                         "p-0.5 rounded-full transition-colors",
                         plan.highlight 
-                            ? "bg-sky-500/20 text-sky-400" 
+                            ? "bg-purple-500/20 text-purple-400" 
                             : "bg-gray-800 text-gray-400",
                         plan.styles.checkColor
                     )}>
@@ -268,7 +268,7 @@ export default function PricingSection() {
                     className={cn(
                       "w-full py-4 px-6 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg cursor-pointer",
                       plan.highlight 
-                        ? "bg-linear-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white shadow-sky-500/25 hover:shadow-sky-500/40" 
+                        ? "bg-linear-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-purple-500/25 hover:shadow-purple-500/40" 
                         : `bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 ${plan.styles.buttonHover}`
                     )}
                   >

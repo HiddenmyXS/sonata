@@ -95,7 +95,7 @@ const ReviewCard = ({
     <figure
       className={cn(
         "relative w-80 cursor-pointer overflow-hidden rounded-2xl border p-6 mx-3",
-        "border-gray-800 bg-gray-900/40 hover:bg-gray-900/80 transition-all duration-300 hover:border-sky-500/30 backdrop-blur-sm",
+        "border-gray-800 bg-gray-900/40 hover:bg-gray-900/80 transition-all duration-300 hover:border-purple-500/30 backdrop-blur-sm",
       )}
     >
       <div className="flex flex-row items-center gap-3">
@@ -110,7 +110,7 @@ const ReviewCard = ({
         <div className="flex flex-col flex-1">
           <figcaption className="text-sm font-bold text-white flex items-center gap-1">
             {name}
-            {platform === 'trustpilot' && <ShieldCheck className="w-3 h-3 text-sky-500 ml-1" />}
+            {platform === 'trustpilot' && <ShieldCheck className="w-3 h-3 text-purple-500 ml-1" />}
           </figcaption>
           <p className="text-xs font-medium text-gray-500">{username}</p>
         </div>
@@ -132,7 +132,7 @@ export default function TestimonialsSection() {
       <StripedPattern 
         className="absolute inset-0 opacity-10 pointer-events-none"
       />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-sky-900/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="relative z-10 flex flex-col items-center">
         
         <motion.div 
@@ -141,12 +141,12 @@ export default function TestimonialsSection() {
             viewport={{ once: true }}
             className="text-center mb-16 px-4"
         >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-bold uppercase tracking-wider mb-4">
-                <Heart className="w-3 h-3 fill-sky-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-wider mb-4">
+                <Heart className="w-3 h-3 fill-purple-400" />
                 <span>Community Love</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
-                Dipercaya oleh <span className="text-transparent bg-clip-text bg-sky-500">Gamers</span>
+                Dipercaya oleh <span className="text-transparent bg-clip-text bg-purple-500">Gamers</span>
             </h2>
             
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
@@ -194,7 +194,7 @@ export default function TestimonialsSection() {
               <a 
                 href="/discord" 
                 target="_blank"
-                className="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition-colors shadow-lg shadow-indigo-500/20 flex items-center gap-2"
+                className="px-5 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold transition-colors shadow-lg shadow-indigo-500/20 flex items-center gap-2"
               >
                 <MessageCircle className="w-4 h-4" />
                 Join Discord

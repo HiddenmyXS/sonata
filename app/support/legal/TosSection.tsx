@@ -27,111 +27,111 @@ const tosData = [
     id: "acceptance",
     title: "Acceptance of Terms",
     icon: <Scale className="w-5 h-5" />,
-    content: "Dengan mendaftar atau menggunakan layanan ZeroCloud Indonesia, Anda menyetujui untuk terikat secara hukum oleh syarat dan ketentuan ini. Jika Anda tidak setuju dengan bagian mana pun, Anda dilarang menggunakan layanan kami.",
+    content: "By registering or using Sonata services, you agree to be legally bound by these terms and conditions. If you do not agree with any part of these terms, you are prohibited from using our services.",
     points: [
-      "Perjanjian ini sah dan mengikat secara hukum.",
-      "ZeroCloud berhak memperbarui syarat sewaktu-waktu.",
-      "Penggunaan berkelanjutan dianggap sebagai persetujuan perubahan."
+      "This agreement is legally valid and binding.",
+      "Sonata reserves the right to update terms at any time.",
+      "Continued use constitutes acceptance of any changes."
     ]
   },
   {
     id: "description",
     title: "Service Description",
     icon: <Server className="w-5 h-5" />,
-    content: "ZeroCloud menyediakan layanan infrastruktur cloud, hosting game, dan aplikasi. Kami menjamin alokasi sumber daya (CPU/RAM) sesuai paket yang Anda beli secara terdedikasi (kecuali paket shared).",
+    content: "Sonata provides cloud infrastructure, game hosting, and application hosting services. We guarantee resource allocation (CPU/RAM) as per your purchased plan on a dedicated basis (except shared plans).",
     points: [
-      "Akses penuh ke panel kontrol (Pterodactyl/CyberPanel).",
-      "Konektivitas jaringan Tier-1 Indonesia & Global.",
-      "Dukungan teknis 24/7 (Sesuai SLA)."
+      "Full access to control panel (Pterodactyl/CyberPanel).",
+      "Tier-1 network connectivity with global reach.",
+      "24/7 technical support (according to SLA)."
     ]
   },
   {
     id: "responsibilities",
     title: "Account Responsibilities",
     icon: <UserCheck className="w-5 h-5" />,
-    content: "Anda bertanggung jawab penuh atas keamanan akun dan semua aktivitas yang terjadi di bawah kredensial Anda. Wajib menggunakan data identitas asli sesuai ketentuan KYC.",
+    content: "You are fully responsible for the security of your account and all activities under your credentials. You must use authentic identification data in compliance with KYC requirements and applicable regulations.",
     points: [
-      "Wajib menjaga kerahasiaan password & 2FA.",
-      "Satu orang hanya boleh memiliki satu akun (No Multi-account).",
-      "Usia minimal 13 tahun (atau izin orang tua)."
+      "You must maintain password and 2FA confidentiality.",
+      "One person may only have one account (no multi-accounting).",
+      "Minimum age of 13 years (or parental consent required)."
     ]
   },
   {
     id: "payment",
     title: "Payment Terms",
     icon: <CreditCard className="w-5 h-5" />,
-    content: "Layanan bersifat prabayar. Tagihan akan dibuat 7 hari sebelum masa aktif berakhir. Kegagalan pembayaran akan mengakibatkan suspensi layanan secara otomatis.",
+    content: "Services are prepaid. Invoices will be issued 7 days before the subscription expires. Failure to pay will result in automatic service suspension.",
     points: [
-      "Metode pembayaran: QRIS, E-Wallet, Transfer Bank.",
-      "Keterlambatan > 3 hari: Suspensi Layanan.",
-      "Keterlambatan > 7 hari: Terminasi & Penghapusan Data Permanen."
+      "Payment methods: Credit Card, PayPal, Bank Transfer, and other digital wallets.",
+      "Payment more than 3 days late: Service Suspension.",
+      "Payment more than 7 days late: Account Termination & Permanent Data Deletion."
     ]
   },
   {
     id: "availability",
     title: "Service Availability",
     icon: <CheckCircle2 className="w-5 h-5" />,
-    content: "Kami menjamin Uptime Network 99.9% setiap bulannya. Jika terjadi downtime di luar jadwal maintenance, Anda berhak mengajukan kompensasi kredit.",
+    content: "We guarantee 99.9% network uptime monthly. If downtime occurs outside scheduled maintenance windows, you may request service credit compensation.",
     points: [
-      "Garansi Uptime 99.9% SLA.",
-      "Maintenance terjadwal akan diinfokan H-24 jam.",
-      "Force Majeure (Bencana alam, huru-hara) tidak termasuk SLA."
+      "99.9% Uptime SLA Guarantee.",
+      "Scheduled maintenance will be announced 24 hours in advance.",
+      "Force Majeure events (natural disasters, civil unrest) are excluded from SLA."
     ]
   },
   {
     id: "termination",
     title: "Account Termination",
     icon: <Ban className="w-5 h-5" />,
-    content: "ZeroCloud berhak menangguhkan atau menghentikan akun Anda secara sepihak jika ditemukan pelanggaran serius tanpa pengembalian dana (Refund).",
+    content: "Sonata reserves the right to suspend or terminate your account unilaterally if serious violations are detected. Termination is non-refundable.",
     points: [
-      "Pelanggaran AUP (Acceptable Use Policy).",
-      "Tindakan abusive terhadap staff kami.",
-      "Indikasi fraud/penipuan pembayaran."
+      "Violation of Acceptable Use Policy (AUP).",
+      "Abusive conduct toward our staff.",
+      "Evidence of fraud or payment fraud."
     ]
   },
   {
     id: "general",
     title: "General Terms",
     icon: <BookOpen className="w-5 h-5" />,
-    content: "Syarat ini diatur oleh hukum yang berlaku di Republik Indonesia. Segala sengketa akan diselesaikan melalui musyawarah atau yurisdiksi pengadilan terkait.",
+    content: "These terms are governed by applicable US law and GDPR regulations. Any disputes will be resolved through mutual agreement or applicable legal jurisdiction.",
     points: [
-      "Tunduk pada hukum Republik Indonesia.",
-      "Kebijakan Privasi merupakan bagian tak terpisahkan.",
-      "ZeroCloud tidak bertanggung jawab atas kerugian data pengguna."
+      "Governed by US law and GDPR compliance standards.",
+      "Privacy Policy is an integral part of these terms.",
+      "Sonata is not liable for loss of user data under certain conditions."
     ]
   },
   {
     id: "refunds",
     title: "Refunds and Disputes",
     icon: <RefreshCcw className="w-5 h-5" />,
-    content: "Kami menyediakan garansi uang kembali 3 hari (72 jam) untuk pesanan pertama dengan alasan teknis yang valid. Diluar itu, dana tidak dapat dikembalikan.",
+    content: "We offer a 30-day money-back guarantee for first-time orders with valid technical reasons. Refunds outside this period are subject to our discretion.",
     points: [
-      "Refund hanya berlaku untuk layanan Hosting/VPS.",
-      "Tidak berlaku untuk Domain, Lisensi, atau Addons.",
-      "Chargeback sepihak = Ban Permanen."
+      "Refunds apply to Hosting and VPS services only.",
+      "Domains, licenses, and add-ons are non-refundable.",
+      "Unauthorized chargebacks result in permanent account suspension."
     ]
   },
   {
     id: "cancellations",
     title: "Cancellations",
     icon: <XCircle className="w-5 h-5" />,
-    content: "Anda dapat mengajukan pembatalan layanan kapan saja melalui Client Area. Pembatalan dapat bersifat 'Immediate' (Segera) atau 'End of Billing' (Akhir periode).",
+    content: "You may request service cancellation at any time through your account. Cancellations can be immediate or at the end of your billing period.",
     points: [
-      "Permintaan pembatalan bersifat final.",
-      "Data akan dihapus permanen setelah layanan berakhir.",
-      "Backup data adalah tanggung jawab pengguna sebelum cancel."
+      "Cancellation requests are final and irreversible.",
+      "All data will be permanently deleted after service ends.",
+      "Data backup is the user's responsibility before cancellation."
     ]
   },
   {
-    id: "illegal",
-    title: "Illegal Use (UU ITE)",
+    id: "prohibited",
+    title: "Prohibited Activities",
     icon: <Gavel className="w-5 h-5" />,
-    content: "Kami mematuhi UU No. 19 Tahun 2016 (Perubahan UU ITE). ZeroCloud tidak menoleransi segala bentuk aktivitas ilegal di jaringan kami.",
+    content: "Sonata complies with US law and GDPR regulations. We do not tolerate any illegal activities on our network.",
     points: [
-      "Dilarang: Judi Online (Judol), Pornografi, SARA.",
-      "Dilarang: Phishing, Scam, Carding, Hacking Tools.",
-      "Dilarang: DDoS Attack (Incoming/Outgoing), Botnet.",
-      "Pelanggar akan dilaporkan ke pihak berwajib (Siber Polri)."
+      "Prohibited: Online gambling, explicit content, hate speech.",
+      "Prohibited: Phishing, scams, fraud, hacking tools.",
+      "Prohibited: DDoS attacks, botnets, malware distribution.",
+      "Violators will be reported to appropriate law enforcement authorities."
     ]
   }
 ];
@@ -147,10 +147,10 @@ export default function TosSection() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // ingetin buat 'ZeroCloud_Terms_of_Service.pdf' di 'public/documents/'
+      // ingetin buat 'Sonata_Terms_of_Service.pdf' di 'public/documents/'
       const link = document.createElement('a');
-      link.href = '/documents/ZeroCloud_Terms_of_Service.pdf'; 
-      link.download = `ZeroCloud_ToS_${new Date().getFullYear()}.pdf`;
+      link.href = '/documents/Sonata_Terms_of_Service.pdf'; 
+      link.download = `Sonata_ToS_${new Date().getFullYear()}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -173,14 +173,14 @@ export default function TosSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-bold uppercase tracking-wider"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-wider"
             >
                 <ShieldAlert className="w-3 h-3" />
                 <span>Legal & Compliance</span>
             </motion.div>
             
             <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-              Terms of <span className="text-transparent bg-clip-text bg-sky-500">Service</span>
+              Terms of <span className="text-transparent bg-clip-text bg-purple-500">Service</span>
             </h1>
             
             <div className="flex items-center gap-2 text-sm text-gray-500 font-mono">
@@ -215,20 +215,20 @@ export default function TosSection() {
                   className={cn(
                     "w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-200 text-left border group",
                     activeTab === item.id 
-                      ? "bg-sky-500/10 border-sky-500/20 text-sky-400 shadow-lg shadow-sky-900/10" 
+                      ? "bg-purple-500/10 border-purple-500/20 text-purple-400 shadow-lg shadow-purple-900/10" 
                       : "bg-transparent border-transparent text-zinc-500 hover:text-zinc-200 hover:bg-white/5"
                   )}
                 >
                   <span className={cn(
                     "shrink-0 transition-colors duration-200",
-                    activeTab === item.id ? "text-sky-400" : "text-zinc-600 group-hover:text-zinc-400"
+                    activeTab === item.id ? "text-purple-400" : "text-zinc-600 group-hover:text-zinc-400"
                   )}>
                     {item.icon}
                   </span>
                   <span className="font-semibold text-sm flex-1">{item.title}</span>
                   
                   {activeTab === item.id && (
-                      <ChevronRight className="w-4 h-4 text-sky-500" />
+                      <ChevronRight className="w-4 h-4 text-purple-500" />
                   )}
                 </button>
               ))}
@@ -253,8 +253,8 @@ export default function TosSection() {
                             className="relative z-10 space-y-8"
                         >
                             <div className="space-y-4 border-b border-gray-800 pb-8">
-                                <div className="inline-flex items-center gap-2 text-sky-500 font-bold text-xs tracking-widest uppercase">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-sky-500" />
+                                <div className="inline-flex items-center gap-2 text-purple-500 font-bold text-xs tracking-widest uppercase">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
                                     Section: {item.id}
                                 </div>
                                 <h2 className="text-3xl font-bold text-white">
@@ -267,7 +267,7 @@ export default function TosSection() {
 
                             <div className="space-y-4">
                                 <h4 className="text-xs font-bold text-zinc-500 uppercase tracking-wider flex items-center gap-2">
-                                    <CheckCircle2 className="w-4 h-4 text-sky-500" /> Key Points
+                                    <CheckCircle2 className="w-4 h-4 text-purple-500" /> Key Points
                                 </h4>
                                 <div className="grid gap-3">
                                     {item.points.map((point, idx) => (
@@ -278,7 +278,7 @@ export default function TosSection() {
                                         transition={{ delay: idx * 0.05 }}
                                         className="flex items-start gap-4 p-4 rounded-xl bg-gray-950/50 border border-gray-800 hover:border-gray-700 transition-colors group"
                                     >
-                                        <div className="w-1.5 h-1.5 rounded-full bg-zinc-600 group-hover:bg-sky-500 transition-colors mt-2 shrink-0" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-zinc-600 group-hover:bg-purple-500 transition-colors mt-2 shrink-0" />
                                         <span className="text-sm text-gray-300 leading-relaxed font-medium">{point}</span>
                                     </motion.div>
                                     ))}
@@ -291,7 +291,7 @@ export default function TosSection() {
                                     <div className="space-y-1">
                                         <h5 className="text-sm font-bold text-red-400">Pematuhan UU ITE</h5>
                                         <p className="text-xs text-red-300/80 leading-relaxed">
-                                            Sesuai UU No. 19 Tahun 2016, ZeroCloud wajib bekerjasama dengan penegak hukum untuk menyerahkan data pengguna yang terindikasi melakukan tindak pidana siber.
+                                            Sesuai UU No. 19 Tahun 2016, Sonata wajib bekerjasama dengan penegak hukum untuk menyerahkan data pengguna yang terindikasi melakukan tindak pidana siber.
                                         </p>
                                     </div>
                                 </div>
@@ -305,9 +305,9 @@ export default function TosSection() {
         </div>
 
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-gray-900/30 border border-gray-800">
-          <p className="text-sm text-gray-500 text-center md:text-left">
-            Dengan mendaftar dan menggunakan layanan ZeroCloud, Anda dianggap telah membaca, memahami, dan menyetujui seluruh ketentuan di atas tanpa paksaan.
-          </p>
+            <p className="text-sm text-gray-500 text-center md:text-left">
+            By registering and using Sonata services, you are deemed to have read, understood, and agreed to all the terms above without any coercion.
+            </p>
           <div className="flex gap-4 shrink-0">
             <button className="px-8 py-3 rounded-xl bg-white text-gray-950 text-sm font-bold hover:bg-gray-200 transition-colors shadow-lg shadow-white/5 transform active:scale-95 duration-150">
               Saya Mengerti & Setuju

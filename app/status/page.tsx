@@ -76,13 +76,13 @@ export default function StatusPage() {
   };
 
   return (
-    <main className="min-h-screen bg-linear-to-b bg-gray-950 overflow-hidden selection:bg-sky-500/30 text-white p-8 font-sans">
+    <main className="min-h-screen bg-linear-to-b bg-gray-950 overflow-hidden selection:bg-purple-500/30 text-white p-8 font-sans">
       <div className="max-w-5xl mx-auto pt-20">
 
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-4">
           <div>
             <h1 className="text-5xl font-black flex items-center gap-3 mb-3">
-              <ShieldCheck className="text-sky-400 w-12 h-12" />
+              <ShieldCheck className="text-purple-400 w-12 h-12" />
               System Status
             </h1>
             <p className="text-gray-400 flex items-center gap-2 text-sm">
@@ -96,7 +96,7 @@ export default function StatusPage() {
               setLoading(true);
               getStatus();
             }}
-            className="flex items-center gap-2 bg-sky-600 hover:bg-sky-500 px-6 py-3 rounded-xl transition-all text-sm font-bold shadow-lg"
+            className="flex items-center gap-2 bg-purple-600 hover:bg-purple-500 px-6 py-3 rounded-xl transition-all text-sm font-bold shadow-lg"
           >
             <RefreshCw size={18} className={loading ? "animate-spin" : ""} />
             Refresh Now
@@ -137,7 +137,7 @@ export default function StatusPage() {
               return (
                 <div
                   key={m.id}
-                  className="group p-6 bg-gray-900/40 border border-gray-800 rounded-2xl flex justify-between items-center hover:border-sky-500/30 transition-all duration-300"
+                  className="group p-6 bg-gray-900/40 border border-gray-800 rounded-2xl flex justify-between items-center hover:border-purple-500/30 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
                     <div className={`p-3 rounded-xl ${

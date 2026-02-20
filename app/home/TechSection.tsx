@@ -20,8 +20,8 @@ const hardwareStack = [
     type: "Processor",
     icon: "/aset/images/icons/intel.svg",
     description: "Reliable enterprise grade computing.",
-    textColor: "text-blue-500",
-    color: "bg-blue-500/10 border-blue-500/20"
+    textColor: "text-indigo-500",
+    color: "bg-indigo-500/10 border-indigo-500/20"
   },
   {
     name: "Samsung NVMe",
@@ -36,8 +36,8 @@ const hardwareStack = [
     type: "Infrastructure",
     icon: "/aset/images/icons/ovh.svg",
     description: "Global Anti-DDoS infrastructure.",
-    textColor: "text-sky-500",
-    color: "bg-sky-500/10 border-sky-500/20"
+    textColor: "text-purple-500",
+    color: "bg-purple-500/10 border-purple-500/20"
   },
   {
     name: "Terabix",
@@ -79,8 +79,8 @@ const softwareStack = [
     type: "Panel",
     icon: "/aset/images/icons/pterodactyl.svg",
     description: "Next-gen game server management.",
-    textColor: "text-blue-400",
-    color: "bg-blue-600/10 border-blue-600/20"
+    textColor: "text-indigo-400",
+    color: "bg-indigo-600/10 border-indigo-600/20"
   },
   {
     name: "Paymenter",
@@ -103,8 +103,8 @@ const softwareStack = [
     type: "Container",
     icon: "/aset/images/icons/docker.svg",
     description: "Isolasi resource yang aman.",
-    textColor: "text-blue-500",
-    color: "bg-blue-500/10 border-blue-500/20"
+    textColor: "text-indigo-500",
+    color: "bg-indigo-500/10 border-indigo-500/20"
   },
 ];
 
@@ -133,7 +133,7 @@ const TechCard = ({ item }: { item: typeof hardwareStack[0] }) => {
       className={cn(
         "group relative flex flex-row items-center gap-4 w-72 cursor-pointer overflow-hidden rounded-2xl border p-4 mx-4",
         "bg-gray-900/40 hover:bg-gray-900/80 backdrop-blur-md transition-all duration-300",
-        "border-gray-800 hover:border-sky-500/30 hover:shadow-lg hover:shadow-sky-500/10"
+        "border-gray-800 hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-500/10"
       )}
     >
       <div className={cn("p-3 rounded-xl border transition-colors duration-300", item.color)}>
@@ -170,12 +170,12 @@ export default function TechStack() {
             viewport={{ once: true }}
             className="text-center mb-16 px-4"
         >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs font-bold uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-wider mb-4">
                 <Cpu className="w-3 h-3" />
                 <span>Powered by Giants</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-                Infrastruktur <span className="text-transparent bg-clip-text bg-sky-500">Kelas Dunia</span>
+                Infrastruktur <span className="text-transparent bg-clip-text bg-purple-500">Kelas Dunia</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
                 Kami tidak main-main dengan hardware. Kami menggunakan teknologi terbaik untuk memastikan server Anda berjalan tanpa kompromi.
