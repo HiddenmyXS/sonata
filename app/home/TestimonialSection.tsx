@@ -4,204 +4,295 @@ import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/ui/marquee";
 import { AvatarCircles } from "@/components/ui/avatar-circles";
 import { motion } from "framer-motion";
-import { Star, MessageCircle, Heart, ShieldCheck } from "lucide-react";
+import { Star, MessageCircle, Heart } from "lucide-react";
 import Image from "next/image";
-import { StripedPattern } from "@/components/magicui/striped-pattern";
 
-const reviews = [
+const generateRandomAvatar = (seed: string) => {
+  return `https://api.dicebear.com/7.x/avataaars/svg?seed=${seed}`;
+};
+
+const testimonials = [
   {
-    name: "DipaAC",
-    username: "@dipaac",
-    body: "Server sangatt mantap, rendering pun cepat dan juga pembuatan serta startup juga cepatt. Recomended bangetttt.",
-    img: "https://yt3.googleusercontent.com/Da_VxCpnuEIi60oIGtA59wrter6g1dJyy7Y1gPAuNsECF1nrFAhYtMHy4hErPIjsFyM9clLM=s160-c-k-c0x00ffffff-no-rj",
+    name: "Alex Johnson",
+    username: "@alexjohn",
+    body: "The server performance is incredible. Setup was fast and the panel is super intuitive. Highly recommended!",
     platform: "discord",
+    seed: "alex-johnson-1"
   },
   {
-    name: "BAGAS CRAFT",
-    username: "@BagasCraftAsli",
-    body: "Setup server Minecraft cuma 2 menit. Panelnya gampang banget dipake bahkan buat pemula kayak aku.",
-    img: "https://yt3.googleusercontent.com/aJI697gDxGo2JMhg60ACE6u5MWWvyhwgVhRQxPzLLb0FHJADeD4XNKZIf_ahlvS73aIhp2EfEA=s160-c-k-c0x00ffffff-no-rj",
+    name: "Sarah Chen",
+    username: "@sarahchen",
+    body: "Best hosting experience I've had. Support team responds in minutes, not hours. Worth every penny!",
     platform: "discord",
+    seed: "sarah-chen-2"
   },
   {
-    name: "ITZTheDimzz",
-    username: "@itzthedimzz",
-    body: "bagus admin nya ramah fast respon, dan gak tau lagi pokoknya begitulah",
-    img: "https://cdn.discordapp.com/avatars/806438151052591104/ff1cfaaf62cafa4bc1ecff5098e08f2c.webp",
-    platform: "discord",
-  },
-  {
-    name: "Zasleman",
-    username: "@zasleman",
-    body: "pasti ganteng yang punya",
-    img: "https://cdn.discordapp.com/avatars/1045684823081107506/c3d2b938294dd3b25fd2451521305b48.webp",
-    platform: "discord",
-  },
-  {
-    name: "Hikqri.mp3",
-    username: "@hikqri",
-    body: "Pelayanan bagus, pesanan sesuai, dan juga prosesnya cepat.",
-    img: "https://cdn.discordapp.com/avatars/664413671488880642/a698f51d5b1ef3395db2a7ef1c7e315d.webp",
+    name: "Marcus Rodriguez",
+    username: "@marcus_rod",
+    body: "Running my gaming community on this for 6 months now. Zero downtime, amazing reliability.",
     platform: "trustpilot",
-  },
-];
-
-const avatarObjects = [
-  {
-    imageUrl: "https://lh3.googleusercontent.com/a/ACg8ocL-",
-    profileUrl: "#",
+    seed: "marcus-rodriguez-3"
   },
   {
-    imageUrl: "https://lh3.googleusercontent.com/a/ACg8ocL-",
-    profileUrl: "#",
+    name: "Emma Wilson",
+    username: "@emmaw",
+    body: "The DDoS protection actually works. Got attacked last week and servers stayed online. Impressive!",
+    platform: "discord",
+    seed: "emma-wilson-4"
   },
   {
-    imageUrl: "https://cdn.discordapp.com/avatars/806438151052591104/ff1cfaaf62cafa4bc1ecff5098e08f2c.webp",
-    profileUrl: "#",
+    name: "David Kim",
+    username: "@davidkim",
+    body: "Clean interface, fast deployment, and great documentation. Can't complain about anything here.",
+    platform: "discord",
+    seed: "david-kim-5"
   },
+  {
+    name: "Jessica Martinez",
+    username: "@jessmartinez",
+    body: "Migrated from another host. This is night and day difference in terms of speed and stability.",
+    platform: "trustpilot",
+    seed: "jessica-martinez-6"
+  },
+  {
+    name: "Chris Anderson",
+    username: "@chrisa",
+    body: "Panel design is so clean and easy to use. My friends were surprised how simple it is to manage.",
+    platform: "discord",
+    seed: "chris-anderson-7"
+  },
+  {
+    name: "Lisa Thompson",
+    username: "@lisathompson",
+    body: "Switched from shared hosting. The performance improvement is absolutely massive. Loving it!",
+    platform: "discord",
+    seed: "lisa-thompson-8"
+  },
+  {
+    name: "Tom Harris",
+    username: "@tomh",
+    body: "Great uptime guarantee and they actually deliver on it. Never had any issues since I started using them.",
+    platform: "trustpilot",
+    seed: "tom-harris-9"
+  },
+  {
+    name: "Rachel Green",
+    username: "@rachelg",
+    body: "The support team actually knows what they're talking about. Technical help that actually helps!",
+    platform: "discord",
+    seed: "rachel-green-10"
+  },
+  {
+    name: "Michael Brown",
+    username: "@mbrown",
+    body: "Affordable pricing without compromising on quality. This is the sweet spot I was looking for.",
+    platform: "discord",
+    seed: "michael-brown-11"
+  },
+  {
+    name: "Sophie Turner",
+    username: "@sophiet",
+    body: "Running multiple servers without any issues. The infrastructure is solid and reliable.",
+    platform: "discord",
+    seed: "sophie-turner-12"
+  },
+  {
+    name: "James Wilson",
+    username: "@jamesw",
+    body: "Setup my first server ever and it was so straightforward. Definitely hosting all my projects here now.",
+    platform: "trustpilot",
+    seed: "james-wilson-13"
+  },
+  {
+    name: "Olivia Davis",
+    username: "@oliviad",
+    body: "The control panel is intuitive and powerful. Everything I need in one place. Very impressed!",
+    platform: "discord",
+    seed: "olivia-davis-14"
+  },
+  {
+    name: "Ryan Cooper",
+    username: "@ryanc",
+    body: "Been hosting with them for a year. Consistently excellent service and never a single complaint.",
+    platform: "discord",
+    seed: "ryan-cooper-15"
+  },
+  {
+    name: "Anna Perez",
+    username: "@annap",
+    body: "The network infrastructure is top-notch. Got exactly what I was promised and more.",
+    platform: "trustpilot",
+    seed: "anna-perez-16"
+  },
+  {
+    name: "Kevin Lee",
+    username: "@kevlee",
+    body: "Migrating was so easy. Their team guided me through the whole process. Outstanding support!",
+    platform: "discord",
+    seed: "kevin-lee-17"
+  },
+  {
+    name: "Nina White",
+    username: "@ninaw",
+    body: "Gaming community grew 3x since we moved to better hosting. Performance matters and it shows.",
+    platform: "discord",
+    seed: "nina-white-18"
+  },
+  {
+    name: "Lucas Santos",
+    username: "@lucas_santos",
+    body: "Finally found a host that takes security seriously. DDoS attacks? Not a problem anymore!",
+    platform: "trustpilot",
+    seed: "lucas-santos-19"
+  },
+  {
+    name: "Victoria Blake",
+    username: "@victoriab",
+    body: "Best decision I made for my project. The speed and reliability are unmatched in this price range.",
+    platform: "discord",
+    seed: "victoria-blake-20"
+  },
+  {
+    name: "Noah Palmer",
+    username: "@noahp",
+    body: "The dashboard is so well designed. Managing everything is a breeze. Absolutely love this platform.",
+    platform: "discord",
+    seed: "noah-palmer-21"
+  },
+  {
+    name: "Zoe Harris",
+    username: "@zoeharris",
+    body: "Community is friendly and helpful. The whole experience has been amazing from day one.",
+    platform: "trustpilot",
+    seed: "zoe-harris-22"
+  }
 ];
 
 const PlatformIcon = ({ platform }: { platform: string }) => {
   switch (platform) {
     case "discord":
       return <MessageCircle className="w-4 h-4 text-indigo-400 fill-indigo-400/20" />;
-    case "tiktok":
-      return (
-        <svg className="w-4 h-4 text-pink-500 fill-pink-500" viewBox="0 0 24 24" fill="currentColor">
-           <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-        </svg>
-      );
     case "trustpilot":
-      return <Star className="w-4 h-4 text-green-500 fill-green-500" />;
+      return <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />;
     default:
-      return <Star className="w-4 h-4 text-yellow-500" />;
+      return <Heart className="w-4 h-4 text-purple-400" />;
   }
 };
 
 const ReviewCard = ({
-  img,
   name,
   username,
   body,
   platform,
+  seed,
 }: {
-  img: string;
   name: string;
   username: string;
   body: string;
   platform: string;
+  seed: string;
 }) => {
+  const avatarUrl = generateRandomAvatar(seed);
+
   return (
     <figure
       className={cn(
-        "relative w-80 cursor-pointer overflow-hidden rounded-2xl border p-6 mx-3",
-        "border-gray-800 bg-gray-900/40 hover:bg-gray-900/80 transition-all duration-300 hover:border-purple-500/30 backdrop-blur-sm",
+        "relative w-80 cursor-default overflow-hidden rounded-xl border p-5 mx-3",
+        "border-purple-500/10 bg-slate-800/30 hover:bg-slate-800/50",
+        "transition-all duration-300 hover:border-purple-500/30 backdrop-blur-sm"
       )}
     >
-      <div className="flex flex-row items-center gap-3">
+      <div className="flex flex-row items-center gap-3 mb-4">
         <Image 
-            className="rounded-full border border-gray-700 object-cover" 
-            width={40} 
-            height={40} 
-            alt={name} 
-            src={img}
-            unoptimized
+          className="rounded-full border border-purple-500/20 object-cover" 
+          width={40} 
+          height={40} 
+          alt={name} 
+          src={avatarUrl}
+          unoptimized
         />
         <div className="flex flex-col flex-1">
-          <figcaption className="text-sm font-bold text-white flex items-center gap-1">
+          <figcaption className="text-sm font-semibold text-white">
             {name}
-            {platform === 'trustpilot' && <ShieldCheck className="w-3 h-3 text-purple-500 ml-1" />}
           </figcaption>
-          <p className="text-xs font-medium text-gray-500">{username}</p>
+          <p className="text-xs text-slate-500">{username}</p>
         </div>
-        <div className="p-2 bg-gray-800/50 rounded-full border border-gray-700/50">
-            <PlatformIcon platform={platform} />
+        <div className="p-2 bg-slate-700/50 rounded-full border border-purple-500/20">
+          <PlatformIcon platform={platform} />
         </div>
       </div>
-      <blockquote className="mt-4 text-sm text-gray-300 leading-relaxed font-light">
-        “{body}”
+      <blockquote className="text-sm text-slate-300 leading-relaxed">
+        "{body}"
       </blockquote>
     </figure>
   );
 };
 
 export default function TestimonialsSection() {
+  const firstRow = testimonials.slice(0, Math.ceil(testimonials.length / 2));
+  const secondRow = testimonials.slice(Math.ceil(testimonials.length / 2));
+
   return (
-    <section className="relative w-full py-24 bg-gray-950 overflow-hidden border-t border-gray-900">
-      
-      <StripedPattern 
-        className="absolute inset-0 opacity-10 pointer-events-none"
+    <section className="relative w-full bg-slate-950 overflow-hidden py-20 md:py-32">
+      <div className="absolute inset-0 bg-linear-to-b from-slate-950 via-slate-950 to-purple-950/5 pointer-events-none" />
+      <motion.div
+        animate={{ opacity: [0.05, 0.1, 0.05] }}
+        transition={{ duration: 12, repeat: Infinity }}
+        className="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none"
       />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="relative z-10 flex flex-col items-center">
-        
+
+      <div className="relative z-10 flex flex-col items-center px-6 lg:px-12">
         <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16 px-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16 md:mb-20"
         >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-wider mb-4">
-                <Heart className="w-3 h-3 fill-purple-400" />
-                <span>Community Love</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
-                Dipercaya oleh <span className="text-transparent bg-clip-text bg-purple-500">Gamers</span>
-            </h2>
-            
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-                <div className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full border border-gray-800">
-                    <MessageCircle className="w-4 h-4 text-indigo-400 fill-indigo-400" />
-                    <span className="text-white font-bold">10k+</span> di Discord
-                </div>
-            </div>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-6">
+            <Heart className="w-4 h-4 fill-purple-400" />
+            <span>Community Testimonials</span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Loved by{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-violet-400">
+              Thousands
+            </span>
+          </h2>
+
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            Join our growing community of satisfied users who trust us with their hosting needs.
+          </p>
         </motion.div>
 
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-            <Marquee pauseOnHover className="[--duration:40s]">
-                {reviews.map((review, i) => (
-                <ReviewCard key={`${review.username}-${i}`} {...review} />
-                ))}
+        <div className="relative w-full flex flex-col items-center justify-center gap-6 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="w-full"
+          >
+            <Marquee pauseOnHover className="[--duration:60s]">
+              {firstRow.map((review, i) => (
+                <ReviewCard key={`${review.seed}-${i}`} {...review} />
+              ))}
             </Marquee>
-            
-            <Marquee reverse pauseOnHover className="[--duration:35s] mt-6">
-                {reviews.map((review, i) => (
-                <ReviewCard key={`${review.username}-rev-${i}`} {...review} />
-                ))}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full"
+          >
+            <Marquee reverse pauseOnHover className="[--duration:60s]">
+              {secondRow.map((review, i) => (
+                <ReviewCard key={`${review.seed}-rev-${i}`} {...review} />
+              ))}
             </Marquee>
-
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-linear-to-r from-gray-950 to-transparent z-20"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-linear-to-l from-gray-950 to-transparent z-20"></div>
+          </motion.div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-linear-to-r from-slate-950 to-transparent z-20"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-linear-to-l from-slate-950 to-transparent z-20"></div>
         </div>
-
-        <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-16 flex flex-col md:flex-row items-center gap-6 bg-gray-900/30 border border-gray-800 p-6 rounded-3xl backdrop-blur-md"
-        >
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                <p className="text-lg font-bold text-white">Gabung Komunitas Kami</p>
-                <p className="text-sm text-gray-400">Diskusi, share config, dan mabar bareng.</p>
-            </div>
-            
-            <div className="h-8 w-px bg-gray-800 hidden md:block" />
-
-            <div className="flex items-center gap-4">
-              <AvatarCircles numPeople={99} avatarUrls={avatarObjects} />
-              
-              <a 
-                href="/discord" 
-                target="_blank"
-                className="px-5 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold transition-colors shadow-lg shadow-indigo-500/20 flex items-center gap-2"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Join Discord
-              </a>
-            </div>
-        </motion.div>
-
       </div>
     </section>
   );

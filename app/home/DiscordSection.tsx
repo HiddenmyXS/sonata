@@ -44,8 +44,7 @@ export default function DiscordSection() {
   const displayMembers = activeMembers.slice(0, 14); 
 
   return (
-    <section ref={containerRef} className="relative w-full py-16 px-8 bg-[#5865F2] overflow-hidden">
-      
+    <section ref={containerRef} className="relative w-full py-16 px-8 bg-[#5865F2] overflow-hidden"> 
       <motion.div style={{ y: yReverse }} className="absolute inset-0 opacity-10 pointer-events-none">
          <motion.div style={{ rotate }}>
            <DiscordLogo className="absolute top-10 left-10 w-32 h-32 -rotate-12" />
@@ -59,7 +58,6 @@ export default function DiscordSection() {
         style={{ opacity, scale }}
         className="max-w-6xl mx-auto relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10"
       >
-        
         <motion.div 
           style={{ y }}
           className="flex-1 text-center lg:text-left text-white max-w-xl"
@@ -73,8 +71,7 @@ export default function DiscordSection() {
           >
             <DiscordLogo className="w-3 h-3" />
             <span>Official Community</span>
-          </motion.div>
-          
+          </motion.div>     
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,8 +80,7 @@ export default function DiscordSection() {
             className="text-3xl md:text-4xl font-black mb-3 leading-tight"
           >
             Join the Sonata Squad.
-          </motion.h2>
-          
+          </motion.h2>   
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -94,7 +90,6 @@ export default function DiscordSection() {
           >
             Dapatkan voucher eksklusif, info maintenance, giveaway, dan bantuan teknis langsung dari <strong className="text-white border-b border-white/40">{data?.presence_count || "..."} member online</strong> lainnya.
           </motion.p>
-
           <motion.a 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +105,6 @@ export default function DiscordSection() {
             Gabung Discord <ArrowRight className="w-4 h-4" />
           </motion.a>
         </motion.div>
-
         <motion.div 
           initial={{ opacity: 0, scale: 0.9, y: 30 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -189,7 +183,6 @@ export default function DiscordSection() {
             </div>
           </CometCard>
         </motion.div>
-
       </motion.div>
     </section>
   );

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import TabWatcher from "@/components/TabWatcher";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { cn } from "@/lib/utils";
@@ -19,7 +20,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://zerocloud.id"), 
+  metadataBase: new URL("https://sonata.id"), 
   
   title: {
     default: "Sonata — #1 High Performance Game Hosting",
@@ -29,12 +30,12 @@ export const metadata: Metadata = {
   
   keywords: ["Game Hosting", "Minecraft Server", "VPS Murah", "Hosting Indonesia", "FiveM Hosting", "Sonata"],
   
-  authors: [{ name: "Sonata Team", url: "https://zerocloud.id" }],
+  authors: [{ name: "Sonata Team", url: "https://sonata.id" }],
   
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://zerocloud.id",
+    url: "https://sonata.id",
     title: "Sonata — Level Up Your Game Server",
     description: "Ping rendah, performa monster, harga pelajar. Gak percaya? Cek sendiri!",
     siteName: "Sonata Indonesia",
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
     title: "Sonata — Game Hosting Terbaik",
     description: "Hosting server game anti-lag, murah, dan stabil.",
     images: ["/aset/metadata/banner.gif"],
-    creator: "@zerocloud_id",
+    creator: "@sonata_id",
   },
   
   icons: {
@@ -84,6 +85,7 @@ export default function RootLayout({
         )}
       >
         <Navbar />
+        <TabWatcher />
         
         <main className="grow relative overflow-x-hidden">
           {children}

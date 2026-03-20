@@ -2,376 +2,432 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Gamepad, 
-  Home, 
-  List, 
-  Headset, 
-  Pyramid, 
-  Server, 
-  Code, 
-  Container, 
-  Gamepad2,
+import { usePathname } from "next/navigation";
+import {
   ChevronDown,
   Menu,
   X,
-  Palette,
-  Briefcase,
-  Book,
-  Activity,
-  Scale,
+  Zap,
+  DollarSign,
+  Puzzle,
+  BookOpen,
   Newspaper,
-  Library
+  Map,
+  Users,
+  HelpCircle,
+  Mail,
+  Activity,
 } from "lucide-react";
-import React, { useState, useRef, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTranslation } from 'react-i18next';
-import FlagIcon from 'react-flagkit';
-import { Globe, Check } from 'lucide-react';
+import React, { useState, useRef, useEffect } from "react";
 
-type DropdownProps = {
+// Enhanced Dropdown Menu Component with Icons & Descriptions
+const DropdownMenu = ({
+  label,
+  items,
+  isOpen,
+  onToggle,
+}: {
+  label: string;
+  items: {
     label: string;
-    icon: React.ReactNode;
-    children: React.ReactNode;
-    footer?: React.ReactNode;
-};
-
-const languages = [
-  { code: 'en', name: 'English', flag: 'US' },
-  { code: 'id', name: 'Bahasa Indonesia', flag: 'ID' },
-];
-
-const { i18n } = useTranslation();
-
-    const handleLanguageChange = (lng: string) => {
-        i18n.changeLanguage(lng);
-    };
-
-
-const DropdownMenu: React.FC<DropdownProps> = ({ label, icon, children, footer }) => {
-    const [open, setOpen] = useState(false);
-    const ref = useRef<HTMLDivElement>(null);
-
-    const handleClose = useCallback(() => setOpen(false), []);
-    const handleToggle = useCallback(() => setOpen((prev) => !prev), []);
-
-    useEffect(() => {
-        const handleDocClick = (e: MouseEvent) => {
-            if (ref.current && !ref.current.contains(e.target as Node)) {
-                handleClose();
-            }
-        };
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") handleClose();
-        };
-
-        document.addEventListener("mousedown", handleDocClick);
-        document.addEventListener("keydown", handleKeyDown);
-
-        return () => {
-            document.removeEventListener("mousedown", handleDocClick);
-            document.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [handleClose]);
-
-    return (
-        <div 
-            className="relative" 
-            ref={ref}
-            onMouseEnter={() => setOpen(true)}
-            onMouseLeave={() => setOpen(false)}
-        >
-            <button
-                type="button"
-                onClick={handleToggle}
-                className={`group flex items-center text-sm font-medium gap-1.5 px-3 py-2 rounded-full transition-all duration-200 ${
-                    open ? "bg-white/10 text-white" : "text-gray-400 hover:text-white hover:bg-white/5"
-                }`}
-            >
-                {icon}
-                <span>{label}</span>
-                <ChevronDown 
-                    className={`w-3.5 h-3.5 transition-transform duration-300 text-gray-500 group-hover:text-gray-300 ${open ? "rotate-180" : ""}`} 
-                />
-            </button>
-
-            <AnimatePresence>
-                {open && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                        transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-72 
-                                   bg-gray-950/90 backdrop-blur-xl shadow-2xl shadow-black/50
-                                   border border-gray-800 rounded-2xl overflow-hidden z-50 p-1.5"
-                    >
-                        <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
-                        <div className="flex flex-col gap-1">
-                            {children}
-                        </div>
-                        {footer && (
-                            <div className="mt-2 pt-2 border-t border-gray-800/50">
-                                {footer}
-                            </div>
-                        )}
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
-    );
-};
-
-type DropdownItemProps = {
     href: string;
     icon: React.ReactNode;
-    title: string;
-    desc: string;
-    colorClass?: string;
-    onClick?: () => void;
+    description: string;
+  }[];
+  isOpen: boolean;
+  onToggle: () => void;
+}) => {
+  return (
+    <div className="relative group">
+      <button
+        onClick={onToggle}
+        className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 group"
+      >
+        {label}
+        <ChevronDown
+          size={16}
+          className={`transition-transform duration-300 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {/* Desktop Dropdown - Enhanced Card Style */}
+      <div
+        className={`absolute left-0 mt-2 w-80 bg-[#0a0a0b] backdrop-blur-xl border border-gray-800/50 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 p-4 space-y-2`}
+      >
+        {items.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="group/item flex gap-3 p-3 rounded-lg hover:bg-gray-800/50 transition-all duration-200 hover:translate-x-1"
+          >
+            {/* Icon Container */}
+            <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-purple-500/20 group-hover/item:bg-purple-500/30 flex items-center justify-center transition-colors duration-200">
+              <div className="text-purple-450 group-hover/item:text-purple-500 transition-colors duration-200">
+                {item.icon}
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-white group-hover/item:text-purple-300 transition-colors duration-200">
+                {item.label}
+              </p>
+              <p className="text-xs text-gray-400 group-hover/item:text-gray-300 transition-colors duration-200 line-clamp-2">
+                {item.description}
+              </p>
+            </div>
+
+            {/* Arrow Indicator */}
+            <div className="flex-shrink-0 text-gray-600 group-hover/item:text-purple-500 transition-colors duration-200 opacity-0 group-hover/item:opacity-100">
+              <ChevronDown size={16} className="rotate-[-90deg]" />
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Mobile Dropdown */}
+      {isOpen && (
+        <div className="absolute left-0 top-full mt-2 w-72 bg-gray-900/95 backdrop-blur-xl border border-gray-800/50 rounded-xl shadow-2xl md:hidden z-50 p-4 space-y-2 animate-in fade-in slide-in-from-top-2 duration-200">
+          {items.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="flex gap-3 p-3 rounded-lg hover:bg-gray-800/50 transition-all duration-200"
+            >
+              {/* Icon Container */}
+              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                <div className="text-blue-400">{item.icon}</div>
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-white">
+                  {item.label}
+                </p>
+                <p className="text-xs text-gray-400 line-clamp-2">
+                  {item.description}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 };
 
-const DropdownItem: React.FC<DropdownItemProps> = ({ href, icon, title, desc, colorClass = "text-purple-500 group-hover:bg-purple-500/10 border-gray-800 group-hover:border-purple-500/20", onClick }) => (
-    <Link
-        href={href}
-        onClick={onClick}
-        className="group relative flex items-start gap-3 p-3 rounded-xl hover:bg-gray-900 transition-all duration-200"
+export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const productItems = [
+    {
+      label: "Features",
+      href: "/features",
+      icon: <Zap size={18} />,
+      description: "Explore powerful features designed for your success",
+    },
+    {
+      label: "Pricing",
+      href: "/pricing",
+      icon: <DollarSign size={18} />,
+      description: "Transparent pricing that scales with your needs",
+    },
+    {
+      label: "Integrations",
+      href: "/integrations",
+      icon: <Puzzle size={18} />,
+      description: "Connect with 100+ tools and services",
+    },
+  ];
+
+  const resourceItems = [
+    {
+      label: "Documentation",
+      href: "/docs",
+      icon: <BookOpen size={18} />,
+      description: "Complete guides and API documentation",
+    },
+    {
+      label: "Blog",
+      href: "/blog",
+      icon: <Newspaper size={18} />,
+      description: "Latest updates, tips, and best practices",
+    },
+    {
+      label: "Guides",
+      href: "/guides",
+      icon: <Map size={18} />,
+      description: "Step-by-step tutorials and how-tos",
+    },
+    {
+      label: "Community",
+      href: "/community",
+      icon: <Users size={18} />,
+      description: "Connect with thousands of users",
+    },
+  ];
+
+  const supportItems = [
+    {
+      label: "Help Center",
+      href: "/help",
+      icon: <HelpCircle size={18} />,
+      description: "Find answers to common questions",
+    },
+    {
+      label: "Contact",
+      href: "/contact",
+      icon: <Mail size={18} />,
+      description: "Get in touch with our support team",
+    },
+    {
+      label: "Status",
+      href: "/status",
+      icon: <Activity size={18} />,
+      description: "Check system health and uptime",
+    },
+  ];
+
+  return (
+    <nav
+      ref={navRef}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-transparent"
+          : "bg-transparent"
+      }`}
     >
-        <span className={`shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-900 border transition-all ${colorClass}`}>
-            {icon}
-        </span>
-        <div className="flex-1 min-w-0 pt-0.5">
-            <span className="block text-sm font-semibold text-gray-200 group-hover:text-white transition-colors">
-                {title}
+      {/* Decorative top border gradient */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex-shrink-0 flex items-center gap-2 group"
+          >
+            <div className="relative w-8 h-8 rounded-lg flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-200">
+              <Image
+                src="/aset/sonata.png"
+                alt="Logo"
+                width={32}
+                height={32}
+                className="object-contain"
+              />
+            </div>
+            <span className="font-semibold text-white hidden sm:inline-block group-hover:text-blue-300 transition-colors duration-200">
+              Sonata
             </span>
-            <p className="text-xs text-gray-500 group-hover:text-gray-400 mt-0.5 line-clamp-1">
-                {desc}
-            </p>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-1">
+            <Link
+              href="/"
+              className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-all duration-200"
+            >
+              Home
+            </Link>
+
+            <DropdownMenu
+              label="Products"
+              items={productItems}
+              isOpen={false}
+              onToggle={() => {}}
+            />
+
+            <DropdownMenu
+              label="Resources"
+              items={resourceItems}
+              isOpen={false}
+              onToggle={() => {}}
+            />
+
+            <DropdownMenu
+              label="Support"
+              items={supportItems}
+              isOpen={false}
+              onToggle={() => {}}
+            />
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-300 hover:text-white hover:bg-purple-300/10 transition-all duration-200"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <X size={24} />
+            ) : (
+              <Menu size={24} />
+            )}
+          </button>
         </div>
-    </Link>
-);
+      </div>
 
-export default function Header() {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
-    const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-    const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-gray-800/50 bg-gray-950/95 backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="px-4 pt-2 pb-4 space-y-1 max-w-7xl mx-auto">
+            <Link
+              href="/"
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-blue-300 hover:bg-blue-500/10 rounded-lg transition-all duration-200"
+            >
+              Home
+            </Link>
 
-    useEffect(() => {
-        document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
-    }, [mobileMenuOpen]);
-
-    return (
-        <>
-            <header className="fixed top-0 left-0 right-0 z-40 flex justify-center px-4 pt-4">
-                <div className="flex items-center justify-between w-full max-w-6xl h-14 px-4 
-                              bg-gray-950/60 backdrop-blur-md shadow-lg shadow-black/20 
-                              border border-white/10 rounded-full transition-all duration-300 relative z-50">
-                    
-                    <div className="flex items-center gap-6">
-                        <Link href="/home" className="flex items-center gap-2.5 group" onClick={() => setMobileMenuOpen(false)}>
-                            <Image
-                                className="object-contain"
-                                src="/aset/sonata.png"
-                                alt="Sonata"
-                                width={32}
-                                height={32}
-                                priority
-                            />
-                            <h1 className="text-base font-extrabold text-white tracking-wide group-hover:text-purple-200 transition-colors">
-                                Sonata
-                            </h1>
-                        </Link>
-
-                        <div className="hidden md:block w-px h-5 bg-white/10" />
-                        
-                        <nav className="hidden md:flex items-center gap-1">
-                            <Link href="/home" className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 rounded-full transition-all">
-                                <Home className="w-4 h-4" />
-                                <span>Home</span>
-                            </Link>
-                            
-                            <DropdownMenu label="Products" icon={<List className="w-4 h-4" />}>
-                                <DropdownItem href="/game-host" icon={<Gamepad2 className="w-5 h-5" />} title="Game Host" desc="High performance game servers." />
-                                <DropdownItem href="/app-host" icon={<Code className="w-5 h-5" />} title="App Host" desc="Deploy apps in seconds." />
-                                <DropdownItem href="/private-node" icon={<Server className="w-5 h-5" />} title="Private Node" desc="Full dedicated control." />
-                                <DropdownItem href="/vps" icon={<Container className="w-5 h-5" />} title="VPS" desc="Scalable virtual servers." />
-                            </DropdownMenu>
-
-                            <DropdownMenu 
-                                label="Services" 
-                                icon={<Briefcase className="w-4 h-4" />}
-                                footer={
-                                    <div className="flex items-center justify-center gap-1.5 px-2 py-1">
-                                        <span className="text-[10px] text-gray-500 font-medium">Powered by</span>
-                                        <div className="flex items-center gap-1 text-[10px] font-bold text-amber-400">
-                                            ZAQUA STUDIO
-                                        </div>
-                                    </div>
-                                }
-                            >
-                                <DropdownItem href="/services/web-dev" icon={<Code className="w-5 h-5" />} title="Web Development" desc="Custom websites & web apps." colorClass="text-amber-400 group-hover:bg-amber-500/10 border-gray-800 group-hover:border-amber-500/20"/>
-                                <DropdownItem href="/services/web-design" icon={<Palette className="w-5 h-5" />} title="Web Design" desc="UI/UX & Graphic Design." colorClass="text-amber-400 group-hover:bg-amber-500/10 border-gray-800 group-hover:border-amber-500/20"/>
-                            </DropdownMenu>
-
-                            <DropdownMenu label="Resources" icon={<Library className="w-4 h-4" />}>
-                                <DropdownItem 
-                                    href="/support/legal" 
-                                    icon={<Scale className="w-5 h-5" />} 
-                                    title="Legal Center" 
-                                    desc="ToS, Privacy, SLA & Policies." 
-                                />
-                                <DropdownItem 
-                                    href="/docs" 
-                                    icon={<Book className="w-5 h-5" />} 
-                                    title="Documentation" 
-                                    desc="Guides & Tutorials." 
-                                />
-                                <DropdownItem 
-                                    href="/status" 
-                                    icon={<Activity className="w-5 h-5" />} 
-                                    title="Status Page" 
-                                    desc="Real-time uptime monitor." 
-                                />
-                                <DropdownItem 
-                                    href="/blog" 
-                                    icon={<Newspaper className="w-5 h-5" />} 
-                                    title="Blog" 
-                                    desc="Latest news & updates." 
-                                />
-                            </DropdownMenu>
-
-                            <Link href="/support" className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 rounded-full transition-all">
-                                <Headset className="w-4 h-4" />
-                                <span>Support</span>
-                            </Link>
-
-                        </nav>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                        <DropdownMenu label="Language" icon={<Globe className="w-4 h-4" />}>
-                            {languages.map((lang) => (
-                                <DropdownItem
-                                key={lang.code}
-                                icon={i18n.language === lang.code ? <Check className="w-4 h-4" /> : <FlagIcon code={lang.flag} size={18} />}
-                                title={lang.name}
-                                desc={`Switch to ${lang.name}`}
-                                onClick={() => handleLanguageChange(lang.code)}
-                                />
-                            ))}
-                        </DropdownMenu>
-
-                        <Link
-                            href="https://ctrl.zerocloud.id"
-                            target="_blank"
-                            className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-gray-300 bg-gray-900 border border-gray-800 hover:border-gray-700 hover:text-white hover:bg-gray-800 transition-all"
-                        >
-                            <Gamepad className="w-3.5 h-3.5" />
-                            <span>Panel</span>
-                        </Link>
-
-                        <Link
-                            href="https://my.zerocloud.id"
-                            target="_blank"
-                            className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-white bg-purple-600 hover:bg-purple-500 border border-purple-500/50 shadow-lg shadow-purple-900/20 transition-all"
-                        >
-                            <Pyramid className="w-3.5 h-3.5" />
-                            <span>Client Area</span>
-                        </Link>
-
-                        <button 
-                            className="md:hidden p-2 text-gray-400 hover:text-white rounded-full hover:bg-white/10 transition-colors"
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        >
-                            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                        </button>
-                    </div>
-                </div>
-            </header>
-
-            <AnimatePresence>
-                {mobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 z-40 bg-gray-950/95 backdrop-blur-xl pt-24 px-6 md:hidden overflow-y-auto"
+            {/* Mobile Products Dropdown */}
+            <div>
+              <button
+                onClick={() =>
+                  setOpenDropdown(
+                    openDropdown === "products" ? null : "products"
+                  )
+                }
+                className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-300 hover:text-blue-300 hover:bg-blue-500/10 rounded-lg transition-all duration-200"
+              >
+                Products
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-300 ${
+                    openDropdown === "products" ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {openDropdown === "products" && (
+                <div className="pl-4 mt-1 space-y-1 animate-in fade-in slide-in-from-top-2 duration-200">
+                  {productItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="flex gap-3 p-3 rounded-lg text-gray-400 hover:text-blue-300 hover:bg-blue-500/10 transition-all duration-200"
                     >
-                        <nav className="flex flex-col gap-2">
-                            <Link href="/home" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 p-4 text-lg font-medium text-gray-200 bg-gray-900/50 border border-gray-800 rounded-2xl active:bg-gray-800">
-                                <Home className="w-5 h-5 text-purple-500" /> Home
-                            </Link>
+                      <div className="flex-shrink-0 text-blue-400">
+                        {item.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium">{item.label}</p>
+                        <p className="text-xs text-gray-500 line-clamp-1">
+                          {item.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
-                            <div className="flex flex-col bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden">
-                                <button onClick={() => setMobileProductsOpen(!mobileProductsOpen)} className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-200 active:bg-gray-800">
-                                    <div className="flex items-center gap-3"><List className="w-5 h-5 text-purple-500" /> Products</div>
-                                    <ChevronDown className={`w-5 h-5 transition-transform ${mobileProductsOpen ? 'rotate-180' : ''}`} />
-                                </button>
-                                <AnimatePresence>
-                                    {mobileProductsOpen && (
-                                        <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden bg-gray-950/30 border-t border-gray-800">
-                                            <div className="flex flex-col p-2 gap-1">
-                                                <DropdownItem href="/game-host" icon={<Gamepad2 className="w-5 h-5" />} title="Game Host" desc="High performance game servers." onClick={() => setMobileMenuOpen(false)} />
-                                                <DropdownItem href="/app-host" icon={<Code className="w-5 h-5" />} title="App Host" desc="Deploy apps in seconds." onClick={() => setMobileMenuOpen(false)} />
-                                                <DropdownItem href="/private-node" icon={<Server className="w-5 h-5" />} title="Private Node" desc="Full dedicated control." onClick={() => setMobileMenuOpen(false)} />
-                                                <DropdownItem href="/vps" icon={<Container className="w-5 h-5" />} title="VPS" desc="Scalable virtual servers." onClick={() => setMobileMenuOpen(false)} />
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
+            {/* Mobile Resources Dropdown */}
+            <div>
+              <button
+                onClick={() =>
+                  setOpenDropdown(
+                    openDropdown === "resources" ? null : "resources"
+                  )
+                }
+                className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-300 hover:text-blue-300 hover:bg-blue-500/10 rounded-lg transition-all duration-200"
+              >
+                Resources
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-300 ${
+                    openDropdown === "resources" ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {openDropdown === "resources" && (
+                <div className="pl-4 mt-1 space-y-1 animate-in fade-in slide-in-from-top-2 duration-200">
+                  {resourceItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="flex gap-3 p-3 rounded-lg text-gray-400 hover:text-blue-300 hover:bg-blue-500/10 transition-all duration-200"
+                    >
+                      <div className="flex-shrink-0 text-blue-400">
+                        {item.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium">{item.label}</p>
+                        <p className="text-xs text-gray-500 line-clamp-1">
+                          {item.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
-                            <div className="flex flex-col bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden">
-                                <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-200 active:bg-gray-800">
-                                    <div className="flex items-center gap-3"><Briefcase className="w-5 h-5 text-amber-400" /> Services</div>
-                                    <ChevronDown className={`w-5 h-5 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
-                                </button>
-                                <AnimatePresence>
-                                    {mobileServicesOpen && (
-                                        <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden bg-gray-950/30 border-t border-gray-800">
-                                            <div className="flex flex-col p-2 gap-1">
-                                                <DropdownItem href="/services/web-dev" icon={<Code className="w-5 h-5" />} title="Web Development" desc="Custom websites & web apps." colorClass="text-amber-400 border-gray-800" onClick={() => setMobileMenuOpen(false)} />
-                                                <DropdownItem href="/services/web-design" icon={<Palette className="w-5 h-5" />} title="Web Design" desc="UI/UX & Graphic Design." colorClass="text-amber-400 border-gray-800" onClick={() => setMobileMenuOpen(false)} />
-                                                <div className="px-4 py-2 text-[10px] text-gray-500 font-medium text-center">Powered by ZAQUA STUDIO</div>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-
-                            <div className="flex flex-col bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden">
-                                <button onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)} className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-200 active:bg-gray-800">
-                                    <div className="flex items-center gap-3"><Library className="w-5 h-5 text-purple-500" /> Resources</div>
-                                    <ChevronDown className={`w-5 h-5 transition-transform ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
-                                </button>
-                                <AnimatePresence>
-                                    {mobileResourcesOpen && (
-                                        <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden bg-gray-950/30 border-t border-gray-800">
-                                            <div className="flex flex-col p-2 gap-1">
-                                                <DropdownItem href="/support/legal" icon={<Scale className="w-5 h-5" />} title="Legal Center" desc="ToS, Privacy, SLA & Policies." onClick={() => setMobileMenuOpen(false)} />
-                                                <DropdownItem href="/docs" icon={<Book className="w-5 h-5" />} title="Documentation" desc="Guides & Tutorials." onClick={() => setMobileMenuOpen(false)} />
-                                                <DropdownItem href="/status" icon={<Activity className="w-5 h-5" />} title="Status Page" desc="Real-time uptime monitor." onClick={() => setMobileMenuOpen(false)} />
-                                                <DropdownItem href="/blog" icon={<Newspaper className="w-5 h-5" />} title="Blog" desc="Latest news & updates." onClick={() => setMobileMenuOpen(false)} />
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-
-                            <Link href="/support" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 p-4 text-lg font-medium text-gray-200 bg-gray-900/50 border border-gray-800 rounded-2xl active:bg-gray-800">
-                                <Headset className="w-5 h-5 text-purple-500" /> Support
-                            </Link>
-
-                            <div className="w-full h-px bg-gray-800 my-4" />
-                            <div className="grid grid-cols-2 gap-3">
-                                <Link href="https://ctrl.zerocloud.id" className="flex items-center justify-center gap-2 p-3 rounded-xl font-semibold text-gray-300 bg-gray-900 border border-gray-800">Panel</Link>
-                                <Link href="https://my.zerocloud.id" className="flex items-center justify-center gap-2 p-3 rounded-xl font-bold text-white bg-purple-600 border border-purple-500/50">Client Area</Link>
-                            </div>
-                        </nav>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </>
-    );
+            {/* Mobile Support Dropdown */}
+            <div>
+              <button
+                onClick={() =>
+                  setOpenDropdown(
+                    openDropdown === "support" ? null : "support"
+                  )
+                }
+                className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-300 hover:text-blue-300 hover:bg-blue-500/10 rounded-lg transition-all duration-200"
+              >
+                Support
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-300 ${
+                    openDropdown === "support" ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {openDropdown === "support" && (
+                <div className="pl-4 mt-1 space-y-1 animate-in fade-in slide-in-from-top-2 duration-200">
+                  {supportItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="flex gap-3 p-3 rounded-lg text-gray-400 hover:text-blue-300 hover:bg-blue-500/10 transition-all duration-200"
+                    >
+                      <div className="shrink-0 text-blue-400">
+                        {item.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium">{item.label}</p>
+                        <p className="text-xs text-gray-500 line-clamp-1">
+                          {item.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
 }

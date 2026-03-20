@@ -28,17 +28,17 @@ const softwareTypes = [
 
 const plansDB = [
     { id: "c1", name: "Core Entry", tier: "CORE", ram: 1, price: 15000, cpu: "1 vCPU", storage: "5GB NVMe", desc: "Proxy / Bungeecord", url: "https://my.zerocloud.id/products/core/core-1" },
-    { id: "c2", name: "Core Basic", tier: "CORE", ram: 2, price: 30000, cpu: "2 vCPU", storage: "10GB NVMe", desc: "Vanilla Survival (2-5 Org)", url: "https://my.zerocloud.id/products/core/core-2" },
+    { id: "c2", name: "Core Basic", tier: "CORE", ram: 2, price: 30000, cpu: "2 vCPU", storage: "10GB NVMe", desc: "Vanilla Survival (2-5 Players)", url: "https://my.zerocloud.id/products/core/core-2" },
     { id: "c3", name: "Core Standart", tier: "CORE", ram: 4, price: 60000, cpu: "3 vCPU", storage: "15GB NVMe", desc: "Minecraft SMP", url: "https://my.zerocloud.id/products/core/core-3" },
-    { id: "c4", name: "Core Advanced", tier: "CORE", ram: 6, price: 90000, cpu: "3 vCPU", storage: "20GB NVMe", desc: "Modpack Ringan / Plugin", url: "https://my.zerocloud.id/products/core/core-4" },
-    { id: "c5", name: "Core Pro", tier: "CORE", ram: 8, price: 120000, cpu: "4 vCPU", storage: "30GB NVMe", desc: "Server Komunitas", url: "https://my.zerocloud.id/products/core/core-5" },
-    { id: "c6", name: "Core Plus", tier: "CORE", ram: 12, price: 180000, cpu: "4 vCPU", storage: "40GB NVMe", desc: "Server Bebas", url: "https://my.zerocloud.id/products/core/core-6" },
+    { id: "c4", name: "Core Advanced", tier: "CORE", ram: 6, price: 90000, cpu: "3 vCPU", storage: "20GB NVMe", desc: "Light Modpack / Plugins", url: "https://my.zerocloud.id/products/core/core-4" },
+    { id: "c5", name: "Core Pro", tier: "CORE", ram: 8, price: 120000, cpu: "4 vCPU", storage: "30GB NVMe", desc: "Community Server", url: "https://my.zerocloud.id/products/core/core-5" },
+    { id: "c6", name: "Core Plus", tier: "CORE", ram: 12, price: 180000, cpu: "4 vCPU", storage: "40GB NVMe", desc: "Custom Server", url: "https://my.zerocloud.id/products/core/core-6" },
     
     { id: "f1", name: "Flux Entry", tier: "FLUX", ram: 2, price: 40000, cpu: "2 vCPU High-Freq", storage: "15GB NVMe", desc: "Proxy / Bungeecord", url: "https://my.zerocloud.id/products/flux/flux-1" },
     { id: "f2", name: "Flux Basic", tier: "FLUX", ram: 4, price: 80000, cpu: "3 vCPU High-Freq", storage: "25GB NVMe", desc: "Vanilla Survival", url: "https://my.zerocloud.id/products/flux/flux-2" },
     { id: "f3", name: "Flux Standart", tier: "FLUX", ram: 6, price: 120000, cpu: "4 vCPU High-Freq", storage: "35GB NVMe", desc: "Modded SMP / RPG", url: "https://my.zerocloud.id/products/flux/flux-3" },
     { id: "f4", name: "Flux Advanced", tier: "FLUX", ram: 8, price: 160000, cpu: "4 vCPU High-Freq", storage: "50GB NVMe", desc: "Genshin MC / RPG", url: "https://my.zerocloud.id/products/flux/flux-4" },
-    { id: "f5", name: "Flux Pro", tier: "FLUX", ram: 12, price: 240000, cpu: "6 vCPU High-Freq", storage: "70GB NVMe", desc: "Public SMP Ramai", url: "https://my.zerocloud.id/products/flux/flux-5" },
+    { id: "f5", name: "Flux Pro", tier: "FLUX", ram: 12, price: 240000, cpu: "6 vCPU High-Freq", storage: "70GB NVMe", desc: "Large Public SMP", url: "https://my.zerocloud.id/products/flux/flux-5" },
     { id: "f6", name: "Flux Plus", tier: "FLUX", ram: 16, price: 320000, cpu: "8 vCPU High-Freq", storage: "100GB NVMe", desc: "Event Server", url: "https://my.zerocloud.id/products/flux/flux-6" },
     
     { id: "a1", name: "Atlas Entry", tier: "ATLAS", ram: 4, price: 120000, cpu: "2 Core Dedicated", storage: "40GB NVMe", desc: "Vanilla Survival", url: "https://my.zerocloud.id/products/atlas/atlas-1" },
@@ -61,15 +61,15 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.98 },
+  hidden: { opacity: 0, y: 15, scale: 0.98 },
   visible: { 
     opacity: 1, 
     y: 0, 
     scale: 1,
     transition: { 
       type: "spring" as const, 
-      stiffness: 100, 
-      damping: 15 
+      stiffness: 120, 
+      damping: 20 
     } 
   }
 };
@@ -110,233 +110,195 @@ export default function CalculatorSection() {
   }, [selectedSoft, players, plugins, mods]);
 
   return (
-    <section className="relative w-full py-16 md:py-24 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
-      
+    <section className="relative w-full py-20 md:py-28 bg-[#0a0a0b] px-6 lg:px-8 border-t border-white/5 overflow-hidden font-sans"> 
       <motion.div 
-        animate={{ opacity: [0.3, 0.5, 0.3], scale: [1, 1.1, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 overflow-hidden pointer-events-none"
+        animate={{ opacity: [0.15, 0.25, 0.15], scale: [1, 1.05, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 overflow-hidden pointer-events-none flex justify-center items-center"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[900px] h-[600px] bg-purple-900/10 blur-[120px] rounded-full" />
+        <div className="w-[800px] h-[800px] bg-purple-900/20 blur-[150px] rounded-full" />
       </motion.div>
-
       <div className="max-w-6xl mx-auto relative z-10">
-        
-        <div className="text-center mb-12 md:mb-16 space-y-4">
+        <div className="text-center mb-16 md:mb-20 space-y-5">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ 
-              duration: 0.6, 
-              ease: [0.16, 1, 0.3, 1],
-              type: "spring",
-              stiffness: 100
-            }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-wider"
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-300 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm"
           >
-            <Calculator className="w-3 h-3" />
+            <Calculator className="w-3.5 h-3.5" />
             <span>Smart Estimator</span>
           </motion.div>
-
           <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ 
-              duration: 0.7, 
-              delay: 0.1, 
-              ease: [0.16, 1, 0.3, 1] 
-            }}
-            className="text-3xl md:text-5xl font-bold text-white"
-          >
-            Bingung Pilih <span className="text-purple-500">Paket?</span>
-          </motion.h2>
-
-          <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ 
-              duration: 0.6, 
-              delay: 0.2, 
-              ease: [0.16, 1, 0.3, 1] 
-            }}
-            className="text-gray-400 max-w-2xl mx-auto text-base md:text-lg px-2"
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-zinc-100"
           >
-            Simulasikan kebutuhan servermu di sini. Algoritma kami akan mencarikan spesifikasi paling <i>worth it</i>.
+            Find Your <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-indigo-400">Perfect Plan</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="text-zinc-400 max-w-2xl mx-auto text-base md:text-lg px-4 font-light leading-relaxed"
+          >
+            Simulate your server requirements below. Our algorithm will identify the most cost-effective and optimal specifications for you.
           </motion.p>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ 
-              duration: 0.7, 
-              delay: 0.2,
-              ease: [0.16, 1, 0.3, 1] 
-            }}
-            className="lg:col-span-7 bg-gray-900/60 border border-gray-800 rounded-3xl p-6 md:p-8 backdrop-blur-xl shadow-2xl"
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+            className="lg:col-span-7 bg-zinc-900/20 border border-zinc-800/60 rounded-3xl p-6 md:p-10 backdrop-blur-xl"
           >
-            
             <motion.div 
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
-              className="mb-10"
+              className="mb-12"
             >
                 <motion.label 
                   variants={itemVariants}
-                  className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-2"
+                  className="text-xs font-semibold text-zinc-500 uppercase tracking-widest mb-6 flex items-center gap-2"
                 >
-                    <Package className="w-4 h-4 text-purple-500" /> Platform Server
+                    <Package className="w-4 h-4 text-zinc-400" /> Server Platform
                 </motion.label>
                 <motion.div 
                   variants={containerVariants}
-                  className="grid grid-cols-3 sm:grid-cols-6 gap-3"
+                  className="grid grid-cols-3 sm:grid-cols-6 gap-3 md:gap-4"
                 >
                     {softwareTypes.map((soft) => (
                         <motion.button
                             key={soft.id}
                             variants={itemVariants}
-                            whileHover={{ scale: 1.05, y: -4 }}
-                            whileTap={{ scale: 0.98 }}
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
                             onClick={() => {
                                 setSelectedSoft(soft);
                                 if (soft.type !== 'mod') setMods([0]);
                                 if (soft.type !== 'plugin') setPlugins([0]);
                             }}
                             className={cn(
-                                "group flex flex-col items-center justify-center gap-3 p-3 rounded-2xl border transition-all duration-300 relative overflow-hidden",
+                                "group flex flex-col items-center justify-center gap-3 p-4 rounded-2xl border transition-all duration-300 relative overflow-hidden",
                                 selectedSoft.id === soft.id 
-                                    ? "bg-purple-500/10 border-purple-500 ring-1 ring-purple-500/50 scale-[1.02]" 
-                                    : "bg-gray-950 border-gray-800 hover:border-gray-700 hover:bg-gray-900"
+                                    ? "bg-purple-500/10 border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.1)]" 
+                                    : "bg-zinc-900/40 border-zinc-800 hover:border-zinc-600 hover:bg-zinc-800/40"
                             )}
                         >
                             <div className="relative w-8 h-8 z-10 transition-transform group-hover:scale-110">
                                 <Image src={soft.icon} alt={soft.name} fill className="object-contain" />
                             </div>
                             <span className={cn(
-                                "text-[10px] font-bold uppercase tracking-wide z-10 transition-colors",
-                                selectedSoft.id === soft.id ? "text-purple-400" : "text-gray-500 group-hover:text-gray-300"
+                                "text-[11px] font-semibold uppercase tracking-wider z-10 transition-colors",
+                                selectedSoft.id === soft.id ? "text-purple-300" : "text-zinc-500 group-hover:text-zinc-300"
                             )}>{soft.name}</span>
                         </motion.button>
                     ))}
                 </motion.div>
             </motion.div>
-
             <motion.div 
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
-              className="space-y-6"
+              className="space-y-8"
             >
-                
                 <motion.div 
                   variants={itemVariants}
-                  whileHover={{ y: -4 }}
-                  className="p-6 rounded-2xl bg-gray-950/50 border border-gray-800/50 transition-all hover:border-gray-700"
+                  className="p-6 md:p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800/50 transition-colors hover:border-zinc-700/80"
                 >
-                    <div className="flex justify-between mb-6">
-                        <label className="text-sm font-bold text-gray-300 flex items-center gap-2">
-                            <Users className="w-4 h-4 text-purple-500" /> Player Online
+                    <div className="flex justify-between items-center mb-8">
+                        <label className="text-sm font-medium text-zinc-300 flex items-center gap-2">
+                            <Users className="w-4 h-4 text-purple-400" /> Concurrent Players
                         </label>
                         <motion.span 
                           key={players[0]}
-                          initial={{ scale: 1.2, opacity: 0 }}
+                          initial={{ scale: 1.1, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                          className="bg-purple-500/10 text-purple-400 px-3 py-1 rounded-lg font-mono font-bold text-sm border border-purple-500/20 shadow-[0_0_10px_rgba(14,165,233,0.1)]"
+                          className="text-zinc-100 font-mono font-medium text-sm bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700"
                         >
-                            {players[0]} Orang
+                            {players[0]} <span className="text-zinc-500 font-sans text-xs">Players</span>
                         </motion.span>
                     </div>
                     <Slider 
                         defaultValue={[5]} max={100} step={1} 
-                        onValueChange={setPlayers} className="py-2"
+                        onValueChange={setPlayers} className="py-2 cursor-pointer"
                     />
-                    <p className="text-xs text-gray-500 mt-4 font-medium">Estimasi jumlah pemain aktif bersamaan.</p>
+                    <p className="text-xs text-zinc-500 mt-5 font-light">Estimated number of active players connected at the same time.</p>
                 </motion.div>
-
                 <AnimatePresence mode="wait">
                     {selectedSoft.type === "plugin" && (
                         <motion.div
                             key="plugin-input"
-                            initial={{ opacity: 0, height: 0, scale: 0.95 }}
+                            initial={{ opacity: 0, height: 0, scale: 0.98 }}
                             animate={{ opacity: 1, height: "auto", scale: 1 }}
-                            exit={{ opacity: 0, height: 0, scale: 0.95 }}
-                            transition={{ 
-                              duration: 0.4, 
-                              ease: [0.16, 1, 0.3, 1]
-                            }}
-                            whileHover={{ y: -4 }}
-                            className="p-6 rounded-2xl bg-gray-950/50 border border-gray-800/50"
+                            exit={{ opacity: 0, height: 0, scale: 0.98 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="p-6 md:p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800/50 overflow-hidden"
                         >
-                            <div className="flex justify-between mb-6">
-                                <label className="text-sm font-bold text-gray-300 flex items-center gap-2">
-                                    <Cpu className="w-4 h-4 text-purple-500" /> Total Plugins
+                            <div className="flex justify-between items-center mb-8">
+                                <label className="text-sm font-medium text-zinc-300 flex items-center gap-2">
+                                    <Cpu className="w-4 h-4 text-purple-400" /> Total Plugins
                                 </label>
                                 <motion.span 
                                   key={plugins[0]}
-                                  initial={{ scale: 1.2, opacity: 0 }}
+                                  initial={{ scale: 1.1, opacity: 0 }}
                                   animate={{ scale: 1, opacity: 1 }}
                                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                                  className="bg-purple-500/10 text-purple-400 px-3 py-1 rounded-lg font-mono font-bold text-sm border border-purple-500/20"
+                                  className="text-zinc-100 font-mono font-medium text-sm bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700"
                                 >
-                                    {plugins[0]} Pcs
+                                    {plugins[0]} <span className="text-zinc-500 font-sans text-xs">Plugins</span>
                                 </motion.span>
                             </div>
                             <Slider 
                                 defaultValue={[0]} max={100} step={1} 
-                                onValueChange={setPlugins} className="py-2" 
+                                onValueChange={setPlugins} className="py-2 cursor-pointer" 
                             />
                         </motion.div>
                     )}
-
                     {selectedSoft.type === "mod" && (
                         <motion.div
                             key="mod-input"
-                            initial={{ opacity: 0, height: 0, scale: 0.95 }}
+                            initial={{ opacity: 0, height: 0, scale: 0.98 }}
                             animate={{ opacity: 1, height: "auto", scale: 1 }}
-                            exit={{ opacity: 0, height: 0, scale: 0.95 }}
-                            transition={{ 
-                              duration: 0.4, 
-                              ease: [0.16, 1, 0.3, 1]
-                            }}
-                            whileHover={{ y: -4 }}
-                            className="p-6 rounded-2xl bg-gray-950/50 border border-gray-800/50"
+                            exit={{ opacity: 0, height: 0, scale: 0.98 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="p-6 md:p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800/50 overflow-hidden"
                         >
-                            <div className="flex justify-between mb-6">
-                                <label className="text-sm font-bold text-gray-300 flex items-center gap-2">
-                                    <Package className="w-4 h-4 text-orange-500" /> Total Mods
+                            <div className="flex justify-between items-center mb-6">
+                                <label className="text-sm font-medium text-zinc-300 flex items-center gap-2">
+                                    <Package className="w-4 h-4 text-orange-400" /> Total Mods
                                 </label>
                                 <motion.span 
                                   key={mods[0]}
-                                  initial={{ scale: 1.2, opacity: 0 }}
+                                  initial={{ scale: 1.1, opacity: 0 }}
                                   animate={{ scale: 1, opacity: 1 }}
                                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                                  className="bg-orange-500/10 text-orange-400 px-3 py-1 rounded-lg font-mono font-bold text-sm border border-orange-500/20"
+                                  className="text-zinc-100 font-mono font-medium text-sm bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700"
                                 >
-                                    {mods[0]} Pcs
+                                    {mods[0]} <span className="text-zinc-500 font-sans text-xs">Mods</span>
                                 </motion.span>
-                            </div>
+                            </div>          
                             <motion.div 
-                              initial={{ opacity: 0, y: -10 }}
+                              initial={{ opacity: 0, y: -5 }}
                               animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.2 }}
-                              className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg mb-6 text-xs text-orange-300 flex gap-2 items-start font-medium"
+                              transition={{ delay: 0.15 }}
+                              className="px-4 py-3 bg-orange-500/10 border border-orange-500/20 rounded-xl mb-8 text-xs text-orange-200/80 flex gap-3 items-start font-light leading-relaxed"
                             >
-                                <Info className="w-4 h-4 shrink-0 mt-0.5" />
-                                <span>Modpack butuh RAM & CPU lebih besar. Rekomendasi otomatis ke Flux/Atlas.</span>
+                                <Info className="w-4 h-4 shrink-0 mt-0.5 text-orange-400" />
+                                <span>Modpacks require more resources. We will automatically recommend the Flux or Atlas tiers.</span>
                             </motion.div>
                             <Slider 
                                 defaultValue={[0]} max={200} step={5} 
-                                onValueChange={setMods} className="py-2" 
+                                onValueChange={setMods} className="py-2 cursor-pointer" 
                             />
                         </motion.div>
                     )}
@@ -344,148 +306,137 @@ export default function CalculatorSection() {
 
             </motion.div>
           </motion.div>
-
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ 
-              duration: 0.7, 
-              delay: 0.3,
-              ease: [0.16, 1, 0.3, 1] 
-            }}
+            transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
             className="lg:col-span-5 relative h-full"
           >
-             <div className="sticky top-24"> 
+             <div className="sticky top-28"> 
                 <motion.div 
                     layout
-                    transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                    className="relative bg-linear-to-b from-gray-900 to-gray-950 border border-gray-800 rounded-[2.5rem] p-1 shadow-2xl overflow-hidden group"
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                    className="relative bg-zinc-900 border border-zinc-800 rounded-3xl p-px shadow-2xl group overflow-hidden"
                 >
                     <motion.div 
-                      animate={{
-                        opacity: [0.2, 0.4, 0.2],
-                        scale: [1, 1.05, 1]
-                      }}
+                      animate={{ opacity: [0.3, 0.6, 0.3] }}
                       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                       className={cn(
-                        "absolute inset-0 blur-2xl transition-colors duration-700",
-                        recommendation.tier === "CORE" ? "bg-linear-to-tr from-emerald-500/20 to-green-900/0" : 
-                        recommendation.tier === "FLUX" ? "bg-linear-to-tr from-purple-500/20 to-indigo-900/0" : 
-                        "bg-linear-to-tr from-purple-500/20 to-pink-900/0"
+                        "absolute inset-0 blur-xl transition-colors duration-700",
+                        recommendation.tier === "CORE" ? "bg-linear-to-tr from-emerald-500/20 to-transparent" : 
+                        recommendation.tier === "FLUX" ? "bg-linear-to-tr from-purple-500/20 to-transparent" : 
+                        "bg-linear-to-tr from-indigo-500/20 to-transparent"
                       )} 
                     />
-
-                    <div className="relative bg-gray-950/90 rounded-[2.3rem] p-8 h-full backdrop-blur-xl">
-                        
+                    <div className="relative bg-[#0a0a0b]/95 rounded-[1.4rem] p-8 md:p-10 h-full backdrop-blur-xl">
                         <motion.div 
                           key={recommendation.tier}
-                          initial={{ opacity: 0, y: -10 }}
+                          initial={{ opacity: 0, y: -5 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="flex justify-between items-start mb-8"
+                          className="flex justify-between items-start mb-10"
                         >
                             <div className={cn(
-                                "px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest border shadow-lg flex items-center gap-2",
+                                "px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-widest border flex items-center gap-2",
                                 recommendation.tier === "CORE" ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" : 
                                 recommendation.tier === "FLUX" ? "bg-purple-500/10 text-purple-400 border-purple-500/20" : 
-                                "bg-purple-500/10 text-purple-400 border-purple-500/20"
+                                "bg-indigo-500/10 text-indigo-400 border-indigo-500/20"
                             )}>
-                                <Sparkles className="w-3 h-3" />
+                                <Sparkles className="w-3.5 h-3.5" />
                                 Perfect Match
                             </div>
                         </motion.div>
-
-                        <div className="mb-8">
+                        <div className="mb-10">
                             <motion.h3 
                                 key={recommendation.name}
-                                initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                initial={{ opacity: 0, y: 5, filter: "blur(4px)" }}
+                                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                                 transition={{ type: "spring", stiffness: 150, damping: 20 }}
-                                className="text-3xl font-black text-white mb-2"
+                                className="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-100 mb-3"
                             >
                                 {recommendation.name}
                             </motion.h3>
                             <motion.div 
                               key={recommendation.price}
-                              initial={{ opacity: 0, x: -10 }}
+                              initial={{ opacity: 0, x: -5 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: 0.1 }}
                               className="flex items-baseline gap-2"
                             >
                                 <span className={cn(
-                                    "text-4xl font-extrabold tracking-tight tabular-nums",
+                                    "text-4xl md:text-5xl font-light tracking-tighter tabular-nums",
                                     recommendation.tier === "CORE" ? "text-emerald-400" : 
-                                    recommendation.tier === "FLUX" ? "text-purple-400" : "text-purple-400"
+                                    recommendation.tier === "FLUX" ? "text-purple-400" : "text-indigo-400"
                                 )}>
                                     Rp {recommendation.price.toLocaleString('id-ID')}
                                 </span>
-                                <span className="text-gray-500 font-medium">/bulan</span>
+                                <span className="text-zinc-500 font-medium text-sm uppercase tracking-wide">/ mo</span>
                             </motion.div>
                         </div>
-
                         <motion.div 
                           key={recommendation.id}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.15 }}
-                          className="grid grid-cols-2 gap-3 mb-8"
+                          className="flex flex-col gap-4 mb-10"
                         >
-                            <div className="bg-gray-900/50 border border-gray-800 p-4 rounded-2xl flex flex-col items-center justify-center text-center">
-                                <Server className="w-5 h-5 text-gray-400 mb-2" />
-                                <span className="text-xl font-bold text-white">{recommendation.ram} GB</span>
-                                <span className="text-xs text-gray-500 font-medium uppercase tracking-wide mt-1">Dedicated RAM</span>
-                            </div>
-                            <div className="bg-gray-900/50 border border-gray-800 p-4 rounded-2xl flex flex-col items-center justify-center text-center">
-                                <Cpu className="w-5 h-5 text-gray-400 mb-2" />
-                                <span className="text-sm font-bold text-white mt-1">{recommendation.cpu}</span>
-                                <span className="text-xs text-gray-500 font-medium uppercase tracking-wide mt-1">Processor</span>
+                            <div className="flex items-center justify-between py-3 border-b border-zinc-800/60">
+                                <div className="flex items-center gap-3 text-zinc-400">
+                                    <Server className="w-4 h-4" />
+                                    <span className="text-sm font-medium">Dedicated RAM</span>
+                                </div>
+                                <span className="text-base font-semibold text-zinc-100">{recommendation.ram} GB</span>
+                            </div>                           
+                            <div className="flex items-center justify-between py-3 border-b border-zinc-800/60">
+                                <div className="flex items-center gap-3 text-zinc-400">
+                                    <Cpu className="w-4 h-4" />
+                                    <span className="text-sm font-medium">Processor</span>
+                                </div>
+                                <span className="text-base font-semibold text-zinc-100">{recommendation.cpu}</span>
                             </div>
                         </motion.div>
-
                         <motion.div 
                           key={recommendation.desc}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 }}
-                          className="mb-8 p-4 rounded-xl bg-white/5 border border-white/5 flex gap-3 items-start"
+                          className="mb-10 p-5 rounded-2xl bg-zinc-800/20 border border-zinc-800 flex gap-4 items-start"
                         >
                             <CheckCircle2 className={cn(
-                                "w-5 h-5 shrink-0 mt-0.5",
-                                recommendation.tier === "CORE" ? "text-emerald-500" : 
-                                recommendation.tier === "FLUX" ? "text-purple-500" : "text-purple-500"
+                                "w-5 h-5 shrink-0",
+                                recommendation.tier === "CORE" ? "text-emerald-400" : 
+                                recommendation.tier === "FLUX" ? "text-purple-400" : "text-indigo-400"
                             )} />
                             <div>
-                                <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-1">Why this plan?</p>
-                                <p className="text-sm text-gray-200 leading-relaxed font-medium">
+                                <p className="text-[10px] text-zinc-500 uppercase font-semibold tracking-widest mb-1.5">Best Suited For</p>
+                                <p className="text-sm text-zinc-300 font-medium">
                                     {recommendation.desc}
                                 </p>
                             </div>
                         </motion.div>
-
                         <motion.a 
                             key={recommendation.url}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.25 }}
-                            whileHover={{ scale: 1.02 }}
+                            whileHover={{ scale: 1.01, y: -2 }}
                             whileTap={{ scale: 0.98 }}
                             href={recommendation.url}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cn(
-                                "group flex items-center justify-center w-full py-4 rounded-xl font-bold text-base shadow-lg transition-all hover:ring-2 ring-offset-2 ring-offset-gray-950",
-                                recommendation.tier === "CORE" ? "bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-500/20 ring-emerald-500" : 
-                                recommendation.tier === "FLUX" ? "bg-purple-600 hover:bg-purple-500 text-white shadow-purple-500/20 ring-purple-500" : 
-                                "bg-purple-600 hover:bg-purple-500 text-white shadow-purple-500/20 ring-purple-500"
+                                "group flex items-center justify-center w-full py-4 rounded-xl font-medium text-sm tracking-wide transition-all",
+                                recommendation.tier === "CORE" ? "bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hover:border-emerald-500/50" : 
+                                recommendation.tier === "FLUX" ? "bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:border-purple-500/50" : 
+                                "bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 hover:border-indigo-500/50"
                             )}
                         >
-                            Order Sekarang <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                            Order Now <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform opacity-70" />
                         </motion.a>
                     </div>
                 </motion.div>
              </div>
           </motion.div>
-
         </div>
       </div>
     </section>

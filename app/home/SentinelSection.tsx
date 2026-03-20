@@ -91,7 +91,6 @@ export default function SentinelSection() {
 
   return (
     <section ref={containerRef} className="relative w-full py-16 md:py-24 px-8 border-t border-gray-900 overflow-hidden bg-gray-950">
-
       <AnimatedGridPattern
         numSquares={30}
         maxOpacity={0.1}
@@ -102,11 +101,8 @@ export default function SentinelSection() {
           "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
         )}
       />
-      
-      <motion.div style={{ opacity, y }} className="max-w-7xl mx-auto px-4 relative z-10">
-        
+      <motion.div style={{ opacity, y }} className="max-w-7xl mx-auto px-4 relative z-10">  
         <div className="flex flex-col items-center text-center mb-16 md:mb-20">
-
           <LazyEye />
 
           <motion.div 

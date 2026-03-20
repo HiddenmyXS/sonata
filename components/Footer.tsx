@@ -10,7 +10,6 @@ import {
   Instagram
 } from "lucide-react";
 
-// --- CONFIG LINKS ---
 const productLinks = [
   { name: "Game Hosting", href: "/game-host" },
   { name: "App Hosting", href: "/app-host" },
@@ -47,22 +46,19 @@ const paymentMethods = [
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-950 pt-20 pb-10 px-8 relative overflow-hidden border-t border-gray-900 font-sans">
-      
+    <footer className="w-full pt-20 pb-10 px-8 relative overflow-hidden border-t border-gray-900 font-sans" style={{ background: "#08080a" }}>  
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16">
-        
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="flex items-center gap-2 w-fit group">
                <div className="relative w-8 h-8 transition-transform group-hover:scale-110">
-                  <Image src="/aset/logo/logo.png" alt="Sonata Logo" fill className="object-contain" />
+                  <Image src="/aset/sonata.png" alt="Sonata Logo" fill className="object-contain" />
                </div>
                <h4 className="text-2xl font-extrabold text-white tracking-tight group-hover:text-purple-400 transition-colors">Sonata</h4>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
               Premium hosting solutions for next-generation applications and games. Built for speed, security, and stability in Indonesia.
-            </p>
-            
+            </p>  
             <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-gray-900/50 border border-gray-800 w-fit backdrop-blur-sm">
                <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -71,7 +67,6 @@ const Footer = () => {
                <span className="text-xs font-bold text-gray-300">All Systems Operational</span>
             </div>
           </div>
-
           <div className="lg:col-span-3 lg:pl-8">
             <h4 className="font-bold text-white mb-6">Products</h4>
             <ul className="space-y-3 text-sm text-gray-400">
@@ -85,7 +80,6 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-
           <div className="lg:col-span-3">
             <h4 className="font-bold text-white mb-6">Company</h4>
             <ul className="space-y-3 text-sm text-gray-400">
@@ -99,7 +93,6 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-
           <div className="lg:col-span-2">
             <h4 className="font-bold text-white mb-6">Legal</h4>
             <ul className="space-y-3 text-sm text-gray-400">
@@ -113,9 +106,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-
-        <div className="pt-8 border-t border-gray-900/50 flex flex-col gap-8">
-            
+        <div className="pt-8 border-t border-gray-900/50 flex flex-col gap-8">            
             <div className="flex flex-wrap items-center justify-center lg:justify-between gap-6 pb-8 border-b border-gray-900/50">
                 <span className="text-xs font-bold text-gray-500 uppercase tracking-widest hidden lg:block">Accepted Payments</span>
                 <div className="flex flex-wrap justify-center gap-4 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
@@ -131,10 +122,8 @@ const Footer = () => {
                     ))}
                 </div>
             </div>
-
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
-                <p>&copy; {new Date().getFullYear()} Sonata Indonesia. All rights reserved.</p>
-                
+                <p>&copy; {new Date().getFullYear()} Sonata Indonesia. All rights reserved.</p>               
                 <div className="flex gap-4">
                     <SocialLink href="https://github.com/zerocloud" icon={<Github className="w-4 h-4" />} label="Github" />
                     <SocialLink href="https://youtube.com/@zerocloud" icon={<Youtube className="w-4 h-4" />} label="Youtube" />
@@ -143,7 +132,6 @@ const Footer = () => {
                 </div>
             </div>
         </div>
-
       </div>
     </footer>
   );

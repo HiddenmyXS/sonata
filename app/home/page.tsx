@@ -5,16 +5,12 @@ import HeroSection from "./HeroSection";
 import WhyChooseSection from "./WhySection";
 import PricingSection from "./PricingSection";
 import CTASection from "./CtaSection";
-import PanelSection from "./PanelSection";
 import ClientWrapping from "@/components/ClientWrapping";
-import TestimonialsSection from "./TestimonialSection";
+import TestimonialsSection from "./TestiSection";
 import LocationSection from "./LocationSection";
 import FaqSection from "./FaqSection";
 import TechSection from "./TechSection";
-import CalculatorSection from "./CalculatorSection";
-import CompareSection from "./CompareSection";
-import SentinelSection from "./SentinelSection";
-import DiscordSection from "./DiscordSection";
+import '../globals.css';
 
 export default function HomeComponent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,12 +32,7 @@ export default function HomeComponent() {
       <WhyChooseSection />
       <LocationSection />
       <TestimonialsSection />
-      <DiscordSection />
-      {/* <CompareSection /> */}
       <TechSection />
-      <PanelSection />
-      <SentinelSection />
-      <CalculatorSection />
       <PricingSection />
       <FaqSection />
       <CTASection />

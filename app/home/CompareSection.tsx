@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// --- DATA COMPARISON ---
 const comparisonData = [
   {
     feature: "CPU Architecture",
@@ -75,8 +74,7 @@ const providers = [
 export default function ComparisonSection() {
   return (
     <section className="relative w-full py-24 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
-      <div className="max-w-6xl mx-auto relative z-10">
-        
+      <div className="max-w-6xl mx-auto relative z-10">     
         <div className="text-center mb-16 space-y-4">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -94,10 +92,8 @@ export default function ComparisonSection() {
             Transparansi adalah kunci. Lihat bagaimana spesifikasi dan harga kami bersaing dengan provider lain.
           </p>
         </div>
-
         <div className="relative w-full overflow-x-auto pb-4">
-            <div className="min-w-[900px] bg-gray-900/40 border border-gray-800 rounded-3xl p-2 backdrop-blur-sm">
-                
+            <div className="min-w-[900px] bg-gray-900/40 border border-gray-800 rounded-3xl p-2 backdrop-blur-sm">               
                 <div className="grid grid-cols-5 gap-4 mb-4 p-4 border-b border-gray-800">
                     <div className="col-span-1 flex items-center font-bold text-gray-500 uppercase text-xs tracking-wider">
                         Features
@@ -115,7 +111,6 @@ export default function ComparisonSection() {
                         </div>
                     ))}
                 </div>
-
                 <div className="space-y-2">
                     {comparisonData.map((row, idx) => (
                         <motion.div 
@@ -124,15 +119,13 @@ export default function ComparisonSection() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="grid grid-cols-5 gap-4 p-4 hover:bg-white/5 rounded-xl transition-colors items-center"
-                        >
+                            className="grid grid-cols-5 gap-4 p-4 hover:bg-white/5 rounded-xl transition-colors items-center">
                             <div className="col-span-1 flex flex-col justify-center">
                                 <div className="flex items-center gap-2 text-gray-300 font-bold text-sm">
                                     <row.icon className="w-4 h-4 text-purple-500" />
                                     {row.feature}
                                 </div>
                             </div>
-
                             <div className="col-span-1 relative">
                                 <div className="absolute inset-0 bg-purple-500/10 blur-xl rounded-full opacity-50" />
                                 <div className="relative bg-gray-800/80 border border-purple-500/50 rounded-xl p-3 text-center shadow-lg shadow-purple-500/10">
@@ -140,27 +133,21 @@ export default function ComparisonSection() {
                                     <p className="text-[10px] text-purple-300 mt-1 font-medium">{row.zerocloud.sub}</p>
                                 </div>
                             </div>
-
                             <div className="col-span-1 text-center text-sm text-gray-500 font-medium px-2">{row.zlpe}</div>
                             <div className="col-span-1 text-center text-sm text-gray-500 font-medium px-2">{row.arra}</div>
                             <div className="col-span-1 text-center text-sm text-gray-500 font-medium px-2">{row.nscd}</div>
                         </motion.div>
                     ))}
                 </div>
-
-                {/* PRICING FOOTER - GRID COLS 5 */}
                 <div className="grid grid-cols-5 gap-4 mt-4 p-6 bg-black/20 rounded-2xl border border-white/5 items-center">
                     <div className="col-span-1 font-bold text-white">
                         Price (6GB RAM)
                         <p className="text-xs text-gray-500 font-normal mt-1">*Monthly Estimate</p>
                     </div>
-                    
-                    {/* Sonata Price */}
                     <div className="col-span-1 text-center">
                         <div className="text-2xl font-black text-purple-400">{pricingRow.zerocloud}</div>
                         <p className="text-xs text-gray-400">Core Advanced</p>
                     </div>
-
                     <div className="col-span-1 text-center text-lg font-bold text-gray-600">{pricingRow.zlpe}</div>
                     <div className="col-span-1 text-center text-lg font-bold text-gray-600">{pricingRow.arra}</div>
                     <div className="col-span-1 text-center text-lg font-bold text-gray-600">{pricingRow.nscd}</div>
@@ -168,13 +155,11 @@ export default function ComparisonSection() {
 
             </div>
         </div>
-
         <div className="mt-6 text-center">
             <p className="text-xs text-gray-600 font-mono">
                 *Comparison data accurate as of January 21st, 2026 based on public claims. Competitor names obfuscated for privacy.
             </p>
         </div>
-
       </div>
     </section>
   );

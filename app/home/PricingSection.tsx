@@ -1,285 +1,271 @@
 "use client";
 
-import { Check, Zap, Server, Shield, DollarSign } from "lucide-react";
+import { useState } from "react";
+import { Check, Zap, Server, Shield, DollarSign, Clock, Activity, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import Link from "next/link"; // Import Link
+import Link from "next/link";
 
-// --- DATA ---
 const pricingPlans = [
   {
     name: "CORE",
-    tagline: "Stabil & Ekonomis",
-    price: "Rp 15rb",
-    period: "/bulan",
-    description: "Ideal untuk website, bot discord, dan database ringan.",
+    tagline: "Stable & Economical",
+    price: "Rp 15.000",
+    period: "/mo",
+    description: "Ideal for websites, Discord bots, and lightweight databases.",
     recommendation: "Best for Web & Bots",
-    icon: <Server className="w-6 h-6 text-green-400" />,
+    icon: Server,
     features: [
-      "from 1 vCPU Cores",
-      "from 1GB RAM",
-      "from 5GB NVMe SSD",
-      "1Gbps Network",
+      "From 1 vCPU Core",
+      "From 1GB RAM",
+      "From 5GB NVMe SSD",
+      "1Gbps Network Port",
       "Standard DDoS Protection",
-      "24/7 Support"
+      "24/7 Technical Support",
     ],
     highlight: false,
-    linkId: "core", // Untuk query param nanti (optional)
-    styles: {
-        iconBg: "bg-green-500/10",
-        iconBorder: "border-green-500/20",
-        tagBg: "bg-green-500/10",
-        tagText: "text-green-400",
-        tagBorder: "border-green-500/20",
-        taglineColor: "text-green-400",
-        checkColor: "group-hover:text-green-400",
-        buttonHover: "hover:border-green-500/30"
-    }
+    linkId: "core",
+    accentColor: "emerald",
+    iconColor: "text-emerald-400",
+    iconBg: "bg-emerald-500/8 border-emerald-500/15",
+    checkBg: "bg-emerald-500/10",
+    checkColor: "text-emerald-400",
+    glow: "rgba(16,185,129,0.12)",
+    hoverGlow: "rgba(16,185,129,0.2)",
+    borderActive: "border-emerald-500/35",
+    badgeColor: "text-emerald-400 bg-emerald-500/8 border-emerald-500/20",
   },
   {
     name: "FLUX",
     tagline: "High Performance Gaming",
-    price: "Rp 20rb",
-    period: "/bulan",
-    description: "Performa tinggi dengan clock speed kencang untuk game servermu.",
-    recommendation: "Best for Game Server",
-    icon: <Zap className="w-6 h-6 text-purple-400" />,
+    price: "Rp 20.000",
+    period: "/mo",
+    description: "High performance with fast clock speeds tailored for game servers.",
+    recommendation: "Most Popular",
+    icon: Zap,
     features: [
-      "from 2 vCPU High-Freq (Ryzen 5 Renoir)",
-      "from 2GB DDR4 RAM",
-      "from 512GB NVMe Gen 4",
-      "10Gbps Network",
+      "From 2 vCPU High-Freq",
+      "From 2GB DDR4 RAM",
+      "From 512GB NVMe Gen 4",
+      "10Gbps Network Port",
       "Advanced Game DDoS",
-      "Priority Support"
+      "Priority Support Routing",
     ],
     highlight: true,
     linkId: "flux",
-    styles: {
-        iconBg: "bg-purple-500/10",
-        iconBorder: "border-purple-500/20",
-        tagBg: "bg-purple-500/10",
-        tagText: "text-purple-400",
-        tagBorder: "border-purple-500/20",
-        taglineColor: "text-purple-400",
-        checkColor: "group-hover:text-purple-400",
-        buttonHover: "hover:border-purple-500/30"
-    }
+    accentColor: "purple",
+    iconColor: "text-purple-400",
+    iconBg: "bg-purple-500/10 border-purple-500/20",
+    checkBg: "bg-purple-500/15",
+    checkColor: "text-purple-300",
+    glow: "rgba(168,85,247,0.18)",
+    hoverGlow: "rgba(168,85,247,0.3)",
+    borderActive: "border-purple-500/50",
+    badgeColor: "text-purple-300 bg-purple-500/10 border-purple-500/30",
   },
   {
     name: "ATLAS",
     tagline: "Extreme Compute",
-    price: "Rp 30rb",
-    period: "/bulan",
-    description: "Kekuatan penuh untuk enterprise, MEGASMP, dan heavy workload.",
-    recommendation: "Best for Enterprise/Big SMP",
-    icon: <Shield className="w-6 h-6 text-purple-400" />,
+    price: "Rp 30.000",
+    period: "/mo",
+    description: "Full power for enterprise, Mega SMPs, and heavy workloads.",
+    recommendation: "Best for Enterprise",
+    icon: Shield,
     features: [
-      "from 2 CPU Dedicated (AMD EPYC 4004 Raphael)",
-      "up to 32GB DDR5 RAM",
-      "up to 2TB Enterprise NVMe", 
+      "From 2 CPU Dedicated",
+      "Up to 32GB DDR5 RAM",
+      "Up to 2TB Enterprise NVMe",
       "L7 Custom Mitigation",
-      "Dedicated Account Manager"
+      "Dedicated Account Manager",
     ],
     highlight: false,
     linkId: "atlas",
-    styles: {
-        iconBg: "bg-purple-500/10",
-        iconBorder: "border-purple-500/20",
-        tagBg: "bg-purple-500/10",
-        tagText: "text-purple-400",
-        tagBorder: "border-purple-500/20",
-        taglineColor: "text-purple-400",
-        checkColor: "group-hover:text-purple-400",
-        buttonHover: "hover:border-purple-500/30"
-    }
+    accentColor: "indigo",
+    iconColor: "text-indigo-400",
+    iconBg: "bg-indigo-500/8 border-indigo-500/15",
+    checkBg: "bg-indigo-500/10",
+    checkColor: "text-indigo-400",
+    glow: "rgba(99,102,241,0.12)",
+    hoverGlow: "rgba(99,102,241,0.22)",
+    borderActive: "border-indigo-500/35",
+    badgeColor: "text-indigo-400 bg-indigo-500/8 border-indigo-500/20",
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
-  }
-};
+const PricingCard = ({ plan, index }: { plan: typeof pricingPlans[0]; index: number }) => {
+  const [hovered, setHovered] = useState(false);
+  const active = hovered || plan.highlight;
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50, scale: 0.9 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: { type: "spring" as const, stiffness: 100, damping: 15 } 
-  }
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={cn(
+        "relative flex flex-col rounded-2xl border transition-all duration-300 overflow-hidden h-full",
+        active ? plan.borderActive : "border-white/6"
+      )}
+      style={{
+        background: plan.highlight
+          ? "rgba(109,40,217,0.05)"
+          : hovered
+          ? "rgba(255,255,255,0.025)"
+          : "rgba(255,255,255,0.02)",
+        boxShadow: active
+          ? `0 0 32px ${plan.glow}, 0 1px 0 rgba(255,255,255,0.05) inset`
+          : "0 1px 0 rgba(255,255,255,0.04) inset",
+        transition: "box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease",
+      }}
+    >
+      <div
+        className="absolute inset-x-0 top-0 h-px pointer-events-none transition-opacity duration-300"
+        style={{
+          background: `linear-gradient(to right, transparent, ${plan.glow.replace("0.12", "0.5").replace("0.18", "0.55")}, transparent)`,
+          opacity: active ? 1 : 0,
+        }}
+      />
+      <div className="flex flex-col h-full p-7">
+        <div className="flex items-start justify-between mb-6">
+          <div className={cn("p-3 rounded-xl border", plan.iconBg)}>
+            <plan.icon className={cn("w-5 h-5", plan.iconColor)} />
+          </div>
+          {plan.highlight ? (
+            <span className="inline-flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border border-purple-500/25 bg-purple-500/8 text-purple-300">
+              <Sparkles className="w-2.5 h-2.5" />
+              Most Popular
+            </span>
+          ) : (
+            <span className={cn("text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border", plan.badgeColor)}>
+              {plan.recommendation}
+            </span>
+          )}
+        </div>
+        <h3 className="text-xl font-semibold text-white tracking-tight mb-0.5">{plan.name}</h3>
+        <p className={cn("text-xs font-bold uppercase tracking-widest mb-3", plan.iconColor)}>
+          {plan.tagline}
+        </p>
+        <p className="text-sm text-slate-500 leading-relaxed mb-7 min-h-12">
+          {plan.description}
+        </p>
+        <div className="mb-6">
+          <span className="text-[10px] text-slate-600 uppercase tracking-widest font-semibold">Starting from</span>
+          <div className="flex items-baseline gap-1.5 mt-1">
+            <span className="text-4xl font-light tracking-tighter text-white">{plan.price}</span>
+            <span className="text-slate-500 text-sm">{plan.period}</span>
+          </div>
+        </div>
+        <div className="h-px bg-white/5 mb-6" />
+        <div className="grid grid-cols-2 gap-2.5 mb-7">
+          <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/3 border border-white/5">
+            <Activity className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+            <div>
+              <p className="text-[9px] text-slate-600 uppercase tracking-widest font-bold">Uptime</p>
+              <p className="text-xs text-white font-medium">99.9%</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/3 border border-white/5">
+            <Clock className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+            <div>
+              <p className="text-[9px] text-slate-600 uppercase tracking-widest font-bold">Setup</p>
+              <p className="text-xs text-white font-medium">Instant</p>
+            </div>
+          </div>
+        </div>
+        <ul className="space-y-3 flex-1 mb-8">
+          {plan.features.map((feature, idx) => (
+            <li key={idx} className="flex items-start gap-3 text-sm">
+              <div className={cn("mt-0.5 p-0.5 rounded-full shrink-0", plan.checkBg)}>
+                <Check className={cn("w-3 h-3", plan.checkColor)} />
+              </div>
+              <span className="text-slate-400 leading-snug">{feature}</span>
+            </li>
+          ))}
+        </ul>
+        <Link href={`/game-host?plan=${plan.linkId}`} className="block mt-auto">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            className={cn(
+              "w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer group/btn",
+              plan.highlight
+                ? "bg-linear-to-r from-purple-600 to-indigo-600 text-white border border-purple-500/40 shadow-lg shadow-purple-900/40"
+                : "bg-white/4 border border-white/8 text-slate-300 hover:bg-white/6 hover:text-white hover:border-white/14"
+            )}
+          >
+            Deploy {plan.name}
+            <ArrowRight className="w-4 h-4 opacity-60 group-hover/btn:translate-x-1 group-hover/btn:opacity-100 transition-all duration-200" />
+          </motion.button>
+        </Link>
+      </div>
+    </motion.div>
+  );
 };
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="relative w-full py-16 md:py-24 bg-gray-950 px-8 border-t border-gray-900 overflow-hidden">
-      
-      <motion.div 
-        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.1, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-      >
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[1000px] h-[600px] bg-purple-900/10 blur-[120px] rounded-full" />
-      </motion.div>
-
+    <section
+      id="pricing"
+      className="relative w-full py-24 md:py-36 px-6 lg:px-8 overflow-hidden font-sans"
+      style={{ background: "#08080a" }}
+    >
+      <div
+        className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundSize: "128px 128px",
+        }}
+      />
       <div className="max-w-7xl mx-auto relative z-10">
-        
-        <div className="text-center mb-16 md:mb-24">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+        <div className="text-center mb-20 md:mb-28 space-y-5">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/8 bg-white/4 text-slate-300 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm"
           >
-            <DollarSign className="w-3 h-3" />
-            <span>Biaya? Gampang!</span>
+            <DollarSign className="w-3.5 h-3.5 text-purple-400" />
+            <span>Transparent Pricing</span>
           </motion.div>
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold text-white mb-5"
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white"
           >
-            Pilih <span className="text-purple-500">Kekuatanmu!</span>
+            Choose Your{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-indigo-400">
+              Power
+            </span>
           </motion.h2>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-400 max-w-2xl mx-auto text-base md:text-lg px-2"
+            transition={{ duration: 0.5, delay: 0.16 }}
+            className="text-slate-500 max-w-xl mx-auto text-base md:text-lg leading-relaxed"
           >
-            Infrastruktur fleksibel untuk setiap kebutuhan. Dari hosting bot sederhana hingga cluster game raksasa.
+            Flexible infrastructure tailored for every need. Scale seamlessly from a simple bot host to a massive gaming cluster.
           </motion.p>
         </div>
-        
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {pricingPlans.map((plan, index) => (
-            <motion.div 
-              key={index}
-              variants={cardVariants}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className={cn(
-                "relative flex flex-col p-6 md:p-8 rounded-4xl border transition-colors duration-300 group h-full",
-                plan.highlight 
-                  ? "bg-gray-900/80 border-purple-500/30 shadow-2xl shadow-purple-500/10 scale-100 md:scale-105 z-10" 
-                  : "bg-gray-900/30 border-gray-800 hover:border-gray-700 hover:bg-gray-900/60"
-              )}
-            >
-              {plan.highlight && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="absolute -top-5 left-1/2 -translate-x-1/2 w-full text-center"
-                >
-                  <div className="relative inline-block">
-                    <span className="absolute inset-0 rounded-full bg-purple-500 blur opacity-50 animate-pulse"></span>
-                    <div className="relative bg-linear-to-r from-purple-600 to-indigo-600 text-white px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg border border-purple-400/20 whitespace-nowrap">
-                      Most Popular
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              <div className="mb-3">
-                  <div className="flex justify-between items-start mb-4">
-                    <div className={cn(
-                        "p-3 rounded-2xl transition-transform duration-300 group-hover:scale-110",
-                        plan.styles.iconBg, 
-                        plan.styles.iconBorder,
-                        "border"
-                    )}>
-                        {plan.icon}
-                    </div>
-                    <span className={cn(
-                        "text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border",
-                        plan.styles.tagBg,
-                        plan.styles.tagText,
-                        plan.styles.tagBorder
-                    )}>
-                        {plan.recommendation}
-                    </span>
-                  </div>
-                  
-                  <h3 className="text-2xl font-black text-white tracking-tight">{plan.name}</h3>
-                  <p className={cn("text-sm font-medium mb-4", plan.styles.taglineColor)}>
-                    {plan.tagline}
-                  </p>
-                  <p className="text-sm text-gray-400 leading-relaxed min-h-[60px] md:min-h-20">
-                    {plan.description}
-                  </p>
-              </div>
-
-              <div className="flex items-baseline gap-1 mb-8">
-                  <div className="flex flex-col gap-2">
-                  <span className="text-xs text-gray-400 font-medium">start from</span>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-extrabold text-white">{plan.price}</span>
-                      <span className="text-gray-500 font-medium">{plan.period}</span>
-                    </div>
-                  </div>
-              </div>
-              
-              <div className="w-full h-px bg-linear-to-r from-transparent via-gray-700 to-transparent mb-8"></div>
-
-              <ul className="space-y-4 flex-1 mb-8">
-                {plan.features.map((feature, idx) => (
-                  <motion.li 
-                    key={idx} 
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 + (idx * 0.1) }}
-                    className="flex items-center gap-3 text-sm text-gray-300"
-                  >
-                    <div className={cn(
-                        "p-0.5 rounded-full transition-colors",
-                        plan.highlight 
-                            ? "bg-purple-500/20 text-purple-400" 
-                            : "bg-gray-800 text-gray-400",
-                        plan.styles.checkColor
-                    )}>
-                      <Check className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="group-hover:text-white transition-colors">{feature}</span>
-                  </motion.li>
-                ))}
-              </ul>
-
-              <Link href="/game-host" className="w-full mt-auto block">
-                  <motion.button 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={cn(
-                      "w-full py-4 px-6 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg cursor-pointer",
-                      plan.highlight 
-                        ? "bg-linear-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-purple-500/25 hover:shadow-purple-500/40" 
-                        : `bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 ${plan.styles.buttonHover}`
-                    )}
-                  >
-                    Deploy {plan.name}
-                  </motion.button>
-              </Link>
-
-            </motion.div>
+            <PricingCard key={plan.name} plan={plan} index={index} />
           ))}
-        </motion.div>
-
+        </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center text-slate-700 text-xs mt-12 tracking-wide"
+        >
+          All plans include instant deployment · No setup fees · Cancel anytime
+        </motion.p>
       </div>
     </section>
   );
