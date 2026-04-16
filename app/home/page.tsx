@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import HeroSection from "./HeroSection";
 import WhyChooseSection from "./WhySection";
 import PricingSection from "./PricingSection";
@@ -13,30 +12,29 @@ import TechSection from "./TechSection";
 import '../globals.css';
 
 export default function HomeComponent() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <main
-      className={`flex flex-col items-center w-full min-h-screen bg-gray-950 text-white transition-opacity duration-1000 ease-in-out font-sans selection:bg-purple-500/30`}
-      >
-      <ClientWrapping>
-      <HeroSection />
-      <WhyChooseSection />
-      <LocationSection />
-      <TestimonialsSection />
-      <TechSection />
-      <PricingSection />
-      <FaqSection />
-      <CTASection />
-      </ClientWrapping>
-    </main>
+    <ClientWrapping>
+      <main className="flex flex-col items-center w-full min-h-screen bg-[#08080a] text-white font-sans selection:bg-purple-500/30">
+        {/* Persistent ambient layer — creates visual continuity across all sections */}
+        <div
+          aria-hidden
+          className="fixed inset-0 pointer-events-none z-0"
+          style={{
+            background: `
+              radial-gradient(ellipse 70% 40% at 85% 15%, rgba(109,40,217,0.07) 0%, transparent 60%),
+              radial-gradient(ellipse 50% 35% at 15% 85%, rgba(79,70,229,0.05) 0%, transparent 60%)
+            `,
+          }}
+        />
+        <HeroSection />
+        <WhyChooseSection />
+        <LocationSection />
+        <TestimonialsSection />
+        <TechSection />
+        <PricingSection />
+        <FaqSection />
+        <CTASection />
+      </main>
+    </ClientWrapping>
   );
 }

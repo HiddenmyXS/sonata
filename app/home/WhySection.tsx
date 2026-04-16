@@ -13,9 +13,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const features = [
   {
     id: 1,
-    title: "Lightning-Fast Performance",
-    subtitle: "Deploy at the Speed of Light",
-    desc: "NVMe SSDs and latest high-clock processors mean your users never experience lag. No shared resources, no compromises.",
+    title: "Performance That Shows",
+    subtitle: "Speed you feel on the first join",
+    desc: "Gen 4 NVMe and high-clock CPUs — no shared resources, no throttling. Your players load in before anyone else's server list refreshes.",
     icon: Zap,
     stat: "5ms",
     statLabel: "Average Latency",
@@ -28,13 +28,13 @@ const features = [
   },
   {
     id: 2,
-    title: "Enterprise Security",
-    subtitle: "DDoS Protection Built-In",
-    desc: "10Tbps DDoS mitigation at the network edge. Sleep peacefully knowing your community is protected from attacks.",
+    title: "Attacks Stop at Our Door",
+    subtitle: "DDoS mitigation, always-on",
+    desc: "Our 10Tbps scrubbing center absorbs floods before they reach you. No config, no panic alerts — just uptime.",
     icon: ShieldCheck,
     stat: "10Tbps",
     statLabel: "Mitigation Capacity",
-    highlight: "Always-On Protection",
+    highlight: "Always-On Shield",
     tag: "Security",
     color: "from-fuchsia-500 to-pink-600",
     glowColor: "rgba(217,70,239,0.15)",
@@ -43,13 +43,13 @@ const features = [
   },
   {
     id: 3,
-    title: "Global Infrastructure",
-    subtitle: "Low Latency Everywhere",
-    desc: "Premium routing across Jakarta, Singapore, and US. Your players connect from anywhere with minimal ping.",
+    title: "Close to Your Players",
+    subtitle: "Low latency, any region",
+    desc: "Nodes in Jakarta, Singapore, Kuala Lumpur, and the US. Pick your region — we handle the routing.",
     icon: Globe,
-    stat: "3",
-    statLabel: "Premium Regions",
-    highlight: "Strategic Locations",
+    stat: "4",
+    statLabel: "Active Regions",
+    highlight: "Strategic Nodes",
     tag: "Network",
     color: "from-indigo-500 to-blue-600",
     glowColor: "rgba(99,102,241,0.15)",
@@ -58,13 +58,13 @@ const features = [
   },
   {
     id: 4,
-    title: "Expert Support",
-    subtitle: "Help When You Need It",
-    desc: "Our engineering team responds in minutes, not hours. 24/7 support that actually knows how to solve problems.",
+    title: "Real Engineers, Not Bots",
+    subtitle: "Under 15 minutes, every time",
+    desc: "Our team responds in minutes, in Indonesian or English. No ticket queues, no copy-paste answers — just actual help.",
     icon: Headset,
-    stat: "< 15min",
+    stat: "<15m",
     statLabel: "Response Time",
-    highlight: "Real Experts",
+    highlight: "24/7 Live Support",
     tag: "Support",
     color: "from-purple-500 to-violet-600",
     glowColor: "rgba(168,85,247,0.15)",
@@ -209,6 +209,7 @@ const VerticalTimeline = ({
                   className={`absolute inset-0 rounded-full bg-linear-to-br ${f.color} blur-md pointer-events-none`}
                 />
               )}
+              
               <div
                 className={`relative w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-500 ${
                   isActive
@@ -272,9 +273,6 @@ const VerticalTimeline = ({
               >
                 {f.tag}
               </span>
-              {isPast && (
-                <span className="text-[9px] text-slate-600 font-mono">✓ done</span>
-              )}
             </div>
             {isPast && (
               <motion.div
@@ -413,10 +411,6 @@ export default function WhySection() {
       className="relative w-full h-screen overflow-hidden"
       style={{ background: "#08080a" }}
     >
-      <div
-        className="absolute inset-x-0 top-0 h-40 pointer-events-none z-0"
-        
-      />
       <AnimatePresence mode="wait">
         <motion.div
           key={activeIndex}
@@ -445,17 +439,17 @@ export default function WhySection() {
           <div className="flex items-center gap-3 mb-3">
             <div className="h-px w-8 bg-purple-500" />
             <p className="text-xs font-bold text-purple-400 uppercase tracking-widest">
-              Why Choose Us
+              Why Us
             </p>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-            Built for Performance,{" "}
+            Hosting Without{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-violet-400">
-              Designed for You
+              the Headaches
             </span>
           </h2>
           <p className="text-base text-slate-500 mt-3 max-w-lg">
-            Enterprise-grade hosting without the enterprise pricing.
+            High performance. Fair pricing. Real engineers.
           </p>
         </div>
         <div className="flex-1 flex gap-10 lg:gap-16 min-h-0 pb-10">

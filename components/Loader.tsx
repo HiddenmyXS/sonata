@@ -1,90 +1,82 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
-const Loader = () => {
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    // Waktu tampil loader sebelum animasi usap dimulai (2.5 detik)
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, 2500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
+export default function Loader() {
   return (
-    <AnimatePresence>
-      {isVisible && (
+    <motion.div
+      className="fixed inset-0 z-9999 flex flex-col items-center justify-center"
+      style={{ background: "#08080a" }}
+      initial={{ opacity: 1 }}
+      exit={{
+        opacity: 0,
+        transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] },
+      }}
+    >
+      {/* Ambient glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(109,40,217,0.1) 0%, transparent 70%)",
+        }}
+      />
+
+      <div className="relative flex flex-col items-center gap-8">
+        {/* Logo */}
         <motion.div
-          key="loader-container"
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-gray-950 overflow-hidden touch-none"
-          initial={{ opacity: 1 }}
-          /* Efek Tirai Diperhalus: Durasi lebih lama (1.2s) & kurva sinematik */
-          exit={{ 
-            clipPath: "inset(0 0 0 100%)",
-            transition: { duration: 1.2, ease: [0.85, 0, 0.15, 1] } 
+          className="relative w-12 h-12"
+          initial={{ opacity: 0, scale: 0.8, filter: "blur(12px)" }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            filter: "blur(0px)",
+            transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] },
+          }}
+          exit={{
+            opacity: 0,
+            scale: 1.05,
+            filter: "blur(6px)",
+            transition: { duration: 0.4 },
           }}
         >
-          {/* Logo Container - Tanpa elemen loading bar di bawahnya */}
-          <div className="relative flex flex-col items-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-              animate={{ 
-                opacity: 1, 
-                scale: 1, 
-                filter: "blur(0px)",
-                transition: { duration: 1, ease: "easeOut" }
-              }}
-              /* Efek tambahan: logo ikut memudar & tergeser sedikit saat disapu */
-              exit={{
-                opacity: 0,
-                x: 20, 
-                transition: { duration: 0.8, ease: "easeInOut" }
-              }}
-              className="relative w-24 h-24 md:w-32 md:h-32"
-            >
-              <Image
-                src="/aset/sonata.png" 
-                alt="Sonata"
-                fill
-                priority
-                sizes="(max-width: 768px) 96px, 128px"
-                className="object-contain brightness-110"
-              />
-              
-              {/* Subtle Pulse Effect (Cahaya di belakang logo) */}
-              <motion.div 
-                className="absolute inset-0 rounded-full bg-purple-500/20 blur-2xl z-[-1]"
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.5, 0.3] 
-                }}
-                transition={{ 
-                  duration: 2.5, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-              />
-            </motion.div>
-          </div>
+          <Image
+            src="/aset/sonata.png"
+            alt="Sonata"
+            fill
+            priority
+            sizes="48px"
+            className="object-contain"
+          />
+        </motion.div>
 
-          {/* Efek Kilatan Cahaya (Light Sweep) yang mengikuti sapuan tirai */}
-          <motion.div 
-            className="absolute inset-0 z-10 bg-linear-to-r from-transparent via-white/10 to-transparent pointer-events-none"
+        {/* Progress line */}
+        <motion.div
+          className="w-20 h-px rounded-full overflow-hidden"
+          style={{ background: "rgba(255,255,255,0.06)" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { delay: 0.25, duration: 0.3 } }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className="h-full w-full rounded-full"
+            style={{
+              background:
+                "linear-gradient(to right, #6d28d9, #a855f7, #6d28d9)",
+            }}
             initial={{ x: "-100%" }}
-            exit={{ 
-              x: "100%",
-              transition: { duration: 1.2, ease: [0.85, 0, 0.15, 1] }
+            animate={{
+              x: "0%",
+              transition: {
+                duration: 1.25,
+                delay: 0.35,
+                ease: [0.4, 0, 0.2, 1],
+              },
             }}
           />
         </motion.div>
-      )}
-    </AnimatePresence>
+      </div>
+    </motion.div>
   );
-};
-
-export default Loader;
+}
