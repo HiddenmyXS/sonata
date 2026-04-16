@@ -240,7 +240,7 @@ export default function SentinelSection() {
                  </div>
                  <div className="flex items-center justify-between p-2 border border-gray-800 bg-gray-950 rounded">
                     <span className="text-gray-400">Normal Usage</span>
-                    <span className="text-emerald-500 font-bold">PASS</span>
+                    <span className="text-emerald-500 font-bold">Pass</span>
                  </div>
                </div>
             </div>
